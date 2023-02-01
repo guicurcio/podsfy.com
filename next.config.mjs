@@ -10,6 +10,15 @@ const nextConfig = {
   experimental: {
     appDir: true,
   },
+  // redirects: async (url) => {
+  //   return [
+  //     {
+  //       source: "/about",
+  //       destination: "/",
+  //       permanent: true,
+  //     },
+  //   ];
+  // },
 };
 
 export default withContentlayer(nextConfig);

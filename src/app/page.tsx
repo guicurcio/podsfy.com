@@ -36,7 +36,7 @@ export default function Page() {
             <h1 className="font-moderat text-[16.5px] font-medium  text-[#BDBDBD] tracking-[-8%] text-center ">
               Reviews and rankings of podcasts from all streaming services
             </h1>
-            <div className="grid grid-flow-col gap-x-8  mx-auto brightness-[105%]">
+            <div className="grid grid-flow-col gap-x-6  mx-auto brightness-[105%]">
               <img
                 src="/pods/tunein.webp"
                 className="pod-streaming shadow-3xl border-[#88888820] border-2"
@@ -88,11 +88,14 @@ export default function Page() {
                     style={{ boxShadow: "0px 4px 4px 0 rgba(0,0,0,0.28)" }}
                   />
                 </Link>
-                <img
-                  src="./images-(10).jpeg"
-                  className="flex-grow-0 flex-shrink-0 w-[180px] h-[250px] rounded-[15px] object-cover border border-black cursor-pointer hover:scale-105 transition-all duration-500 ease-in-out"
-                  style={{ boxShadow: "0px 4px 4px 0 rgba(0,0,0,0.28)" }}
-                />
+                <Link href="/podcast/all-in-podcast">
+                  <img
+                    src="./images-(10).jpeg"
+                    className="flex-grow-0 flex-shrink-0 w-[180px] h-[250px] rounded-[15px] object-cover border border-black cursor-pointer hover:scale-105 transition-all duration-500 ease-in-out"
+                    style={{ boxShadow: "0px 4px 4px 0 rgba(0,0,0,0.28)" }}
+                  />
+                </Link>
+
                 <Link href="/podcast/huberman-lab-podcast">
                   <img
                     src="./huberman-lab.jpeg"
@@ -100,26 +103,34 @@ export default function Page() {
                     style={{ boxShadow: "0px 4px 4px 0 rgba(0,0,0,0.28)" }}
                   />
                 </Link>
-                <img
-                  src="./be2988047a80d577c453a0651d74d3edd12bfb85.jpeg"
-                  className="flex-grow-0 flex-shrink-0 w-[180px] h-[250px] rounded-[15px] object-cover border border-black cursor-pointer hover:scale-105 transition-all duration-500 ease-in-out"
-                  style={{ boxShadow: "0px 4px 4px 0 rgba(0,0,0,0.28)" }}
-                />
-                <img
-                  src="./ab67706c0000bebbf8a88a32d47562027bafed1c.jpeg"
-                  className="flex-grow-0 flex-shrink-0 w-[180px] h-[250px] rounded-[15px] object-cover border border-black cursor-pointer hover:scale-105 transition-all duration-500 ease-in-out"
-                  style={{ boxShadow: "0px 4px 4px 0 rgba(0,0,0,0.28)" }}
-                />
-                <img
-                  src="./images-(2).png"
-                  className="flex-grow-0 flex-shrink-0 w-[180px] h-[250px] rounded-[15px] object-cover border border-black cursor-pointer hover:scale-105 transition-all duration-500 ease-in-out"
-                  style={{ boxShadow: "0px 4px 4px 0 rgba(0,0,0,0.28)" }}
-                />
-                <img
-                  src="./ab67616d0000b273aa9b280f81bf9e8f66e88e91.jpeg"
-                  className="flex-grow-0 flex-shrink-0 w-[180px] h-[250px] rounded-[15px] object-cover border border-black cursor-pointer hover:scale-105 transition-all duration-500 ease-in-out"
-                  style={{ boxShadow: "0px 4px 4px 0 rgba(0,0,0,0.28)" }}
-                />
+                <Link href="/podcast/found-my-fitness">
+                  <img
+                    src="./be2988047a80d577c453a0651d74d3edd12bfb85.jpeg"
+                    className="flex-grow-0 flex-shrink-0 w-[180px] h-[250px] rounded-[15px] object-cover border border-black cursor-pointer hover:scale-105 transition-all duration-500 ease-in-out"
+                    style={{ boxShadow: "0px 4px 4px 0 rgba(0,0,0,0.28)" }}
+                  />
+                </Link>
+                <Link href="/podcast/the-joe-rogan-experience">
+                  <img
+                    src="./ab67706c0000bebbf8a88a32d47562027bafed1c.jpeg"
+                    className="flex-grow-0 flex-shrink-0 w-[180px] h-[250px] rounded-[15px] object-cover border border-black cursor-pointer hover:scale-105 transition-all duration-500 ease-in-out"
+                    style={{ boxShadow: "0px 4px 4px 0 rgba(0,0,0,0.28)" }}
+                  />
+                </Link>
+                <Link href="/podcast/making-sense">
+                  <img
+                    src="./images-(2).png"
+                    className="flex-grow-0 flex-shrink-0 w-[180px] h-[250px] rounded-[15px] object-cover border border-black cursor-pointer hover:scale-105 transition-all duration-500 ease-in-out"
+                    style={{ boxShadow: "0px 4px 4px 0 rgba(0,0,0,0.28)" }}
+                  />
+                </Link>
+                <Link href="/podcast/lex-fridman-podcast">
+                  <img
+                    src="./ab67616d0000b273aa9b280f81bf9e8f66e88e91.jpeg"
+                    className="flex-grow-0 flex-shrink-0 w-[180px] h-[250px] rounded-[15px] object-cover border border-black cursor-pointer hover:scale-105 transition-all duration-500 ease-in-out"
+                    style={{ boxShadow: "0px 4px 4px 0 rgba(0,0,0,0.28)" }}
+                  />
+                </Link>
               </div>
               {/* <h1 className="font-moderat text-[16.5px] font-medium  text-[#BDBDBD] tracking-[-8%] text-center">
               The social network for podcast lovers

@@ -1,11 +1,57 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
+// 1
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// 2
 generator client {
   provider = "prisma-client-js"
 }
 
-datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+// 3
+model Podcast {
+  id          Int      @id @default(autoincrement())
+  title       String
+  createdAt   DateTime @default(now())
+  updatedAt     DateTime  @default(now()) @map(name: "updated_at")
+  description String
+  url         String
+  slug        String @unique
+  cover        String @default("")
+  host String @default("")
+  podcastHostId String?
+  podcastHost Person? @relation(fields: [podcastHostId], references: [id])
+  episodes Episode[]
+}
+
+model Person {
+  id           String   @id @default(cuid())
+  name          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  image         String?
+  podcast Podcast[] 
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @default(now())
+}
+
+model Review {
+  id           String   @id @default(cuid())
+  description          String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @default(now())
+}
+
+model Episode {
+  id          Int      @id @default(autoincrement())
+  title       String?
+  description String?
+  publishedAt DateTime? 
+  url         String?
+  podcastId Int?
+  podcast Podcast? @relation(fields: [podcastId], references: [id])
 }
