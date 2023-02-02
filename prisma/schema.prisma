@@ -26,6 +26,10 @@ model Podcast {
   podcastHostId String?
   podcastHost Person? @relation(fields: [podcastHostId], references: [id])
   episodes Episode[]
+  backgroundCoverImage String?
+  tags String?
+  genre String?
+  rating Int?
 }
 
 model Person {
@@ -37,6 +41,7 @@ model Person {
   podcast Podcast[] 
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @default(now())
+  guestAt Episode[]
 }
 
 model Review {
@@ -54,4 +59,10 @@ model Episode {
   url         String?
   podcastId Int?
   podcast Podcast? @relation(fields: [podcastId], references: [id])
+  episodeNumber Int?
+  bestEpisode Boolean?
+  featuredEpisode Boolean?
+  mostStreamedEpisode Boolean?
+  episodeCoverImage String?
+  episodeGuests Person[]
 }

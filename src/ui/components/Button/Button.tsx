@@ -8,7 +8,7 @@ export const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "bg-black text-white hover:brightness-[120%] dark:bg-slate-50 dark:text-slate-900 transition-all duration-200 ease-in-out",
+          "bg-[#15181ef2] border border-[#22262f] text-white/70 hover:brightness-[120%] dark:bg-slate-50 dark:text-slate-900",
         destructive:
           "bg-red-500 text-white hover:bg-red-600 dark:hover:bg-red-600",
         outline:
@@ -20,7 +20,7 @@ export const buttonVariants = cva(
         link: "bg-transparent underline-offset-4 hover:underline text-slate-900 dark:text-slate-100 hover:bg-transparent dark:hover:bg-transparent",
       },
       size: {
-        default: "h-10 py-2 px-4 rounded-md",
+        default: "h-10 py-2 px-4 rounded-md text-[15px]",
         sm: "h-9 px-2 rounded-md",
         lg: "h-11 px-8 rounded-md text-md",
       },

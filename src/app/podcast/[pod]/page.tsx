@@ -23,6 +23,11 @@ const getPodInfo = cache(async (pod: string) => {
       slug: true,
       cover: true,
       host: true,
+      backgroundCoverImage: true,
+      tags: true,
+      genre: true,
+      rating: true,
+      episodes: true,
     },
   });
 });
@@ -54,9 +59,14 @@ export default async function PodcastPage({ params }) {
     redirect("/404");
   }
 
+  console.log(
+    staticPodcastData.episodes.some((episode) => episode.bestEpisode)
+  );
   return (
     <>
-      <PodImage></PodImage>
+      <PodImage
+        image={`../${staticPodcastData.backgroundCoverImage}`}
+      ></PodImage>
       <div className="max-w-[1200px]  z-50 mx-auto mt-32 relative">
         <div className="max-w-[1200px] mx-auto rounded-lg z-20  bg-[#0D0E12] bg-opacity-90">
           <div className="grid grid-flow-col  gap-12  justify-start backdrop-brightness-[50%] w-full p-8 rounded-xl">
@@ -70,14 +80,30 @@ export default async function PodcastPage({ params }) {
                   className="rounded-[4px] border border-white border-opacity-[10%] blur-[0.5px] brightness-[75%] w-[300px] h-[340px]"
                 />
               </div>
-              <PodBehind></PodBehind>
+              <PodBehind
+                genre={staticPodcastData.genre}
+                rating={staticPodcastData.rating}
+                tags={staticPodcastData.tags}
+                podcastTitle={staticPodcastData.title}
+              ></PodBehind>
             </div>
             <div className="justify-start items-start grid grid-flow-row gap-6 h-full w-[650px]">
               <PodDetails
                 title={staticPodcastData.title}
                 description={staticPodcastData.description}
               ></PodDetails>
-              <PodEpisodes></PodEpisodes>
+              {staticPodcastData.episodes.some(
+                (episode) => episode.bestEpisode
+              ) && (
+                <PodEpisodes
+                  title="Best Episodes"
+                  episodes={staticPodcastData.episodes}
+                ></PodEpisodes>
+              )}
+              <PodEpisodes
+                title="Newest Episodes"
+                episodes={staticPodcastData.episodes}
+              ></PodEpisodes>
               <PodStreaming></PodStreaming>
               <PodReviews></PodReviews>
               <PodSimilar></PodSimilar>

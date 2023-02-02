@@ -32,11 +32,11 @@ export default function Page() {
             </h1>
             <Join></Join>
           </div>
-          <div className="grid grid-flow-row gap-y-[12px] mx-auto mt-[100px]">
+          <div className="grid grid-flow-row gap-y-[12px] mx-auto mt-[50px]">
             <h1 className="font-moderat text-[16.5px] font-medium  text-[#BDBDBD] tracking-[-8%] text-center ">
               Reviews and rankings of podcasts from all streaming services
             </h1>
-            <div className="grid grid-flow-col gap-x-6  mx-auto brightness-[105%]">
+            <div className="grid grid-flow-col gap-x-5 mx-auto brightness-[105%]">
               <img
                 src="/pods/tunein.webp"
                 className="pod-streaming shadow-3xl border-[#88888820] border-2"
@@ -76,7 +76,7 @@ export default function Page() {
                 className="pod-streaming shadow-3xl border-[#88888820] border-2"
               ></img>
             </div>
-            <div className="mt-[8px] grid grid-flow-row gap-2 py-[80px]">
+            <div className="mt-[8px] grid grid-flow-row gap-2 py-[40px]">
               <h1 className="font-moderat text-[16.5px] font-medium  text-[#BDBDBD] tracking-[-8%] text-center ">
                 The social network for podcast lovers
               </h1>
@@ -84,8 +84,7 @@ export default function Page() {
                 <Link href="/podcast/call-her-daddy">
                   <img
                     src="./ab67706c0000bebbe74171c42b0069e80316ab7e.jpeg"
-                    className="flex-grow-0 flex-shrink-0 w-[180px] h-[250px] rounded-[15px] object-cover border border-black cursor-pointer hover:scale-105 transition-all duration-500 ease-in-out"
-                    style={{ boxShadow: "0px 4px 4px 0 rgba(0,0,0,0.28)" }}
+                    className="flex-grow-0 shadow-3xl border-[#88888820] border-2  flex-shrink-0 w-[180px] h-[250px] rounded-[15px] object-cover border border-black cursor-pointer hover:scale-105 transition-all duration-500 ease-in-out"
                   />
                 </Link>
                 <Link href="/podcast/all-in-podcast">

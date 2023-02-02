@@ -6,7 +6,7 @@ export default function PodcastPage({ children }) {
     <div className="bg-[#0D0E12] overflow-x-hidden relative">
       <div className="backdrop-brightness-[10%]">
         <PodHeader></PodHeader>
-        <PodImage></PodImage>
+       
         {children}
         {/* <Footer2></Footer2> */}
       </div>
