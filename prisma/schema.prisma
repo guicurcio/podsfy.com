@@ -30,18 +30,22 @@ model Podcast {
   tags String?
   genre String?
   rating Int?
+  @@index([slug])
 }
 
 model Person {
   id           String   @id @default(cuid())
   name          String?
-  email         String?   @unique
+  email         String?  
   emailVerified DateTime?
   image         String?
   podcast Podcast[] 
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @default(now())
   guestAt Episode[]
+  slug String? @unique 
+  @@index([slug])
+  otherNames String?
 }
 
 model Review {
