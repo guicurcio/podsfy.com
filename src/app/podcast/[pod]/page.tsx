@@ -135,7 +135,7 @@ export default async function PodcastPage({
    <PodImage
     image={`../${staticPodcastData.backgroundCoverImage}`}
    ></PodImage>
-   <div className="max-w-[1200px]  z-50 mx-auto mt-32 relative">
+   <div className="max-w-[1200px]  z-50 mx-auto mt-[120px] relative">
     <div className="max-w-[1200px] mx-auto rounded-lg z-20  bg-[#0D0E12] bg-opacity-90">
      <div className="grid grid-flow-col  gap-12  justify-start backdrop-brightness-[50%] w-full p-8 rounded-xl">
       <div className=" rounded-md flex flex-col justify-start">
