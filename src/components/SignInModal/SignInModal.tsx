@@ -1,6 +1,5 @@
 'use client';
 
-import { twMerge } from 'tailwind-merge';
 import Button from 'ui/components/Button';
 import {
   Dialog,
@@ -21,9 +20,9 @@ import {
 } from 'ui/components/Tooltip';
 
 /**
- * Join Props description
+ * SignInModal Props description
  */
-export interface JoinProps {
+export interface SignInModalProps {
   /**
    * Custom class names passed to the root element.
    */
@@ -31,23 +30,23 @@ export interface JoinProps {
 }
 
 /**
- * Join Component
+ * SignInModal Component
  */
-export default function Join({ className }: JoinProps) {
+export default function SignInModal({ className }: SignInModalProps) {
   return (
-    <div className={twMerge('mx-auto w-fit mt-4', className)}>
+    <div className="mx-auto w-fit mt-4">
       <Dialog>
         <DialogTrigger asChild>
-          <Button variant="default" size="lg">
-            Discover New Podcasts - it‘s free!
+          <Button variant="main" size="md">
+            sign in
           </Button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-[475px]">
           <DialogHeader>
-            <DialogTitle className="">Create a Podsfy Account</DialogTitle>
-            <DialogDescription className="text-center max-w-[250px] mx-auto text-white/60">
+            <DialogTitle className="">Sign In</DialogTitle>
+            {/* <DialogDescription className="text-center max-w-[250px] mx-auto text-white/60">
               Create a free account to get access to all the features of Podsfy.
-            </DialogDescription>
+            </DialogDescription> */}
           </DialogHeader>
           <div className="grid grid-flow-row gap-6 py-4">
             <div className="grid grid-flow-col gap-7 mx-auto pt-3 pb-[-2px]">
@@ -94,19 +93,9 @@ export default function Join({ className }: JoinProps) {
             <div className="grid gap-4">
               <div className="grid grid-flow-row items-center gap-2">
                 <Label htmlFor="email" className="text-left">
-                  Email
+                  Email or Username
                 </Label>
                 <Input id="email" className="col-span-4" />
-              </div>
-              <div className="grid grid-flow-row items-center gap-2">
-                <Label htmlFor="email" className="text-left">
-                  Username
-                </Label>
-                <Input id="username" className="col-span-4" />
-              </div>
-              <div className="grid grid-flow-row items-center gap-2">
-                <Label className="text-left">Name</Label>
-                <Input id="name" className="col-span-4" />
               </div>
               <div className="grid grid-flow-row items-center gap-2">
                 <Label htmlFor="email" className="text-left">
@@ -120,15 +109,15 @@ export default function Join({ className }: JoinProps) {
           <DialogFooter className="grid grid-flow-row gap-2 w-full mx-auto">
             <div className="w-full">
               <Button type="submit" className="w-full" size="lg">
-                Register Now
+                Sign In
               </Button>
             </div>
             <div className="grid grid-flow-row gap-[2px] w-full">
               <p className="text-sm text-center text-white/70">
-                Already have an account?
+                Don't have an account already?
               </p>
               <button className="text-sm font-medium font-visuelt text-center text-white mx-auto w-fit flex">
-                Sign In
+                Sign Up
               </button>
             </div>
           </DialogFooter>

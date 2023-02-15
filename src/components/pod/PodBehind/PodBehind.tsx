@@ -7,140 +7,120 @@ import { twMerge } from 'tailwind-merge';
  * PodBehind Props description
  */
 export interface PodBehindProps {
- /**
-  * Custom class names passed to the root element.
-  */
- className?: string;
- /**
-  * image url
-  */
- image?: string;
- /**
-  * image url
-  */
- genre?: string;
- /**
-  * image url
-  */
- rating?: number;
- tags?: string;
- podcastTitle?: string;
+  /**
+   * Custom class names passed to the root element.
+   */
+  className?: string;
+  /**
+   * image url
+   */
+  image?: string;
+  /**
+   * image url
+   */
+  genre?: string;
+  /**
+   * image url
+   */
+  rating?: number;
+  tags?: string;
+  podcastTitle?: string;
 }
 
 /**
  * PodBehind Component
  */
 export default function PodBehind({
- className,
- genre,
- rating,
- tags,
- podcastTitle = 'Podcast',
+  className,
+  genre,
+  rating,
+  tags,
+  podcastTitle = 'Podcast',
 }: PodBehindProps) {
- return (
-  <div
-   className={twMerge(
-    'justify-center items-center py-1 w-full grid grid-flow-row',
-    className
-   )}
-  >
-   <div className="grid grid-flow-col gap-2 py-2 mx-auto">
-    <button
-     onClick={() => {
-      toast.custom(
-       (t) => (
-        <div
-         className={`${
-          t.visible
-           ? 'animate-enter'
-           : 'animate-leave'
-         } max-w-sm w-full bg-black bg-opacity-[80%] backdrop-blur-[1px] backdrop-brightness-[75%] shadow-lg rounded-lg pointer-events-auto flex ring-1 ring-black ring-opacity-5`}
-        >
-         <div className="flex-1 w-0 p-3">
-          <div className="flex items-start">
-           <div className="flex-shrink-0 pt-0.5">
-            <img
-             className="h-10 w-10 "
-             src="/podcastcover.png"
-             alt=""
-            />
-           </div>
-           <div className="ml-3 flex-1">
-            <p className="text-sm font-medium text-white">
-             {
-              podcastTitle
-             }
-            </p>
-            <p className="mt-1 text-sm text-white text-opacity-75">
-             Saved
-             to
-             Favorites
-            </p>
-           </div>
-          </div>
-         </div>
-        </div>
-       )
-      );
-     }}
-     className="grid grid-flow-row h-[55px] rounded-md w-[70px] gap-1 p-2 hover:backdrop-brightness-[75%] cursor-pointer hover:bg-fondy hover:bg-opacity-[90%]"
+  return (
+    <div
+      className={twMerge(
+        'justify-center items-center py-1 w-full grid grid-flow-row gap-2',
+        className
+      )}
     >
-     <svg
-      width="15"
-      height="15"
-      viewBox="0 0 15 15"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className="mx-auto text-white"
-     >
-      <path
-       d="M7.22303 0.665992C7.32551 0.419604 7.67454 0.419604 7.77702 0.665992L9.41343 4.60039C9.45663 4.70426 9.55432 4.77523 9.66645 4.78422L13.914 5.12475C14.18 5.14607 14.2878 5.47802 14.0852 5.65162L10.849 8.42374C10.7636 8.49692 10.7263 8.61176 10.7524 8.72118L11.7411 12.866C11.803 13.1256 11.5206 13.3308 11.2929 13.1917L7.6564 10.9705C7.5604 10.9119 7.43965 10.9119 7.34365 10.9705L3.70718 13.1917C3.47945 13.3308 3.19708 13.1256 3.25899 12.866L4.24769 8.72118C4.2738 8.61176 4.23648 8.49692 4.15105 8.42374L0.914889 5.65162C0.712228 5.47802 0.820086 5.14607 1.08608 5.12475L5.3336 4.78422C5.44573 4.77523 5.54342 4.70426 5.58662 4.60039L7.22303 0.665992Z"
-       fill="currentColor"
-      ></path>
-     </svg>
-     <p className="text-[13px] text-center text-[#d9e8ed]">
-      Favorite
-     </p>
-    </button>
-    <div className="grid grid-flow-row h-[55px] rounded-md w-[70px] gap-1 p-2 hover:backdrop-brightness-[75%] cursor-pointer hover:bg-fondy hover:bg-opacity-[90%]">
-     <svg
-      width="15"
-      height="15"
-      viewBox="0 0 15 15"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className="mx-auto text-white"
-     >
-      <path
-       d="M3 2.5C3 2.22386 3.22386 2 3.5 2H11.5C11.7761 2 12 2.22386 12 2.5V13.5C12 13.6818 11.9014 13.8492 11.7424 13.9373C11.5834 14.0254 11.3891 14.0203 11.235 13.924L7.5 11.5896L3.765 13.924C3.61087 14.0203 3.41659 14.0254 3.25762 13.9373C3.09864 13.8492 3 13.6818 3 13.5V2.5ZM4 3V12.5979L6.97 10.7416C7.29427 10.539 7.70573 10.539 8.03 10.7416L11 12.5979V3H4Z"
-       fill="currentColor"
-       fill-rule="evenodd"
-       clip-rule="evenodd"
-      ></path>
-     </svg>
-     <p className="text-[13px] text-center text-[#d9e8ed]">
-      PodList
-     </p>
-    </div>
-    <div className="grid grid-flow-row h-[55px] rounded-md w-[70px] gap-1 p-2 hover:backdrop-brightness-[75%] cursor-pointer hover:bg-fondy hover:bg-opacity-[90%]">
-     <svg
-      width="15"
-      height="15"
-      viewBox="0 0 15 15"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className="mx-auto text-white"
-     >
-      <path
-       d="M1.35248 4.90532C1.35248 2.94498 2.936 1.35248 4.89346 1.35248C6.25769 1.35248 6.86058 1.92336 7.50002 2.93545C8.13946 1.92336 8.74235 1.35248 10.1066 1.35248C12.064 1.35248 13.6476 2.94498 13.6476 4.90532C13.6476 6.74041 12.6013 8.50508 11.4008 9.96927C10.2636 11.3562 8.92194 12.5508 8.00601 13.3664C7.94645 13.4194 7.88869 13.4709 7.83291 13.5206C7.64324 13.6899 7.3568 13.6899 7.16713 13.5206C7.11135 13.4709 7.05359 13.4194 6.99403 13.3664C6.0781 12.5508 4.73641 11.3562 3.59926 9.96927C2.39872 8.50508 1.35248 6.74041 1.35248 4.90532Z"
-       fill="currentColor"
-      ></path>
-     </svg>
-     <p className="text-[13px] text-center text-[#d9e8ed]">
-      Like
-     </p>
-    </div>
-    <div className="grid grid-flow-row h-[55px] rounded-md w-[70px] gap-1 p-2 hover:backdrop-brightness-[75%] cursor-pointer hover:bg-fondy hover:bg-opacity-[90%]">
+      <div className="grid grid-flow-col gap-2 py-2">
+        <button
+          onClick={() => {
+            toast.custom((t) => (
+              <div
+                className={`${
+                  t.visible ? 'animate-enter' : 'animate-leave'
+                } max-w-sm w-full bg-black bg-opacity-[80%] backdrop-blur-[1px] backdrop-brightness-[75%] shadow-lg rounded-lg pointer-events-auto flex ring-1 ring-black ring-opacity-5`}
+              >
+                <div className="flex-1 w-0 p-3">
+                  <div className="flex items-start">
+                    <div className="flex-shrink-0 pt-0.5">
+                      <img className="h-10 w-10 " src="/podcastcover.png" alt="" />
+                    </div>
+                    <div className="ml-3 flex-1">
+                      <p className="text-sm font-medium text-white">{podcastTitle}</p>
+                      <p className="mt-1 text-sm text-white text-opacity-75">
+                        Saved to Favorites
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ));
+          }}
+          className="grid grid-flow-row h-[55px] rounded-md w-[70px] gap-1 p-2 hover:backdrop-brightness-[75%] cursor-pointer hover:bg-fondy hover:bg-opacity-[90%]"
+        >
+          <svg
+            width="15"
+            height="15"
+            viewBox="0 0 15 15"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="mx-auto text-white"
+          >
+            <path
+              d="M7.22303 0.665992C7.32551 0.419604 7.67454 0.419604 7.77702 0.665992L9.41343 4.60039C9.45663 4.70426 9.55432 4.77523 9.66645 4.78422L13.914 5.12475C14.18 5.14607 14.2878 5.47802 14.0852 5.65162L10.849 8.42374C10.7636 8.49692 10.7263 8.61176 10.7524 8.72118L11.7411 12.866C11.803 13.1256 11.5206 13.3308 11.2929 13.1917L7.6564 10.9705C7.5604 10.9119 7.43965 10.9119 7.34365 10.9705L3.70718 13.1917C3.47945 13.3308 3.19708 13.1256 3.25899 12.866L4.24769 8.72118C4.2738 8.61176 4.23648 8.49692 4.15105 8.42374L0.914889 5.65162C0.712228 5.47802 0.820086 5.14607 1.08608 5.12475L5.3336 4.78422C5.44573 4.77523 5.54342 4.70426 5.58662 4.60039L7.22303 0.665992Z"
+              fill="currentColor"
+            ></path>
+          </svg>
+          <p className="text-[13px] text-center text-[#d9e8ed]">Favorite</p>
+        </button>
+        <div className="grid grid-flow-row h-[55px] rounded-md w-[70px] gap-1 p-2 hover:backdrop-brightness-[75%] cursor-pointer hover:bg-fondy hover:bg-opacity-[90%]">
+          <svg
+            width="15"
+            height="15"
+            viewBox="0 0 15 15"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="mx-auto text-white"
+          >
+            <path
+              d="M3 2.5C3 2.22386 3.22386 2 3.5 2H11.5C11.7761 2 12 2.22386 12 2.5V13.5C12 13.6818 11.9014 13.8492 11.7424 13.9373C11.5834 14.0254 11.3891 14.0203 11.235 13.924L7.5 11.5896L3.765 13.924C3.61087 14.0203 3.41659 14.0254 3.25762 13.9373C3.09864 13.8492 3 13.6818 3 13.5V2.5ZM4 3V12.5979L6.97 10.7416C7.29427 10.539 7.70573 10.539 8.03 10.7416L11 12.5979V3H4Z"
+              fill="currentColor"
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+          <p className="text-[13px] text-center text-[#d9e8ed]">PodList</p>
+        </div>
+        <div className="grid grid-flow-row h-[55px] rounded-md w-[70px] gap-1 p-2 hover:backdrop-brightness-[75%] cursor-pointer hover:bg-fondy hover:bg-opacity-[90%]">
+          <svg
+            width="15"
+            height="15"
+            viewBox="0 0 15 15"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="mx-auto text-white"
+          >
+            <path
+              d="M1.35248 4.90532C1.35248 2.94498 2.936 1.35248 4.89346 1.35248C6.25769 1.35248 6.86058 1.92336 7.50002 2.93545C8.13946 1.92336 8.74235 1.35248 10.1066 1.35248C12.064 1.35248 13.6476 2.94498 13.6476 4.90532C13.6476 6.74041 12.6013 8.50508 11.4008 9.96927C10.2636 11.3562 8.92194 12.5508 8.00601 13.3664C7.94645 13.4194 7.88869 13.4709 7.83291 13.5206C7.64324 13.6899 7.3568 13.6899 7.16713 13.5206C7.11135 13.4709 7.05359 13.4194 6.99403 13.3664C6.0781 12.5508 4.73641 11.3562 3.59926 9.96927C2.39872 8.50508 1.35248 6.74041 1.35248 4.90532Z"
+              fill="currentColor"
+            ></path>
+          </svg>
+          <p className="text-[13px] text-center text-[#d9e8ed]">Like</p>
+        </div>
+        {/* <div className="grid grid-flow-row h-[55px] rounded-md w-[70px] gap-1 p-2 hover:backdrop-brightness-[75%] cursor-pointer hover:bg-fondy hover:bg-opacity-[90%]">
      <svg
       width="15"
       height="15"
@@ -159,54 +139,36 @@ export default function PodBehind({
      <p className="text-[13px] text-center text-[#d9e8ed]">
       Link
      </p>
-    </div>
-   </div>
-   <div className="grid grid-flow-row gap-2.5 ">
-    <div className=" w-[93%] mx-auto border-t border-[#10161d]/60" />
-    {rating && (
-     <div className="grid grid-flow-col gap-x-8 items-start justify-start px-4 py-1">
-      <p className=" text-[15px] font-medium text-left uppercase text-white text-opacity-60 font-visuelt">
-       Rating
-      </p>
-      <p className="text-[14px] font-normal align-middle self-center text-white/70 text-opacity-60 font-visuelt">
-       {rating}/10
-      </p>
-     </div>
-    )}
-    {genre && (
-     <div className="grid grid-flow-col gap-x-8 items-start justify-start px-4 py-1">
-      <p className=" text-[15px] font-medium text-left uppercase text-white text-opacity-60 font-visuelt">
-       Genre
-      </p>
-      <p className="text-[14px] space-x-1  font-normal align-middle self-center text-white/70 text-opacity-60 font-visuelt">
-       {genre
-        .split(',')
-        .map(
-         (
-          str,
-          i
-         ) => (
-          <span className="capitalize">
-           {str}
-           {i ===
-           genre.split(
-            ','
-           )
-            .length -
-            1
-            ? '.'
-            : ','}
-          </span>
-         )
+    </div> */}
+      </div>
+      {/* <div className=" w-[93%] mx-auto border-t border-[#10161d]/60" /> */}
+      <div className="grid grid-flow-row gap-3 py-4 border-y border-[#10161d]/60">
+        {rating && (
+          <div className="grid grid-flow-col gap-x-4 items-start justify-start px-4">
+            <p className=" text-[14px] font-medium text-left uppercase text-white text-opacity-60 font-visuelt">
+              Rating
+            </p>
+            <p className="text-[12px] space-x-1  font-normal align-middle truncate self-center text-white/70 text-opacity-60 font-visuelt">
+              {rating}/10
+            </p>
+          </div>
         )}
-      </p>
-     </div>
-    )}
-    {rating ||
-     (genre && (
-      <div className=" w-[93%] mx-auto border-t border-[#10161d]/60" />
-     ))}
-   </div>
-  </div>
- );
+        {genre && (
+          <div className="grid grid-flow-col gap-x-4 items-start justify-start px-4">
+            <p className=" text-[14px] font-medium text-left uppercase text-white text-opacity-60 font-visuelt">
+              Genre
+            </p>
+            <p className="text-[12px] space-x-1  font-normal align-middle truncate self-center text-white/70 text-opacity-60 font-visuelt">
+              {genre.split(',').map((str, i) => (
+                <span className="capitalize">
+                  {str}
+                  {i === genre.split(',').length - 1 ? '.' : ','}
+                </span>
+              ))}
+            </p>
+          </div>
+        )}
+      </div>
+    </div>
+  );
 }

@@ -60,9 +60,8 @@ export default function PodReviews({
       `for ${title}`}
     </h2>
    </div>
-   <div className="grid grid-flow-row gap-6 divide-y-[1px]  divide-fondy/50 px-2">
+   <div className="grid grid-flow-row gap-6 divide-y-[1px] items-start justify-start  divide-fondy/50 px-2">
     <PodComment className="pt-4 border-t-[1px] border-fondy/50"></PodComment>
-    <PodComment></PodComment>
     <PodComment></PodComment>
    </div>
   </div>

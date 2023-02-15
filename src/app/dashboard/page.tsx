@@ -1,5 +1,11 @@
-export default function Page({ params, searchParams }) {
-  // /blog/hello-world => { params: { slug: 'hello-world' } }
-  // /blog/hello-world?id=123 => { searchParams: { id: '123' } }
-  return <p>asd</p>;
+export default async function DashboardPage() {
+  return (
+    <>
+      <div className="max-w-[1050px] z-50 mx-auto mt-[120px] relative">
+        <div className="max-w-[1050px] mx-auto rounded-lg z-20  bg-[#0D0E12] bg-opacity-90 ">
+          <div className="h-[500px]"></div>
+        </div>
+      </div>
+    </>
+  );
 }
