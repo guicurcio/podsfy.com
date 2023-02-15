@@ -1,5 +1,9 @@
 'use client';
 
+import { NhostProvider, useSignUpEmailPassword, useUserData } from '@nhost/nextjs';
+import { nhost } from 'lib/setupBackendConfig';
+import { useRouter } from 'next/navigation';
+import { useMemo, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
 import Button from 'ui/components/Button';
 import {
@@ -30,10 +34,43 @@ export interface JoinProps {
   className?: string;
 }
 
+export default function Join({ className }: JoinProps) {
+  return (
+    <NhostProvider nhost={nhost}>
+      <JoinBelow></JoinBelow>
+    </NhostProvider>
+  );
+}
+
 /**
  * Join Component
  */
-export default function Join({ className }: JoinProps) {
+export function JoinBelow({ className }: JoinProps) {
+  const router = useRouter();
+  const { signUpEmailPassword } = useSignUpEmailPassword();
+  const user = useUserData();
+  console.log(user);
+  if (user) {
+    router.push('/dashboard');
+  }
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [emailVerificationToggle, setEmailVerificationToggle] = useState(false);
+  const differentPassword = useMemo(
+    () => password && password !== confirmPassword && 'Should match the given password',
+    [password, confirmPassword]
+  );
+  const signUp = async () => {
+    try {
+      const result = await signUpEmailPassword(email, password);
+      console.log(result);
+    } catch (error) {
+      console.log(error);
+      return;
+    }
+  };
+
   return (
     <div className={twMerge('mx-auto w-fit mt-4', className)}>
       <Dialog>
@@ -96,9 +133,13 @@ export default function Join({ className }: JoinProps) {
                 <Label htmlFor="email" className="text-left">
                   Email
                 </Label>
-                <Input id="email" className="col-span-4" />
+                <Input
+                  id="email"
+                  className="col-span-4"
+                  onChange={(e) => setEmail(e.target.value)}
+                />
               </div>
-              <div className="grid grid-flow-row items-center gap-2">
+              {/* <div className="grid grid-flow-row items-center gap-2">
                 <Label htmlFor="email" className="text-left">
                   Username
                 </Label>
@@ -107,19 +148,24 @@ export default function Join({ className }: JoinProps) {
               <div className="grid grid-flow-row items-center gap-2">
                 <Label className="text-left">Name</Label>
                 <Input id="name" className="col-span-4" />
-              </div>
+              </div> */}
               <div className="grid grid-flow-row items-center gap-2">
                 <Label htmlFor="email" className="text-left">
                   Password
                 </Label>
-                <Input id="password" type={'password'} className="col-span-4" />
+                <Input
+                  id="password"
+                  type={'password'}
+                  className="col-span-4"
+                  onChange={(e) => setPassword(e.target.value)}
+                />
               </div>
             </div>
           </div>
 
           <DialogFooter className="grid grid-flow-row gap-2 w-full mx-auto">
             <div className="w-full">
-              <Button type="submit" className="w-full" size="lg">
+              <Button type="submit" className="w-full" size="lg" onClick={signUp}>
                 Register Now
               </Button>
             </div>
