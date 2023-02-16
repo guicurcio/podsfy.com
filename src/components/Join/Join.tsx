@@ -47,12 +47,8 @@ export default function Join({ className }: JoinProps) {
  */
 export function JoinBelow({ className }: JoinProps) {
   const router = useRouter();
-  const { signUpEmailPassword } = useSignUpEmailPassword();
+  const { signUpEmailPassword, isLoading } = useSignUpEmailPassword();
   const user = useUserData();
-  console.log(user);
-  if (user) {
-    router.push('/dashboard');
-  }
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -165,7 +161,13 @@ export function JoinBelow({ className }: JoinProps) {
 
           <DialogFooter className="grid grid-flow-row gap-2 w-full mx-auto">
             <div className="w-full">
-              <Button type="submit" className="w-full" size="lg" onClick={signUp}>
+              <Button
+                loading={isLoading}
+                type="submit"
+                className="w-full"
+                size="lg"
+                onClick={signUp}
+              >
                 Register Now
               </Button>
             </div>

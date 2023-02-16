@@ -83,9 +83,18 @@ export default async function PodcastPage({ params }) {
 
   console.log(staticPodcastData.episodes.some((episode) => episode.bestEpisode));
   return (
-    <>
-      <PodImage image={`../${staticPodcastData.backgroundCoverImage}`}></PodImage>
-      <div className="max-w-[1050px] z-50 mx-auto mt-[120px] relative">
+    <div className="relative">
+      {staticPodcastData.backgroundCoverImage ? (
+        <PodImage image={`../${staticPodcastData.backgroundCoverImage}`}></PodImage>
+      ) : (
+        <div className="">
+          <img
+            className="absolute xl:scale-x-[105%] bg-[#0D0E12] scale-[120%] brightness-[60%] object-cover xl:scale-y-[100%] md:top-[50px] xl:top-[-120px] md:rotate-[8deg] xl:translate-x-[25px]"
+            src="./bg/bg.png"
+          ></img>
+        </div>
+      )}
+      <div className=" z-50 mx-auto pt-[120px] relative backdrop-blur-[8px] backdrop-brightness-[60%]">
         <div className="max-w-[1050px] mx-auto rounded-lg z-20  bg-[#0D0E12] bg-opacity-90 ">
           <div className="grid grid-cols-12  gap-16 grid-flow-col  justify-start backdrop-brightness-[50%]  p-8 rounded-xl">
             <div className="col-span-3 grid grid-flow-row items-start justify-start  justify-items-start place-content-start">
@@ -134,6 +143,6 @@ export default async function PodcastPage({ params }) {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

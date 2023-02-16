@@ -1,6 +1,7 @@
 import { VariantProps, cva } from 'class-variance-authority';
 import * as React from 'react';
 import mergeClasses from 'utils/mergeClasses';
+import { Loader2 } from 'lucide-react';
 
 export const buttonVariants = cva(
   'inline-flex items-center justify-center tracking-[-0.01em] font-medium font-visuelt rounded-md focus:outline-none focus:ring-0 focus:ring-offset-0 dark:hover:bg-slate-800 dark:hover:text-slate-100 disabled:opacity-50 dark:focus:ring-slate-400 disabled:pointer-events-none dark:focus:ring-offset-slate-900 data-[state=open]:bg-slate-100 dark:data-[state=open]:bg-slate-800',
@@ -38,15 +39,39 @@ export const buttonVariants = cva(
  */
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {}
+    VariantProps<typeof buttonVariants> {
+  /**
+   *  If true, the button will be disabled and show a loading indicator
+   */
+  loading?: boolean;
+}
 
 /**
  *
  */
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, ...props }, ref) => {
+  ({ className, variant, size, disabled, loading, ...props }, ref) => {
+    if (loading) {
+      return (
+        <button
+          disabled
+          className={mergeClasses(
+            buttonVariants({
+              variant,
+              size,
+              className,
+            })
+          )}
+          ref={ref}
+          {...props}
+        >
+          <Loader2 className="h-5 w-5 animate-spin" />
+        </button>
+      );
+    }
     return (
       <button
+        disabled={disabled || loading}
         className={mergeClasses(
           buttonVariants({
             variant,
