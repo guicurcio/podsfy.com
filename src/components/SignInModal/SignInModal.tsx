@@ -1,11 +1,12 @@
 'use client';
 
-import {
-  NhostProvider,
-  useAuthenticated,
-  useSignInEmailPassword,
-  useUserData,
-} from '@nhost/nextjs';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { NhostProvider, useAuthenticated, useSignInEmailPassword } from '@nhost/nextjs';
+import Form from 'components/Form/Form';
+import { nhost } from 'lib/setupBackendConfig';
+import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
+import { FormProvider, useForm } from 'react-hook-form';
 import Button from 'ui/components/Button';
 import {
   Dialog,
@@ -23,11 +24,6 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from 'ui/components/Tooltip';
-import { FormProvider, useForm } from 'react-hook-form';
-import { nhost } from 'lib/setupBackendConfig';
-import Form from 'components/Form/Form';
-import { useRouter } from 'next/navigation';
-import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 
 const schema = z.object({
@@ -65,6 +61,7 @@ export function SignInModalForm({ className }: SignInModalProps) {
   const { signInEmailPassword, isLoading, isSuccess, isError, error } =
     useSignInEmailPassword();
   const router = useRouter();
+  const isSignedIn = useAuthenticated();
 
   const form = useForm<SignInModalFormValues>({
     reValidateMode: 'onSubmit',
@@ -73,11 +70,19 @@ export function SignInModalForm({ className }: SignInModalProps) {
 
   const { register, formState } = form;
 
+  useEffect(() => {
+    if (isSignedIn) {
+      router.push('/dashboard');
+    }
+  }, [isSignedIn]);
+
   const handleSignInFormSubmit = async ({ email, password }: SignInModalFormValues) => {
     try {
       console.log('run');
       const user = await signInEmailPassword(email, password);
-      await router.push('/dashboard');
+      if (user.isSuccess) {
+        router.push('/dashboard');
+      }
       return;
     } catch (error) {
       console.log(error);
@@ -159,8 +164,8 @@ export function SignInModalForm({ className }: SignInModalProps) {
                       </Label>
 
                       <Input
-                        id="email"
                         className="col-span-4"
+                        id="email"
                         {...register('email')}
                         name="email"
                         aria-label="email"

@@ -1,7 +1,6 @@
 'use client';
 
 import { twMerge } from 'tailwind-merge';
-import User from 'components/User/User';
 import Link from 'next/link';
 import * as React from 'react';
 import {
@@ -27,7 +26,7 @@ import {
   DropdownMenuTrigger,
 } from 'ui/components/Dropdown';
 import Button from 'ui/components/Button/Button';
-import { Avatar, AvatarFallback, AvatarImage } from 'ui/components/Avatar';
+import { Avatar, AvatarImage } from 'ui/components/Avatar';
 import {
   CreditCard,
   Keyboard,
@@ -36,9 +35,12 @@ import {
   MessageSquare,
   PlusCircle,
   Settings,
+  UserIcon,
   UserPlus,
   Users,
 } from 'lucide-react';
+import { useSignOut, useUserData } from '@nhost/nextjs';
+import { useRouter } from 'next/navigation';
 
 /**
  * Header Props description
@@ -97,6 +99,20 @@ export const presets: Preset[] = [
  * Header Component
  */
 export default function Header({ className }: HeaderProps) {
+  const { signOut } = useSignOut();
+  const router = useRouter();
+  const userData = useUserData();
+  console.log(userData, 'userData');
+
+  const handleSignOut = async () => {
+    try {
+      await signOut();
+      router.push('/');
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div
       className={twMerge(
@@ -107,12 +123,12 @@ export default function Header({ className }: HeaderProps) {
       <div className="max-w-[1250px] mx-auto w-full">
         <div className="w-full py-2.5 grid grid-flow-col items-center">
           <NavigationMenu>
-            <NavigationMenuList className="grid grid-flow-col gap-[6px] items-end">
+            <NavigationMenuList className="grid grid-flow-col gap-[6px] items-center">
               <NavigationMenuItem>
                 <Link href="/dashboard" legacyBehavior passHref>
                   <NavigationMenuLink
                     className={mergeClasses(
-                      'tracking-[-0.10em] text-2xl font-bold text-white/90 font-SpaceGrotesk mr-3'
+                      'font-SpaceGrotesk py-2 text-[#CDCDCD] px-3 cursor-pointer tracking-[-0.08em] text-[30px] font-bold'
                     )}
                   >
                     podsfy
@@ -125,7 +141,8 @@ export default function Header({ className }: HeaderProps) {
                   <NavigationMenuLink
                     className={mergeClasses(
                       'text-white/90 font-medium rounded-[4px] font-visuelt text-[14px]',
-                      'transition-colors focus:outline-none focus:ring-0 focus:ring-transparent focus:ring-offset-0  focus:ring-offset-transparent disabled:opacity-50 disabled:pointer-events-none bg-transparent',
+                      'transition-colors focus:outline-none focus:outline-0 focus:ring-0 focus:ring-transparent focus:ring-offset-0 focus:ring-offset-transparent',
+                      'disabled:opacity-50 disabled:pointer-events-none bg-transparent',
                       'hover:bg-fondy dark:hover:bg-slate-800 dark:text-slate-100 dark:hover:text-slate-100 data-[state=open]:bg-slate-50',
                       'dark:data-[state=open]:bg-slate-800 h-10 py-2 px-3 group w-max'
                     )}
@@ -140,7 +157,8 @@ export default function Header({ className }: HeaderProps) {
                   <NavigationMenuLink
                     className={mergeClasses(
                       'text-white/90 font-medium rounded-[4px] font-visuelt text-[14px]',
-                      'transition-colors focus:outline-none focus:bg-slate-100 disabled:opacity-50 disabled:pointer-events-none bg-transparent',
+                      'transition-colors focus:outline-none focus:outline-0 focus:ring-0 focus:ring-transparent focus:ring-offset-0 focus:ring-offset-transparent',
+                      'disabled:opacity-50 disabled:pointer-events-none bg-transparent',
                       'hover:bg-fondy dark:hover:bg-slate-800 dark:text-slate-100 dark:hover:text-slate-100 data-[state=open]:bg-slate-50',
                       'dark:data-[state=open]:bg-slate-800 h-10 py-2 px-3 group w-max'
                     )}
@@ -154,7 +172,8 @@ export default function Header({ className }: HeaderProps) {
                   <NavigationMenuLink
                     className={mergeClasses(
                       'text-white/90 font-medium rounded-[4px] font-visuelt text-[14px]',
-                      'transition-colors focus:outline-none focus:bg-slate-100 disabled:opacity-50 disabled:pointer-events-none bg-transparent',
+                      'transition-colors focus:outline-none focus:outline-0 focus:ring-0 focus:ring-transparent focus:ring-offset-0 focus:ring-offset-transparent',
+                      'disabled:opacity-50 disabled:pointer-events-none bg-transparent',
                       'hover:bg-fondy dark:hover:bg-slate-800 dark:text-slate-100 dark:hover:text-slate-100 data-[state=open]:bg-slate-50',
                       'dark:data-[state=open]:bg-slate-800 h-10 py-2 px-3 group w-max'
                     )}
@@ -168,7 +187,8 @@ export default function Header({ className }: HeaderProps) {
                   <NavigationMenuLink
                     className={mergeClasses(
                       'text-white/90 font-medium rounded-[4px] font-visuelt text-[14px]',
-                      'transition-colors focus:outline-none focus:bg-slate-100 disabled:opacity-50 disabled:pointer-events-none bg-transparent',
+                      'transition-colors focus:outline-none focus:outline-0 focus:ring-0 focus:ring-transparent focus:ring-offset-0 focus:ring-offset-transparent',
+                      'disabled:opacity-50 disabled:pointer-events-none bg-transparent',
                       'hover:bg-fondy dark:hover:bg-slate-800 dark:text-slate-100 dark:hover:text-slate-100 data-[state=open]:bg-slate-50',
                       'dark:data-[state=open]:bg-slate-800 h-10 py-2 px-3 group w-max'
                     )}
@@ -193,7 +213,7 @@ export default function Header({ className }: HeaderProps) {
               <DropdownMenuSeparator />
               <DropdownMenuGroup>
                 <DropdownMenuItem>
-                  <User className="mr-2 h-4 w-4" />
+                  <UserIcon className="mr-2 h-4 w-4" />
                   <span>Profile</span>
                   <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
                 </DropdownMenuItem>
@@ -244,7 +264,7 @@ export default function Header({ className }: HeaderProps) {
                 </DropdownMenuSub>
               </DropdownMenuGroup>
               <DropdownMenuSeparator />
-              <DropdownMenuItem>
+              <DropdownMenuItem onClick={handleSignOut}>
                 <LogOut className="mr-2 h-4 w-4" />
                 <span>Log out</span>
                 <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>

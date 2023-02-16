@@ -1,11 +1,22 @@
-export default async function DashboardPage() {
+'use client';
+
+import { NhostProvider } from '@nhost/nextjs';
+import Card from 'components/common/Card';
+import Header from 'components/dashboard/Header/Header';
+import { nhost } from 'lib/setupBackendConfig';
+
+export default function DashboardPage() {
   return (
     <>
-      <div className="max-w-[1350px] z-50 mx-auto mt-[120px] relative">
-        <div className="max-w-[1250px] mx-auto rounded-lg z-20  bg-[#0D0E12] bg-opacity-90 ">
-          <div className="h-[500px]"></div>
+      <NhostProvider nhost={nhost}>
+        <Header></Header>
+        <div className="max-w-[1250px] z-50 mx-auto mt-[120px] relative">
+          <div className="grid grid-flow-col gap-2">
+            <Card></Card>
+            <Card></Card>
+          </div>
         </div>
-      </div>
+      </NhostProvider>
     </>
   );
 }

@@ -1,4 +1,4 @@
-import ImagePreview from "components/Join/Join";
+import ImagePreview from "components/SignUpModal/SignUpModal";
 import SectionIntro from "components/SectionIntro";
 import { twMerge } from "tailwind-merge";
 

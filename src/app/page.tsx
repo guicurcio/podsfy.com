@@ -1,10 +1,11 @@
-import Join from 'components/Join';
+import Join from 'components/SignUpModal';
 import SignInModal from 'components/SignInModal';
 import PodcastCover from 'components/pod/PodcastCover/PodcastCover';
-import Link from 'next/link';
-import Button from 'ui/components/Button';
+import { cookies } from 'next/headers';
 
 export default function Page() {
+  const cookieStore = cookies();
+  console.log(cookieStore);
   return (
     <div className="relative bg-[#0D0E12] overflow-x-hidden">
       <div className="">

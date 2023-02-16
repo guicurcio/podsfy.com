@@ -1,9 +1,17 @@
 'use client';
 
-import { NhostProvider, useSignUpEmailPassword, useUserData } from '@nhost/nextjs';
+import { zodResolver } from '@hookform/resolvers/zod';
+import {
+  NhostProvider,
+  useAuthenticated,
+  useSignUpEmailPassword,
+  useUserData,
+} from '@nhost/nextjs';
+import Form from 'components/Form/Form';
 import { nhost } from 'lib/setupBackendConfig';
 import { useRouter } from 'next/navigation';
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
+import { FormProvider, useForm } from 'react-hook-form';
 import { twMerge } from 'tailwind-merge';
 import Button from 'ui/components/Button';
 import {
@@ -23,6 +31,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from 'ui/components/Tooltip';
+import * as z from 'zod';
 
 /**
  * Join Props description
@@ -34,36 +43,58 @@ export interface JoinProps {
   className?: string;
 }
 
-export default function Join({ className }: JoinProps) {
+const SIGN_UP_MODAL_VALIDATION_SCHEMA = z.object({
+  email: z
+    .string()
+    .email()
+    .min(4)
+    .max(32, { message: 'The Email should be at most 32 characters long.' }),
+  password: z.string().min(9, { message: 'Password is required' }),
+});
+
+export default function SignUpModal({ className }: JoinProps) {
   return (
     <NhostProvider nhost={nhost}>
-      <JoinBelow></JoinBelow>
+      <SignUpModalForm></SignUpModalForm>
     </NhostProvider>
   );
 }
 
+export interface SignUpModalFormValues {
+  email: string;
+  password: string;
+}
+
 /**
- * Join Component
+ * SignUpModal Component
  */
-export function JoinBelow({ className }: JoinProps) {
+export function SignUpModalForm({ className }: JoinProps) {
   const router = useRouter();
   const { signUpEmailPassword, isLoading } = useSignUpEmailPassword();
-  const user = useUserData();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [emailVerificationToggle, setEmailVerificationToggle] = useState(false);
-  const differentPassword = useMemo(
-    () => password && password !== confirmPassword && 'Should match the given password',
-    [password, confirmPassword]
-  );
-  const signUp = async () => {
+  const isSignedIn = useAuthenticated();
+
+  const form = useForm<SignUpModalFormValues>({
+    reValidateMode: 'onSubmit',
+    resolver: zodResolver(SIGN_UP_MODAL_VALIDATION_SCHEMA),
+  });
+
+  useEffect(() => {
+    if (isSignedIn) {
+      router.push('/dashboard');
+    }
+  }, [isSignedIn]);
+
+  const { register, formState } = form;
+
+  const handleSignUpFormSubmit = async ({ email, password }: SignUpModalFormValues) => {
     try {
-      const result = await signUpEmailPassword(email, password);
-      console.log(result);
+      const newUser = await signUpEmailPassword(email, password);
+      console.log(newUser);
+      if (newUser.isSuccess) {
+        router.push('/dashboard');
+      }
     } catch (error) {
       console.log(error);
-      return;
     }
   };
 
@@ -83,7 +114,7 @@ export function JoinBelow({ className }: JoinProps) {
             </DialogDescription>
           </DialogHeader>
           <div className="grid grid-flow-row gap-6 py-4">
-            <div className="grid grid-flow-col gap-7 mx-auto pt-3 pb-[-2px]">
+            <div className="grid grid-flow-col gap-8 pt-2 mx-auto pb-[-2px]">
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger asChild tabIndex={-1} autoFocus={false}>
@@ -119,21 +150,32 @@ export function JoinBelow({ className }: JoinProps) {
                 </Tooltip>
               </TooltipProvider>
             </div>
-            <div className="grid grid-flow-col gap-x-2  mx-auto w-fit items-center justify-items-center">
-              <div className="bg-white/20 w-[100px] h-[1px] " />
-              <h1 className="self-center uppercase font-visuelt text-sm">or</h1>
-              <div className="bg-white/20 w-[100px] h-[1px] " />
-            </div>
-            <div className="grid gap-4">
+          </div>
+          <div className="grid grid-flow-col gap-x-2  mx-auto w-fit items-center justify-items-center">
+            <div className="bg-white/20 w-[100px] h-[1px] " />
+            <h1 className="self-center uppercase font-visuelt text-sm">or</h1>
+            <div className="bg-white/20 w-[100px] h-[1px] " />
+          </div>
+          <FormProvider {...form}>
+            <Form onSubmit={handleSignUpFormSubmit} className="grid grid-flow-row gap-3">
               <div className="grid grid-flow-row items-center gap-2">
-                <Label htmlFor="email" className="text-left">
+                <Label
+                  htmlFor="email"
+                  className="text-left text-white/80 text-[14px] font-moderat"
+                >
                   Email
                 </Label>
                 <Input
                   id="email"
-                  className="col-span-4"
-                  onChange={(e) => setEmail(e.target.value)}
+                  {...register('email')}
+                  name="email"
+                  aria-label="email"
                 />
+                {formState.errors?.email && (
+                  <p className="self-center ml-1 font-visuelt text-xs text-red-500">
+                    {formState.errors?.email?.message}
+                  </p>
+                )}
               </div>
               {/* <div className="grid grid-flow-row items-center gap-2">
                 <Label htmlFor="email" className="text-left">
@@ -146,31 +188,31 @@ export function JoinBelow({ className }: JoinProps) {
                 <Input id="name" className="col-span-4" />
               </div> */}
               <div className="grid grid-flow-row items-center gap-2">
-                <Label htmlFor="email" className="text-left">
+                <Label
+                  htmlFor="email"
+                  className="text-left text-white/80 text-[14px] font-moderat"
+                >
                   Password
                 </Label>
                 <Input
                   id="password"
                   type={'password'}
                   className="col-span-4"
-                  onChange={(e) => setPassword(e.target.value)}
+                  {...register('password')}
                 />
+                {formState.errors?.password && (
+                  <p className="self-center ml-1 font-visuelt text-xs text-red-500">
+                    {formState.errors?.password?.message}
+                  </p>
+                )}
               </div>
-            </div>
-          </div>
-
-          <DialogFooter className="grid grid-flow-row gap-2 w-full mx-auto">
-            <div className="w-full">
-              <Button
-                loading={isLoading}
-                type="submit"
-                className="w-full"
-                size="lg"
-                onClick={signUp}
-              >
+              <Button loading={isLoading} type="submit" className="w-full" size="lg">
                 Register Now
               </Button>
-            </div>
+            </Form>
+          </FormProvider>
+
+          <DialogFooter className="grid grid-flow-row gap-2 w-full mx-auto">
             <div className="grid grid-flow-row gap-[2px] w-full">
               <p className="text-sm text-center text-white/70">
                 Already have an account?
