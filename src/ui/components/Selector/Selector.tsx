@@ -64,10 +64,10 @@ export function PresetSelector({ presets, ...props }: PresetSelectorProps) {
       <PopoverTrigger asChild>
         <Button
           role="combobox"
-          aria-label="Load a preset..."
+          aria-label="Search podcasts, episodes, guests, notes..."
           aria-expanded={open}
           className={mergeClasses(
-            'w-[500px] self-center align-middle',
+            'w-[500px] self-center align-middle h-10 py-2 px-3 group',
             ' justify-between text-white/80 font-visuelt font-medium text-[14px]'
           )}
         >

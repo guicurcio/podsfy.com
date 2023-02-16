@@ -12,6 +12,33 @@ import {
 } from 'ui/components/NavigationMenu/NavigationMenu';
 import mergeClasses from 'utils/mergeClasses/mergeClasses';
 import { Preset, PresetSelector } from 'ui/components/Selector';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuPortal,
+  DropdownMenuSeparator,
+  DropdownMenuShortcut,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
+  DropdownMenuTrigger,
+} from 'ui/components/Dropdown';
+import Button from 'ui/components/Button/Button';
+import { Avatar, AvatarFallback, AvatarImage } from 'ui/components/Avatar';
+import {
+  CreditCard,
+  Keyboard,
+  LogOut,
+  Mail,
+  MessageSquare,
+  PlusCircle,
+  Settings,
+  UserPlus,
+  Users,
+} from 'lucide-react';
 
 /**
  * Header Props description
@@ -71,11 +98,16 @@ export const presets: Preset[] = [
  */
 export default function Header({ className }: HeaderProps) {
   return (
-    <div className={twMerge('bg-[#0D0E12] border-b border-white/20', className)}>
+    <div
+      className={twMerge(
+        'bg-[#0D0E12] border-b border-white border-opacity-5',
+        className
+      )}
+    >
       <div className="max-w-[1250px] mx-auto w-full">
-        <div className="w-full py-3  grid grid-flow-col gap-2">
+        <div className="w-full py-2.5 grid grid-flow-col items-center">
           <NavigationMenu>
-            <NavigationMenuList className="grid grid-flow-col gap-2">
+            <NavigationMenuList className="grid grid-flow-col gap-[6px] items-end">
               <NavigationMenuItem>
                 <Link href="/dashboard" legacyBehavior passHref>
                   <NavigationMenuLink
@@ -148,10 +180,77 @@ export default function Header({ className }: HeaderProps) {
             </NavigationMenuList>
           </NavigationMenu>
           <PresetSelector presets={presets}></PresetSelector>
-
-          <div>
-            <User></User>
-          </div>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" className=" h-7 w-7 rounded-full relative">
+                <Avatar className="h-7 w-7 absolute">
+                  <AvatarImage src="https://github.com/guicurcio.png" alt="@guicurcio" />
+                </Avatar>
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="w-56" align="end" forceMount>
+              <DropdownMenuLabel>My Account</DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <DropdownMenuGroup>
+                <DropdownMenuItem>
+                  <User className="mr-2 h-4 w-4" />
+                  <span>Profile</span>
+                  <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <CreditCard className="mr-2 h-4 w-4" />
+                  <span>Billing</span>
+                  <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <Settings className="mr-2 h-4 w-4" />
+                  <span>Settings</span>
+                  <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                  <Keyboard className="mr-2 h-4 w-4" />
+                  <span>Keyboard shortcuts</span>
+                  <DropdownMenuShortcut>⌘K</DropdownMenuShortcut>
+                </DropdownMenuItem>
+              </DropdownMenuGroup>
+              <DropdownMenuSeparator />
+              <DropdownMenuGroup>
+                <DropdownMenuItem>
+                  <Users className="mr-2 h-4 w-4" />
+                  <span>Team</span>
+                </DropdownMenuItem>
+                <DropdownMenuSub>
+                  <DropdownMenuSubTrigger>
+                    <UserPlus className="mr-2 h-4 w-4" />
+                    <span>Invite users</span>
+                  </DropdownMenuSubTrigger>
+                  <DropdownMenuPortal>
+                    <DropdownMenuSubContent forceMount>
+                      <DropdownMenuItem>
+                        <Mail className="mr-2 h-4 w-4" />
+                        <span>Email</span>
+                      </DropdownMenuItem>
+                      <DropdownMenuItem>
+                        <MessageSquare className="mr-2 h-4 w-4" />
+                        <span>Message</span>
+                      </DropdownMenuItem>
+                      <DropdownMenuSeparator />
+                      <DropdownMenuItem>
+                        <PlusCircle className="mr-2 h-4 w-4" />
+                        <span>More...</span>
+                      </DropdownMenuItem>
+                    </DropdownMenuSubContent>
+                  </DropdownMenuPortal>
+                </DropdownMenuSub>
+              </DropdownMenuGroup>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem>
+                <LogOut className="mr-2 h-4 w-4" />
+                <span>Log out</span>
+                <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
       </div>
     </div>
