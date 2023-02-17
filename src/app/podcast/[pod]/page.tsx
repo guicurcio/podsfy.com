@@ -1,4 +1,3 @@
-import { PodHeader } from 'components/pod/Header';
 import PodBehind from 'components/pod/PodBehind';
 import PodDetails from 'components/pod/PodDetails';
 import PodEpisodes from 'components/pod/PodEpisodes';
@@ -10,7 +9,6 @@ import PodStreaming from 'components/pod/PodStreaming';
 import { db } from 'lib/setupDBConfig/setupDBConfig';
 import { redirect } from 'next/navigation';
 import { cache } from 'react';
-import generateSlugCombinations from 'utils/generateSlugCombinations';
 
 const generateGoodTitleForReviews = (title) => {
   let newTitle = title
@@ -83,11 +81,11 @@ export default async function PodcastPage({ params }) {
 
   console.log(staticPodcastData.episodes.some((episode) => episode.bestEpisode));
   return (
-    <div className="relative">
+    <div className="z-0">
       {staticPodcastData.backgroundCoverImage ? (
         <PodImage image={`../${staticPodcastData.backgroundCoverImage}`}></PodImage>
       ) : (
-        <div className="">
+        <div className="relative z-0">
           <img
             className="absolute xl:scale-x-[105%] bg-[#0D0E12] scale-[120%] brightness-[60%] object-cover xl:scale-y-[100%] md:top-[50px] xl:top-[-120px] md:rotate-[8deg] xl:translate-x-[25px]"
             src="./bg/bg.png"
@@ -95,8 +93,14 @@ export default async function PodcastPage({ params }) {
         </div>
       )}
       <div className=" z-50 mx-auto pt-[120px] relative backdrop-blur-[8px] backdrop-brightness-[60%]">
-        <div className="max-w-[1050px] mx-auto rounded-lg z-20  bg-[#0D0E12] bg-opacity-90 ">
-          <div className="grid grid-cols-12  gap-16 grid-flow-col  justify-start backdrop-brightness-[50%]  p-8 rounded-xl">
+        <div
+          className="max-w-[1050px] mx-auto z-20  
+
+  overflow-hidden rounded-[4px] border border-sharper  border-opacity-10 py-[25px]  px-[20px]  bg-[#0D0E12] bg-opacity-[95%]  backdrop-blur-[10px] font-visuelt shadow-3xl relative
+        
+        "
+        >
+          <div className="grid grid-cols-12  gap-16 grid-flow-col  justify-start px-2 py-2 rounded-xl">
             <div className="col-span-3 grid grid-flow-row items-start justify-start  justify-items-start place-content-start">
               <div className="justify-start ">
                 <img

@@ -78,12 +78,6 @@ export function SignUpModalForm({ className }: JoinProps) {
     resolver: zodResolver(SIGN_UP_MODAL_VALIDATION_SCHEMA),
   });
 
-  useEffect(() => {
-    if (isSignedIn) {
-      router.push('/dashboard');
-    }
-  }, [isSignedIn]);
-
   const { register, formState } = form;
 
   const handleSignUpFormSubmit = async ({ email, password }: SignUpModalFormValues) => {
