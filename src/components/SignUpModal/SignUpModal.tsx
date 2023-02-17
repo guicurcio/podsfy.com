@@ -71,7 +71,6 @@ export interface SignUpModalFormValues {
 export function SignUpModalForm({ className }: JoinProps) {
   const router = useRouter();
   const { signUpEmailPassword, isLoading } = useSignUpEmailPassword();
-  const isSignedIn = useAuthenticated();
 
   const form = useForm<SignUpModalFormValues>({
     reValidateMode: 'onSubmit',

@@ -10,7 +10,7 @@ export default function DashboardPage() {
     <>
       <NhostProvider nhost={nhost}>
         <Header></Header>
-        <div className="max-w-[1250px] z-50 mx-auto mt-[120px] relative">
+        <div className="max-w-[1250px] z-50 mx-auto mt-[120px] relative min-h-[800px]">
           <div className="grid grid-flow-col gap-2">
             <Card></Card>
             <Card></Card>

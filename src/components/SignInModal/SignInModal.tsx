@@ -61,7 +61,6 @@ export function SignInModalForm({ className }: SignInModalProps) {
   const { signInEmailPassword, isLoading, isSuccess, isError, error } =
     useSignInEmailPassword();
   const router = useRouter();
-  const isSignedIn = useAuthenticated();
 
   const form = useForm<SignInModalFormValues>({
     reValidateMode: 'onSubmit',
@@ -70,11 +69,7 @@ export function SignInModalForm({ className }: SignInModalProps) {
 
   const { register, formState } = form;
 
-  useEffect(() => {
-    if (isSignedIn) {
-      router.push('/dashboard');
-    }
-  }, [isSignedIn]);
+
 
   const handleSignInFormSubmit = async ({ email, password }: SignInModalFormValues) => {
     try {
