@@ -3,10 +3,10 @@ import Header from 'components/pod/Header';
 
 export default function PodcastPage({ children }) {
   return (
-    <div className="bg-[#0D0E12] overflow-x-hidden relative">
+    <div className="relative overflow-x-hidden bg-[#0D0E12]">
       <Header></Header>
       <div className="relative z-0">{children}</div>
-      <Footer className='bg-transparent backdrop-blur-[8px] backdrop-brightness-[60%] border-0 pt-[60px]'></Footer>
+      <Footer className="border-0 bg-transparent pt-[60px] backdrop-blur-[8px] backdrop-brightness-[60%]"></Footer>
     </div>
   );
 }

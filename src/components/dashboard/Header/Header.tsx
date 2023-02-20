@@ -10,7 +10,6 @@ import {
   NavigationMenuList,
 } from 'ui/components/NavigationMenu/NavigationMenu';
 import mergeClasses from 'utils/mergeClasses/mergeClasses';
-import { Podcast, Search } from 'components/common/Search';
 import {
   DropdownMenu,
   DropdownMenuContent,

@@ -4,8 +4,6 @@ import PodcastCover from 'components/pod/PodcastCover/PodcastCover';
 import { cookies } from 'next/headers';
 
 export default function Page() {
-  const cookieStore = cookies();
-  console.log(cookieStore);
   return (
     <div className="relative bg-[#0D0E12] overflow-x-hidden">
       <div className="">

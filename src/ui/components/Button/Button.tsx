@@ -10,7 +10,8 @@ export const buttonVariants = cva(
       variant: {
         default:
           'bg-[#050607f2]  border border-[#171717] text-white/75 hover:brightness-[120%] dark:bg-slate-50 dark:text-slate-900',
-        destructive: 'bg-red-500 text-white hover:bg-red-600 dark:hover:bg-red-600',
+        destructive:
+          'bg-red-500 text-white hover:bg-red-600 dark:hover:bg-red-600',
         outline:
           'bg-transparent border border-slate-200 hover:bg-slate-100 dark:border-slate-700 dark:text-slate-100',
         subtle:
@@ -22,7 +23,7 @@ export const buttonVariants = cva(
       },
       size: {
         default: 'h-10 py-2 px-4 rounded-md text-[12px]',
-        sm: 'h-9 px-2 rounded-md text-[12px]',
+        sm: 'h-9 px-3 rounded-md text-[13px]',
         md: 'px-3 py-1.5 rounded-md text-[15px]',
         lg: 'h-12 px-10 rounded-md text-[16px]',
       },
@@ -31,7 +32,7 @@ export const buttonVariants = cva(
       variant: 'default',
       size: 'default',
     },
-  }
+  },
 );
 
 /**
@@ -60,7 +61,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
               variant,
               size,
               className,
-            })
+            }),
           )}
           ref={ref}
           {...props}
@@ -77,13 +78,13 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             variant,
             size,
             className,
-          })
+          }),
         )}
         ref={ref}
         {...props}
       />
     );
-  }
+  },
 );
 
 Button.displayName = 'Button';

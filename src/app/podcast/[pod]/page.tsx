@@ -74,34 +74,38 @@ export default async function PodcastPage({ params }) {
     redirect('/404');
   }
 
-  console.log(staticPodcastData.episodes.some((episode) => episode.bestEpisode));
+  console.log(
+    staticPodcastData.episodes.some((episode) => episode.bestEpisode),
+  );
   return (
     <div className="z-0 ">
       {staticPodcastData.backgroundCoverImage ? (
-        <PodImage image={`../${staticPodcastData.backgroundCoverImage}`}></PodImage>
+        <PodImage
+          image={`../${staticPodcastData.backgroundCoverImage}`}
+        ></PodImage>
       ) : (
         <div className="relative z-0">
           <img
-            className="absolute xl:scale-x-[105%] bg-[#0D0E12] scale-[120%] brightness-[60%] object-cover xl:scale-y-[100%] md:top-[50px] xl:top-[-120px] md:rotate-[8deg] xl:translate-x-[25px]"
+            className="absolute scale-[120%] bg-[#0D0E12] object-cover brightness-[60%] md:top-[50px] md:rotate-[8deg] xl:top-[-120px] xl:translate-x-[25px] xl:scale-x-[105%] xl:scale-y-[100%]"
             src="./bg/bg.png"
           ></img>
         </div>
       )}
-      <div className=" z-50 mx-auto pt-[120px] relative backdrop-blur-[8px] backdrop-brightness-[60%] ">
+      <div className=" relative z-50 mx-auto pt-[120px] backdrop-blur-[8px] backdrop-brightness-[60%] ">
         <div
-          className="max-w-[1200px] mx-auto z-20  
+          className="relative z-20 mx-auto  
 
-  overflow-hidden rounded-[3px] border border-sharper  border-opacity-10 py-[25px]  px-[20px]  bg-[#0D0E12] bg-opacity-[95%]  backdrop-blur-[10px] font-visuelt shadow-3xl relative
+  max-w-[1200px] overflow-hidden rounded-[3px] border  border-sharper border-opacity-10  bg-[#0D0E12]  bg-opacity-[95%] py-[25px]  px-[20px] font-visuelt shadow-3xl backdrop-blur-[10px]
         
         "
         >
-          <div className="grid grid-flow-col gap-[50px]    justify-start px-2 py-2">
-            <div className="w-[300px] grid grid-flow-row items-start justify-start  justify-items-start place-content-start">
-              <div className=" w-full">
+          <div className="grid grid-flow-col justify-start    gap-[50px] px-2 py-2">
+            <div className="grid w-[300px] grid-flow-row place-content-start items-start  justify-start justify-items-start">
+              <div className="relative z-0 inline-flex w-full items-center justify-center rounded-[2px] border-2 border-[#171717] bg-[#050607f2] hover:brightness-[99%] focus:outline-none focus:ring-0 focus:ring-offset-0 disabled:pointer-events-none disabled:opacity-50">
                 <img
                   src={`../${staticPodcastData.cover}`}
                   draggable={false}
-                  className="rounded-[2px] h-[300px] w-[300px] border border-opacity-10 border-white brightness-[95%]"
+                  className="h-[300px] w-[300px] rounded-[2px] border border-white border-opacity-10 brightness-[98%]"
                 />
               </div>
               <PodBehind
@@ -111,14 +115,14 @@ export default async function PodcastPage({ params }) {
                 podcastTitle={staticPodcastData.title}
               ></PodBehind>
             </div>
-            <div className="items-start grid grid-flow-row gap-4 h-full  w-[800px] pr-10">
+            <div className="grid h-full w-[800px] grid-flow-row items-start  gap-4 pr-10">
               <PodDetails
                 title={staticPodcastData.title}
                 description={staticPodcastData.description}
                 podcastHostName={staticPodcastData?.podcastHost?.name}
               ></PodDetails>
-              <div className="justify-start items-start grid grid-flow-row gap-12 w-full">
-                <div className="grid grid-flow-row gap-4 w-full">
+              <div className="grid w-full grid-flow-row items-start justify-start gap-12">
+                <div className="grid w-full grid-flow-row gap-4">
                   <PodEpisodes
                     title="Best Episodes"
                     episodes={staticPodcastData.episodes}
@@ -130,7 +134,7 @@ export default async function PodcastPage({ params }) {
                   <PodStreaming></PodStreaming>
                 </div>
 
-                <div className="justify-start items-start grid grid-flow-row gap-8">
+                <div className="grid grid-flow-row items-start justify-start gap-8">
                   <PodReviews
                     title={generateGoodTitleForReviews(staticPodcastData.title)}
                   ></PodReviews>

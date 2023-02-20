@@ -10,7 +10,6 @@ import {
   NavigationMenuList,
 } from 'ui/components/NavigationMenu/NavigationMenu';
 import mergeClasses from 'utils/mergeClasses/mergeClasses';
-import { Preset, PresetSelector } from 'ui/components/Selector';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -39,6 +38,8 @@ import {
   UserPlus,
   Users,
 } from 'lucide-react';
+import Search from 'components/common/Search';
+import SignInModal from 'components/SignInModal';
 
 /**
  * Header Props description
@@ -50,7 +51,7 @@ export interface HeaderProps {
   className?: string;
 }
 
-export const presets: Preset[] = [
+export const podcasts = [
   {
     id: '9cb0e66a-9937-465d-a188-2c4c4ae2401f',
     name: 'Grammatical Standard English',
@@ -100,161 +101,166 @@ export default function Header({ className }: HeaderProps) {
   return (
     <div
       className={twMerge(
-        'bg-[#0D0E12] border-b border-white border-opacity-5 bg-opacity-100 z-50 h-full w-full relative',
-        className
+        'relative z-50 h-full w-full border-b border-white border-opacity-5 bg-[#0D0E12] bg-opacity-100',
+        className,
       )}
     >
-      <div className="max-w-[1250px] mx-auto w-full">
-        <div className="w-full py-2.5 grid grid-flow-col items-center">
-          <NavigationMenu>
-            <NavigationMenuList className="grid grid-flow-col gap-[6px] items-center">
-              <NavigationMenuItem>
-                <Link href="/" legacyBehavior passHref>
-                  <NavigationMenuLink
-                    className={mergeClasses(
-                      'font-SpaceGrotesk py-2 text-[#CDCDCD] px-3 cursor-pointer tracking-[-0.08em] text-[30px] font-bold'
-                    )}
-                  >
-                    podsfy
-                  </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
+      <div className="mx-auto w-full max-w-[1200px]">
+        <div className="grid grid-flow-row gap-2">
+          <div className="grid grid-flow-col gap-2">
+            <Link href="/" legacyBehavior passHref>
+              <a
+                className={mergeClasses(
+                  'cursor-pointer py-2 px-3 font-SpaceGrotesk text-[30px] font-bold tracking-[-0.08em] text-[#CDCDCD]',
+                )}
+              >
+                podsfy
+              </a>
+            </Link>
+            <Search podcasts={podcasts} className="w-full"></Search>
+            <SignInModal></SignInModal>
+          </div>
+          <div className="mx-auto grid w-full  max-w-[1000px] grid-flow-col items-center py-2.5">
+            <NavigationMenu>
+              <NavigationMenuList className="grid grid-flow-col items-center gap-[8px]">
+                <NavigationMenuItem>
+                  <Link href="/dashboard" legacyBehavior passHref>
+                    <NavigationMenuLink
+                      className={mergeClasses(
+                        'rounded-[4px] font-visuelt text-[14px] font-medium text-white/90',
+                        'transition-colors focus:outline-none focus:outline-0 focus:ring-0 focus:ring-transparent focus:ring-offset-0 focus:ring-offset-transparent',
+                        'bg-transparent disabled:pointer-events-none disabled:opacity-50',
+                        'dark:hover:bg-slate-800 dark:text-slate-100 dark:hover:text-slate-100 data-[state=open]:bg-slate-50 hover:bg-fondy',
+                        'dark:data-[state=open]:bg-slate-800 group h-10 w-max py-2 px-3',
+                      )}
+                    >
+                      Dashboard
+                    </NavigationMenuLink>
+                  </Link>
+                </NavigationMenuItem>
 
-              <NavigationMenuItem>
-                <Link href="/dashboard" legacyBehavior passHref>
-                  <NavigationMenuLink
-                    className={mergeClasses(
-                      'text-white/90 font-medium rounded-[4px] font-visuelt text-[14px]',
-                      'transition-colors focus:outline-none focus:outline-0 focus:ring-0 focus:ring-transparent focus:ring-offset-0 focus:ring-offset-transparent',
-                      'disabled:opacity-50 disabled:pointer-events-none bg-transparent',
-                      'hover:bg-fondy dark:hover:bg-slate-800 dark:text-slate-100 dark:hover:text-slate-100 data-[state=open]:bg-slate-50',
-                      'dark:data-[state=open]:bg-slate-800 h-10 py-2 px-3 group w-max'
-                    )}
-                  >
-                    Home
-                  </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
-
-              <NavigationMenuItem>
-                <Link href="/dashboard" legacyBehavior passHref>
-                  <NavigationMenuLink
-                    className={mergeClasses(
-                      'text-white/90 font-medium rounded-[4px] font-visuelt text-[14px]',
-                      'transition-colors focus:outline-none focus:outline-0 focus:ring-0 focus:ring-transparent focus:ring-offset-0 focus:ring-offset-transparent',
-                      'disabled:opacity-50 disabled:pointer-events-none bg-transparent',
-                      'hover:bg-fondy dark:hover:bg-slate-800 dark:text-slate-100 dark:hover:text-slate-100 data-[state=open]:bg-slate-50',
-                      'dark:data-[state=open]:bg-slate-800 h-10 py-2 px-3 group w-max'
-                    )}
-                  >
-                    Trending
-                  </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <Link href="/dashboard" legacyBehavior passHref>
-                  <NavigationMenuLink
-                    className={mergeClasses(
-                      'text-white/90 font-medium rounded-[4px] font-visuelt text-[14px]',
-                      'transition-colors focus:outline-none focus:outline-0 focus:ring-0 focus:ring-transparent focus:ring-offset-0 focus:ring-offset-transparent',
-                      'disabled:opacity-50 disabled:pointer-events-none bg-transparent',
-                      'hover:bg-fondy dark:hover:bg-slate-800 dark:text-slate-100 dark:hover:text-slate-100 data-[state=open]:bg-slate-50',
-                      'dark:data-[state=open]:bg-slate-800 h-10 py-2 px-3 group w-max'
-                    )}
-                  >
-                    Top Charts
-                  </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
-                <Link href="/dashboard" legacyBehavior passHref>
-                  <NavigationMenuLink
-                    className={mergeClasses(
-                      'text-white/90 font-medium rounded-[4px] font-visuelt text-[14px]',
-                      'transition-colors focus:outline-none focus:outline-0 focus:ring-0 focus:ring-transparent focus:ring-offset-0 focus:ring-offset-transparent',
-                      'disabled:opacity-50 disabled:pointer-events-none bg-transparent',
-                      'hover:bg-fondy dark:hover:bg-slate-800 dark:text-slate-100 dark:hover:text-slate-100 data-[state=open]:bg-slate-50',
-                      'dark:data-[state=open]:bg-slate-800 h-10 py-2 px-3 group w-max'
-                    )}
-                  >
-                    Watchlist
-                  </NavigationMenuLink>
-                </Link>
-              </NavigationMenuItem>
-            </NavigationMenuList>
-          </NavigationMenu>
-          <PresetSelector presets={presets}></PresetSelector>
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" className=" h-7 w-7 rounded-full relative">
-                <Avatar className="h-7 w-7 absolute">
-                  <AvatarImage src="../bg" alt="@guicurcio" />
-                </Avatar>
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-56" align="end" forceMount>
-              <DropdownMenuLabel>My Account</DropdownMenuLabel>
-              <DropdownMenuSeparator />
-              <DropdownMenuGroup>
+                <NavigationMenuItem>
+                  <Link href="/dashboard" legacyBehavior passHref>
+                    <NavigationMenuLink
+                      className={mergeClasses(
+                        'rounded-[4px] font-visuelt text-[14px] font-medium text-white/90',
+                        'transition-colors focus:outline-none focus:outline-0 focus:ring-0 focus:ring-transparent focus:ring-offset-0 focus:ring-offset-transparent',
+                        'bg-transparent disabled:pointer-events-none disabled:opacity-50',
+                        'dark:hover:bg-slate-800 dark:text-slate-100 dark:hover:text-slate-100 data-[state=open]:bg-slate-50 hover:bg-fondy',
+                        'dark:data-[state=open]:bg-slate-800 group h-10 w-max py-2 px-3',
+                      )}
+                    >
+                      Trending
+                    </NavigationMenuLink>
+                  </Link>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                  <Link href="/dashboard" legacyBehavior passHref>
+                    <NavigationMenuLink
+                      className={mergeClasses(
+                        'rounded-[4px] font-visuelt text-[14px] font-medium text-white/90',
+                        'transition-colors focus:outline-none focus:outline-0 focus:ring-0 focus:ring-transparent focus:ring-offset-0 focus:ring-offset-transparent',
+                        'bg-transparent disabled:pointer-events-none disabled:opacity-50',
+                        'dark:hover:bg-slate-800 dark:text-slate-100 dark:hover:text-slate-100 data-[state=open]:bg-slate-50 hover:bg-fondy',
+                        'dark:data-[state=open]:bg-slate-800 group h-10 w-max py-2 px-3',
+                      )}
+                    >
+                      Top Charts
+                    </NavigationMenuLink>
+                  </Link>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                  <Link href="/dashboard" legacyBehavior passHref>
+                    <NavigationMenuLink
+                      className={mergeClasses(
+                        'rounded-[4px] font-visuelt text-[14px] font-medium text-white/90',
+                        'transition-colors focus:outline-none focus:outline-0 focus:ring-0 focus:ring-transparent focus:ring-offset-0 focus:ring-offset-transparent',
+                        'bg-transparent disabled:pointer-events-none disabled:opacity-50',
+                        'dark:hover:bg-slate-800 dark:text-slate-100 dark:hover:text-slate-100 data-[state=open]:bg-slate-50 hover:bg-fondy',
+                        'dark:data-[state=open]:bg-slate-800 group h-10 w-max py-2 px-3',
+                      )}
+                    >
+                      Watchlist
+                    </NavigationMenuLink>
+                  </Link>
+                </NavigationMenuItem>
+              </NavigationMenuList>
+            </NavigationMenu>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button
+                  variant="ghost"
+                  className=" relative h-7 w-7 rounded-full"
+                >
+                  <Avatar className="absolute h-7 w-7">
+                    <AvatarImage src="../bg" alt="@guicurcio" />
+                  </Avatar>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-56" align="end" forceMount>
+                <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuGroup>
+                  <DropdownMenuItem>
+                    <UserIcon className="mr-2 h-4 w-4" />
+                    <span>Profile</span>
+                    <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <CreditCard className="mr-2 h-4 w-4" />
+                    <span>Billing</span>
+                    <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <Settings className="mr-2 h-4 w-4" />
+                    <span>Settings</span>
+                    <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <Keyboard className="mr-2 h-4 w-4" />
+                    <span>Keyboard shortcuts</span>
+                    <DropdownMenuShortcut>⌘K</DropdownMenuShortcut>
+                  </DropdownMenuItem>
+                </DropdownMenuGroup>
+                <DropdownMenuSeparator />
+                <DropdownMenuGroup>
+                  <DropdownMenuItem>
+                    <Users className="mr-2 h-4 w-4" />
+                    <span>Team</span>
+                  </DropdownMenuItem>
+                  <DropdownMenuSub>
+                    <DropdownMenuSubTrigger>
+                      <UserPlus className="mr-2 h-4 w-4" />
+                      <span>Invite users</span>
+                    </DropdownMenuSubTrigger>
+                    <DropdownMenuPortal>
+                      <DropdownMenuSubContent forceMount>
+                        <DropdownMenuItem>
+                          <Mail className="mr-2 h-4 w-4" />
+                          <span>Email</span>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem>
+                          <MessageSquare className="mr-2 h-4 w-4" />
+                          <span>Message</span>
+                        </DropdownMenuItem>
+                        <DropdownMenuSeparator />
+                        <DropdownMenuItem>
+                          <PlusCircle className="mr-2 h-4 w-4" />
+                          <span>More...</span>
+                        </DropdownMenuItem>
+                      </DropdownMenuSubContent>
+                    </DropdownMenuPortal>
+                  </DropdownMenuSub>
+                </DropdownMenuGroup>
+                <DropdownMenuSeparator />
                 <DropdownMenuItem>
-                  <UserIcon className="mr-2 h-4 w-4" />
-                  <span>Profile</span>
-                  <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+                  <LogOut className="mr-2 h-4 w-4" />
+                  <span>Log out</span>
+                  <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
                 </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <CreditCard className="mr-2 h-4 w-4" />
-                  <span>Billing</span>
-                  <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Settings className="mr-2 h-4 w-4" />
-                  <span>Settings</span>
-                  <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
-                </DropdownMenuItem>
-                <DropdownMenuItem>
-                  <Keyboard className="mr-2 h-4 w-4" />
-                  <span>Keyboard shortcuts</span>
-                  <DropdownMenuShortcut>⌘K</DropdownMenuShortcut>
-                </DropdownMenuItem>
-              </DropdownMenuGroup>
-              <DropdownMenuSeparator />
-              <DropdownMenuGroup>
-                <DropdownMenuItem>
-                  <Users className="mr-2 h-4 w-4" />
-                  <span>Team</span>
-                </DropdownMenuItem>
-                <DropdownMenuSub>
-                  <DropdownMenuSubTrigger>
-                    <UserPlus className="mr-2 h-4 w-4" />
-                    <span>Invite users</span>
-                  </DropdownMenuSubTrigger>
-                  <DropdownMenuPortal>
-                    <DropdownMenuSubContent forceMount>
-                      <DropdownMenuItem>
-                        <Mail className="mr-2 h-4 w-4" />
-                        <span>Email</span>
-                      </DropdownMenuItem>
-                      <DropdownMenuItem>
-                        <MessageSquare className="mr-2 h-4 w-4" />
-                        <span>Message</span>
-                      </DropdownMenuItem>
-                      <DropdownMenuSeparator />
-                      <DropdownMenuItem>
-                        <PlusCircle className="mr-2 h-4 w-4" />
-                        <span>More...</span>
-                      </DropdownMenuItem>
-                    </DropdownMenuSubContent>
-                  </DropdownMenuPortal>
-                </DropdownMenuSub>
-              </DropdownMenuGroup>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem>
-                <LogOut className="mr-2 h-4 w-4" />
-                <span>Log out</span>
-                <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+              </DropdownMenuContent>
+            </DropdownMenu>
+          </div>
         </div>
       </div>
     </div>

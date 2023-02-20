@@ -1,7 +1,11 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { NhostProvider, useAuthenticated, useSignInEmailPassword } from '@nhost/nextjs';
+import {
+  NhostProvider,
+  useAuthenticated,
+  useSignInEmailPassword,
+} from '@nhost/nextjs';
 import Form from 'components/Form/Form';
 import { nhost } from 'lib/setupBackendConfig';
 import { useRouter } from 'next/navigation';
@@ -69,7 +73,10 @@ export function SignInModalForm({ className }: SignInModalProps) {
 
   const { register, formState } = form;
 
-  const handleSignInFormSubmit = async ({ email, password }: SignInModalFormValues) => {
+  const handleSignInFormSubmit = async ({
+    email,
+    password,
+  }: SignInModalFormValues) => {
     try {
       console.log('run');
       const user = await signInEmailPassword(email, password);
@@ -85,11 +92,11 @@ export function SignInModalForm({ className }: SignInModalProps) {
   return (
     <FormProvider {...form}>
       <Form onSubmit={handleSignInFormSubmit}>
-        <div className="mx-auto w-fit mt-4">
+        <div className="mx-auto mt-4 w-fit">
           <Dialog>
             <DialogTrigger asChild>
-              <Button variant="main" size="md">
-                sign in
+              <Button variant="main" size="sm">
+                Sign In
               </Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[475px]">
@@ -100,12 +107,12 @@ export function SignInModalForm({ className }: SignInModalProps) {
             </DialogDescription> */}
               </DialogHeader>
               <div className="grid grid-flow-row gap-6 py-4">
-                <div className="grid grid-flow-col gap-7 mx-auto pt-3 pb-[-2px]">
+                <div className="mx-auto grid grid-flow-col gap-7 pt-3 pb-[-2px]">
                   <TooltipProvider>
                     <Tooltip>
                       <TooltipTrigger asChild tabIndex={-1} autoFocus={false}>
                         <Button
-                          className="w-[75px] h-[65px]"
+                          className="h-[65px] w-[75px]"
                           tabIndex={-1}
                           autoFocus={false}
                         >
@@ -116,7 +123,7 @@ export function SignInModalForm({ className }: SignInModalProps) {
                     </Tooltip>
                     <Tooltip>
                       <TooltipTrigger asChild tabIndex={-1} autoFocus={false}>
-                        <Button className="w-[75px] h-[65px]" tabIndex={-1}>
+                        <Button className="h-[65px] w-[75px]" tabIndex={-1}>
                           <img src="/images/google.svg" alt="Google" />
                         </Button>
                       </TooltipTrigger>
@@ -124,7 +131,7 @@ export function SignInModalForm({ className }: SignInModalProps) {
                     </Tooltip>
                     <Tooltip>
                       <TooltipTrigger asChild tabIndex={-1} autoFocus={false}>
-                        <Button className="w-[75px] h-[65px]" autoFocus={false}>
+                        <Button className="h-[65px] w-[75px]" autoFocus={false}>
                           <img src="/images/google.svg" alt="Google" />
                         </Button>
                       </TooltipTrigger>
@@ -133,7 +140,7 @@ export function SignInModalForm({ className }: SignInModalProps) {
                     <Tooltip>
                       <TooltipTrigger asChild tabIndex={-1} autoFocus={false}>
                         <Button
-                          className="w-[75px] h-[65px]"
+                          className="h-[65px] w-[75px]"
                           tabIndex={-1}
                           autoFocus={false}
                         >
@@ -144,10 +151,12 @@ export function SignInModalForm({ className }: SignInModalProps) {
                     </Tooltip>
                   </TooltipProvider>
                 </div>
-                <div className="grid grid-flow-col gap-x-2  mx-auto w-fit items-center justify-items-center">
-                  <div className="bg-white/20 w-[100px] h-[1px] " />
-                  <h1 className="self-center uppercase font-visuelt text-sm">or</h1>
-                  <div className="bg-white/20 w-[100px] h-[1px] " />
+                <div className="mx-auto grid w-fit  grid-flow-col items-center justify-items-center gap-x-2">
+                  <div className="h-[1px] w-[100px] bg-white/20 " />
+                  <h1 className="self-center font-visuelt text-sm uppercase">
+                    or
+                  </h1>
+                  <div className="h-[1px] w-[100px] bg-white/20 " />
                 </div>
                 <form className="grid gap-4">
                   <div className="grid gap-4">
@@ -164,7 +173,7 @@ export function SignInModalForm({ className }: SignInModalProps) {
                         aria-label="email"
                       />
                       {formState.errors?.email && (
-                        <p className="self-center ml-1 font-visuelt text-xs text-red-500">
+                        <p className="ml-1 self-center font-visuelt text-xs text-red-500">
                           {formState.errors?.email?.message}
                         </p>
                       )}
@@ -180,24 +189,29 @@ export function SignInModalForm({ className }: SignInModalProps) {
                         {...register('password')}
                       />
                       {formState.errors?.password && (
-                        <p className="self-center ml-1 font-visuelt text-xs text-red-500">
+                        <p className="ml-1 self-center font-visuelt text-xs text-red-500">
                           {formState.errors?.password?.message}
                         </p>
                       )}
                     </div>
                   </div>
-                  <Button loading={isLoading} type="submit" className="w-full" size="lg">
+                  <Button
+                    loading={isLoading}
+                    type="submit"
+                    className="w-full"
+                    size="lg"
+                  >
                     Sign In
                   </Button>
                 </form>
               </div>
 
-              <DialogFooter className="grid grid-flow-row gap-2 w-full mx-auto">
-                <div className="grid grid-flow-row gap-[2px] w-full">
-                  <p className="text-sm text-center text-white/70">
+              <DialogFooter className="mx-auto grid w-full grid-flow-row gap-2">
+                <div className="grid w-full grid-flow-row gap-[2px]">
+                  <p className="text-center text-sm text-white/70">
                     Don't have an account already?
                   </p>
-                  <button className="text-sm font-medium font-visuelt text-center text-white mx-auto w-fit flex">
+                  <button className="mx-auto flex w-fit text-center font-visuelt text-sm font-medium text-white">
                     Sign Up
                   </button>
                 </div>
