@@ -21,7 +21,7 @@ const Separator = React.forwardRef<
       orientation={orientation}
       className={mergeClasses(
         'dark:bg-slate-700 bg-white/10',
-        orientation === 'horizontal' ? 'h-[1px] w-full' : 'h-[32px] w-[1px]',
+        orientation === 'horizontal' ? 'h-[1px] w-full' : 'h-[30px] w-[1px]',
         className,
       )}
       {...props}

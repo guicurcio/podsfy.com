@@ -2,7 +2,6 @@
 
 import { NhostProvider } from '@nhost/nextjs';
 import Card from 'components/common/Card';
-import Header from 'components/dashboard/Header/Header';
 import { nhost } from 'lib/setupBackendConfig';
 
 export default function DashboardPage() {

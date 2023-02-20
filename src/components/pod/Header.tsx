@@ -105,99 +105,64 @@ export default function Header({ className }: HeaderProps) {
         className,
       )}
     >
-      <div className="mx-auto w-full max-w-[1100px]">
-        <div className="grid grid-flow-row items-center gap-2 ">
+      <div className="mx-auto w-full max-w-[1200px]">
+        <div className="mx-auto grid grid-flow-row items-center gap-2">
           <div className="grid grid-flow-col place-content-between py-1.5">
             <Link href="/" legacyBehavior passHref>
               <a
                 className={mergeClasses(
-                  'cursor-pointer py-2 px-3 font-SpaceGrotesk text-[28px] font-bold tracking-[-0.08em] text-[#CDCDCD]',
+                  'cursor-pointer py-2 px-3 font-SpaceGrotesk text-[26px] font-bold tracking-[-0.08em] text-[#CDCDCD]',
                 )}
               >
                 podsfy
               </a>
             </Link>
-            <Search podcasts={podcasts} className="w-[800px]"></Search>
+            <Search podcasts={podcasts} className="w-[650px]"></Search>
             <SignInModal></SignInModal>
           </div>
-          <div className="mx-auto grid w-full  max-w-[900px] grid-flow-col items-center py-2.5">
+          <div className="mx-auto grid w-[1200px]  max-w-[1200px] grid-flow-col   items-center justify-center pb-3">
             <NavigationMenu>
-              <NavigationMenuList className="grid grid-flow-col items-center gap-[8px]">
+              <NavigationMenuList className="mx-auto grid grid-flow-col items-center gap-[8px] ">
                 <NavigationMenuItem>
                   <Link href="/home" legacyBehavior passHref>
-                    <NavigationMenuLink
-                      className={mergeClasses(
-                        'rounded-[4px] font-visuelt text-[14px] font-medium text-white/90',
-                        'transition-colors focus:outline-none focus:outline-0 focus:ring-0 focus:ring-transparent focus:ring-offset-0 focus:ring-offset-transparent',
-                        'bg-transparent disabled:pointer-events-none disabled:opacity-50',
-                        'dark:hover:bg-slate-800 dark:text-slate-100 dark:hover:text-slate-100 data-[state=open]:bg-slate-50 hover:bg-fondy',
-                        'dark:data-[state=open]:bg-slate-800 group h-10 w-max py-2 px-3',
-                      )}
-                    >
-                      Home
-                    </NavigationMenuLink>
+                    <NavigationMenuLink>Home</NavigationMenuLink>
                   </Link>
                 </NavigationMenuItem>
 
                 <NavigationMenuItem>
                   <Link href="/for-you" legacyBehavior passHref>
-                    <NavigationMenuLink
-                      className={mergeClasses(
-                        'rounded-[4px] font-visuelt text-[14px] font-medium text-white/90',
-                        'transition-colors focus:outline-none focus:outline-0 focus:ring-0 focus:ring-transparent focus:ring-offset-0 focus:ring-offset-transparent',
-                        'bg-transparent disabled:pointer-events-none disabled:opacity-50',
-                        'dark:hover:bg-slate-800 dark:text-slate-100 dark:hover:text-slate-100 data-[state=open]:bg-slate-50 hover:bg-fondy',
-                        'dark:data-[state=open]:bg-slate-800 group h-10 w-max py-2 px-3',
-                      )}
-                    >
-                      For you
-                    </NavigationMenuLink>
+                    <NavigationMenuLink>For you</NavigationMenuLink>
                   </Link>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
                   <Link href="/dashboard" legacyBehavior passHref>
-                    <NavigationMenuLink
-                      className={mergeClasses(
-                        'rounded-[4px] font-visuelt text-[14px] font-medium text-white/90',
-                        'transition-colors focus:outline-none focus:outline-0 focus:ring-0 focus:ring-transparent focus:ring-offset-0 focus:ring-offset-transparent',
-                        'bg-transparent disabled:pointer-events-none disabled:opacity-50',
-                        'dark:hover:bg-slate-800 dark:text-slate-100 dark:hover:text-slate-100 data-[state=open]:bg-slate-50 hover:bg-fondy',
-                        'dark:data-[state=open]:bg-slate-800 group h-10 w-max py-2 px-3',
-                      )}
-                    >
-                      Top Charts
-                    </NavigationMenuLink>
-                  </Link>
-                </NavigationMenuItem>
-                <NavigationMenuItem>
-                  <Link href="/dashboard" legacyBehavior passHref>
-                    <NavigationMenuLink
-                      className={mergeClasses(
-                        'rounded-[4px] font-visuelt text-[14px] font-medium text-white/90',
-                        'transition-colors focus:outline-none focus:outline-0 focus:ring-0 focus:ring-transparent focus:ring-offset-0 focus:ring-offset-transparent',
-                        'bg-transparent disabled:pointer-events-none disabled:opacity-50',
-                        'dark:hover:bg-slate-800 dark:text-slate-100 dark:hover:text-slate-100 data-[state=open]:bg-slate-50 hover:bg-fondy',
-                        'dark:data-[state=open]:bg-slate-800 group h-10 w-max py-2 px-3',
-                      )}
-                    >
-                      Watchlist
-                    </NavigationMenuLink>
+                    <NavigationMenuLink>Top Charts</NavigationMenuLink>
                   </Link>
                 </NavigationMenuItem>
                 <Separator orientation="vertical"></Separator>
                 <NavigationMenuItem>
                   <Link href="/dashboard" legacyBehavior passHref>
-                    <NavigationMenuLink
-                      className={mergeClasses(
-                        'rounded-[4px] font-visuelt text-[14px] font-medium text-white/90',
-                        'transition-colors focus:outline-none focus:outline-0 focus:ring-0 focus:ring-transparent focus:ring-offset-0 focus:ring-offset-transparent',
-                        'bg-transparent disabled:pointer-events-none disabled:opacity-50',
-                        'dark:hover:bg-slate-800 dark:text-slate-100 dark:hover:text-slate-100 data-[state=open]:bg-slate-50 hover:bg-fondy',
-                        'dark:data-[state=open]:bg-slate-800 group h-10 w-max py-2 px-3',
-                      )}
-                    >
-                      Watchlist
-                    </NavigationMenuLink>
+                    <NavigationMenuLink>Health</NavigationMenuLink>
+                  </Link>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                  <Link href="/dashboard" legacyBehavior passHref>
+                    <NavigationMenuLink>Relationships</NavigationMenuLink>
+                  </Link>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                  <Link href="/dashboard" legacyBehavior passHref>
+                    <NavigationMenuLink>Conversations</NavigationMenuLink>
+                  </Link>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                  <Link href="/dashboard" legacyBehavior passHref>
+                    <NavigationMenuLink>Entrepreneurship</NavigationMenuLink>
+                  </Link>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                  <Link href="/dashboard" legacyBehavior passHref>
+                    <NavigationMenuLink>Finance</NavigationMenuLink>
                   </Link>
                 </NavigationMenuItem>
               </NavigationMenuList>
