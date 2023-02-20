@@ -35,14 +35,14 @@ export default function PodDetails({
       className={twMerge('justify-start text-left gap-6 grid grid-flow-row ', className)}
     >
       <div className="grid grid-flow-row gap-[1px]">
-        <h1 className="text-[41px] capitalize text-[#fff] font-SpaceGrotesk tracking-[-0.1em] font-normal text-opacity-90 justify-start brightness-[180%] -ml-[3px]">
+        <h1 className="text-[41px] capitalize text-[#fff] font-lausanne tracking-[-0.04em] font-normal text-opacity-90 justify-start brightness-[180%] -ml-[3px]">
           {title}
         </h1>
         {podcastHostName && (
           <Link
             href={`/people/${podcastHostName.replace(/ /g, '-').toLocaleLowerCase()}`}
           >
-            <h2 className="text-[14px] cursor-pointer text-[#fff] text-opacity-[70%] font-moderat mt-[-12px]">
+            <h2 className="text-[14px] cursor-pointer text-[#fff] text-opacity-[50%] font-moderat mt-[-12px]">
               By <span className="underline">{podcastHostName}</span>
             </h2>
           </Link>

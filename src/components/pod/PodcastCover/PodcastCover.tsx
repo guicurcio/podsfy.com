@@ -54,7 +54,7 @@ export default function PodcastCover({
    >
     <img
      src={imageURL}
-     className="border-[#88888820] flex-shrink-0 w-[170px] h-[225px]  rounded-[8px] object-cover border border-black cursor-pointer hover:scale-105 transition-all duration-500 ease-in-out brightness-[105%]"
+     className="border-[#88888820] flex-shrink-0 w-[190px] h-[235px]  rounded-[8px] object-cover border border-black cursor-pointer hover:scale-105 transition-all duration-500 ease-in-out brightness-[105%]"
     />
    </Link>
   </div>

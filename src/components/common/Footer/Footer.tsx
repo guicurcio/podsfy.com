@@ -22,12 +22,12 @@ export default function Footer({ className }: FooterProps) {
         className
       )}
     >
-      <div className="flex flex-col justify-start items-start relative px-2 max-w-[1050px] mx-auto">
+      <div className="flex flex-col justify-start items-start relative px-2 max-w-[1200px] mx-auto">
         <div className="grid grid-flow-col place-content-between w-full ">
           <div className="py-6">
             <a
               className={mergeClasses(
-                'font-SpaceGrotesk py-2 text-[#CDCDCD] px-3 cursor-pointer tracking-[-0.08em] text-[30px] font-bold'
+                'font-SpaceGrotesk py-2 text-[#CDCDCD] px-3  cursor-pointer tracking-[-0.08em] text-[30px] font-bold'
               )}
             >
               podsfy

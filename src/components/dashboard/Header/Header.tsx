@@ -153,7 +153,7 @@ export default function Header({ className }: HeaderProps) {
               </NavigationMenuItem>
 
               <NavigationMenuItem>
-                <Link href="/dashboard" legacyBehavior passHref>
+                <Link href="/trending" legacyBehavior passHref>
                   <NavigationMenuLink
                     className={mergeClasses(
                       'text-white/90 font-medium rounded-[4px] font-visuelt text-[14px]',
@@ -168,7 +168,7 @@ export default function Header({ className }: HeaderProps) {
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <Link href="/dashboard" legacyBehavior passHref>
+                <Link href="/top-charts" legacyBehavior passHref>
                   <NavigationMenuLink
                     className={mergeClasses(
                       'text-white/90 font-medium rounded-[4px] font-visuelt text-[14px]',
@@ -183,7 +183,7 @@ export default function Header({ className }: HeaderProps) {
                 </Link>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <Link href="/dashboard" legacyBehavior passHref>
+                <Link href="/watchlist" legacyBehavior passHref>
                   <NavigationMenuLink
                     className={mergeClasses(
                       'text-white/90 font-medium rounded-[4px] font-visuelt text-[14px]',

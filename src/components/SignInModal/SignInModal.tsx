@@ -69,8 +69,6 @@ export function SignInModalForm({ className }: SignInModalProps) {
 
   const { register, formState } = form;
 
-
-
   const handleSignInFormSubmit = async ({ email, password }: SignInModalFormValues) => {
     try {
       console.log('run');

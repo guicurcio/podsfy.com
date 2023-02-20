@@ -80,7 +80,7 @@ export default function Page() {
               <h1 className="font-moderat text-[16.5px] font-medium  text-[#BDBDBD] tracking-[-8%] text-center ">
                 The social network for podcast lovers
               </h1>
-              <div className="grid grid-flow-col md:max-w-[1440px] lg:max-w-[1800px] mx-auto relative gap-[18px] pt-[12px]">
+              <div className="grid grid-flow-col md:max-w-[1440px] lg:max-w-[1900px] mx-auto relative gap-[18px] pt-[12px]">
                 <PodcastCover
                   imageURL="/optimized/podcast/found-my-fitness.webp"
                   podcastURL="/podcast/found-my-fitness"

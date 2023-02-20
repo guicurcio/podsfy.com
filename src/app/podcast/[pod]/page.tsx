@@ -68,13 +68,8 @@ export async function generateStaticParams() {
 }
 
 export default async function PodcastPage({ params }) {
-  // console.log(params, "the params");
   const staticPodcastData = await getPodInfo(params.pod);
-  // console.log(staticPodcastData, "staticPodcastData info  ");
-  // console.log(
-  //   generateSlugCombinations(staticPodcastData.slug),
-  //   "the slug combinations"
-  // );
+
   if (!staticPodcastData.title) {
     redirect('/404');
   }
@@ -94,19 +89,19 @@ export default async function PodcastPage({ params }) {
       )}
       <div className=" z-50 mx-auto pt-[120px] relative backdrop-blur-[8px] backdrop-brightness-[60%] ">
         <div
-          className="max-w-[1050px] mx-auto z-20  
+          className="max-w-[1200px] mx-auto z-20  
 
-  overflow-hidden rounded-[4px] border border-sharper  border-opacity-10 py-[25px]  px-[20px]   bg-[#0D0E12] bg-opacity-[95%]  backdrop-blur-[10px] font-visuelt shadow-3xl relative
+  overflow-hidden rounded-[3px] border border-sharper  border-opacity-10 py-[25px]  px-[20px]  bg-[#0D0E12] bg-opacity-[95%]  backdrop-blur-[10px] font-visuelt shadow-3xl relative
         
         "
         >
-          <div className="grid grid-cols-12  gap-16 grid-flow-col  justify-start px-2 py-2 rounded-xl">
-            <div className="col-span-3 grid grid-flow-row items-start justify-start  justify-items-start place-content-start">
-              <div className="justify-start ">
+          <div className="grid grid-flow-col gap-[50px]    justify-start px-2 py-2">
+            <div className="w-[300px] grid grid-flow-row items-start justify-start  justify-items-start place-content-start">
+              <div className=" w-full">
                 <img
                   src={`../${staticPodcastData.cover}`}
                   draggable={false}
-                  className="rounded-[6px] h-[275px] border-opacity-[10%] blur-[0.5px] brightness-[75%]"
+                  className="rounded-[2px] h-[300px] w-[300px] border border-opacity-10 border-white brightness-[95%]"
                 />
               </div>
               <PodBehind
@@ -116,7 +111,7 @@ export default async function PodcastPage({ params }) {
                 podcastTitle={staticPodcastData.title}
               ></PodBehind>
             </div>
-            <div className="items-start grid grid-flow-row gap-4 h-full col-span-9 ">
+            <div className="items-start grid grid-flow-row gap-4 h-full  w-[800px] pr-10">
               <PodDetails
                 title={staticPodcastData.title}
                 description={staticPodcastData.description}
