@@ -18,7 +18,7 @@ export default function Footer({ className }: FooterProps) {
   return (
     <div
       className={twMerge(
-        'bg-[#0D0E12] border-t border-white border-opacity-5 ',
+        'bg-[#0D0E12] border-t border-white border-opacity-5 -pt-[10px]',
         className
       )}
     >

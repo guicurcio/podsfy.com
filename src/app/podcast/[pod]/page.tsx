@@ -79,14 +79,10 @@ export default async function PodcastPage({ params }) {
   );
   return (
     <div className="z-0">
-      <PodImage
-        image={
-          staticPodcastData.backgroundCoverImage
-            ? `../${staticPodcastData.backgroundCoverImage}`
-            : `./bg/bg.png`
-        }
-      ></PodImage>
-      <div className=" relative z-50 mx-auto pt-[120px] backdrop-blur-[8px] backdrop-brightness-[60%] ">
+        <PodImage
+          image={staticPodcastData.backgroundCoverImage ? `../${staticPodcastData.backgroundCoverImage}` : `./bg/bg.png`}
+        ></PodImage>
+      <div className=" relative z-50 mx-auto pt-[90px] backdrop-blur-[8px] backdrop-brightness-[60%] ">
         <div
           className="relative z-20 mx-auto  
 
