@@ -1,15 +1,8 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import {
-  NhostProvider,
-  useAuthenticated,
-  useSignInEmailPassword,
-} from '@nhost/nextjs';
 import Form from 'components/Form/Form';
-import { nhost } from 'lib/setupBackendConfig';
 import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import Button from 'ui/components/Button';
 import {
@@ -18,7 +11,7 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
+  DialogTrigger
 } from 'ui/components/Dialog';
 import { Input } from 'ui/components/Input';
 import Label from 'ui/components/Label';
@@ -26,7 +19,7 @@ import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
-  TooltipTrigger,
+  TooltipTrigger
 } from 'ui/components/Tooltip';
 import * as z from 'zod';
 
@@ -51,19 +44,15 @@ export interface SignInModalFormValues {
 }
 
 export default function SignInModal({ className }: SignInModalProps) {
-  return (
-    <NhostProvider nhost={nhost}>
-      <SignInModalForm></SignInModalForm>
-    </NhostProvider>
-  );
+  return <SignInModalForm></SignInModalForm>;
 }
 
 /**
  * SignInModal Component
  */
 export function SignInModalForm({ className }: SignInModalProps) {
-  const { signInEmailPassword, isLoading, isSuccess, isError, error } =
-    useSignInEmailPassword();
+  // const { signInEmailPassword, isLoading, isSuccess, isError, error } =
+  //   useSignInEmailPassword();
   const router = useRouter();
 
   const form = useForm<SignInModalFormValues>({
@@ -79,10 +68,7 @@ export function SignInModalForm({ className }: SignInModalProps) {
   }: SignInModalFormValues) => {
     try {
       console.log('run');
-      const user = await signInEmailPassword(email, password);
-      if (user.isSuccess) {
-        router.push('/dashboard');
-      }
+      // const user = await signInEmailPassword(email, password);
       return;
     } catch (error) {
       console.log(error);
@@ -95,7 +81,7 @@ export function SignInModalForm({ className }: SignInModalProps) {
         <div className="mx-auto mt-4 w-fit">
           <Dialog>
             <DialogTrigger asChild>
-              <Button variant="main" size="sm">
+              <Button variant="subtle" size="md">
                 Sign In
               </Button>
             </DialogTrigger>
@@ -195,12 +181,7 @@ export function SignInModalForm({ className }: SignInModalProps) {
                       )}
                     </div>
                   </div>
-                  <Button
-                    loading={isLoading}
-                    type="submit"
-                    className="w-full"
-                    size="lg"
-                  >
+                  <Button type="submit" className="w-full" size="lg">
                     Sign In
                   </Button>
                 </form>

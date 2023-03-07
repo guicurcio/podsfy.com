@@ -53,11 +53,7 @@ const SIGN_UP_MODAL_VALIDATION_SCHEMA = z.object({
 });
 
 export default function SignUpModal({ className }: JoinProps) {
-  return (
-    <NhostProvider nhost={nhost}>
-      <SignUpModalForm></SignUpModalForm>
-    </NhostProvider>
-  );
+  return <SignUpModalForm></SignUpModalForm>;
 }
 
 export interface SignUpModalFormValues {
@@ -70,7 +66,6 @@ export interface SignUpModalFormValues {
  */
 export function SignUpModalForm({ className }: JoinProps) {
   const router = useRouter();
-  const { signUpEmailPassword, isLoading } = useSignUpEmailPassword();
 
   const form = useForm<SignUpModalFormValues>({
     reValidateMode: 'onSubmit',
@@ -79,20 +74,19 @@ export function SignUpModalForm({ className }: JoinProps) {
 
   const { register, formState } = form;
 
-  const handleSignUpFormSubmit = async ({ email, password }: SignUpModalFormValues) => {
+  const handleSignUpFormSubmit = async ({
+    email,
+    password,
+  }: SignUpModalFormValues) => {
     try {
-      const newUser = await signUpEmailPassword(email, password);
-      console.log(newUser);
-      if (newUser.isSuccess) {
-        router.push('/dashboard');
-      }
+      // const newUser = await signUpEmailPassword(email, password);
     } catch (error) {
       console.log(error);
     }
   };
 
   return (
-    <div className={twMerge('mx-auto w-fit mt-4', className)}>
+    <div className={twMerge('mx-auto mt-4 w-fit', className)}>
       <Dialog>
         <DialogTrigger asChild>
           <Button variant="default" size="lg">
@@ -102,16 +96,20 @@ export function SignUpModalForm({ className }: JoinProps) {
         <DialogContent className="sm:max-w-[475px]">
           <DialogHeader>
             <DialogTitle className="">Create a Podsfy Account</DialogTitle>
-            <DialogDescription className="text-center max-w-[250px] mx-auto text-white/60">
+            <DialogDescription className="mx-auto max-w-[250px] text-center text-white/60">
               Create a free account to get access to all the features of Podsfy.
             </DialogDescription>
           </DialogHeader>
           <div className="grid grid-flow-row gap-6 py-4">
-            <div className="grid grid-flow-col gap-8 pt-2 mx-auto pb-[-2px]">
+            <div className="mx-auto grid grid-flow-col gap-8 pt-2 pb-[-2px]">
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger asChild tabIndex={-1} autoFocus={false}>
-                    <Button className="w-[75px] h-[65px]" tabIndex={-1} autoFocus={false}>
+                    <Button
+                      className="h-[65px] w-[75px]"
+                      tabIndex={-1}
+                      autoFocus={false}
+                    >
                       <img src="/images/google.svg" alt="Google" />
                     </Button>
                   </TooltipTrigger>
@@ -119,7 +117,7 @@ export function SignUpModalForm({ className }: JoinProps) {
                 </Tooltip>
                 <Tooltip>
                   <TooltipTrigger asChild tabIndex={-1} autoFocus={false}>
-                    <Button className="w-[75px] h-[65px]" tabIndex={-1}>
+                    <Button className="h-[65px] w-[75px]" tabIndex={-1}>
                       <img src="/images/google.svg" alt="Google" />
                     </Button>
                   </TooltipTrigger>
@@ -127,7 +125,7 @@ export function SignUpModalForm({ className }: JoinProps) {
                 </Tooltip>
                 <Tooltip>
                   <TooltipTrigger asChild tabIndex={-1} autoFocus={false}>
-                    <Button className="w-[75px] h-[65px]" autoFocus={false}>
+                    <Button className="h-[65px] w-[75px]" autoFocus={false}>
                       <img src="/images/google.svg" alt="Google" />
                     </Button>
                   </TooltipTrigger>
@@ -135,7 +133,11 @@ export function SignUpModalForm({ className }: JoinProps) {
                 </Tooltip>
                 <Tooltip>
                   <TooltipTrigger asChild tabIndex={-1} autoFocus={false}>
-                    <Button className="w-[75px] h-[65px]" tabIndex={-1} autoFocus={false}>
+                    <Button
+                      className="h-[65px] w-[75px]"
+                      tabIndex={-1}
+                      autoFocus={false}
+                    >
                       <img src="/images/google.svg" alt="Google" />
                     </Button>
                   </TooltipTrigger>
@@ -144,17 +146,20 @@ export function SignUpModalForm({ className }: JoinProps) {
               </TooltipProvider>
             </div>
           </div>
-          <div className="grid grid-flow-col gap-x-2  mx-auto w-fit items-center justify-items-center">
-            <div className="bg-white/20 w-[100px] h-[1px] " />
-            <h1 className="self-center uppercase font-visuelt text-sm">or</h1>
-            <div className="bg-white/20 w-[100px] h-[1px] " />
+          <div className="mx-auto grid w-fit  grid-flow-col items-center justify-items-center gap-x-2">
+            <div className="h-[1px] w-[100px] bg-white/20 " />
+            <h1 className="self-center font-visuelt text-sm uppercase">or</h1>
+            <div className="h-[1px] w-[100px] bg-white/20 " />
           </div>
           <FormProvider {...form}>
-            <Form onSubmit={handleSignUpFormSubmit} className="grid grid-flow-row gap-3">
+            <Form
+              onSubmit={handleSignUpFormSubmit}
+              className="grid grid-flow-row gap-3"
+            >
               <div className="grid grid-flow-row items-center gap-2">
                 <Label
                   htmlFor="email"
-                  className="text-left text-white/80 text-[14px] font-moderat"
+                  className="text-left font-moderat text-[14px] text-white/80"
                 >
                   Email
                 </Label>
@@ -165,7 +170,7 @@ export function SignUpModalForm({ className }: JoinProps) {
                   aria-label="email"
                 />
                 {formState.errors?.email && (
-                  <p className="self-center ml-1 font-visuelt text-xs text-red-500">
+                  <p className="ml-1 self-center font-visuelt text-xs text-red-500">
                     {formState.errors?.email?.message}
                   </p>
                 )}
@@ -183,7 +188,7 @@ export function SignUpModalForm({ className }: JoinProps) {
               <div className="grid grid-flow-row items-center gap-2">
                 <Label
                   htmlFor="email"
-                  className="text-left text-white/80 text-[14px] font-moderat"
+                  className="text-left font-moderat text-[14px] text-white/80"
                 >
                   Password
                 </Label>
@@ -194,23 +199,23 @@ export function SignUpModalForm({ className }: JoinProps) {
                   {...register('password')}
                 />
                 {formState.errors?.password && (
-                  <p className="self-center ml-1 font-visuelt text-xs text-red-500">
+                  <p className="ml-1 self-center font-visuelt text-xs text-red-500">
                     {formState.errors?.password?.message}
                   </p>
                 )}
               </div>
-              <Button loading={isLoading} type="submit" className="w-full" size="lg">
+              <Button type="submit" className="w-full" size="lg">
                 Register Now
               </Button>
             </Form>
           </FormProvider>
 
-          <DialogFooter className="grid grid-flow-row gap-2 w-full mx-auto">
-            <div className="grid grid-flow-row gap-[2px] w-full">
-              <p className="text-sm text-center text-white/70">
+          <DialogFooter className="mx-auto grid w-full grid-flow-row gap-2">
+            <div className="grid w-full grid-flow-row gap-[2px]">
+              <p className="text-center text-sm text-white/70">
                 Already have an account?
               </p>
-              <button className="text-sm font-medium font-visuelt text-center text-white mx-auto w-fit flex">
+              <button className="mx-auto flex w-fit text-center font-visuelt text-sm font-medium text-white">
                 Sign In
               </button>
             </div>
