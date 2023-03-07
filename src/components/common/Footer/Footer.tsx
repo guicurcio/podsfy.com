@@ -44,43 +44,93 @@ export default function Footer({ className }: FooterProps) {
                   About
                 </a>
               </Link>
-              <p className="font-moderat text-[13px] text-[#e3e5e8]/[0.72]">Blog</p>
-              <p className="font-moderat text-[13px]  text-[#e3e5e8]/[0.72]">Careers</p>
-              <p className="font-moderat text-[13px]  text-[#e3e5e8]/[0.72]">Newsroom</p>
+              <Link href="/blog" legacyBehavior passHref>
+                <a className="cursor-pointer font-moderat text-[13px] text-[#e3e5e8]/[0.72]">
+                  Blog
+                </a>
+              </Link>
+              <Link href="/careers" legacyBehavior passHref>
+                <a className="cursor-pointer font-moderat text-[13px] text-[#e3e5e8]/[0.72]">
+                  Careers
+                </a>
+              </Link>
+              <Link href="/newsroom" legacyBehavior passHref>
+                <a className="cursor-pointer font-moderat text-[13px] text-[#e3e5e8]/[0.72]">
+                  Newsroom
+                </a>
+              </Link>
             </div>
-            <div className=" grid grid-flow-row  gap-[12px]">
+            <div className="grid grid-flow-row  gap-[12px]">
               <h1 className="font-SpaceGrotesk text-[10px] font-medium  uppercase text-[#e3e5e8]/[0.36]">
                 Resources
               </h1>
-              <p className="font-moderat text-[13px] text-[#e3e5e8]/[0.72]">Support</p>
-              <p className="font-moderat text-[13px] text-[#e3e5e8]/[0.72]">FAQ</p>
-              <p className="font-moderat text-[13px]  text-[#e3e5e8]/[0.72]">Contact Us</p>
-              <p className="font-moderat text-[13px]  text-[#e3e5e8]/[0.72]">Contribute</p>
+              <Link href="/about" legacyBehavior passHref>
+                <a className="cursor-pointer font-moderat text-[13px] text-[#e3e5e8]/[0.72]">
+                  Support
+                </a>
+              </Link>
+              <Link href="/blog" legacyBehavior passHref>
+                <a className="cursor-pointer font-moderat text-[13px] text-[#e3e5e8]/[0.72]">FAQ</a>
+              </Link>
+              <Link href="/careers" legacyBehavior passHref>
+                <a className="cursor-pointer font-moderat text-[13px] text-[#e3e5e8]/[0.72]">
+                  Contact Us
+                </a>
+              </Link>
+              <Link href="/newsroom" legacyBehavior passHref>
+                <a className="cursor-pointer font-moderat text-[13px] text-[#e3e5e8]/[0.72]">
+                  Contribute
+                </a>
+              </Link>
             </div>
             <div className=" grid h-full  grid-flow-row justify-items-start gap-[12px]">
               <h1 className="font-SpaceGrotesk text-[10px] font-medium  uppercase text-[#e3e5e8]/[0.36]">
                 App
               </h1>
-              <p className="font-moderat text-[13px] text-[#e3e5e8]/[0.72]">Web</p>
-              <p className="font-moderat text-[13px] text-[#e3e5e8]/[0.72]">Mobile</p>
-              <p className="font-moderat text-[13px] text-[#e3e5e8]/[0.72]">Podsfy PRO</p>
+              <Link href="/about" legacyBehavior passHref>
+                <a className="cursor-pointer font-moderat text-[13px] text-[#e3e5e8]/[0.72]">Web</a>
+              </Link>
+              <Link href="/blog" legacyBehavior passHref>
+                <a className="cursor-pointer font-moderat text-[13px] text-[#e3e5e8]/[0.72]">
+                  Mobile
+                </a>
+              </Link>
+              <Link href="/careers" legacyBehavior passHref>
+                <a className="cursor-pointer font-moderat text-[13px] text-[#e3e5e8]/[0.72]">
+                  Podsfy PRO
+                </a>
+              </Link>
+              <a className="cursor-pointer font-moderat text-[13px] text-[#e3e5e8]/[0.72]"> </a>
+              <a className="cursor-pointer font-moderat text-[13px] text-[#e3e5e8]/[0.72]"> </a>
+              <a className="cursor-pointer font-moderat text-[13px] text-[#e3e5e8]/[0.72]"> </a>
             </div>
             <div className="grid h-full  grid-flow-row items-start justify-start justify-items-start gap-[12px]">
               <h1 className="font-SpaceGrotesk text-[10px] font-medium  uppercase text-[#e3e5e8]/[0.36]">
                 Solutions
               </h1>
-              <p className="font-moderat text-[13px] text-[#e3e5e8]/[0.72]">Advertising</p>
-              <p className="font-moderat text-[13px] text-[#e3e5e8]/[0.72]">Investing</p>
+              <Link href="/about" legacyBehavior passHref>
+                <a className="cursor-pointer font-moderat text-[13px] text-[#e3e5e8]/[0.72]">
+                  Advertising
+                </a>
+              </Link>
+              <Link href="/blog" legacyBehavior passHref>
+                <a className="cursor-pointer font-moderat text-[13px] text-[#e3e5e8]/[0.72]">
+                  Investing
+                </a>
+              </Link>
+              <Link href="/blog" legacyBehavior passHref>
+                <a className="cursor-pointer font-moderat text-[13px] text-[#e3e5e8]/[0.72]">
+                  Parent Company
+                </a>
+              </Link>
+              <a className="cursor-pointer font-moderat text-[13px] text-[#e3e5e8]/[0.72]"> </a>
+              <a className="cursor-pointer font-moderat text-[13px] text-[#e3e5e8]/[0.72]"> </a>
+              <a className="cursor-pointer font-moderat text-[13px] text-[#e3e5e8]/[0.72]"> </a>
             </div>
           </div>
         </div>
         <div className=" mb-6 h-px w-full bg-[#2b303b]/40" />
         <div className="grid grid-flow-row  items-center justify-center gap-2">
-          <div className=" grid grid-flow-col gap-4">
-            <p className=" text-[11px]  text-[#535965]">Privacy Policy</p>
-            <p className="text-[11px]  text-[#535965]">Responsible Disclosure</p>
-            <p className="text-[11px]  text-[#535965]">Terms of use</p>
-          </div>
           <div className="flex items-start justify-start  gap-4 pt-[5.375px] pb-[4.046875px]">
             <svg
               width={17}
@@ -126,16 +176,31 @@ export default function Footer({ className }: FooterProps) {
             </svg>
           </div>
         </div>
+
         <p className=" mx-auto w-[600px] text-center font-moderat text-[11px] font-medium text-[#3f4550] ">
           Copyright © 2023 Podsfy.com part of Subjeto Inc. All rights reserved.
         </p>
-        <p className=" mx-auto w-[600px] pt-[10px] pb-[50px] text-center font-moderat text-[11px] font-medium text-[#3f4550]">
+
+        <p className=" mx-auto w-[600px] pt-[10px] text-center font-moderat text-[11px] font-medium text-[#3f4550]">
           All images and content displayed on this website are the property of their respective
           owners, unless otherwise noted. Use of third-party logos and images on this website does
           not imply endorsement, sponsorship, or affiliation with Podsfy.com. If you believe that
           any content on this website infringes upon your intellectual property rights, please
           contact us immediately to resolve the issue.
         </p>
+        <div className="mx-auto grid grid-flow-col gap-4 py-[10px] pb-[50px]  pt-[20px] text-center">
+          <Link href="/privacy-policy" legacyBehavior passHref>
+            <a className="cursor-pointer text-[11px] text-[#535965]/[0.72]">Privacy Policy</a>
+          </Link>
+          <Link href="/responsive-disclosure" legacyBehavior passHref>
+            <a className="cursor-pointer text-[11px] text-[#535965]/[0.72]">
+              Responsible Disclosure
+            </a>
+          </Link>
+          <Link href="/terms-of-use" legacyBehavior passHref>
+            <a className="cursor-pointer text-[11px] text-[#535965]/[0.72]">Terms of use</a>
+          </Link>
+        </div>
       </div>
     </div>
   );
