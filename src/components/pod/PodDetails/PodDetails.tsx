@@ -31,24 +31,20 @@ export default function PodDetails({
   podcastHostName,
 }: PodDetailsProps) {
   return (
-    <div
-      className={twMerge('justify-start text-left gap-6 grid grid-flow-row ', className)}
-    >
+    <div className={twMerge('grid grid-flow-row justify-start gap-6 text-left pb-[10px]', className)}>
       <div className="grid grid-flow-row gap-[1px]">
-        <h1 className="text-[41px] capitalize text-[#fff] font-lausanne tracking-[-0.04em] font-normal text-opacity-90 justify-start brightness-[180%] -ml-[3px]">
+        <h1 className="-ml-[3px] justify-start font-lausanne text-[41px] font-normal capitalize tracking-[-0.04em] text-[#fff] text-opacity-90 brightness-[180%]">
           {title}
         </h1>
         {podcastHostName && (
-          <Link
-            href={`/people/${podcastHostName.replace(/ /g, '-').toLocaleLowerCase()}`}
-          >
-            <h2 className="text-[14px] cursor-pointer text-[#fff] text-opacity-[50%] font-moderat mt-[-12px]">
+          <Link href={`/people/${podcastHostName.replace(/ /g, '-').toLocaleLowerCase()}`}>
+            <h2 className="mt-[-12px] cursor-pointer font-moderat text-[14px] text-[#fff] text-opacity-[50%]">
               By <span className="underline">{podcastHostName}</span>
             </h2>
           </Link>
         )}
       </div>
-      <p className="font-visuelt font-normal text-dimmed2 text-opacity-80 text-[15px] ml-[2px] antialiased  tracking-[0.5px]">
+      <p className="ml-[2px] font-visuelt text-[15px] font-normal leading-[25px] tracking-[0.5px] text-dimmed2 text-opacity-80  antialiased">
         {description}
       </p>
     </div>
