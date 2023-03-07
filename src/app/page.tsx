@@ -2,6 +2,7 @@ import Join from 'components/SignUpModal';
 import SignInModal from 'components/SignInModal';
 import PodcastCover from 'components/pod/PodcastCover/PodcastCover';
 import { cookies } from 'next/headers';
+import Footer from 'components/common/Footer';
 
 export default function Page() {
   return (
@@ -133,6 +134,7 @@ export default function Page() {
           </div> */}
           </div>
         </div>
+        <Footer></Footer>
       </div>
     </div>
   );

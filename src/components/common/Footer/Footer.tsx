@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { twMerge } from 'tailwind-merge';
 import mergeClasses from 'utils/mergeClasses';
 
@@ -38,7 +39,11 @@ export default function Footer({ className }: FooterProps) {
               <h1 className="font-SpaceGrotesk text-[10px] font-medium  uppercase text-[#e3e5e8]/[0.36]">
                 Company
               </h1>
-              <p className="font-moderat text-[13px] text-[#e3e5e8]/[0.72]">About</p>
+              <Link href="/about" legacyBehavior passHref>
+                <a className="cursor-pointer font-moderat text-[13px] text-[#e3e5e8]/[0.72]">
+                  About
+                </a>
+              </Link>
               <p className="font-moderat text-[13px] text-[#e3e5e8]/[0.72]">Blog</p>
               <p className="font-moderat text-[13px]  text-[#e3e5e8]/[0.72]">Careers</p>
               <p className="font-moderat text-[13px]  text-[#e3e5e8]/[0.72]">Newsroom</p>
@@ -121,13 +126,15 @@ export default function Footer({ className }: FooterProps) {
             </svg>
           </div>
         </div>
-        <p className=" mx-auto  w-[684.21px] text-center font-moderat text-[11px] font-medium text-[#3f4550] ">
-          Copyright © 2023 Podsfy.com part of Holder Inc. <br></br> All rights reserved. All images
-          and content displayed on this website are the property of their respective owners, unless
-          otherwise noted. Use of third-party logos and images on this website does not imply
-          endorsement, sponsorship, or affiliation with Podsfy.com. If you believe that any content
-          on this website infringes upon your intellectual property rights, please contact us
-          immediately to resolve the issue.
+        <p className=" mx-auto w-[600px] text-center font-moderat text-[11px] font-medium text-[#3f4550] ">
+          Copyright © 2023 Podsfy.com part of Subjeto Inc. All rights reserved.
+        </p>
+        <p className=" mx-auto w-[600px] pt-[10px] pb-[50px] text-center font-moderat text-[11px] font-medium text-[#3f4550]">
+          All images and content displayed on this website are the property of their respective
+          owners, unless otherwise noted. Use of third-party logos and images on this website does
+          not imply endorsement, sponsorship, or affiliation with Podsfy.com. If you believe that
+          any content on this website infringes upon your intellectual property rights, please
+          contact us immediately to resolve the issue.
         </p>
       </div>
     </div>
