@@ -1,8 +1,7 @@
-import Join from 'components/SignUpModal';
-import SignInModal from 'components/SignInModal';
-import PodcastCover from 'components/pod/PodcastCover/PodcastCover';
-import { cookies } from 'next/headers';
 import Footer from 'components/common/Footer';
+import PodcastCover from 'components/pod/PodcastCover/PodcastCover';
+import SignInModal from 'components/SignInModal';
+import Join from 'components/SignUpModal';
 
 export default function Page() {
   return (
@@ -102,15 +101,15 @@ export default function Page() {
                 ></PodcastCover>
                 <PodcastCover
                   imageURL="/to-optimize/lex.png"
-                  podcastURL="/podcast/lex-fridman"
+                  podcastURL="/podcast/lex-fridman-podcast"
                 ></PodcastCover>
-                <PodcastCover
+                {/* <PodcastCover
                   imageURL="/optimized/podcast/charlotte.webp"
                   podcastURL="/podcast/beyond-good-and-evil"
-                ></PodcastCover>
+                ></PodcastCover> */}
                 <PodcastCover
                   imageURL="/to-optimize/all-in.png"
-                  podcastURL="/podcast/all-in"
+                  podcastURL="/podcast/all-in-podcast"
                 ></PodcastCover>
                 {/* <PodcastCover
          imageURL="/to-optimize/tigerbelly.png"

@@ -22,7 +22,7 @@ export default function PodImage({ className, image }: PodImageProps) {
         {image && (
           <img
             src={image}
-            className="absolute z-0 h-[896px] w-[1920px] scale-x-[110%]  scale-y-[150%] rounded-b-[220px] object-none opacity-100"
+            className="absolute top-[150px] z-0 h-[896px] w-[1920px] scale-x-[110%] scale-y-[150%] rounded-b-[220px] object-none opacity-100"
           />
         )}
       </div>
