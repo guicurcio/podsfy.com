@@ -23,7 +23,7 @@ export interface PodImageProps {
  */
 export default function PodImage({ className, image, imageClassName }: PodImageProps) {
   return (
-    <div className="z-0 blur-[8px] brightness-[50%] backdrop-brightness-[50%]">
+    <div className="z-0 blur-[8px] brightness-[60%] backdrop-brightness-[50%]">
       <div className="relative">
         {image && (
           <img

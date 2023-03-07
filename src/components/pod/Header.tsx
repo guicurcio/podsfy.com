@@ -105,7 +105,7 @@ export default function Header({ className }: HeaderProps) {
         className,
       )}
     >
-      <div className="mx-auto w-full max-w-[1200px]">
+      <div className="mx-auto w-full max-w-[1300px]">
         <div className="mx-auto grid grid-flow-row items-center gap-2">
           <div className="grid grid-flow-col place-content-between py-1.5">
             <Link href="/" legacyBehavior passHref>

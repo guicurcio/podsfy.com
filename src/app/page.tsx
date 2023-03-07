@@ -97,7 +97,7 @@ export default function Page() {
                 ></PodcastCover>
                 <PodcastCover
                   imageURL="/optimized/podcast/jre.webp"
-                  podcastURL="/podcast/joe-rogan-experience"
+                  podcastURL="/podcast/the-joe-rogan-experience"
                 ></PodcastCover>
                 <PodcastCover
                   imageURL="/to-optimize/lex.png"
