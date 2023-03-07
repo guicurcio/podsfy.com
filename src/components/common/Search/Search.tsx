@@ -1,22 +1,22 @@
 'use client';
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
 import { PopoverProps } from '@radix-ui/react-popover';
 import { Check, ChevronsUpDown, Search as SearchIcon } from 'lucide-react';
-import { Popover, PopoverContent, PopoverTrigger } from 'ui/components/Popover';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 import Button from 'ui/components/Button';
 import {
   Command,
   CommandEmpty,
   CommandGroup,
   CommandInput,
-  CommandItem,
+  CommandItem
 } from 'ui/components/Command';
+import { Popover, PopoverContent, PopoverTrigger } from 'ui/components/Popover';
 import mergeClasses from 'utils/mergeClasses/mergeClasses';
 
 export type Podcast = {
-  id: string;
+  slug: string;
   name: string;
 };
 
@@ -48,9 +48,7 @@ const Search = ({ podcasts, className, ...props }: PodcastSearchProps) => {
         >
           <div className="grid grid-flow-col items-center gap-2">
             <SearchIcon className="-ml-1 h-3 w-4 shrink-0 opacity-50"></SearchIcon>
-            {selectedPodcast
-              ? selectedPodcast.name
-              : 'Search Podcasts, episodes, guests, notes...'}
+            {selectedPodcast ? selectedPodcast.name : 'Search Podcasts, episodes, guests, notes...'}
           </div>
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
@@ -60,10 +58,10 @@ const Search = ({ podcasts, className, ...props }: PodcastSearchProps) => {
           <CommandInput placeholder="Search podcasts..." />
           <CommandEmpty>No podcasts found.</CommandEmpty>
 
-          <CommandGroup heading="Examples">
+          <CommandGroup>
             {podcasts.map((podcast) => (
               <CommandItem
-                key={podcast.id}
+                key={podcast.slug}
                 onSelect={() => {
                   setSelectedPodcast(podcast);
                   setOpen(false);
@@ -73,18 +71,11 @@ const Search = ({ podcasts, className, ...props }: PodcastSearchProps) => {
                 <Check
                   className={mergeClasses(
                     'ml-auto h-4 w-4',
-                    selectedPodcast?.id === podcast.id
-                      ? 'opacity-100'
-                      : 'opacity-0',
+                    selectedPodcast?.slug === podcast.slug ? 'opacity-100' : 'opacity-0',
                   )}
                 />
               </CommandItem>
             ))}
-          </CommandGroup>
-          <CommandGroup className="pt-0">
-            <CommandItem onSelect={() => router.push('/examples')}>
-              More examples
-            </CommandItem>
           </CommandGroup>
         </Command>
       </PopoverContent>

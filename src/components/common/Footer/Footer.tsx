@@ -36,7 +36,7 @@ export default function Footer({ className }: FooterProps) {
           </div>
           <div className="grid grid-flow-col gap-[64px] py-10">
             <div className="grid h-full grid-flow-row gap-[12px]">
-              <h1 className="font-SpaceGrotesk text-[10px] font-medium  uppercase text-[#e3e5e8]/[0.36]">
+              <h1 className="font-visuelt text-[11px] font-medium uppercase  tracking-[0.3px] text-[#e3e5e8]/[0.4]">
                 Company
               </h1>
               <Link href="/about" legacyBehavior passHref>
@@ -61,7 +61,7 @@ export default function Footer({ className }: FooterProps) {
               </Link>
             </div>
             <div className="grid grid-flow-row  gap-[12px]">
-              <h1 className="font-SpaceGrotesk text-[10px] font-medium  uppercase text-[#e3e5e8]/[0.36]">
+              <h1 className="font-visuelt text-[11px] font-medium uppercase  tracking-[0.3px] text-[#e3e5e8]/[0.4]">
                 Resources
               </h1>
               <Link href="/support" legacyBehavior passHref>
@@ -84,7 +84,7 @@ export default function Footer({ className }: FooterProps) {
               </Link>
             </div>
             <div className=" grid h-full  grid-flow-row justify-items-start gap-[12px]">
-              <h1 className="font-SpaceGrotesk text-[10px] font-medium  uppercase text-[#e3e5e8]/[0.36]">
+              <h1 className="font-visuelt text-[11px] font-medium uppercase  tracking-[0.3px] text-[#e3e5e8]/[0.4]">
                 App
               </h1>
               <Link href="/web" legacyBehavior passHref>
@@ -105,7 +105,7 @@ export default function Footer({ className }: FooterProps) {
               <a className="cursor-pointer font-moderat text-[13px] text-[#e3e5e8]/[0.72]"> </a>
             </div>
             <div className="grid h-full  grid-flow-row items-start justify-start justify-items-start gap-[12px]">
-              <h1 className="font-SpaceGrotesk text-[10px] font-medium  uppercase text-[#e3e5e8]/[0.36]">
+              <h1 className="font-visuelt text-[11px] font-medium uppercase  tracking-[0.3px] text-[#e3e5e8]/[0.4]">
                 Solutions
               </h1>
               <Link href="/advertising" legacyBehavior passHref>
