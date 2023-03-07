@@ -141,27 +141,27 @@ export default function Header({ className }: HeaderProps) {
                 </NavigationMenuItem>
                 <Separator orientation="vertical"></Separator>
                 <NavigationMenuItem>
-                  <Link href="/dashboard" legacyBehavior passHref>
+                  <Link href="/podcast/category/health" passHref>
                     <NavigationMenuLink>Health</NavigationMenuLink>
                   </Link>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                  <Link href="/dashboard" legacyBehavior passHref>
+                  <Link href="/podcast/category/relationships" passHref>
                     <NavigationMenuLink>Relationships</NavigationMenuLink>
                   </Link>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                  <Link href="/dashboard" legacyBehavior passHref>
+                  <Link href="/podcast/category/conversations" passHref>
                     <NavigationMenuLink>Conversations</NavigationMenuLink>
                   </Link>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                  <Link href="/dashboard" legacyBehavior passHref>
+                  <Link href="/podcast/category/entrepreneurship" passHref>
                     <NavigationMenuLink>Entrepreneurship</NavigationMenuLink>
                   </Link>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                  <Link href="/dashboard" legacyBehavior passHref>
+                  <Link href="/podcast/category/finance" passHref>
                     <NavigationMenuLink>Finance</NavigationMenuLink>
                   </Link>
                 </NavigationMenuItem>

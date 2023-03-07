@@ -1,14 +1,11 @@
-'use client';
-
 import Card from 'components/common/Card';
 
-export default function DashboardPage() {
+export default function ForYouPage() {
   return (
     <>
-      <div className="relative z-50 mx-auto mt-[120px] min-h-[800px] max-w-[1250px]">
-        <div className="grid grid-flow-col gap-2">
-          <Card></Card>
-          <Card></Card>
+      <div className="relative z-50 mx-auto mt-[80px] min-h-[800px] max-w-[1300px]">
+        <div className="grid w-full grid-flow-col grid-cols-5 gap-[100px]">
+          <Card title="Trending Episodes" className="col-span-5 grid"></Card>
         </div>
       </div>
     </>
