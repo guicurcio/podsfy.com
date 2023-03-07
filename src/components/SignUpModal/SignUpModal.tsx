@@ -1,16 +1,8 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import {
-  NhostProvider,
-  useAuthenticated,
-  useSignUpEmailPassword,
-  useUserData,
-} from '@nhost/nextjs';
 import Form from 'components/Form/Form';
-import { nhost } from 'lib/setupBackendConfig';
 import { useRouter } from 'next/navigation';
-import { useEffect, useMemo, useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { twMerge } from 'tailwind-merge';
 import Button from 'ui/components/Button';
@@ -21,7 +13,7 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
+  DialogTrigger
 } from 'ui/components/Dialog';
 import { Input } from 'ui/components/Input';
 import Label from 'ui/components/Label';
@@ -29,7 +21,7 @@ import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
-  TooltipTrigger,
+  TooltipTrigger
 } from 'ui/components/Tooltip';
 import * as z from 'zod';
 

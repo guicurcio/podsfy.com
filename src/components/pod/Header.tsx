@@ -135,7 +135,7 @@ export default function Header({ className }: HeaderProps) {
                   </Link>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                  <Link href="/dashboard" legacyBehavior passHref>
+                  <Link href="/charts" legacyBehavior passHref>
                     <NavigationMenuLink>Top Charts</NavigationMenuLink>
                   </Link>
                 </NavigationMenuItem>
@@ -169,10 +169,7 @@ export default function Header({ className }: HeaderProps) {
             </NavigationMenu>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button
-                  variant="ghost"
-                  className=" relative h-7 w-7 rounded-full"
-                >
+                <Button variant="ghost" className=" relative h-7 w-7 rounded-full">
                   <Avatar className="absolute h-7 w-7">
                     <AvatarImage src="../bg" alt="@guicurcio" />
                   </Avatar>

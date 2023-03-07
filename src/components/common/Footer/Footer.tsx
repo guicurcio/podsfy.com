@@ -18,78 +18,72 @@ export default function Footer({ className }: FooterProps) {
   return (
     <div
       className={twMerge(
-        'bg-[#0D0E12] border-t border-white border-opacity-5 -pt-[10px]',
-        className
+        '-pt-[10px] border-t border-white border-opacity-5 bg-[#0D0E12]',
+        className,
       )}
     >
-      <div className="flex flex-col justify-start items-start relative px-2 max-w-[1200px] mx-auto">
-        <div className="grid grid-flow-col place-content-between w-full ">
+      <div className="relative mx-auto flex max-w-[1200px] flex-col items-start justify-start px-2">
+        <div className="grid w-full grid-flow-col place-content-between ">
           <div className="py-6">
             <a
               className={mergeClasses(
-                'font-SpaceGrotesk py-2 text-[#CDCDCD] px-3  cursor-pointer tracking-[-0.08em] text-[30px] font-bold'
+                'cursor-pointer py-2 px-3 font-SpaceGrotesk  text-[30px] font-bold tracking-[-0.08em] text-[#CDCDCD]',
               )}
             >
               podsfy
             </a>
           </div>
           <div className="grid grid-flow-col gap-[64px] py-10">
-            <div className="grid grid-flow-row gap-[12px] h-full">
-              <h1 className="text-[10px] font-SpaceGrotesk font-medium  uppercase text-[#e3e5e8]/[0.36]">
+            <div className="grid h-full grid-flow-row gap-[12px]">
+              <h1 className="font-SpaceGrotesk text-[10px] font-medium  uppercase text-[#e3e5e8]/[0.36]">
                 Company
               </h1>
-              <p className="text-[13px] font-moderat text-[#e3e5e8]/[0.72]">About</p>
-              <p className="text-[13px] font-moderat text-[#e3e5e8]/[0.72]">Blog</p>
-              <p className="text-[13px] font-moderat  text-[#e3e5e8]/[0.72]">Careers</p>
-              <p className="text-[13px] font-moderat  text-[#e3e5e8]/[0.72]">Newsroom</p>
+              <p className="font-moderat text-[13px] text-[#e3e5e8]/[0.72]">About</p>
+              <p className="font-moderat text-[13px] text-[#e3e5e8]/[0.72]">Blog</p>
+              <p className="font-moderat text-[13px]  text-[#e3e5e8]/[0.72]">Careers</p>
+              <p className="font-moderat text-[13px]  text-[#e3e5e8]/[0.72]">Newsroom</p>
             </div>
             <div className=" grid grid-flow-row  gap-[12px]">
-              <h1 className="text-[10px] font-SpaceGrotesk font-medium  uppercase text-[#e3e5e8]/[0.36]">
+              <h1 className="font-SpaceGrotesk text-[10px] font-medium  uppercase text-[#e3e5e8]/[0.36]">
                 Resources
               </h1>
-              <p className="text-[13px] font-moderat text-[#e3e5e8]/[0.72]">Support</p>
-              <p className="text-[13px] font-moderat text-[#e3e5e8]/[0.72]">FAQ</p>
-              <p className="text-[13px] font-moderat  text-[#e3e5e8]/[0.72]">
-                Contact Us
-              </p>
-              <p className="text-[13px] font-moderat  text-[#e3e5e8]/[0.72]">
-                Contribute
-              </p>
+              <p className="font-moderat text-[13px] text-[#e3e5e8]/[0.72]">Support</p>
+              <p className="font-moderat text-[13px] text-[#e3e5e8]/[0.72]">FAQ</p>
+              <p className="font-moderat text-[13px]  text-[#e3e5e8]/[0.72]">Contact Us</p>
+              <p className="font-moderat text-[13px]  text-[#e3e5e8]/[0.72]">Contribute</p>
             </div>
-            <div className=" grid grid-flow-row  gap-[12px] h-full justify-items-start">
-              <h1 className="text-[10px] font-SpaceGrotesk font-medium  uppercase text-[#e3e5e8]/[0.36]">
+            <div className=" grid h-full  grid-flow-row justify-items-start gap-[12px]">
+              <h1 className="font-SpaceGrotesk text-[10px] font-medium  uppercase text-[#e3e5e8]/[0.36]">
                 App
               </h1>
-              <p className="text-[13px] font-moderat text-[#e3e5e8]/[0.72]">Web</p>
-              <p className="text-[13px] font-moderat text-[#e3e5e8]/[0.72]">Mobile</p>
-              <p className="text-[13px] font-moderat text-[#e3e5e8]/[0.72]">Podsfy PRO</p>
+              <p className="font-moderat text-[13px] text-[#e3e5e8]/[0.72]">Web</p>
+              <p className="font-moderat text-[13px] text-[#e3e5e8]/[0.72]">Mobile</p>
+              <p className="font-moderat text-[13px] text-[#e3e5e8]/[0.72]">Podsfy PRO</p>
             </div>
-            <div className="grid grid-flow-row  gap-[12px] h-full justify-items-start items-start justify-start">
-              <h1 className="text-[10px] font-SpaceGrotesk font-medium  uppercase text-[#e3e5e8]/[0.36]">
+            <div className="grid h-full  grid-flow-row items-start justify-start justify-items-start gap-[12px]">
+              <h1 className="font-SpaceGrotesk text-[10px] font-medium  uppercase text-[#e3e5e8]/[0.36]">
                 Solutions
               </h1>
-              <p className="text-[13px] font-moderat text-[#e3e5e8]/[0.72]">
-                Advertising
-              </p>
-              <p className="text-[13px] font-moderat text-[#e3e5e8]/[0.72]">Investing</p>
+              <p className="font-moderat text-[13px] text-[#e3e5e8]/[0.72]">Advertising</p>
+              <p className="font-moderat text-[13px] text-[#e3e5e8]/[0.72]">Investing</p>
             </div>
           </div>
         </div>
-        <div className=" w-full h-px bg-[#2b303b]/40 mb-6" />
-        <div className="justify-center items-center  grid grid-flow-row gap-2">
+        <div className=" mb-6 h-px w-full bg-[#2b303b]/40" />
+        <div className="grid grid-flow-row  items-center justify-center gap-2">
           <div className=" grid grid-flow-col gap-4">
             <p className=" text-[11px]  text-[#535965]">Privacy Policy</p>
             <p className="text-[11px]  text-[#535965]">Responsible Disclosure</p>
             <p className="text-[11px]  text-[#535965]">Terms of use</p>
           </div>
-          <div className="flex justify-start items-start  gap-4 pt-[5.375px] pb-[4.046875px]">
+          <div className="flex items-start justify-start  gap-4 pt-[5.375px] pb-[4.046875px]">
             <svg
               width={17}
               height={17}
               viewBox="0 0 17 17"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              className=" w-4 h-4 relative"
+              className=" relative h-4 w-4"
               preserveAspectRatio="none"
             >
               <g clip-path="url(#clip0_115_7626)">
@@ -99,14 +93,9 @@ export default function Footer({ className }: FooterProps) {
                 />
               </g>
               <defs>
-                <clippath id="clip0_115_7626">
-                  <rect
-                    width={16}
-                    height={16}
-                    fill="white"
-                    transform="translate(0.0625 0.375)"
-                  />
-                </clippath>
+                <clipPath id="clip0_115_7626">
+                  <rect width={16} height={16} fill="white" transform="translate(0.0625 0.375)" />
+                </clipPath>
               </defs>
             </svg>
             <svg
@@ -115,7 +104,7 @@ export default function Footer({ className }: FooterProps) {
               viewBox="0 0 17 17"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              className=" w-4 h-4 relative"
+              className=" relative h-4 w-4"
               preserveAspectRatio="none"
             >
               <g clip-path="url(#clip0_115_7629)">
@@ -125,26 +114,20 @@ export default function Footer({ className }: FooterProps) {
                 />
               </g>
               <defs>
-                <clippath id="clip0_115_7629">
-                  <rect
-                    width={16}
-                    height={16}
-                    fill="white"
-                    transform="translate(0.0625 0.375)"
-                  />
-                </clippath>
+                <clipPath id="clip0_115_7629">
+                  <rect width={16} height={16} fill="white" transform="translate(0.0625 0.375)" />
+                </clipPath>
               </defs>
             </svg>
           </div>
         </div>
-        <p className=" w-[684.21px]  text-[11px] font-medium text-[#3f4550] font-moderat mx-auto text-center ">
-          Copyright © 2023 Podsfy.com part of Holder Inc. <br></br> All rights reserved.
-          All images and content displayed on this website are the property of their
-          respective owners, unless otherwise noted. Use of third-party logos and images
-          on this website does not imply endorsement, sponsorship, or affiliation with
-          Podsfy.com. If you believe that any content on this website infringes upon your
-          intellectual property rights, please contact us immediately to resolve the
-          issue.
+        <p className=" mx-auto  w-[684.21px] text-center font-moderat text-[11px] font-medium text-[#3f4550] ">
+          Copyright © 2023 Podsfy.com part of Holder Inc. <br></br> All rights reserved. All images
+          and content displayed on this website are the property of their respective owners, unless
+          otherwise noted. Use of third-party logos and images on this website does not imply
+          endorsement, sponsorship, or affiliation with Podsfy.com. If you believe that any content
+          on this website infringes upon your intellectual property rights, please contact us
+          immediately to resolve the issue.
         </p>
       </div>
     </div>
