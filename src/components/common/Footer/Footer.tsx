@@ -64,20 +64,20 @@ export default function Footer({ className }: FooterProps) {
               <h1 className="font-SpaceGrotesk text-[10px] font-medium  uppercase text-[#e3e5e8]/[0.36]">
                 Resources
               </h1>
-              <Link href="/about" legacyBehavior passHref>
+              <Link href="/support" legacyBehavior passHref>
                 <a className="cursor-pointer font-moderat text-[13px] text-[#e3e5e8]/[0.72]">
                   Support
                 </a>
               </Link>
-              <Link href="/blog" legacyBehavior passHref>
+              <Link href="/faq" legacyBehavior passHref>
                 <a className="cursor-pointer font-moderat text-[13px] text-[#e3e5e8]/[0.72]">FAQ</a>
               </Link>
-              <Link href="/careers" legacyBehavior passHref>
+              <Link href="/contact-us" legacyBehavior passHref>
                 <a className="cursor-pointer font-moderat text-[13px] text-[#e3e5e8]/[0.72]">
                   Contact Us
                 </a>
               </Link>
-              <Link href="/newsroom" legacyBehavior passHref>
+              <Link href="/contribute" legacyBehavior passHref>
                 <a className="cursor-pointer font-moderat text-[13px] text-[#e3e5e8]/[0.72]">
                   Contribute
                 </a>
@@ -87,15 +87,15 @@ export default function Footer({ className }: FooterProps) {
               <h1 className="font-SpaceGrotesk text-[10px] font-medium  uppercase text-[#e3e5e8]/[0.36]">
                 App
               </h1>
-              <Link href="/about" legacyBehavior passHref>
+              <Link href="/web" legacyBehavior passHref>
                 <a className="cursor-pointer font-moderat text-[13px] text-[#e3e5e8]/[0.72]">Web</a>
               </Link>
-              <Link href="/blog" legacyBehavior passHref>
+              <Link href="/mobile" legacyBehavior passHref>
                 <a className="cursor-pointer font-moderat text-[13px] text-[#e3e5e8]/[0.72]">
                   Mobile
                 </a>
               </Link>
-              <Link href="/careers" legacyBehavior passHref>
+              <Link href="/pricing" legacyBehavior passHref>
                 <a className="cursor-pointer font-moderat text-[13px] text-[#e3e5e8]/[0.72]">
                   Podsfy PRO
                 </a>
@@ -108,17 +108,17 @@ export default function Footer({ className }: FooterProps) {
               <h1 className="font-SpaceGrotesk text-[10px] font-medium  uppercase text-[#e3e5e8]/[0.36]">
                 Solutions
               </h1>
-              <Link href="/about" legacyBehavior passHref>
+              <Link href="/advertising" legacyBehavior passHref>
                 <a className="cursor-pointer font-moderat text-[13px] text-[#e3e5e8]/[0.72]">
                   Advertising
                 </a>
               </Link>
-              <Link href="/blog" legacyBehavior passHref>
+              <Link href="/investing" legacyBehavior passHref>
                 <a className="cursor-pointer font-moderat text-[13px] text-[#e3e5e8]/[0.72]">
                   Investing
                 </a>
               </Link>
-              <Link href="/blog" legacyBehavior passHref>
+              <Link href="/parent-company" legacyBehavior passHref>
                 <a className="cursor-pointer font-moderat text-[13px] text-[#e3e5e8]/[0.72]">
                   Parent Company
                 </a>
