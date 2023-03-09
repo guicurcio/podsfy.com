@@ -12,7 +12,7 @@ import {
   Settings,
   UserIcon,
   UserPlus,
-  Users,
+  Users
 } from 'lucide-react';
 import Link from 'next/link';
 import { twMerge } from 'tailwind-merge';
@@ -30,13 +30,13 @@ import {
   DropdownMenuSub,
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
-  DropdownMenuTrigger,
+  DropdownMenuTrigger
 } from 'ui/components/Dropdown';
 import {
   NavigationMenu,
   NavigationMenuItem,
   NavigationMenuLink,
-  NavigationMenuList,
+  NavigationMenuList
 } from 'ui/components/NavigationMenu/NavigationMenu';
 import Separator from 'ui/components/Separator';
 import mergeClasses from 'utils/mergeClasses/mergeClasses';
@@ -89,12 +89,12 @@ export default function Header({ className }: HeaderProps) {
   return (
     <div
       className={twMerge(
-        'relative z-50 h-full w-full border-b border-white border-opacity-5 bg-[#0D0E12] bg-opacity-100',
+        'relative z-50 h-full w-full border-b border-gray-700 border-opacity-25 bg-[#0D0E12] bg-opacity-100',
         className,
       )}
     >
       <div className="mx-auto w-full max-w-[1350px]">
-        <div className="mx-auto grid grid-flow-row items-center gap-2">
+        <div className="mx-auto grid grid-flow-row items-center gap-2 pr-[90px] pl-[60px]">
           <div className="grid grid-flow-col place-content-between py-1.5">
             <Link href="/" legacyBehavior passHref>
               <a

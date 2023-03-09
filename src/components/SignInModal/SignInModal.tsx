@@ -11,16 +11,11 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger
+  DialogTrigger,
 } from 'ui/components/Dialog';
 import { Input } from 'ui/components/Input';
 import Label from 'ui/components/Label';
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger
-} from 'ui/components/Tooltip';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from 'ui/components/Tooltip';
 import * as z from 'zod';
 
 const schema = z.object({
@@ -62,10 +57,7 @@ export function SignInModalForm({ className }: SignInModalProps) {
 
   const { register, formState } = form;
 
-  const handleSignInFormSubmit = async ({
-    email,
-    password,
-  }: SignInModalFormValues) => {
+  const handleSignInFormSubmit = async ({ email, password }: SignInModalFormValues) => {
     try {
       console.log('run');
       // const user = await signInEmailPassword(email, password);
@@ -97,11 +89,7 @@ export function SignInModalForm({ className }: SignInModalProps) {
                   <TooltipProvider>
                     <Tooltip>
                       <TooltipTrigger asChild tabIndex={-1} autoFocus={false}>
-                        <Button
-                          className="h-[65px] w-[75px]"
-                          tabIndex={-1}
-                          autoFocus={false}
-                        >
+                        <Button className="h-[65px] w-[75px]" tabIndex={-1} autoFocus={false}>
                           <img src="/images/google.svg" alt="Google" />
                         </Button>
                       </TooltipTrigger>
@@ -125,11 +113,7 @@ export function SignInModalForm({ className }: SignInModalProps) {
                     </Tooltip>
                     <Tooltip>
                       <TooltipTrigger asChild tabIndex={-1} autoFocus={false}>
-                        <Button
-                          className="h-[65px] w-[75px]"
-                          tabIndex={-1}
-                          autoFocus={false}
-                        >
+                        <Button className="h-[65px] w-[75px]" tabIndex={-1} autoFocus={false}>
                           <img src="/images/google.svg" alt="Google" />
                         </Button>
                       </TooltipTrigger>
@@ -139,16 +123,14 @@ export function SignInModalForm({ className }: SignInModalProps) {
                 </div>
                 <div className="mx-auto grid w-fit  grid-flow-col items-center justify-items-center gap-x-2">
                   <div className="h-[1px] w-[100px] bg-white/20 " />
-                  <h1 className="self-center font-visuelt text-sm uppercase">
-                    or
-                  </h1>
+                  <h1 className="self-center font-visuelt text-sm uppercase">or</h1>
                   <div className="h-[1px] w-[100px] bg-white/20 " />
                 </div>
                 <form className="grid gap-4">
                   <div className="grid gap-4">
                     <div className="grid grid-flow-row items-center gap-2">
                       <Label htmlFor="email" className="text-left">
-                        Email or Username
+                        Email
                       </Label>
 
                       <Input
@@ -188,14 +170,14 @@ export function SignInModalForm({ className }: SignInModalProps) {
               </div>
 
               <DialogFooter className="mx-auto grid w-full grid-flow-row gap-2">
-                <div className="grid w-full grid-flow-row gap-[2px]">
+                <Button variant="subtle" className="mx-auto grid w-fit grid-flow-col gap-[5px]">
                   <p className="text-center text-sm text-white/70">
                     Don't have an account already?
                   </p>
-                  <button className="mx-auto flex w-fit text-center font-visuelt text-sm font-medium text-white">
+                  <button className="mx-auto flex w-fit self-center text-center align-middle font-visuelt text-sm font-medium text-white">
                     Sign Up
                   </button>
-                </div>
+                </Button>
               </DialogFooter>
             </DialogContent>
           </Dialog>

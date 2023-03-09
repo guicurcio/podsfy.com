@@ -1,6 +1,3 @@
-import Link from 'next/link';
-import { twMerge } from 'tailwind-merge';
-import PodComment from '../PodComment';
 import PodEpisode from '../PodEpisode/PodEpisode';
 
 /**
@@ -46,15 +43,15 @@ export default function PodEpisodes({
   episodes = [],
 }: PodEpisodesProps) {
   return (
-    <div className="grid grid-flow-row justify-start  items-start gap-1 py-2 px-4 w-full rounded-sm bg-[#0a0a0b] border border-[#252525] border-opacity-[20%]">
-      <div className="grid grid-flow-col pt-2 justify-start gap-2 items-center w-full">
+    <div className="grid w-full grid-flow-row   gap-1 rounded-sm   border-[#252525] border-opacity-[20%] bg-[#0a0a0b] py-2 px-4">
+      <div className="grid w-full grid-flow-col items-center justify-start gap-2 pt-2">
         <svg
           width={16}
           height={16}
           viewBox="0 0 16 16"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="w-[16px] h-[16px] brightness-200 border-[#252525] border-opacity-[30%]"
+          className="h-[16px] w-[16px] border-[#252525] border-opacity-[30%] brightness-200"
           preserveAspectRatio="none"
         >
           <g clip-path="url(#clip0_2_693)">
@@ -66,14 +63,14 @@ export default function PodEpisodes({
             </clipPath>
           </defs>
         </svg>
-        <p className="text-[13.5px] self-center align-middle font-medium font-moderat text-left text-[#a5a5a5]/80 antialiased tracking-[-0.03em]">
+        <p className="self-center text-left align-middle font-moderat text-[13.5px] font-medium tracking-[-0.03em] text-[#a5a5a5]/80 antialiased">
           {title}
         </p>
       </div>
-      <div className="grid grid-flow-row gap-6 divide-y-[1px]  divide-fondy/50 pb-2 w-full">
+      <div className="grid w-full grid-flow-row gap-6 divide-y-[1px]  divide-fondy/50 py-3">
         {episodes.length === 0 && (
           <div className="pt-2">
-            <p className="text-[14px] self-center align-middle font-medium font-moderat text-left text-[#a5a5a5]/60 antialiased tracking-[-0.03em]">
+            <p className="self-center text-left align-middle font-moderat text-[14px] font-medium tracking-[-0.03em] text-[#a5a5a5]/60 antialiased">
               {`${title} not found`}
             </p>
           </div>

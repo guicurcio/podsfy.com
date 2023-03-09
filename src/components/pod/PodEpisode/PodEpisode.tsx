@@ -35,7 +35,7 @@ export default function PodEpisode({
 }: PodEpisodeProps) {
   return (
     <div className={twMerge("grid grid-flow-col gap-2 pt-4 w-full", className)}>
-      <div className="grid grid-flow-row gap-4 justify-start items-start wf">
+      <div className="grid grid-flow-row gap-4 justify-start items-start">
         <div className="grid grid-flow-col items-center gap-3">
           <img
             src="/pods/tunein.webp"

@@ -123,8 +123,8 @@ export default async function PodcastPage({ params }) {
                   description={staticPodcastData.description}
                   podcastHostName={staticPodcastData?.podcastHost?.name}
                 ></PodDetails>
-                <div className="grid w-full grid-flow-row items-start justify-start gap-12">
-                  <div className="grid w-full grid-flow-row gap-4">
+                <div className="grid w-full grid-flow-row gap-12">
+                  <div className="grid w-full grid-flow-row gap-[32px]">
                     <PodEpisodes
                       title="Best Episodes"
                       episodes={staticPodcastData.episodes}

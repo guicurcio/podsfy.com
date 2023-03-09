@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import { twMerge } from 'tailwind-merge';
 
 /**
@@ -39,11 +38,12 @@ export default function PodDetails({
           {title}
         </h1>
         {podcastHostName && (
-          <Link href={`/people/${podcastHostName.replace(/ /g, '-').toLocaleLowerCase()}`}>
-            <h2 className="mt-[-8px] cursor-pointer font-moderat text-[14px] text-[#fff] text-opacity-[50%]">
-              By <span className="underline">{podcastHostName}</span>
-            </h2>
-          </Link>
+          // <Link href={`/people/${podcastHostName.replace(/ /g, '-').toLocaleLowerCase()}`}>
+          // cursor-pointer
+          <h2 className="mt-[-8px]  font-moderat text-[14px] text-[#fff] text-opacity-[50%]">
+            By <span className="underline">{podcastHostName}</span>
+          </h2>
+          // </Link>
         )}
       </div>
       <p className="ml-[2px] mt-[-2px] font-visuelt text-[15px] font-normal leading-[25px] tracking-[0.5px] text-dimmed2 text-opacity-80  antialiased">
