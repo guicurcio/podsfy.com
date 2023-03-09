@@ -39,37 +39,32 @@ export default function PodBehind({
 }: PodBehindProps) {
   return (
     <div
-      className={twMerge(
-        'justify-center items-center py-1 w-full grid grid-flow-row gap-2',
-        className
-      )}
+      className={twMerge('grid w-full grid-flow-row  gap-2  py-1', className)}
     >
-      <div className="grid grid-flow-col gap-2 py-2">
+      <div className="grid grid-flow-col items-center justify-items-center  gap-2 py-2 ">
         <button
           onClick={() => {
             toast.custom((t) => (
               <div
                 className={`${
                   t.visible ? 'animate-enter' : 'animate-leave'
-                } max-w-sm w-full bg-black bg-opacity-[80%] backdrop-blur-[1px] backdrop-brightness-[75%] shadow-lg rounded-lg pointer-events-auto flex ring-1 ring-black ring-opacity-5`}
+                } pointer-events-auto flex w-full max-w-sm rounded-lg bg-black bg-opacity-[80%] shadow-lg ring-1 ring-black ring-opacity-5 backdrop-blur-[1px] backdrop-brightness-[75%]`}
               >
-                <div className="flex-1 w-0 p-3">
+                <div className="w-0 flex-1 p-3">
                   <div className="flex items-start">
                     <div className="flex-shrink-0 pt-0.5">
                       <img className="h-10 w-10 " src="/podcastcover.png" alt="" />
                     </div>
                     <div className="ml-3 flex-1">
                       <p className="text-sm font-medium text-white">{podcastTitle}</p>
-                      <p className="mt-1 text-sm text-white text-opacity-75">
-                        Saved to Favorites
-                      </p>
+                      <p className="mt-1 text-sm text-white text-opacity-75">Saved to Favorites</p>
                     </div>
                   </div>
                 </div>
               </div>
             ));
           }}
-          className="grid grid-flow-row h-[55px] rounded-md w-[70px] gap-1 p-2 hover:backdrop-brightness-[75%] cursor-pointer hover:bg-fondy hover:bg-opacity-[90%]"
+          className="grid h-[55px] w-[70px] cursor-pointer grid-flow-row gap-1 rounded-md p-2 hover:bg-fondy hover:bg-opacity-[90%] hover:backdrop-brightness-[75%]"
         >
           <svg
             width="15"
@@ -84,9 +79,9 @@ export default function PodBehind({
               fill="currentColor"
             ></path>
           </svg>
-          <p className="text-[13px] text-center text-[#d9e8ed]">Favorite</p>
+          <p className="text-center text-[13px] text-[#d9e8ed]">Favorite</p>
         </button>
-        <div className="grid grid-flow-row h-[55px] rounded-md w-[70px] gap-1 p-2 hover:backdrop-brightness-[75%] cursor-pointer hover:bg-fondy hover:bg-opacity-[90%]">
+        <div className="grid h-[55px] w-[70px] cursor-pointer grid-flow-row gap-1 rounded-md p-2 hover:bg-fondy hover:bg-opacity-[90%] hover:backdrop-brightness-[75%]">
           <svg
             width="15"
             height="15"
@@ -102,9 +97,9 @@ export default function PodBehind({
               clip-rule="evenodd"
             ></path>
           </svg>
-          <p className="text-[13px] text-center text-[#d9e8ed]">PodList</p>
+          <p className="text-center text-[13px] text-[#d9e8ed]">PodList</p>
         </div>
-        <div className="grid grid-flow-row h-[55px] rounded-md w-[70px] gap-1 p-2 hover:backdrop-brightness-[75%] cursor-pointer hover:bg-fondy hover:bg-opacity-[90%]">
+        <div className="grid h-[55px] w-[70px] cursor-pointer grid-flow-row gap-1 rounded-md p-2 hover:bg-fondy hover:bg-opacity-[90%] hover:backdrop-brightness-[75%]">
           <svg
             width="15"
             height="15"
@@ -118,7 +113,7 @@ export default function PodBehind({
               fill="currentColor"
             ></path>
           </svg>
-          <p className="text-[13px] text-center text-[#d9e8ed]">Like</p>
+          <p className="text-center text-[13px] text-[#d9e8ed]">Like</p>
         </div>
         {/* <div className="grid grid-flow-row h-[55px] rounded-md w-[70px] gap-1 p-2 hover:backdrop-brightness-[75%] cursor-pointer hover:bg-fondy hover:bg-opacity-[90%]">
      <svg
@@ -142,23 +137,23 @@ export default function PodBehind({
     </div> */}
       </div>
       {/* <div className=" w-[93%] mx-auto border-t border-[#10161d]/60" /> */}
-      <div className="grid grid-flow-row gap-3 py-4 border-y border-[#10161d]/60">
+      <div className="grid grid-flow-row gap-3 border-y border-[#10161d]/60 py-4">
         {rating && (
-          <div className="grid grid-flow-col gap-x-4 items-start justify-start px-4">
-            <p className=" text-[14px] font-medium text-left uppercase text-white text-opacity-60 font-visuelt">
-              Rating
+          <div className="grid grid-flow-col items-start justify-start gap-x-4 ">
+            <p className=" text-left font-visuelt text-[16px] font-medium uppercase text-white text-opacity-60">
+              Rating:
             </p>
-            <p className="text-[12px] space-x-1  font-normal align-middle truncate self-center text-white/70 text-opacity-60 font-visuelt">
+            <p className="space-x-1 self-center  truncate align-middle font-visuelt text-[14px] font-normal text-white/70 text-opacity-60">
               {rating}/10
             </p>
           </div>
         )}
         {genre && (
-          <div className="grid grid-flow-col gap-x-4 items-start justify-start px-4">
-            <p className=" text-[14px] font-medium text-left uppercase text-white text-opacity-60 font-visuelt">
-              Genre
+          <div className="grid grid-flow-col items-start justify-start gap-x-4">
+            <p className=" text-left font-visuelt text-[16px] font-medium uppercase text-white text-opacity-60">
+              Genre:
             </p>
-            <p className="text-[12px] space-x-1  font-normal align-middle truncate self-center text-white/70 text-opacity-60 font-visuelt">
+            <p className="space-x-1 self-center  truncate align-middle font-visuelt text-[14px] font-normal text-white/70 text-opacity-60">
               {genre.split(',').map((str, i) => (
                 <span className="capitalize">
                   {str}

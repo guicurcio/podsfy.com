@@ -3,7 +3,7 @@
  */
 export default function PodStreaming() {
   return (
-    <div className="grid grid-flow-row justify-start items-start gap-4 py-2 px-4 rounded-sm bg-[#0a0a0b]/[0.25] border border-[#252525] border-opacity-[20%]">
+    <div className="grid grid-flow-row justify-start items-start gap-4 py-2 px-4 rounded-sm bg-[#0a0a0b] border border-[#252525] border-opacity-[20%]">
       <div className="grid grid-flow-col pt-2 justify-start gap-2 items-center">
         <svg
           width={16}

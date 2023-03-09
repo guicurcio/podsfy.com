@@ -10,7 +10,7 @@ import {
   CommandEmpty,
   CommandGroup,
   CommandInput,
-  CommandItem
+  CommandItem,
 } from 'ui/components/Command';
 import { Popover, PopoverContent, PopoverTrigger } from 'ui/components/Popover';
 import mergeClasses from 'utils/mergeClasses/mergeClasses';
@@ -31,11 +31,10 @@ export interface PodcastSearchProps extends PopoverProps {
 const Search = ({ podcasts, className, ...props }: PodcastSearchProps) => {
   const [open, setOpen] = useState(false);
   const [selectedPodcast, setSelectedPodcast] = useState<Podcast>();
-  const router = useRouter();
 
   return (
     <Popover open={open} onOpenChange={setOpen} {...props}>
-      <PopoverTrigger asChild>
+      <PopoverTrigger className="py-2" asChild>
         <Button
           role="combobox"
           aria-label="Search podcasts, episodes, guests, notes..."
@@ -43,6 +42,7 @@ const Search = ({ podcasts, className, ...props }: PodcastSearchProps) => {
           className={mergeClasses(
             'group h-10 self-center py-2 px-3 align-middle',
             ' justify-between font-visuelt text-[14px] font-medium text-white/80',
+            'w-[630px]',
             className,
           )}
         >

@@ -93,7 +93,7 @@ export default function Header({ className }: HeaderProps) {
         className,
       )}
     >
-      <div className="mx-auto w-full max-w-[1300px]">
+      <div className="mx-auto w-full max-w-[1350px]">
         <div className="mx-auto grid grid-flow-row items-center gap-2">
           <div className="grid grid-flow-col place-content-between py-1.5">
             <Link href="/" legacyBehavior passHref>
@@ -105,7 +105,7 @@ export default function Header({ className }: HeaderProps) {
                 podsfy
               </a>
             </Link>
-            <Search podcasts={podcasts} className="w-[650px]"></Search>
+            <Search podcasts={podcasts} className=""></Search>
             <SignInModal></SignInModal>
           </div>
           <div className="mx-auto grid w-[1200px]  max-w-[1200px] grid-flow-col   items-center justify-center pb-3">
@@ -127,6 +127,11 @@ export default function Header({ className }: HeaderProps) {
                     <NavigationMenuLink>Top Charts</NavigationMenuLink>
                   </Link>
                 </NavigationMenuItem>
+                {/* <NavigationMenuItem>
+                  <Link href="/podcast/category/new" passHref>
+                    <NavigationMenuLink>New</NavigationMenuLink>
+                  </Link>
+                </NavigationMenuItem> */}
                 <Separator orientation="vertical"></Separator>
                 <NavigationMenuItem>
                   <Link href="/podcast/category/health" passHref>
@@ -151,6 +156,11 @@ export default function Header({ className }: HeaderProps) {
                 <NavigationMenuItem>
                   <Link href="/podcast/category/finance" passHref>
                     <NavigationMenuLink>Finance</NavigationMenuLink>
+                  </Link>
+                </NavigationMenuItem>
+                <NavigationMenuItem>
+                  <Link href="/podcast/category/serial" passHref>
+                    <NavigationMenuLink>Serial</NavigationMenuLink>
                   </Link>
                 </NavigationMenuItem>
               </NavigationMenuList>

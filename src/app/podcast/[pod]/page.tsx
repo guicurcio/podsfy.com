@@ -97,7 +97,7 @@ export default async function PodcastPage({ params }) {
         <div className=" relative z-50 mx-auto pt-[90px] backdrop-blur-[8px] backdrop-brightness-[60%] ">
           <div
             className="relative z-20 mx-auto  
-  max-w-[1200px] overflow-hidden rounded-[3px] border  border-sharper border-opacity-10  bg-[#0D0E12]  bg-opacity-[95%] py-[25px]  px-[20px] font-visuelt shadow-3xl backdrop-blur-[10px]
+  max-w-[1200px] overflow-hidden rounded-[6px] border  border-sharper border-opacity-10  bg-[#0D0E12]  bg-opacity-[95%] py-[25px]  px-[20px] font-visuelt shadow-3xl backdrop-blur-[10px]
         
         "
           >
@@ -117,7 +117,7 @@ export default async function PodcastPage({ params }) {
                   podcastTitle={staticPodcastData.title}
                 ></PodBehind>
               </div>
-              <div className="grid h-full w-[800px] grid-flow-row items-start  gap-4 pr-10">
+              <div className="grid h-full w-[800px] grid-flow-row items-start  gap-[32px] pr-10">
                 <PodDetails
                   title={staticPodcastData.title}
                   description={staticPodcastData.description}
@@ -136,7 +136,7 @@ export default async function PodcastPage({ params }) {
                     <PodStreaming></PodStreaming>
                   </div>
 
-                  <div className="grid grid-flow-row items-start justify-start gap-8">
+                  <div className="grid grid-flow-row items-start justify-start gap-[100px]">
                     <PodReviews
                       title={generateGoodTitleForReviews(staticPodcastData.title)}
                     ></PodReviews>
