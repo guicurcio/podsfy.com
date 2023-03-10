@@ -14,22 +14,24 @@ export interface PodSimilarProps {
    * @default ""
    */
   title?: string;
+  similarPodcasts?: any;
 }
 
 /**
  * PodSimilar Component
  */
-export default function PodSimilar({ className, title }: PodSimilarProps) {
+export default function PodSimilar({ className, title, similarPodcasts }: PodSimilarProps) {
+  console.log(similarPodcasts);
   return (
     <div className="grid grid-flow-row gap-2 py-2">
-      <div className="grid grid-flow-col justify-start gap-3 items-center px-4">
+      <div className="grid grid-flow-col items-center justify-start gap-3 px-4">
         <svg
           width={16}
           height={16}
           viewBox="0 0 16 16"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="w-[16px] h-[16px] brightness-200 border-[#252525] border-opacity-[30%]"
+          className="h-[16px] w-[16px] border-[#252525] border-opacity-[30%] brightness-200"
           preserveAspectRatio="none"
         >
           <g clip-path="url(#clip0_2_693)">
@@ -41,54 +43,23 @@ export default function PodSimilar({ className, title }: PodSimilarProps) {
             </clipPath>
           </defs>
         </svg>
-        <h2 className="text-[13.5px] self-center align-middle font-medium font-moderat text-left text-[#a5a5a5]/80 antialiased tracking-[-0.03em]">
+        <h2 className="self-center text-left align-middle font-moderat text-[13.5px] font-medium tracking-[-0.03em] text-[#a5a5a5]/80 antialiased">
           Similar Podcasts {title && `to`} {title}
         </h2>
       </div>
-      <div className="grid grid-flow-col mx-auto relative gap-[32px] py-[12px] border-t border-fondy/50">
-        <Link href="/podcast/call-her-daddy">
-          <img
-            src="/ab67706c0000bebbe74171c42b0069e80316ab7e.jpeg"
-            className="flex-grow-0 flex-shrink-0  h-[150px] rounded-[15px] object-cover border border-black cursor-pointer hover:scale-105 transition-all duration-500 ease-in-out"
-            style={{
-              boxShadow: '0px 4px 4px 0 rgba(0,0,0,0.28)',
-            }}
-          />
-        </Link>
-        <img
-          src="/images-(10).jpeg"
-          className="flex-grow-0 flex-shrink-0  h-[150px] rounded-[15px] object-cover border border-black cursor-pointer hover:scale-105 transition-all duration-500 ease-in-out"
-          style={{
-            boxShadow: '0px 4px 4px 0 rgba(0,0,0,0.28)',
-          }}
-        />
-        <Link href="/podcast/huberman-lab-podcast">
-          <img
-            src="/huberman-lab.jpeg"
-            className="flex-grow-0 flex-shrink-0  h-[150px] rounded-[15px] object-cover border border-black cursor-pointer hover:scale-105 transition-all duration-500 ease-in-out"
-            style={{
-              boxShadow: '0px 4px 4px 0 rgba(0,0,0,0.28)',
-            }}
-          />
-        </Link>
-        <Link href="/podcast/huberman-lab-podcast">
-          <img
-            src="/huberman-lab.jpeg"
-            className="flex-grow-0 flex-shrink-0  h-[150px] rounded-[15px] object-cover border border-black cursor-pointer hover:scale-105 transition-all duration-500 ease-in-out"
-            style={{
-              boxShadow: '0px 4px 4px 0 rgba(0,0,0,0.28)',
-            }}
-          />
-        </Link>
-        <Link href="/podcast/huberman-lab-podcast">
-          <img
-            src="/huberman-lab.jpeg"
-            className="flex-grow-0 flex-shrink-0  h-[150px] rounded-[15px] object-cover border border-black cursor-pointer hover:scale-105 transition-all duration-500 ease-in-out"
-            style={{
-              boxShadow: '0px 4px 4px 0 rgba(0,0,0,0.28)',
-            }}
-          />
-        </Link>
+      <div className="relative mx-auto grid grid-flow-col items-start justify-start gap-[32px] border-t border-fondy/50 py-[12px]">
+        {similarPodcasts &&
+          similarPodcasts.map((podcast) => (
+            <Link href={`/podcast/${podcast.slug}`}>
+              <img
+                src={`/${podcast.cover}`}
+                className="h-[150px] flex-shrink-0  flex-grow-0 cursor-pointer rounded-[15px] border border-black object-cover transition-all duration-500 ease-in-out hover:scale-105"
+                style={{
+                  boxShadow: '0px 4px 4px 0 rgba(0,0,0,0.28)',
+                }}
+              />
+            </Link>
+          ))}
       </div>
     </div>
   );

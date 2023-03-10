@@ -44,6 +44,13 @@ const getPodInfo = cache(async (pod: string) => {
       genre: true,
       rating: true,
       episodes: true,
+      similarPodcasts: {
+        select: {
+          title: true,
+          cover: true,
+          slug: true,
+        },
+      },
       podcastHost: {
         select: {
           name: true,
@@ -140,7 +147,12 @@ export default async function PodcastPage({ params }) {
                     <PodReviews
                       title={generateGoodTitleForReviews(staticPodcastData.title)}
                     ></PodReviews>
-                    <PodSimilar title={staticPodcastData.title}></PodSimilar>
+                    {staticPodcastData.similarPodcasts.length >= 1 && (
+                      <PodSimilar
+                        title={staticPodcastData.title}
+                        similarPodcasts={staticPodcastData.similarPodcasts}
+                      ></PodSimilar>
+                    )}
                     <PodGuests title={staticPodcastData.title}></PodGuests>
                   </div>
                 </div>

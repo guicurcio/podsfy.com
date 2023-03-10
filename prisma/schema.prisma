@@ -30,6 +30,8 @@ model Podcast {
   tags String?
   genre String?
   rating Int?
+  similarPodcasts        Podcast[] @relation("similarPodcasts")
+  similarPodcastsRelation Podcast[] @relation("similarPodcasts")
   @@index([slug])
 }
 

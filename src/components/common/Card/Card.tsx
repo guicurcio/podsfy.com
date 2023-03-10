@@ -23,6 +23,7 @@ export interface BlogComponentProps {
    * @todo: change.. too muich flow to pass down state.
    */
   descriptionClassname?: string;
+  children?: React.ReactNode;
 }
 
 /**
@@ -30,6 +31,7 @@ export interface BlogComponentProps {
  */
 export default function Card({
   className,
+  children,
   title = 'Trending Episodes',
   descriptionClassname = '',
 }: BlogComponentProps) {
@@ -40,7 +42,7 @@ export default function Card({
         'h-[600px]',
         ' overflow-hidden rounded-[5px]',
         'bg-[#0D0E12] py-[25px]',
-        'border  border-sharper border-opacity-10',
+        'border border-sharper border-opacity-10',
         'px-[20px] font-visuelt shadow-3xl backdrop-blur-[10px]',
       )}
     >
@@ -49,6 +51,7 @@ export default function Card({
         description="Discover the latest trending episodes. This dynamic collection features the most talked-about, most viewed, and most-listened episodes."
         descriptionClassname={descriptionClassname}
       ></SectionIntro>
+      {children}
       <div className="grid grid-flow-row gap-6">
         <BlogPostPreview title={'asd'}></BlogPostPreview>
       </div>
@@ -93,12 +96,12 @@ export function SectionIntro({
       )}
     >
       <div className="grid grid-flow-row gap-2">
-        <h1 className="text-left font-lausanne text-[24px] font-bold leading-[18px] tracking-[-2%] text-white/[0.49]">
+        <h1 className="text-left font-lausanne text-[20px] font-semibold leading-[18px] tracking-[-1.5%] text-white/[0.50]">
           {title}
         </h1>
         <p
           className={mergeClasses(
-            'w-[350px] text-left text-[14px] text-white/[0.21]',
+            'w-[350px] text-left text-[14px] text-white/[0.31]',
             descriptionClassname,
           )}
         >
