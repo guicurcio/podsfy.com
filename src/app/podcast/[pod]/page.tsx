@@ -125,7 +125,7 @@ export default async function PodcastPage({ params }) {
                   podcastTitle={staticPodcastData.title}
                 ></PodBehind>
               </div>
-              <div className="grid h-full w-[800px] grid-flow-row items-start  gap-[32px] pr-10 -mt-3">
+              <div className="-mt-3 grid h-full w-[800px] grid-flow-row  items-start gap-[32px] pr-10">
                 <PodDetails
                   title={staticPodcastData.title}
                   description={staticPodcastData.description}
