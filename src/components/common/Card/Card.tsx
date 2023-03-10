@@ -22,7 +22,6 @@ export interface BlogComponentProps {
    *
    * @todo: change.. too muich flow to pass down state.
    */
-
   descriptionClassname?: string;
 }
 

@@ -40,7 +40,7 @@ const Search = ({ podcasts, className, ...props }: PodcastSearchProps) => {
           aria-label="Search podcasts, episodes, guests, notes..."
           aria-expanded={open}
           className={mergeClasses(
-            'group h-10 self-center py-2 px-3 align-middle',
+            'group h-[42px] self-center py-[12px] px-3 align-middle',
             ' justify-between font-visuelt text-[14px] font-medium text-white/80',
             'w-[630px]',
             className,
@@ -48,7 +48,9 @@ const Search = ({ podcasts, className, ...props }: PodcastSearchProps) => {
         >
           <div className="grid grid-flow-col items-center gap-2">
             <SearchIcon className="-ml-1 h-3 w-4 shrink-0 opacity-50"></SearchIcon>
-            {selectedPodcast ? selectedPodcast.name : 'Search Podcasts, episodes, guests, notes...'}
+            {selectedPodcast
+              ? selectedPodcast.name
+              : 'Search podcasts, episodes, reviews, notes...'}
           </div>
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
