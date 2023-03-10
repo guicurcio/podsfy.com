@@ -47,19 +47,21 @@ export default function PodSimilar({ className, title, similarPodcasts }: PodSim
           Similar Podcasts {title && `to`} {title}
         </h2>
       </div>
-      <div className="relative mx-auto grid grid-flow-col items-start justify-start gap-[32px] border-t border-fondy/50 py-[12px]">
+      <div className="relative grid w-fit grid-flow-col items-start justify-items-start  gap-[32px] border-t border-fondy/50 py-[12px]">
         {similarPodcasts &&
-          similarPodcasts.map((podcast) => (
-            <Link href={`/podcast/${podcast.slug}`}>
-              <img
-                src={`/${podcast.cover}`}
-                className="h-[150px] flex-shrink-0  flex-grow-0 cursor-pointer rounded-[15px] border border-black object-cover transition-all duration-500 ease-in-out hover:scale-105"
-                style={{
-                  boxShadow: '0px 4px 4px 0 rgba(0,0,0,0.28)',
-                }}
-              />
-            </Link>
-          ))}
+          similarPodcasts.map((podcast) =>
+            podcast.cover ? (
+              <Link href={`/podcast/${podcast.slug}`}>
+                <img
+                  src={`/${podcast.cover}`}
+                  className="h-[150px] flex-shrink-0  flex-grow-0 cursor-pointer rounded-[15px] border border-black object-cover transition-all duration-500 ease-in-out hover:scale-105"
+                  style={{
+                    boxShadow: '0px 4px 4px 0 rgba(0,0,0,0.28)',
+                  }}
+                />
+              </Link>
+            ) : null,
+          )}
       </div>
     </div>
   );
