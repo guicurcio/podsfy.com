@@ -92,7 +92,7 @@ export default function Page() {
                   podcastURL="/podcast/on-purpose"
                 ></PodcastCover>
                 <PodcastCover
-                  imageURL="/optimized/podcast/alex.webp"
+                  imageURL="/alex2.jpg"
                   podcastURL="/podcast/call-her-daddy"
                 ></PodcastCover>
                 <PodcastCover

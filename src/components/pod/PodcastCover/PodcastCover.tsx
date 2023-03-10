@@ -13,10 +13,7 @@ export interface PodcastCoverProps {
   /**
    * Custom props passed to the root element.
    */
-  rootProps?: React.DetailedHTMLProps<
-    React.HTMLAttributes<HTMLDivElement>,
-    HTMLDivElement
-  >;
+  rootProps?: React.DetailedHTMLProps<React.HTMLAttributes<HTMLDivElement>, HTMLDivElement>;
   /**
    * URL of the image.
    *
@@ -46,8 +43,8 @@ export default function PodcastCover({
         <img
           src={imageURL}
           className={mergeClasses(
-            'h-[235px] w-[190px] flex-shrink-0 cursor-pointer rounded-[8px] border',
-            'border-[#88888820] border-black object-cover brightness-[105%] transition-all',
+            'h-[235px] w-[190px] flex-shrink-0 cursor-pointer rounded-[8px]',
+            ' object-fill shadow-3xl',
             'duration-500 ease-in-out hover:scale-[102%]',
           )}
         />

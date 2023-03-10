@@ -32,6 +32,8 @@ model Podcast {
   rating Int?
   similarPodcasts        Podcast[] @relation("similarPodcasts")
   similarPodcastsRelation Podcast[] @relation("similarPodcasts")
+  reviews Review[]
+  streamingAt StreamingSites[]
   @@index([slug])
 }
 
@@ -50,12 +52,6 @@ model Person {
   otherNames String?
 }
 
-model Review {
-  id           String   @id @default(cuid())
-  description          String?
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @default(now())
-}
 
 model Episode {
   id          Int      @id @default(autoincrement())
@@ -71,4 +67,24 @@ model Episode {
   mostStreamedEpisode Boolean?
   episodeCoverImage String?
   episodeGuests Person[]
+}
+
+model StreamingSites {
+  id          Int      @id @default(autoincrement())
+  title       String?
+  description String?
+  publishedAt DateTime? 
+  url         String?
+  podcasts Podcast[]
+  hits         String?
+
+}
+
+model Review {
+  id          Int      @id @default(autoincrement())
+  review       String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @default(now())
+  podcastId Int?
+  podcast Podcast? @relation(fields: [podcastId], references: [id])
 }

@@ -40,12 +40,14 @@ export default function PodEpisode({
   defaultCoverImage,
 }: PodEpisodeProps) {
   return (
-    <button className={twMerge('grid w-full grid-flow-col gap-2 py-3  hover:bg-fondy/30 px-3', className)}>
+    <button
+      className={twMerge('grid w-full grid-flow-col gap-2 py-3  px-3 hover:bg-fondy/20', className)}
+    >
       <div className="grid grid-flow-row items-start justify-start gap-4">
         <div className="grid grid-flow-col items-center gap-3">
           <img
             src={defaultCoverImage}
-            className="pod-episode-img border border-[#88888820] shadow-3xl"
+            className="h-[32px] w-[32px] rounded-sm border border-[#88888820] shadow-3xl"
           ></img>
           <h2 className="w-full text-left font-moderat text-[14px] text-white text-opacity-75">
             {title}

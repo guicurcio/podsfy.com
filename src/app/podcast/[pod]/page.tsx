@@ -96,9 +96,10 @@ export default async function PodcastPage({ params }) {
         <PodImage
           imageClassName={staticPodcastData.backgroundCoverImage ? `top-[-20px]` : `top-[150px]`}
           image={
-            staticPodcastData.backgroundCoverImage
-              ? `../${staticPodcastData.backgroundCoverImage}`
-              : `./bg/bg.png`
+            // staticPodcastData.backgroundCoverImage
+            //   ? `../${staticPodcastData.backgroundCoverImage}`
+            //   : `./bg/bg.png`
+            `/bg.png`
           }
         ></PodImage>
         <div className=" relative z-50 mx-auto pt-[90px] backdrop-blur-[8px] backdrop-brightness-[60%] ">
@@ -124,7 +125,7 @@ export default async function PodcastPage({ params }) {
                   podcastTitle={staticPodcastData.title}
                 ></PodBehind>
               </div>
-              <div className="grid h-full w-[800px] grid-flow-row items-start  gap-[32px] pr-10">
+              <div className="grid h-full w-[800px] grid-flow-row items-start  gap-[32px] pr-10 -mt-3">
                 <PodDetails
                   title={staticPodcastData.title}
                   description={staticPodcastData.description}
@@ -155,7 +156,7 @@ export default async function PodcastPage({ params }) {
                         similarPodcasts={staticPodcastData.similarPodcasts}
                       ></PodSimilar>
                     )}
-                    <PodGuests title={staticPodcastData.title}></PodGuests>
+                    {/* <PodGuests title={staticPodcastData.title}></PodGuests> */}
                   </div>
                 </div>
               </div>
