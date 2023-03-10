@@ -14,14 +14,14 @@ export default function ForYouPage() {
         )}
       >
         <div className="grid grid-flow-row gap-3">
-          <h1 className=" font-lausanne text-[32px] font-semibold leading-[18px] tracking-[-1.5%] text-white/[0.50]">
+          {/* <h1 className=" font-lausanne text-[32px] font-semibold leading-[18px] tracking-[-1.5%] text-white/[0.50]">
             Top Charts
           </h1>
           <p className={mergeClasses('text-[18px] text-white/[0.31]')}>
             Lorem ipsum dolor sit, amet consectetur adipisicing elit. Porro veniam delectus
             reiciendis nihil cumque, dolore velit unde atque nostrum praesentium? Aliquam nulla
             tempora sunt maxime repudiandae, illum fuga. Possimus, corrupti?
-          </p>
+          </p> */}
         </div>
       </div>
     </div>
