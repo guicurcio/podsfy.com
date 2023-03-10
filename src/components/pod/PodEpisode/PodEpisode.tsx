@@ -1,6 +1,7 @@
-import Link from "next/link";
-import { twMerge } from "tailwind-merge";
-import PodComment from "../PodComment";
+import Link from 'next/link';
+import { twMerge } from 'tailwind-merge';
+import Button from 'ui/components/Button';
+import PodComment from '../PodComment';
 
 /**
  * PodEpisodes Props description
@@ -25,27 +26,32 @@ export interface PodEpisodeProps {
    * Custom class names passed to the root element.
    */
   className?: string;
+  /**
+   *
+   */
+  defaultCoverImage?: string;
 }
 
 export default function PodEpisode({
-  className = "",
+  className = '',
   description,
   title,
   whereToWatchOrListenLink,
+  defaultCoverImage,
 }: PodEpisodeProps) {
   return (
-    <div className={twMerge("grid grid-flow-col gap-2 pt-4 w-full", className)}>
-      <div className="grid grid-flow-row gap-4 justify-start items-start">
+    <button className={twMerge('grid w-full grid-flow-col gap-2 py-3  hover:bg-fondy/30 px-3', className)}>
+      <div className="grid grid-flow-row items-start justify-start gap-4">
         <div className="grid grid-flow-col items-center gap-3">
           <img
-            src="/pods/tunein.webp"
-            className="pod-episode-img shadow-3xl border-[#88888820] border"
+            src={defaultCoverImage}
+            className="pod-episode-img border border-[#88888820] shadow-3xl"
           ></img>
-          <h2 className="text-[14px] text-left text-white text-opacity-75 font-moderat w-full">
+          <h2 className="w-full text-left font-moderat text-[14px] text-white text-opacity-75">
             {title}
           </h2>
         </div>
       </div>
-    </div>
+    </button>
   );
 }

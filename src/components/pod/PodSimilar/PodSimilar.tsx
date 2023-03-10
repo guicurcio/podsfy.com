@@ -21,7 +21,6 @@ export interface PodSimilarProps {
  * PodSimilar Component
  */
 export default function PodSimilar({ className, title, similarPodcasts }: PodSimilarProps) {
-  console.log(similarPodcasts);
   return (
     <div className="grid grid-flow-row gap-2 py-2">
       <div className="grid grid-flow-col items-center justify-start gap-3 px-4">

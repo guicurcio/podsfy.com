@@ -14,6 +14,7 @@ export interface PodEpisodesProps {
    */
   title?: string;
   episodes?: PodcastEpisode[];
+  defaultCoverImage?: string;
 }
 
 type PodcastEpisode = {
@@ -32,6 +33,10 @@ type PodcastEpisode = {
    * @default ""
    */
   whereToWatchOrListenLink?: string;
+  /**
+   *
+   */
+  defaultCoverImage?: string;
 };
 
 /**
@@ -41,10 +46,11 @@ export default function PodEpisodes({
   className,
   title = 'Episodes',
   episodes = [],
+  defaultCoverImage,
 }: PodEpisodesProps) {
   return (
-    <div className="grid w-full grid-flow-row   gap-1 rounded-sm   border-[#252525] border-opacity-[20%] bg-[#0a0a0b] py-2 px-4">
-      <div className="grid w-full grid-flow-col items-center justify-start gap-2 pt-2">
+    <div className="grid w-full grid-flow-row rounded-[4px]   border-[#252525] border-opacity-[20%] bg-[#0a0a0b] ">
+      <div className="grid w-full grid-flow-col items-center justify-start gap-2  py-4  px-4  backdrop-brightness-[50%]">
         <svg
           width={16}
           height={16}
@@ -63,11 +69,11 @@ export default function PodEpisodes({
             </clipPath>
           </defs>
         </svg>
-        <p className="self-center text-left align-middle font-moderat text-[13.5px] font-medium tracking-[-0.03em] text-[#a5a5a5]/80 antialiased">
+        <p className="self-center  text-left align-middle font-moderat text-[13.5px] font-medium tracking-[-0.03em] text-[#a5a5a5]/80 antialiased">
           {title}
         </p>
       </div>
-      <div className="grid w-full grid-flow-row gap-6 divide-y-[1px]  divide-fondy/50 py-3">
+      <div className="grid w-full grid-flow-row  divide-y-[1px] divide-fondy/50 border-t   border-fondy/50 backdrop-brightness-[50%]">
         {episodes.length === 0 && (
           <div className="pt-2">
             <p className="self-center text-left align-middle font-moderat text-[14px] font-medium tracking-[-0.03em] text-[#a5a5a5]/60 antialiased">
@@ -76,9 +82,15 @@ export default function PodEpisodes({
           </div>
         )}
         {episodes &&
-          episodes.map((episode) => (
-            <PodEpisode key={episode.title} title={episode.title}></PodEpisode>
-          ))}
+          episodes
+            .slice(0, 3)
+            .map((episode) => (
+              <PodEpisode
+                key={episode.title}
+                defaultCoverImage={defaultCoverImage}
+                title={episode.title}
+              ></PodEpisode>
+            ))}
       </div>
     </div>
   );

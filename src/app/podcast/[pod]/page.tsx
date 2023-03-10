@@ -135,10 +135,12 @@ export default async function PodcastPage({ params }) {
                     <PodEpisodes
                       title="Featured Episodes"
                       episodes={staticPodcastData.episodes}
+                      defaultCoverImage={`../${staticPodcastData.cover}`}
                     ></PodEpisodes>
                     <PodEpisodes
                       title="Latest Episodes"
                       episodes={staticPodcastData.episodes}
+                      defaultCoverImage={`../${staticPodcastData.cover}`}
                     ></PodEpisodes>
                     <PodStreaming></PodStreaming>
                   </div>
