@@ -1,14 +1,19 @@
-import Footer from 'components/common/Footer';
-import Header from 'components/pod/Header';
-import PodImage from 'components/pod/PodImage';
+import Card from 'components/common/Card';
+import mergeClasses from 'utils/mergeClasses';
 
-export default async function DashboardLayout() {
+export default function HomePage() {
   return (
-    <div className="relative overflow-x-hidden bg-[#0D0E12]">
-      <PodImage imageClassName={`top-[-20px]`} image={`./bg/bg.png`}></PodImage>
-      <div className="backdrop-brightness-[40%]">
-        <Header></Header>
-        <Footer></Footer>
+    <div className="relative z-50 m-[80px] mx-auto  max-w-[1100px]">
+      <div className="grid w-full grid-flow-col ">
+        <div
+          className={mergeClasses(
+            'h-[1200px]',
+            ' overflow-hidden rounded-[5px]',
+            'bg-[#0D0E12] py-[25px]',
+            'border border-sharper border-opacity-10',
+            'px-[20px] font-visuelt shadow-3xl backdrop-blur-[10px]',
+          )}
+        ></div>
       </div>
     </div>
   );

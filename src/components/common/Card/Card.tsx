@@ -17,6 +17,11 @@ export interface BlogComponentProps {
    * @default ""
    */
   title?: string;
+  /**
+   * Pass a custom description to the component.
+   * @default ""
+   */
+  description?: string;
 
   /**
    *
@@ -33,6 +38,7 @@ export default function Card({
   className,
   children,
   title = 'Trending Episodes',
+  description,
   descriptionClassname = '',
 }: BlogComponentProps) {
   return (
@@ -46,15 +52,15 @@ export default function Card({
         'px-[20px] font-visuelt shadow-3xl backdrop-blur-[10px]',
       )}
     >
+      {children}
       <SectionIntro
         title={title}
-        description="Discover the latest trending episodes. This dynamic collection features the most talked-about, most viewed, and most-listened episodes."
+        description={description || ''}
         descriptionClassname={descriptionClassname}
       ></SectionIntro>
-      {children}
-      <div className="grid grid-flow-row gap-6">
+      {/* <div className="grid grid-flow-row gap-6">
         <BlogPostPreview title={'asd'}></BlogPostPreview>
-      </div>
+      </div> */}
     </div>
   );
 }

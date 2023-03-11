@@ -34,13 +34,13 @@ export default function BlogPostPreview({
           <div className={twMerge('grid w-full grid-flow-col gap-2 pt-4', className)}>
             <div className="wf grid grid-flow-row items-start justify-start gap-4">
               <div className="grid grid-flow-col items-center gap-3">
-                <img
+                {/* <img
                   src="/pods/tunein.webp"
                   className="pod-episode-img border border-[#88888820] shadow-3xl"
                 ></img>
                 <h2 className="w-full text-left font-moderat text-[14px] text-white text-opacity-75">
                   {title}
-                </h2>
+                </h2> */}
               </div>
             </div>
           </div>
