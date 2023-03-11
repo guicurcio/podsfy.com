@@ -1,4 +1,3 @@
-
-export default function PodcastPage() {
-  return <div className="min-h-[1200px]">asd</div>;
+export default function ChangelogPage() {
+  return <div className="">asd</div>;
 }
