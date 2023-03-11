@@ -50,7 +50,7 @@ export default function PodEpisodes({
 }: PodEpisodesProps) {
   return (
     <div className="grid w-full grid-flow-row rounded-[4px]   border-[#252525] border-opacity-[20%] bg-[#0a0a0b] ">
-      <div className="grid w-full grid-flow-col items-center justify-start gap-2  py-4  px-4  backdrop-brightness-[50%]">
+      <div className="grid w-full grid-flow-col items-center justify-start gap-2  py-4  px-3  backdrop-brightness-[50%]">
         <svg
           width={16}
           height={16}

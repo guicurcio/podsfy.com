@@ -49,6 +49,11 @@ const getPodInfo = cache(async (pod: string) => {
           review: true,
         },
       },
+      streamingAt: {
+        select: {
+          title: true,
+        },
+      },
       similarPodcasts: {
         select: {
           title: true,
@@ -148,7 +153,7 @@ export default async function PodcastPage({ params }) {
                       episodes={staticPodcastData.episodes}
                       defaultCoverImage={`../${staticPodcastData.cover}`}
                     ></PodEpisodes>
-                    <PodStreaming></PodStreaming>
+                    <PodStreaming streamingSites={staticPodcastData.streamingAt}></PodStreaming>
                   </div>
 
                   <div className="grid grid-flow-row items-start justify-start gap-[100px]">

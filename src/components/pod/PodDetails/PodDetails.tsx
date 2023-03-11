@@ -46,9 +46,14 @@ export default function PodDetails({
           // </Link>
         )}
       </div>
-      <p className="ml-[2px] mt-[-2px] font-visuelt text-[15px] font-normal leading-[25px] tracking-[0.5px] text-dimmed2 text-opacity-80  antialiased">
-        {description}
-      </p>
+      <div>
+        {description.split('\\n').map((line, index) => (
+          <p className="ml-[2px] mt-[-2px] font-visuelt text-[15px] font-normal leading-[25px] tracking-[0.5px] text-dimmed2 text-opacity-80  antialiased">
+            {line}
+            <br />
+          </p>
+        ))}
+      </div>
     </div>
   );
 }

@@ -1,5 +1,4 @@
 import { twMerge } from 'tailwind-merge';
-import splitParagraph from 'utils/splitParagraph';
 
 /**
  * PodComment Props description
@@ -47,7 +46,12 @@ export default function PodComment({
       <div className="grid grid-flow-row gap-4">
         <div className="grid grid-flow-row gap-1">
           <h2 className="text-left text-[13px] text-[#678]">Review by {userWhoMadeTheReview}</h2>
-          <p className="text-left text-[15px] leading-[25px] text-[#9ab]">{review}</p>
+          {review.split('\\n').map((line, index) => (
+            <p className="ml-[2px] mt-[-2px] font-visuelt text-[15px] font-normal leading-[25px] tracking-[0.5px] text-[#9ab] text-opacity-80  antialiased">
+              {line}
+              <br />
+            </p>
+          ))}
         </div>
         <div className="grid grid-flow-col justify-start gap-2">
           <button className="text-left text-[12px] text-[#9ab]">like review</button>
@@ -57,3 +61,5 @@ export default function PodComment({
     </div>
   );
 }
+
+

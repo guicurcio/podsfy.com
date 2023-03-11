@@ -1,15 +1,29 @@
-'use client';
-
 import Button from 'ui/components/Button';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from 'ui/components/Tooltip';
+// import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from 'ui/components/Tooltip';
+
+/**
+ * PodStreaming Props
+ */
+export interface PodStreamingProps {
+  /**
+   * Class names passed to the root element.
+   */
+  className?: string;
+  /**
+   *
+   */
+  streamingSites?: {
+    title: string;
+  }[];
+}
 
 /**
  * PodStreaming
  */
-export default function PodStreaming() {
+export default function PodStreaming({ streamingSites }) {
   return (
-    <div className="grid grid-flow-row items-start justify-start gap-4 rounded-sm border border-[#252525] border-opacity-[20%] bg-[#0a0a0b] py-2 px-4">
-      <div className="grid grid-flow-col items-center justify-start gap-2 pt-2">
+    <div className="grid w-full grid-flow-row rounded-[4px]   border-[#252525] border-opacity-[20%] bg-[#0a0a0b] ">
+      <div className="grid w-full grid-flow-col items-center justify-start gap-2  py-4  px-4  backdrop-brightness-[50%]">
         <svg
           width={16}
           height={16}
@@ -32,17 +46,21 @@ export default function PodStreaming() {
           Streaming At
         </p>
       </div>
-      <div className="relative grid grid-flow-col items-start justify-start gap-x-2 pb-2">
+      <div className="relative grid grid-flow-col  items-start justify-start gap-x-2 border-t border-fondy/50 px-3 py-4 backdrop-brightness-[50%]">
         {/* <TooltipProvider>
           <Tooltip>
             <TooltipTrigger >
               <div className="relative"> */}
-        <Button variant="subtle" className="w-10 p-0">
-          <img
-            src="/pods/tunein.webp"
-            className="rounded-[4px] border-[#88888820] shadow-3xl"
-          ></img>
-        </Button>
+        {streamingSites?.length >= 1 &&
+          streamingSites?.map((site) => (
+            <Button variant="subtle" className="w-10 p-0">
+              <img
+                src={`/pods/${site.title}.webp`}
+                className="pod-streaming border-2 border-[#88888820] shadow-3xl"
+              ></img>
+            </Button>
+          ))}
+
         {/* </div>
             </TooltipTrigger>
             <TooltipContent>
@@ -50,7 +68,7 @@ export default function PodStreaming() {
             </TooltipContent>
           </Tooltip>
         </TooltipProvider> */}
-        <img
+        {/* <img
           src="/pods/stitcher.webp"
           className="pod-streaming border-2 border-[#88888820] shadow-3xl"
         ></img>
@@ -73,7 +91,7 @@ export default function PodStreaming() {
         <img
           src="/pods/google.webp"
           className="pod-streaming border-2 border-[#88888820] shadow-3xl"
-        ></img>
+        ></img> */}
       </div>
     </div>
   );
