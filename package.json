@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@hookform/resolvers": "^2.9.11",
-    "@nhost/nextjs": "^1.13.12",
+    "@nhost/nextjs": "^1.13.12", 
     "@prisma/client": "^4.11.0",
     "@radix-ui/react-avatar": "^1.0.1",
     "@radix-ui/react-checkbox": "^1.0.2",

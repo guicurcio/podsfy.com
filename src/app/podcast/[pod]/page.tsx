@@ -44,6 +44,11 @@ const getPodInfo = cache(async (pod: string) => {
       genre: true,
       rating: true,
       episodes: true,
+      reviews: {
+        select: {
+          review: true,
+        },
+      },
       similarPodcasts: {
         select: {
           title: true,
@@ -147,9 +152,13 @@ export default async function PodcastPage({ params }) {
                   </div>
 
                   <div className="grid grid-flow-row items-start justify-start gap-[100px]">
-                    <PodReviews
-                      title={generateGoodTitleForReviews(staticPodcastData.title)}
-                    ></PodReviews>
+                    {/* todo: put a button that says to leave a comment */}
+                    {staticPodcastData.reviews.length >= 1 && (
+                      <PodReviews
+                        title={generateGoodTitleForReviews(staticPodcastData.title)}
+                        reviews={staticPodcastData.reviews}
+                      ></PodReviews>
+                    )}
                     {staticPodcastData.similarPodcasts.length >= 1 && (
                       <PodSimilar
                         title={staticPodcastData.title}

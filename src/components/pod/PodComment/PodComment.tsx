@@ -1,4 +1,5 @@
 import { twMerge } from 'tailwind-merge';
+import splitParagraph from 'utils/splitParagraph';
 
 /**
  * PodComment Props description
@@ -8,33 +9,49 @@ export interface PodCommentProps {
    * Custom class names passed to the root element.
    */
   className?: string;
+  /**
+   * The user who made the review.
+   */
+  userWhoMadeTheReview?: string;
+
+  /**
+   * The review text.
+   */
+  review?: string;
+  /**
+   *The amount of likes the review has.
+   * @default 0
+   * @example
+   * 325
+   */
+  amountOfLikes?: number;
 }
 
 /**
  * PodComment Component
  */
-export default function PodComment({ className }: PodCommentProps) {
+export default function PodComment({
+  className,
+  review,
+  userWhoMadeTheReview = '',
+  amountOfLikes = 0,
+}: PodCommentProps) {
   return (
-    <div className={twMerge('grid grid-flow-col gap-4 pt-4', className)}>
-      <div className="grid grid-flow-row justify-start items-start">
-        <div className="w-10 h-10 relative rounded-[20px]">
-          <div className="flex flex-col justify-start items-start w-10 h-10  left-0 top-0 overflow-hidden gap-2.5 p-2.5 rounded-[20px] bg-image-here" />
-          <div className="w-10 h-10  left-0 top-0 overflow-hidden rounded-[20px] border border-white/25" />
+    <div className={twMerge('grid w-full grid-flow-col gap-4 py-4', className)}>
+      <div className="grid grid-flow-row items-start justify-start">
+        <div className="relative h-10 w-10 rounded-[20px]">
+          <div className="bg-image-here left-0 top-0 flex h-10 w-10  flex-col items-start justify-start gap-2.5 overflow-hidden rounded-[20px] p-2.5" />
+          <div className="left-0 top-0  h-10 w-10 overflow-hidden rounded-[20px] border border-white/25" />
         </div>
       </div>
       <div className="grid grid-flow-row gap-4">
         <div className="grid grid-flow-row gap-1">
-          <h2 className="text-[13px] text-left text-[#678]">Review by 2wqewqeasd</h2>
-          <p className="text-[15px] text-left text-[#9ab] w-[532px]">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit debitis
-            provident consequatur quis nulla repellendus mollitia deserunt assumenda
-            tempore porro vitae nisi vero earum consequuntur, beatae laborum alias id
-            eveniet?
-          </p>
+          <h2 className="text-left text-[13px] text-[#678]">Review by {userWhoMadeTheReview}</h2>
+          <p className="text-left text-[15px] leading-[25px] text-[#9ab]">{review}</p>
         </div>
-        <div className="grid grid-flow-col gap-2 justify-start">
-          <button className="text-[12px] text-left text-[#9ab]">like review</button>
-          <h2 className="text-[12px] text-left text-[#9ab]">325 likes</h2>
+        <div className="grid grid-flow-col justify-start gap-2">
+          <button className="text-left text-[12px] text-[#9ab]">like review</button>
+          <h2 className="text-left text-[12px] text-[#9ab]">{amountOfLikes} likes</h2>
         </div>
       </div>
     </div>
