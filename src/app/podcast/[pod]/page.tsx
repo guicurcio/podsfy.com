@@ -85,6 +85,11 @@ export async function generateStaticParams() {
   }));
 }
 
+export async function generateMetadata({ params, searchParams }) {
+  const staticPodcastData = await getPodInfo(params.pod);
+  return { title: `${staticPodcastData.title} - podsfy.com` };
+}
+
 export default async function PodcastPage({ params }) {
   const staticPodcastData = await getPodInfo(params.pod);
 
@@ -125,7 +130,7 @@ export default async function PodcastPage({ params }) {
                   <img
                     src={`../${staticPodcastData.cover}`}
                     draggable={false}
-                    className="h-[300px] w-[300px] rounded-[2px] border border-white border-opacity-10 brightness-[98%]"
+                    className="h-[320px] w-[300px] rounded-[2px] border border-white border-opacity-10 brightness-[98%]"
                   />
                 </div>
                 <PodBehind
