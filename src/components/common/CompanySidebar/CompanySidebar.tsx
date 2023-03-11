@@ -2,6 +2,7 @@
 
 import Search from 'components/common/Search';
 import {
+  Archive,
   Archive as ArchiveIcon,
   Boxes as BoxesIcon,
   Building2 as Building2Icon,
@@ -129,6 +130,12 @@ export default function CompanySidebar({
             <NavigationMenuLink className="grid w-[275px] cursor-pointer grid-flow-col items-start justify-start gap-3 font-normal text-white/80">
               <HelpCircleIcon className="h-4 w-4 self-center align-middle" />
               <span>Support & FAQ</span>
+            </NavigationMenuLink>
+          </NavigationMenuItem>
+          <NavigationMenuItem>
+            <NavigationMenuLink className="grid w-[275px] cursor-pointer grid-flow-col items-start justify-start gap-3 font-normal text-white/80">
+              <Archive className="h-4 w-4 self-center align-middle" />
+              <span>Terms of Service</span>
             </NavigationMenuLink>
           </NavigationMenuItem>
           <NavigationMenuItem>

@@ -49,12 +49,12 @@ export default function Footer({ className }: FooterProps) {
                   Blog
                 </a>
               </Link>
-              <Link href="/careers" legacyBehavior passHref>
+              <Link href="/company" legacyBehavior passHref>
                 <a className="cursor-pointer font-moderat text-[13px] text-[#e3e5e8]/[0.72]">
                   Careers
                 </a>
               </Link>
-              <Link href="/newsroom" legacyBehavior passHref>
+              <Link href="/company" legacyBehavior passHref>
                 <a className="cursor-pointer font-moderat text-[13px] text-[#e3e5e8]/[0.72]">
                   Newsroom
                 </a>
@@ -74,33 +74,31 @@ export default function Footer({ className }: FooterProps) {
                   Support
                 </a>
               </Link>
-              <Link href="/faq" legacyBehavior passHref>
+              <Link href="/support" legacyBehavior passHref>
                 <a className="cursor-pointer font-moderat text-[13px] text-[#e3e5e8]/[0.72]">FAQ</a>
               </Link>
-              <Link href="/contact-us" legacyBehavior passHref>
+              <Link href="/support" legacyBehavior passHref>
                 <a className="cursor-pointer font-moderat text-[13px] text-[#e3e5e8]/[0.72]">
                   Contact Us
                 </a>
               </Link>
-              <Link href="/contribute" legacyBehavior passHref>
-                <a className="cursor-pointer font-moderat text-[13px] text-[#e3e5e8]/[0.72]">
-                  Contribute
-                </a>
-              </Link>
+              <a className="cursor-pointer font-moderat text-[13px] text-[#e3e5e8]/[0.72]"> </a>
+              <a className="cursor-pointer font-moderat text-[13px] text-[#e3e5e8]/[0.72]"> </a>
+              <a className="cursor-pointer font-moderat text-[13px] text-[#e3e5e8]/[0.72]"> </a>
             </div>
             <div className=" grid h-full  grid-flow-row justify-items-start gap-[12px]">
               <h1 className="font-visuelt text-[11px] font-medium uppercase  tracking-[0.3px] text-[#e3e5e8]/[0.4]">
                 App
               </h1>
-              <Link href="/web" legacyBehavior passHref>
+              <Link href="/platform" legacyBehavior passHref>
                 <a className="cursor-pointer font-moderat text-[13px] text-[#e3e5e8]/[0.72]">Web</a>
               </Link>
-              <Link href="/mobile" legacyBehavior passHref>
+              <Link href="/platform" legacyBehavior passHref>
                 <a className="cursor-pointer font-moderat text-[13px] text-[#e3e5e8]/[0.72]">
                   Mobile
                 </a>
               </Link>
-              <Link href="/pricing" legacyBehavior passHref>
+              <Link href="/platform" legacyBehavior passHref>
                 <a className="cursor-pointer font-moderat text-[13px] text-[#e3e5e8]/[0.72]">
                   Podsfy PRO
                 </a>
@@ -113,17 +111,17 @@ export default function Footer({ className }: FooterProps) {
               <h1 className="font-visuelt text-[11px] font-medium uppercase  tracking-[0.3px] text-[#e3e5e8]/[0.4]">
                 Solutions
               </h1>
-              <Link href="/advertising" legacyBehavior passHref>
+              <Link href="/company" legacyBehavior passHref>
                 <a className="cursor-pointer font-moderat text-[13px] text-[#e3e5e8]/[0.72]">
                   Advertising
                 </a>
               </Link>
-              <Link href="/investing" legacyBehavior passHref>
+              <Link href="/company" legacyBehavior passHref>
                 <a className="cursor-pointer font-moderat text-[13px] text-[#e3e5e8]/[0.72]">
                   Investing
                 </a>
               </Link>
-              <Link href="/parent-company" legacyBehavior passHref>
+              <Link href="/company" legacyBehavior passHref>
                 <a className="cursor-pointer font-moderat text-[13px] text-[#e3e5e8]/[0.72]">
                   Parent Company
                 </a>
@@ -134,7 +132,7 @@ export default function Footer({ className }: FooterProps) {
             </div>
           </div>
         </div>
-        <div className=" mb-6 h-px w-full bg-[#2b303b]/40" />
+        <div className="mb-6 h-px w-full bg-[#2b303b]/40" />
         <div className="grid grid-flow-row  items-center justify-center gap-2">
           <div className="flex items-start justify-start  gap-4 pt-[5.375px] pb-[4.046875px]">
             <svg
