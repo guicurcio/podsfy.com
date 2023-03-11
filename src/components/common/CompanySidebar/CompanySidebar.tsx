@@ -10,6 +10,8 @@ import {
   HelpCircleIcon,
   UsersIcon,
 } from 'lucide-react';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import {
   NavigationMenu,
   NavigationMenuItem,
@@ -103,10 +105,12 @@ export default function CompanySidebar({
             </NavigationMenuLink>
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <NavigationMenuLink className="grid w-[275px] cursor-pointer grid-flow-col items-start justify-start gap-3 font-normal text-white/80">
-              <CheckSquareIcon className="h-4 w-4 self-center align-middle" />
-              <span>Changelog</span>
-            </NavigationMenuLink>
+            <Link href="/changelog">
+              <NavigationMenuLink className="grid w-[275px] cursor-pointer grid-flow-col items-start justify-start gap-3 font-normal text-white/80">
+                <CheckSquareIcon className="h-4 w-4 self-center align-middle" />
+                <span>Changelog</span>
+              </NavigationMenuLink>
+            </Link>
           </NavigationMenuItem>
           <NavigationMenuItem>
             <NavigationMenuLink className="grid w-[275px] cursor-pointer grid-flow-col items-start justify-start gap-3 font-normal text-white/80">
@@ -115,10 +119,12 @@ export default function CompanySidebar({
             </NavigationMenuLink>
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <NavigationMenuLink className="grid w-[275px] cursor-pointer grid-flow-col items-start justify-start gap-3 font-normal text-white/80">
-              <UsersIcon className="h-4 w-4 self-center align-middle" />
-              <span>About</span>
-            </NavigationMenuLink>
+            <Link href="/about">
+              <NavigationMenuLink className="grid w-[275px] cursor-pointer grid-flow-col items-start justify-start gap-3 font-normal text-white/80">
+                <UsersIcon className="h-4 w-4 self-center align-middle" />
+                <span>About</span>
+              </NavigationMenuLink>
+            </Link>
           </NavigationMenuItem>
           <NavigationMenuItem>
             <NavigationMenuLink className="grid w-[275px] cursor-pointer grid-flow-col items-start justify-start gap-3 font-normal text-white/80">
