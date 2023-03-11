@@ -46,14 +46,16 @@ export default function PodDetails({
           // </Link>
         )}
       </div>
-      <div>
+      <div className="grid h-[250px] grid-flow-row overflow-ellipsis">
         {description.split('\\n').map((line, index) => (
-          <p className="ml-[2px] mt-[-2px] font-visuelt text-[15px] font-normal leading-[25px] tracking-[0.5px] text-dimmed2 text-opacity-80  antialiased">
+          // <p className="ml-[2px] mt-[-2px] font-visuelt text-[15px] font-normal leading-[25px] tracking-[0.5px] text-dimmed2 text-opacity-80  antialiased">
+          <p className="ml-[2px] font-visuelt text-[15px] font-normal leading-[25px] tracking-[0.5px] text-dimmed2 text-opacity-70  antialiased">
             {line}
-            <br />
           </p>
         ))}
       </div>
     </div>
   );
 }
+
+//
