@@ -2,7 +2,7 @@
 
 import { zodResolver } from '@hookform/resolvers/zod';
 import Form from 'components/Form/Form';
-import { AppleIcon, TwitchIcon, TwitterIcon } from 'lucide-react';
+import { AppleIcon, Twitch, TwitchIcon, Twitter, TwitterIcon } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { FormProvider, useForm } from 'react-hook-form';
 import { twMerge } from 'tailwind-merge';
@@ -148,7 +148,7 @@ export function SignUpModalForm({ className }: JoinProps) {
                 <Tooltip>
                   <TooltipTrigger asChild tabIndex={-1} autoFocus={false}>
                     <Button className="h-[65px] w-[75px]" tabIndex={-1} autoFocus={false}>
-                      <TwitterIcon className="h-5 w-5 self-center align-middle" />
+                      <Twitter className="h-5 w-5 self-center align-middle" />
                     </Button>
                   </TooltipTrigger>
                   <TooltipContent className="border-0 bg-black bg-opacity-50 font-moderat font-medium text-white/90 backdrop-blur-sm backdrop-brightness-[10%]">
@@ -176,7 +176,7 @@ export function SignUpModalForm({ className }: JoinProps) {
                 <Tooltip>
                   <TooltipTrigger asChild tabIndex={-1} autoFocus={false}>
                     <Button className="h-[65px] w-[75px]" autoFocus={false}>
-                      <TwitchIcon className="h-5 w-5 self-center align-middle" />
+                      <Twitch className="h-5 w-5 self-center align-middle" />
                     </Button>
                   </TooltipTrigger>
                   <TooltipContent className="border-0 bg-black bg-opacity-75 font-moderat font-medium text-white/90 backdrop-blur-sm backdrop-brightness-[10%]">

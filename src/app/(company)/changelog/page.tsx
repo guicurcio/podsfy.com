@@ -2,7 +2,7 @@ export default function ChangelogPage() {
   return (
     <div className="grid w-[720px] grid-flow-row gap-4">
       <div className="grid w-full grid-flow-row gap-3 py-[10px]">
-        <p className="text-left font-SpaceGrotesk text-[40px] tracking-tighter font-semibold text-white/90">
+        <p className="text-left font-SpaceGrotesk text-[40px] font-semibold tracking-tighter text-white/90">
           Changelog
         </p>
         <div className="relative mx-auto flex w-full items-start justify-start gap-3 rounded-[6px] bg-[#111] py-5 text-center">

@@ -12,7 +12,7 @@ import {
   Settings,
   UserIcon,
   UserPlus,
-  Users
+  Users,
 } from 'lucide-react';
 import Link from 'next/link';
 import { twMerge } from 'tailwind-merge';
@@ -30,13 +30,13 @@ import {
   DropdownMenuSub,
   DropdownMenuSubContent,
   DropdownMenuSubTrigger,
-  DropdownMenuTrigger
+  DropdownMenuTrigger,
 } from 'ui/components/Dropdown';
 import {
   NavigationMenu,
   NavigationMenuItem,
   NavigationMenuLink,
-  NavigationMenuList
+  NavigationMenuList,
 } from 'ui/components/NavigationMenu/NavigationMenu';
 import Separator from 'ui/components/Separator';
 import mergeClasses from 'utils/mergeClasses/mergeClasses';
@@ -178,7 +178,6 @@ export default function Header({ className }: HeaderProps) {
                 <DropdownMenuSeparator />
                 <DropdownMenuGroup>
                   <DropdownMenuItem>
-                    <UserIcon className="mr-2 h-4 w-4" />
                     <span>Profile</span>
                     <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
                   </DropdownMenuItem>

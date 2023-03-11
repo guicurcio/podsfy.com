@@ -55,11 +55,11 @@ export default async function DashboardLayout({
               'px-[20px] font-visuelt shadow-3xl backdrop-blur-[10px]',
             )}
           >
-            <div className="grid w-full  grid-flow-col items-start justify-items-start justify-start gap-[24px]">
+            <div className="grid w-full  grid-flow-col items-start justify-start justify-items-start gap-[24px]">
               <div className="grid w-[300px] max-w-[300px] grid-flow-row py-4 px-4">
                 <CompanySidebar></CompanySidebar>
               </div>
-              
+
               {children}
             </div>
           </div>

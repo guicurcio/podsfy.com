@@ -2,16 +2,15 @@
 
 import Search from 'components/common/Search';
 import {
-  ArchiveIcon,
-  BoxesIcon,
-  Building2Icon,
-  CheckSquareIcon,
-  Code2Icon,
-  HelpCircleIcon,
-  UsersIcon,
+  Archive as ArchiveIcon,
+  Boxes as BoxesIcon,
+  Building2 as Building2Icon,
+  CheckSquare as CheckSquareIcon,
+  Code2 as Code2Icon,
+  HelpCircle as HelpCircleIcon,
+  Users as UsersIcon,
 } from 'lucide-react';
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
 import {
   NavigationMenu,
   NavigationMenuItem,
