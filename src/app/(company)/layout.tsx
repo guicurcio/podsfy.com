@@ -48,7 +48,7 @@ export default async function DashboardLayout({
         <div className="relative z-50 m-[80px] mx-auto max-w-[1100px]">
           <div
             className={mergeClasses(
-              'h-[1200px] w-[1100px]',
+              'min-h-[1200px] w-[1100px]',
               ' overflow-hidden rounded-[5px]',
               'bg-[#0D0E12] py-[25px]',
               'border border-sharper border-opacity-10',
