@@ -115,11 +115,11 @@ export default async function PodcastPage({ params }) {
         <div className=" relative z-50 mx-auto pt-[90px] backdrop-blur-[8px] backdrop-brightness-[60%] ">
           <div
             className="relative z-20 mx-auto  
-  max-w-[1200px] overflow-hidden rounded-[6px] border  border-sharper border-opacity-10  bg-[#0D0E12]  bg-opacity-[95%] py-[25px]  px-[20px] font-visuelt shadow-3xl backdrop-blur-[10px]
+  max-w-[1200px] overflow-hidden rounded-[9px] border  border-sharper border-opacity-10  bg-[#0D0E12]  bg-opacity-[95%] py-[25px]  px-[20px] font-visuelt shadow-3xl backdrop-blur-[10px]
         
         "
           >
-            <div className="grid grid-flow-col justify-start    gap-[50px] px-2 py-2">
+            <div className="grid grid-flow-col justify-start    gap-[50px] px-3 py-4">
               <div className="grid w-[300px] grid-flow-row place-content-start items-start  justify-start justify-items-start">
                 <div className="relative z-0 inline-flex w-full items-center justify-center rounded-[2px] border-2 border-[#171717] bg-[#050607f2] hover:brightness-[99%] focus:outline-none focus:ring-0 focus:ring-offset-0 disabled:pointer-events-none disabled:opacity-50">
                   <img
@@ -137,19 +137,23 @@ export default async function PodcastPage({ params }) {
               </div>
               <div className="-mt-3 grid h-full w-[800px] grid-flow-row  items-start gap-[32px] pr-10">
                 <PodDetails
-                  title={staticPodcastData.title}
+                  title={`${generateGoodTitleForReviews(staticPodcastData.title)}`}
                   description={staticPodcastData.description}
                   podcastHostName={staticPodcastData?.podcastHost?.name}
                 ></PodDetails>
                 <div className="grid w-full grid-flow-row gap-12">
                   <div className="grid w-full grid-flow-row gap-[32px]">
                     <PodEpisodes
-                      title="Featured Episodes"
+                      title={`Featured Episodes of ${generateGoodTitleForReviews(
+                        staticPodcastData.title,
+                      )}`}
                       episodes={staticPodcastData.episodes}
                       defaultCoverImage={`../${staticPodcastData.cover}`}
                     ></PodEpisodes>
                     <PodEpisodes
-                      title="Latest Episodes"
+                      title={`Latest Episodes of ${generateGoodTitleForReviews(
+                        staticPodcastData.title,
+                      )}`}
                       episodes={staticPodcastData.episodes}
                       defaultCoverImage={`../${staticPodcastData.cover}`}
                     ></PodEpisodes>
