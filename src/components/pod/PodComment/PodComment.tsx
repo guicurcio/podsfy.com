@@ -36,30 +36,28 @@ export default function PodComment({
   amountOfLikes = 0,
 }: PodCommentProps) {
   return (
-    <div className={twMerge('grid w-full grid-flow-col gap-4 py-4', className)}>
-      <div className="grid grid-flow-row items-start justify-start">
-        <div className="relative h-10 w-10 rounded-[20px]">
-          <div className="bg-image-here left-0 top-0 flex h-10 w-10  flex-col items-start justify-start gap-2.5 overflow-hidden rounded-[20px] p-2.5" />
-          <div className="left-0 top-0  h-10 w-10 overflow-hidden rounded-[20px] border border-white/25" />
-        </div>
-      </div>
+    <div className={twMerge('grid w-full grid-flow-col gap-4', className)}>
       <div className="grid grid-flow-row gap-4">
-        <div className="grid grid-flow-row gap-1">
-          <h2 className="text-left text-[13px] text-[#678]">Review by {userWhoMadeTheReview}</h2>
-          {review.split('\\n').map((line, index) => (
-            <p className="ml-[2px] mt-[-2px] font-visuelt text-[15px] font-normal leading-[25px] tracking-[0.5px] text-[#9ab] text-opacity-80  antialiased">
-              {line}
-              <br />
-            </p>
-          ))}
+        <div className="grid grid-flow-row gap-[18px]">
+          <div className="grid grid-flow-col justify-start gap-2">
+            <div className="h-10 w-10 overflow-hidden rounded-[20px] border border-white/25" />
+            <h2 className="self-center text-[13px] text-[#678]">
+              Desmond Hume reviews {userWhoMadeTheReview}
+            </h2>
+          </div>
+          <div className="grid grid-flow-row gap-[8px]">
+            {review.split('\\n').map((line, index) => (
+              <p className="ml-[2px] font-visuelt text-[15px] font-normal leading-[25px] tracking-[0.5px] text-[#9ab] text-opacity-80  antialiased">
+                {line}
+              </p>
+            ))}
+          </div>
         </div>
         <div className="grid grid-flow-col justify-start gap-2">
-          <button className="text-left text-[12px] text-[#9ab]">like review</button>
+          <button className="text-left text-[12px] font-moderat text-[#9ab]">like review</button>
           <h2 className="text-left text-[12px] text-[#9ab]">{amountOfLikes} likes</h2>
         </div>
       </div>
     </div>
   );
 }
-
-

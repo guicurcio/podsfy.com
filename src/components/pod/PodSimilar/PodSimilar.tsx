@@ -46,7 +46,7 @@ export default function PodSimilar({ className, title, similarPodcasts }: PodSim
           Similar Podcasts {title && `to`} {title}
         </h2>
       </div>
-      <div className="relative grid w-fit grid-flow-col items-start justify-items-start  gap-[32px] border-t border-fondy/50 py-[12px]">
+      <div className="relative grid w-fit grid-flow-col items-start justify-items-start gap-[32px] border-t border-fondy/50 py-[12px] px-4">
         {similarPodcasts &&
           similarPodcasts.map((podcast) =>
             podcast.cover ? (

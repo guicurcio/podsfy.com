@@ -59,6 +59,11 @@ export default function Footer({ className }: FooterProps) {
                   Newsroom
                 </a>
               </Link>
+              <Link href="/changelog" legacyBehavior passHref>
+                <a className="cursor-pointer font-moderat text-[13px] text-[#e3e5e8]/[0.72]">
+                  Changelog
+                </a>
+              </Link>
             </div>
             <div className="grid grid-flow-row  gap-[12px]">
               <h1 className="font-visuelt text-[11px] font-medium uppercase  tracking-[0.3px] text-[#e3e5e8]/[0.4]">

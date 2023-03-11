@@ -20,15 +20,24 @@ export type Podcast = {
   name: string;
 };
 
-export interface PodcastSearchProps extends PopoverProps {
+export interface SearchBoxProps extends PopoverProps {
   podcasts: Podcast[];
   /**
    * Custom class names passed to the button trigger of the search box.
    */
   className?: string;
+  /**
+   * Pass a custom title to the component.
+   * @default ""
+   */
+  title?: string;
+  /**
+   * Custom class names passed to the PopOver component.
+   */
+  popoverClassName?: string;
 }
 
-const Search = ({ podcasts, className, ...props }: PodcastSearchProps) => {
+const Search = ({ podcasts, className, title, popoverClassName, ...props }: SearchBoxProps) => {
   const [open, setOpen] = useState(false);
   const [selectedPodcast, setSelectedPodcast] = useState<Podcast>();
 
@@ -50,12 +59,12 @@ const Search = ({ podcasts, className, ...props }: PodcastSearchProps) => {
             <SearchIcon className="-ml-1 h-3 w-4 shrink-0 opacity-50"></SearchIcon>
             {selectedPodcast
               ? selectedPodcast.name
-              : 'Search podcasts, episodes, reviews, notes...'}
+              : title || 'Search podcasts, episodes, reviews, notes...'}
           </div>
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-[800px] p-0">
+      <PopoverContent className={mergeClasses('w-[800px] p-0', popoverClassName)}>
         <Command>
           <CommandInput placeholder="Search podcasts..." />
           <CommandEmpty>No podcasts found.</CommandEmpty>

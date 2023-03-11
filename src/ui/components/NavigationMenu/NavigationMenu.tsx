@@ -25,10 +25,7 @@ const NavigationMenuList = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <NavigationMenuPrimitive.List
     ref={ref}
-    className={mergeClasses(
-      'group flex flex-1 list-none items-center justify-center',
-      className,
-    )}
+    className={mergeClasses('group flex flex-1 list-none items-center justify-center', className)}
     {...props}
   />
 ));
@@ -84,18 +81,16 @@ export interface NavigationMenuComponentLinkProps
   className?: string;
 }
 
-const NavigationMenuLink = ({
-  className,
-  ...props
-}: NavigationMenuComponentLinkProps) => (
+const NavigationMenuLink = ({ className, ...props }: NavigationMenuComponentLinkProps) => (
   <NavigationMenuPrimitive.Link
     className={mergeClasses(
-      'rounded-[3px] font-visuelt text-[14px] font-medium text-white/90',
+      'rounded-[3px] font-visuelt text-[14px] font-medium text-white/90 grid grid-flow-row gap-2',
       'transition-colors focus:outline-none focus:outline-0 focus:ring-0',
       'focus:ring-transparent focus:ring-offset-0 focus:ring-offset-transparent',
       'self-center bg-transparent disabled:pointer-events-none disabled:opacity-50',
       'border border-transparent hover:border-white hover:border-opacity-[0.01] hover:bg-fondy',
-      'group h-10 w-max py-2 px-3',
+      'group  py-2 px-3',
+      className,
     )}
     {...props}
   />
@@ -116,8 +111,7 @@ const NavigationMenuViewport = React.forwardRef<
     />
   </div>
 ));
-NavigationMenuViewport.displayName =
-  NavigationMenuPrimitive.Viewport.displayName;
+NavigationMenuViewport.displayName = NavigationMenuPrimitive.Viewport.displayName;
 
 const NavigationMenuIndicator = React.forwardRef<
   React.ElementRef<typeof NavigationMenuPrimitive.Indicator>,
@@ -134,8 +128,7 @@ const NavigationMenuIndicator = React.forwardRef<
     <div className="bg-slate-200 dark:bg-slate-800 relative top-[60%] h-2 w-2 rotate-45 rounded-tl-sm shadow-md" />
   </NavigationMenuPrimitive.Indicator>
 ));
-NavigationMenuIndicator.displayName =
-  NavigationMenuPrimitive.Indicator.displayName;
+NavigationMenuIndicator.displayName = NavigationMenuPrimitive.Indicator.displayName;
 
 export {
   navigationMenuTriggerStyle,
