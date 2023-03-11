@@ -42,8 +42,8 @@ const DialogContent = React.forwardRef<
     <DialogPrimitive.Content
       ref={ref}
       className={mergeClasses(
-        'fixed z-50 grid w-full scale-100 gap-4 bg-[#0b0b0f] bg-opacity-80 text-white backdrop-blur-[50px]',
-        'p-6 opacity-100 animate-in fade-in-90 slide-in-from-bottom-10 sm:max-w-lg sm:rounded-lg sm:zoom-in-90 sm:slide-in-from-bottom-0',
+        'fixed z-50 grid w-full scale-100 gap-4 border border-white border-opacity-5 bg-[#090a0c] text-white shadow-3xl backdrop-blur-[50px]',
+        'px-6 pt-8 pb-3 opacity-100 animate-in fade-in-90 slide-in-from-bottom-10 sm:max-w-lg sm:rounded-md sm:zoom-in-90 sm:slide-in-from-bottom-0',
         'dark:bg-slate-900',
         className,
       )}

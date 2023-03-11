@@ -71,20 +71,77 @@ export function SignUpModalForm({ className }: JoinProps) {
   };
 
   return (
-    <div className={twMerge('mx-auto mt-4 w-fit', className)}>
+    <div className={twMerge('mx-auto mt-3 w-fit', className)}>
       <Dialog>
         <DialogTrigger asChild>
           <Button variant="default" size="lg">
             Discover New Podcasts - it‘s free!
           </Button>
         </DialogTrigger>
-        <DialogContent className="backdrop-blur-sm backdrop-brightness-[10%] sm:max-w-[575px]">
+        <DialogContent className="sm:max-w-[500px]">
           <DialogHeader>
-            <DialogTitle className="">Create a Podsfy Account</DialogTitle>
-            <DialogDescription className="mx-auto max-w-[250px] text-center text-white/60">
+            <DialogTitle className="text-[32px]">Create a Podsfy Account</DialogTitle>
+            <DialogDescription className="mx-auto max-w-[300px] text-center text-white/60">
               Create a free account to get access to all the features of Podsfy.
             </DialogDescription>
           </DialogHeader>
+
+          <FormProvider {...form}>
+            <Form onSubmit={handleSignUpFormSubmit} className="grid grid-flow-row gap-3">
+              <div className="grid grid-flow-row items-center gap-2">
+                <Label htmlFor="email" className="text-left font-moderat text-[14px] text-white/80">
+                  Email
+                </Label>
+                <Input id="email" {...register('email')} name="email" aria-label="email" />
+                {formState.errors?.email && (
+                  <p className="ml-1 self-center font-visuelt text-xs text-red-500">
+                    {formState.errors?.email?.message}
+                  </p>
+                )}
+              </div>
+              {/* <div className="grid grid-flow-row items-center gap-2">
+                <Label htmlFor="email" className="text-left">
+                  Username
+                </Label>
+                <Input id="username" className="col-span-4" />
+              </div>
+              <div className="grid grid-flow-row items-center gap-2">
+                <Label className="text-left">Name</Label>
+                <Input id="name" className="col-span-4" />
+              </div> */}
+              <div className="grid grid-flow-row items-center gap-2">
+                <Label htmlFor="email" className="text-left font-moderat text-[14px] text-white/80">
+                  Password
+                </Label>
+                <Input
+                  id="password"
+                  type={'password'}
+                  className="col-span-4"
+                  {...register('password')}
+                  tabIndex={2}
+                />
+                {formState.errors?.password && (
+                  <p className="ml-1 self-center font-visuelt text-xs text-red-500">
+                    {formState.errors?.password?.message}
+                  </p>
+                )}
+              </div>
+              <Button
+                type="submit"
+                variant="subtle"
+                className="mt-[14px] w-full text-white/80 backdrop-brightness-[60%]"
+                size="lg"
+              >
+                Register Now
+              </Button>
+            </Form>
+          </FormProvider>
+
+          <div className="mx-auto grid w-fit  grid-flow-col items-center justify-items-center gap-x-2">
+            <div className="h-[1px] w-[100px] bg-white/20 " />
+            <h1 className="self-center font-visuelt text-sm uppercase">or</h1>
+            <div className="h-[1px] w-[100px] bg-white/20 " />
+          </div>
           <div className="grid grid-flow-row gap-6 py-2">
             <div className="mx-auto grid grid-flow-col gap-[42px]  pb-[-2px]">
               <TooltipProvider>
@@ -155,55 +212,6 @@ export function SignUpModalForm({ className }: JoinProps) {
               </TooltipProvider>
             </div>
           </div>
-          <div className="mx-auto grid w-fit  grid-flow-col items-center justify-items-center gap-x-2">
-            <div className="h-[1px] w-[100px] bg-white/20 " />
-            <h1 className="self-center font-visuelt text-sm uppercase">or</h1>
-            <div className="h-[1px] w-[100px] bg-white/20 " />
-          </div>
-          <FormProvider {...form}>
-            <Form onSubmit={handleSignUpFormSubmit} className="grid grid-flow-row gap-3">
-              <div className="grid grid-flow-row items-center gap-2">
-                <Label htmlFor="email" className="text-left font-moderat text-[14px] text-white/80">
-                  Email
-                </Label>
-                <Input id="email" {...register('email')} name="email" aria-label="email" />
-                {formState.errors?.email && (
-                  <p className="ml-1 self-center font-visuelt text-xs text-red-500">
-                    {formState.errors?.email?.message}
-                  </p>
-                )}
-              </div>
-              {/* <div className="grid grid-flow-row items-center gap-2">
-                <Label htmlFor="email" className="text-left">
-                  Username
-                </Label>
-                <Input id="username" className="col-span-4" />
-              </div>
-              <div className="grid grid-flow-row items-center gap-2">
-                <Label className="text-left">Name</Label>
-                <Input id="name" className="col-span-4" />
-              </div> */}
-              <div className="grid grid-flow-row items-center gap-2">
-                <Label htmlFor="email" className="text-left font-moderat text-[14px] text-white/80">
-                  Password
-                </Label>
-                <Input
-                  id="password"
-                  type={'password'}
-                  className="col-span-4"
-                  {...register('password')}
-                />
-                {formState.errors?.password && (
-                  <p className="ml-1 self-center font-visuelt text-xs text-red-500">
-                    {formState.errors?.password?.message}
-                  </p>
-                )}
-              </div>
-              <Button type="submit" className="w-full" size="lg">
-                Register Now
-              </Button>
-            </Form>
-          </FormProvider>
 
           <DialogFooter className="mx-auto grid w-full grid-flow-row gap-2">
             <Button

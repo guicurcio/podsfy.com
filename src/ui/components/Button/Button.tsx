@@ -10,11 +10,10 @@ export const buttonVariants = cva(
       variant: {
         default:
           'bg-[#050607f2]  border border-[#171717] text-white/75 hover:brightness-[120%] dark:bg-slate-50 dark:text-slate-900',
-        destructive:
-          'bg-red-500 text-white hover:bg-red-600 dark:hover:bg-red-600',
+        destructive: 'bg-red-500 text-white hover:bg-red-600 dark:hover:bg-red-600',
         outline:
           'bg-transparent border border-slate-200 hover:bg-slate-100 dark:border-slate-700 dark:text-slate-100',
-        subtle: 'bg-transparent font-SpaceGrotesk text-white/90 hover:bg-fondy',
+        subtle: 'bg-transparent font-SpaceGrotesk text-white/90 hover:backdrop-brightness-[150%]',
         ghost:
           'bg-transparent hover:bg-slate-100 dark:hover:bg-slate-800 dark:text-slate-100 dark:hover:text-slate-100 data-[state=open]:bg-transparent dark:data-[state=open]:bg-transparent',
         link: 'bg-transparent underline-offset-4 hover:underline text-slate-900 dark:text-slate-100 hover:bg-transparent dark:hover:bg-transparent',
