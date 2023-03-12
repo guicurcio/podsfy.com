@@ -1,3 +1,4 @@
+import Button from 'ui/components/Button';
 import PodComment from './PodComment';
 
 /**
@@ -28,11 +29,14 @@ export interface PodReviewsProps {
 export default function PodReviews({ className, reviews, title }: PodReviewsProps) {
   return (
     <div className="grid w-full grid-flow-row gap-2 py-2">
-      <div className="grid  w-full grid-flow-row items-start justify-start gap-6 divide-y-[1px] divide-fondy/50 border-b-[1px]  border-fondy/50 px-2">
+      <div className="grid  w-full grid-flow-row items-start justify-start gap-6 divide-y-[2px] divide-fondy/50  px-2">
         {reviews.map((review) => (
           <PodComment review={review.review} />
         ))}
       </div>
+      <Button className="w-fit" variant="default">
+        Write a Review
+      </Button>
     </div>
   );
 }

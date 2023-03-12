@@ -1,5 +1,13 @@
+'use client';
+
 import Link from 'next/link';
 import { twMerge } from 'tailwind-merge';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from 'ui/components/Accordion';
 import Button from 'ui/components/Button';
 import PodComment from '../PodComment';
 
@@ -40,20 +48,31 @@ export default function PodEpisode({
   defaultCoverImage,
 }: PodEpisodeProps) {
   return (
-    <button
-      className={twMerge('grid w-full grid-flow-col gap-2 py-3  px-3 hover:bg-fondy/20', className)}
+    <AccordionItem
+      value={title}
+      className={twMerge(
+        'grid w-full grid-flow-row gap-2 border-0 px-3 hover:bg-fondy/20',
+        className,
+      )}
     >
-      <div className="grid grid-flow-row items-start justify-start gap-4">
-        <div className="grid grid-flow-col items-center gap-3">
-          <img
-            src={defaultCoverImage}
-            className="h-[32px] w-[32px] rounded-sm border border-[#88888820] shadow-3xl"
-          ></img>
-          <h2 className="w-full text-left font-moderat text-[14px] text-white text-opacity-75">
-            {title}
-          </h2>
+      <AccordionTrigger>
+        <div className="grid grid-flow-row items-start justify-start gap-4">
+          <div className="grid grid-flow-col items-center gap-3">
+            <img
+              src={defaultCoverImage}
+              className="h-[32px] w-[32px] rounded-sm border border-[#88888820] shadow-3xl"
+            ></img>
+            <h2 className="w-full text-left font-moderat text-[14px] text-white text-opacity-75">
+              {title}
+            </h2>
+          </div>
         </div>
-      </div>
-    </button>
+      </AccordionTrigger>
+      <AccordionContent>
+        <p className="px-4 font-visuelt text-[14px] font-normal leading-[24px] tracking-[0.5px] text-[#9ab] text-opacity-80  antialiased">
+          {title}
+        </p>
+      </AccordionContent>
+    </AccordionItem>
   );
 }
