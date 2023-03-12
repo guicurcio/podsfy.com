@@ -15,6 +15,7 @@ import {
   Users,
 } from 'lucide-react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { twMerge } from 'tailwind-merge';
 import { Avatar, AvatarImage } from 'ui/components/Avatar';
 import Button from 'ui/components/Button/Button';
@@ -86,6 +87,8 @@ export const podcasts = [
  * Header Component
  */
 export default function Header({ className }: HeaderProps) {
+  const pathName = usePathname();
+  console.log(pathName);
   return (
     <div
       className={twMerge(
@@ -108,12 +111,23 @@ export default function Header({ className }: HeaderProps) {
             <Search podcasts={podcasts} className=""></Search>
             <SignInModal></SignInModal>
           </div>
-          <div className="mx-auto grid w-[1200px]  max-w-[1200px] grid-flow-col   items-center justify-center pb-3">
-            <NavigationMenu>
+          <div className="mx-auto grid w-[1200px]  max-w-[1200px] grid-flow-col   items-center justify-center">
+            <NavigationMenu className="">
               <NavigationMenuList className="mx-auto grid grid-flow-col items-center gap-[8px] ">
-                <NavigationMenuItem>
+                <NavigationMenuItem
+                  className={mergeClasses(
+                    pathName.split('/')[1] === 'home' && ' border-b-[2px] border-white/20',
+                  )}
+                >
                   <Link href="/home" legacyBehavior passHref>
-                    <NavigationMenuLink>Home</NavigationMenuLink>
+                    <NavigationMenuLink
+                      className={mergeClasses(
+                        pathName.split('/')[1] === 'home' && ' text-white',
+                        'pb-1',
+                      )}
+                    >
+                      Home
+                    </NavigationMenuLink>
                   </Link>
                 </NavigationMenuItem>
 

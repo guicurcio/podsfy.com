@@ -1,4 +1,7 @@
+'use client';
+
 import Button from 'ui/components/Button';
+import { HoverCard, HoverCardContent, HoverCardTrigger } from 'ui/components/Hover';
 // import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from 'ui/components/Tooltip';
 
 /**
@@ -22,7 +25,7 @@ export interface PodStreamingProps {
  */
 export default function PodStreaming({ streamingSites }) {
   return (
-    <div className="grid w-full grid-flow-row rounded-[4px]   border-[#252525] border-opacity-[20%] bg-[#0a0a0b] ">
+    <div className="grid w-full grid-flow-row rounded-[4px] border-[#252525] border-opacity-[20%] bg-[#0a0a0b] ">
       <div className="grid w-full grid-flow-col items-center justify-start gap-2  py-4  px-4  backdrop-brightness-[50%]">
         <svg
           width={16}
@@ -46,52 +49,40 @@ export default function PodStreaming({ streamingSites }) {
           Streaming At
         </p>
       </div>
-      <div className="relative grid grid-flow-col  items-start justify-start gap-x-2 border-t border-fondy/50 px-3 py-4 backdrop-brightness-[50%]">
+
+      <div className="relative grid grid-flow-col px-4  items-start justify-start gap-x-2 border-t border-fondy/50 px-3 py-4 backdrop-brightness-[50%]">
         {/* <TooltipProvider>
           <Tooltip>
             <TooltipTrigger >
               <div className="relative"> */}
         {streamingSites?.length >= 1 &&
           streamingSites?.map((site) => (
-            <Button variant="subtle" className="w-10 p-0">
-              <img
-                src={`/pods/${site.title}.webp`}
-                className="pod-streaming border-2 border-[#88888820] shadow-3xl"
-              ></img>
-            </Button>
+            <HoverCard>
+              <HoverCardTrigger asChild>
+                <Button variant="subtle" className="w-10 p-0">
+                  <img
+                    src={`/pods/${site.title}.webp`}
+                    className="pod-streaming border-2 border-[#88888820] shadow-3xl"
+                  ></img>
+                </Button>
+              </HoverCardTrigger>
+              <HoverCardContent className="w-80">
+                <div className="flex justify-between space-x-4">
+                  <div className="space-y-1">
+                    <h4 className="text-sm font-semibold">@nextjs</h4>
+                    <p className="text-sm">
+                      The React Framework – created and maintained by @vercel.
+                    </p>
+                    <div className="flex items-center pt-2">
+                      <span className="text-slate-500 dark:text-slate-400 text-xs">
+                        Joined December 2021
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </HoverCardContent>
+            </HoverCard>
           ))}
-
-        {/* </div>
-            </TooltipTrigger>
-            <TooltipContent>
-              <p>Add to library</p>
-            </TooltipContent>
-          </Tooltip>
-        </TooltipProvider> */}
-        {/* <img
-          src="/pods/stitcher.webp"
-          className="pod-streaming border-2 border-[#88888820] shadow-3xl"
-        ></img>
-        <img
-          src="/pods/audible.webp"
-          className="pod-streaming border-2 border-[#88888820] shadow-3xl"
-        ></img>
-        <img
-          src="/pods/spotify.webp"
-          className="pod-streaming border-2 border-[#88888820] shadow-3xl"
-        ></img>
-        <img
-          src="/pods/youtube.webp"
-          className="pod-streaming border-2 border-[#88888820] shadow-3xl"
-        ></img>
-        <img
-          src="/pods/soundcloud.webp"
-          className="pod-streaming border-2 border-[#88888820] shadow-3xl"
-        ></img>
-        <img
-          src="/pods/google.webp"
-          className="pod-streaming border-2 border-[#88888820] shadow-3xl"
-        ></img> */}
       </div>
     </div>
   );

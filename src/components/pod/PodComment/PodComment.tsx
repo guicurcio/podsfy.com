@@ -47,14 +47,14 @@ export default function PodComment({
           </div>
           <div className="grid grid-flow-row gap-[8px]">
             {review.split('\\n').map((line, index) => (
-              <p className="ml-[2px] font-visuelt text-[15px] font-normal leading-[25px] tracking-[0.5px] text-[#9ab] text-opacity-80  antialiased">
+              <p className="ml-[2px] font-visuelt text-[14px] font-normal leading-[25px] tracking-[0.5px] text-[#9ab] text-opacity-80  antialiased">
                 {line}
               </p>
             ))}
           </div>
         </div>
         <div className="grid grid-flow-col justify-start gap-2">
-          <button className="text-left text-[12px] font-moderat text-[#9ab]">like review</button>
+          <button className="text-left font-moderat text-[12px] text-[#9ab]">like review</button>
           <h2 className="text-left text-[12px] text-[#9ab]">{amountOfLikes} likes</h2>
         </div>
       </div>

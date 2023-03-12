@@ -2,6 +2,7 @@ export default function Head() {
   return (
     <>
       <title key="title">podsfy.com - </title>
+      <link rel="shortcut icon" href="/favicon.svg" />
       <meta charSet="utf-8" />
       <meta name="viewport" content="width=device-width" />
       <meta name="description" content="" />

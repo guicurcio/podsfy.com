@@ -1,11 +1,11 @@
 export default function ChangelogPage() {
   return (
     <div className="grid w-[720px] grid-flow-row gap-4">
-      <div className="grid w-full grid-flow-row gap-3 py-[10px]">
+      <div className="grid w-full grid-flow-row gap-2 py-[10px]">
         <p className="text-left font-SpaceGrotesk text-[40px] font-semibold tracking-tighter text-white/90">
           Changelog
         </p>
-        <div className="grid grid-flow-row gap-2">
+        <div className="grid grid-flow-row gap-2 pb-[10px]">
           <div className="relative mx-auto flex w-full items-start justify-start gap-3 rounded-[6px] bg-[#111] py-5 text-center">
             <div className="mx-auto grid grid-flow-col gap-2 text-center">
               <svg
@@ -45,9 +45,9 @@ export default function ChangelogPage() {
             </div>
           </div>
         </div>
-        <div className="grid grid-flow-row gap-[80px]">
+        <div className="grid grid-flow-row gap-[120px]">
           <div className="grid grid-flow-row gap-[8px]">
-            <div className="relative flex items-start justify-start overflow-hidden rounded-xl border border-white border-opacity-5 shadow-2xl">
+            <div className="relative flex items-start justify-start overflow-hidden rounded-xl border border-white border-opacity-10 shadow-2xl">
               <img src="2.png"></img>
             </div>
             <div className="grid grid-flow-col items-start justify-start justify-items-start gap-2 pt-1">
@@ -74,7 +74,7 @@ export default function ChangelogPage() {
             </p>
           </div>
           <div className="grid grid-flow-row gap-[8px]">
-            <div className="relative flex items-start justify-start overflow-hidden rounded-xl border border-white border-opacity-5 shadow-2xl">
+            <div className="relative flex items-start justify-start overflow-hidden rounded-xl border border-white border-opacity-10 shadow-2xl">
               <img src="bg.png" className="backdrop-brightness-[50%]"></img>
             </div>
             <div className="grid grid-flow-col items-start justify-start justify-items-start gap-2 pt-1">
