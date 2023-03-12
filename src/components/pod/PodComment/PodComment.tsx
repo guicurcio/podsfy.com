@@ -42,7 +42,7 @@ export default function PodComment({
   amountOfLikes = 0,
 }: PodCommentProps) {
   return (
-    <div className={twMerge('grid w-full grid-flow-col gap-4', className)}>
+    <div className={twMerge('grid w-full grid-flow-col gap-4 pb-4', className)}>
       <div className="grid grid-flow-row gap-4">
         <div className="grid grid-flow-row gap-[16px]">
           <div className="grid w-full grid-flow-col place-content-between content-between justify-between">
@@ -86,7 +86,7 @@ export default function PodComment({
               </Button>
             </div>
           </div>
-          <div className="grid grid-flow-row gap-[9px]">
+          <div className="grid grid-flow-row gap-[11px]">
             {review.split('\\n').map((line, index) => (
               <p className="ml-[2px] font-visuelt text-[14px] font-normal leading-[24px] tracking-[0.5px] text-[#9ab] text-opacity-80  antialiased">
                 {line}

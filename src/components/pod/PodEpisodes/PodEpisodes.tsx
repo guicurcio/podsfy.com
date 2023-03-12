@@ -1,3 +1,6 @@
+'use client';
+
+import { Accordion } from 'ui/components/Accordion';
 import PodEpisode from '../PodEpisode/PodEpisode';
 
 /**
@@ -73,7 +76,7 @@ export default function PodEpisodes({
           {title}
         </p>
       </div>
-      <div className="grid w-full grid-flow-row  divide-y-[1px] divide-fondy/50 border-t   border-fondy/50 backdrop-brightness-[50%]">
+      <div>
         {episodes.length === 0 && (
           <div className="pt-2">
             <p className="self-center text-left align-middle font-moderat text-[14px] font-medium tracking-[-0.03em] text-[#a5a5a5]/60 antialiased">
@@ -81,16 +84,22 @@ export default function PodEpisodes({
             </p>
           </div>
         )}
-        {episodes &&
-          episodes
-            .slice(0, 3)
-            .map((episode) => (
-              <PodEpisode
-                key={episode.title}
-                defaultCoverImage={defaultCoverImage}
-                title={episode.title}
-              ></PodEpisode>
-            ))}
+
+        <Accordion
+          type="multiple"
+          className="grid w-full grid-flow-row  divide-y-[1px] divide-fondy/50 border-t   border-fondy/50 backdrop-brightness-[50%]"
+        >
+          {episodes &&
+            episodes
+              .slice(0, 3)
+              .map((episode) => (
+                <PodEpisode
+                  key={episode.title}
+                  defaultCoverImage={defaultCoverImage}
+                  title={episode.title}
+                ></PodEpisode>
+              ))}
+        </Accordion>
       </div>
     </div>
   );
