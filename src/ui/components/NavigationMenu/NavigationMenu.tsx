@@ -84,12 +84,13 @@ export interface NavigationMenuComponentLinkProps
 const NavigationMenuLink = ({ className, ...props }: NavigationMenuComponentLinkProps) => (
   <NavigationMenuPrimitive.Link
     className={mergeClasses(
-      'rounded-[3px] font-visuelt text-[14px] font-medium text-white/90 grid grid-flow-row gap-2',
+      'grid grid-flow-row gap-2 rounded-t-[3px] rounded-r-[3px] rounded-l-[3px] font-visuelt text-[14px] font-medium text-white/60',
       'transition-colors focus:outline-none focus:outline-0 focus:ring-0',
       'focus:ring-transparent focus:ring-offset-0 focus:ring-offset-transparent',
       'self-center bg-transparent disabled:pointer-events-none disabled:opacity-50',
-      'border border-transparent hover:border-white hover:border-opacity-[0.01] hover:bg-fondy',
-      'group  py-2 px-3',
+      'hover:text-white',
+      'hover:bg-fondy',
+      'group py-2 px-3',
       className,
     )}
     {...props}

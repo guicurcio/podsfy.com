@@ -8,7 +8,7 @@ import PodSimilar from 'components/pod/PodSimilar';
 import PodStreaming from 'components/pod/PodStreaming';
 import { db } from 'lib/setupDBConfig/setupDBConfig';
 import Head from 'next/head';
-import { redirect } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import { cache } from 'react';
 
 const generateGoodTitleForReviews = (title) => {
@@ -87,26 +87,18 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params, searchParams }) {
   const staticPodcastData = await getPodInfo(params.pod);
-  return { title: `${staticPodcastData.title} - podsfy.com` };
+  return { title: `${staticPodcastData?.title} - podsfy.com` };
 }
 
 export default async function PodcastPage({ params }) {
   const staticPodcastData = await getPodInfo(params.pod);
 
-  if (!staticPodcastData.title) {
-    redirect('/404');
+  if (!staticPodcastData?.title) {
+    notFound();
   }
 
   return (
     <>
-      <Head>
-        <title key="title">{staticPodcastData.title} - podsfy.com</title>
-        <meta
-          property="og:title"
-          content={`${staticPodcastData.title} - podsfy.com`}
-          key="ogtitle"
-        />
-      </Head>
       <div className="z-0">
         <PodImage
           imageClassName={staticPodcastData.backgroundCoverImage ? `top-[-20px]` : `top-[150px]`}
