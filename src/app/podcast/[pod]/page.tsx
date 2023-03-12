@@ -82,6 +82,11 @@ export async function generateStaticParams() {
   }))
 }
 
+export async function generateMetadata({ params, searchParams }) {
+  const staticPodcastData = await getPodInfo(params.pod);
+  return { title: `${staticPodcastData?.title} - podsfy.com` };
+}
+
 export default async function PodcastPage({ params }) {
   const staticPodcastData = await getPodInfo(params.pod)
 
