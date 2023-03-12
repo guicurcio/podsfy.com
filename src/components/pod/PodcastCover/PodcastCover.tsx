@@ -43,7 +43,7 @@ export default function PodcastCover({
         <img
           src={imageURL}
           className={mergeClasses(
-            'h-[235px] w-[190px] flex-shrink-0 cursor-pointer rounded-[8px]',
+            'md:h-[235px] md:w-[190px] flex-shrink-0 cursor-pointer rounded-[8px]',
             ' object-fill shadow-3xl',
             'duration-500 ease-in-out hover:scale-[102%]',
           )}

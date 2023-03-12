@@ -97,6 +97,7 @@ export default function PodEpisodes({
                   key={episode.title}
                   defaultCoverImage={defaultCoverImage}
                   title={episode.title}
+                  description={episode.description}
                 ></PodEpisode>
               ))}
         </Accordion>

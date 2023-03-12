@@ -33,6 +33,7 @@ export default function PodDetails({
     <div
       className={twMerge('grid grid-flow-row justify-start gap-6 pb-[10px] text-left', className)}
     >
+      
       <div className="grid grid-flow-row gap-[1px]">
         <h1 className="-ml-[3px] justify-start font-lausanne text-[41px] font-normal capitalize tracking-[-0.04em] text-[#fff] text-opacity-90 brightness-[180%]">
           {title}
