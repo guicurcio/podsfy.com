@@ -9,7 +9,7 @@ import { db } from "lib/setupDBConfig/setupDBConfig"
 import { notFound } from "next/navigation"
 import { cache } from "react"
 
-export const generateGoodTitleForReviews = (title: string) => {
+const generateGoodTitleForReviews = (title: string) => {
   let newTitle = title
     .split(" ")
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
@@ -80,11 +80,6 @@ export async function generateStaticParams() {
   return podcasts.map((podcast) => ({
     pod: podcast.slug,
   }))
-}
-
-export async function generateMetadata({ params, searchParams }) {
-  const staticPodcastData = await getPodInfo(params.pod)
-  return { title: `${staticPodcastData?.title} - podsfy.com` }
 }
 
 export default async function PodcastPage({ params }) {

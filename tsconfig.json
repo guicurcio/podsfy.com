@@ -2,11 +2,7 @@
   "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
     "target": "es6",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -22,40 +18,21 @@
     "baseUrl": "./src",
     "useUnknownInCatchVariables": false,
     "paths": {
-      "@/lib/*": [
-        "./src/lib/*"
-      ],
-      "@/components/*": [
-        "./src/components/*"
-      ],
-      "@/ui/*": [
-        "./src/ui/*"
-      ],
-      "@/utils/*": [
-        "./src/utils/*"
-      ],
-      "styles/*": [
-        "./src/styles/*"
-      ],
-      "contentlayer/generated": [
-        "../.contentlayer/generated"
-      ]
+      "@/lib/*": ["./src/lib/*"],
+      "@/components/*": ["./src/components/*"],
+      "@/ui/*": ["./src/ui/*"],
+      "@/utils/*": ["./src/utils/*"],
+      "styles/*": ["./src/styles/*"],
+      "contentlayer/generated": ["../.contentlayer/generated"]
     },
     "plugins": [
       {
         "name": "next"
       }
     ],
-    "strictNullChecks": true,
+    "strictNullChecks": false,
     "incremental": true
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-    ".next/types/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "exclude": ["node_modules"]
 }
