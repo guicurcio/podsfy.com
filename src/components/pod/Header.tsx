@@ -97,8 +97,8 @@ export default function Header({ className }: HeaderProps) {
       )}
     >
       <div className="mx-auto w-full max-w-[1350px]">
-        <div className="mx-auto grid grid-flow-row items-center gap-2 pr-[90px] pl-[60px]">
-          <div className="grid grid-flow-col place-content-between py-1.5">
+        <div className="mx-auto grid grid-flow-row items-center  pr-[90px] pl-[60px] pt-1">
+          <div className="grid grid-flow-col place-content-between pb-1.5">
             <Link href="/" legacyBehavior passHref>
               <a
                 className={mergeClasses(
@@ -123,7 +123,7 @@ export default function Header({ className }: HeaderProps) {
                     <NavigationMenuLink
                       className={mergeClasses(
                         pathName.split('/')[1] === 'home' && ' text-white',
-                        'pb-1',
+                        '',
                       )}
                     >
                       Home
@@ -131,14 +131,36 @@ export default function Header({ className }: HeaderProps) {
                   </Link>
                 </NavigationMenuItem>
 
-                <NavigationMenuItem>
+                <NavigationMenuItem
+                  className={mergeClasses(
+                    pathName.split('/')[1] === 'for-you' && ' border-b-[2px] border-white/20',
+                  )}
+                >
                   <Link href="/for-you" legacyBehavior passHref>
-                    <NavigationMenuLink>For you</NavigationMenuLink>
+                    <NavigationMenuLink
+                      className={mergeClasses(
+                        pathName.split('/')[1] === 'for-you' && ' text-white',
+                        '',
+                      )}
+                    >
+                      For You
+                    </NavigationMenuLink>
                   </Link>
                 </NavigationMenuItem>
-                <NavigationMenuItem>
+                <NavigationMenuItem
+                  className={mergeClasses(
+                    pathName.split('/')[1] === 'charts' && ' border-b-[2px] border-white/20',
+                  )}
+                >
                   <Link href="/charts" legacyBehavior passHref>
-                    <NavigationMenuLink>Top Charts</NavigationMenuLink>
+                    <NavigationMenuLink
+                      className={mergeClasses(
+                        pathName.split('/')[1] === 'charts' && ' text-white',
+                        '',
+                      )}
+                    >
+                      Top Charts
+                    </NavigationMenuLink>
                   </Link>
                 </NavigationMenuItem>
                 {/* <NavigationMenuItem>
@@ -147,34 +169,105 @@ export default function Header({ className }: HeaderProps) {
                   </Link>
                 </NavigationMenuItem> */}
                 <Separator orientation="vertical"></Separator>
-                <NavigationMenuItem>
+                <NavigationMenuItem
+                  className={mergeClasses(
+                    pathName.split('/')[3] === 'health' && ' border-b-[2px] border-white/20',
+                  )}
+                >
+                  <Link href="/podcast/category/health" legacyBehavior passHref>
+                    <NavigationMenuLink
+                      className={mergeClasses(
+                        pathName.split('/')[3] === 'health' && ' text-white',
+                        '',
+                      )}
+                    >
+                      Health
+                    </NavigationMenuLink>
+                  </Link>
+                </NavigationMenuItem>
+                {/* <NavigationMenuItem>
                   <Link href="/podcast/category/health" passHref>
                     <NavigationMenuLink>Health</NavigationMenuLink>
                   </Link>
-                </NavigationMenuItem>
-                <NavigationMenuItem>
-                  <Link href="/podcast/category/relationships" passHref>
-                    <NavigationMenuLink>Relationships</NavigationMenuLink>
+                </NavigationMenuItem> */}
+                <NavigationMenuItem
+                  className={mergeClasses(
+                    pathName.split('/')[3] === 'relationships' && ' border-b-[2px] border-white/20',
+                  )}
+                >
+                  <Link href="/podcast/category/relationships" legacyBehavior passHref>
+                    <NavigationMenuLink
+                      className={mergeClasses(
+                        pathName.split('/')[3] === 'relationships' && ' text-white',
+                        '',
+                      )}
+                    >
+                      Relationships
+                    </NavigationMenuLink>
                   </Link>
                 </NavigationMenuItem>
-                <NavigationMenuItem>
+                <NavigationMenuItem
+                  className={mergeClasses(
+                    pathName.split('/')[3] === 'conversations' && 'border-b-2 border-white/20',
+                  )}
+                >
                   <Link href="/podcast/category/conversations" passHref>
-                    <NavigationMenuLink>Conversations</NavigationMenuLink>
+                    <NavigationMenuLink
+                      className={mergeClasses(
+                        pathName.split('/')[3] === 'conversations' && 'text-white',
+                        '',
+                      )}
+                    >
+                      Conversations
+                    </NavigationMenuLink>
                   </Link>
                 </NavigationMenuItem>
-                <NavigationMenuItem>
+                <NavigationMenuItem
+                  className={mergeClasses(
+                    pathName.split('/')[3] === 'entrepreneurship' && 'border-b-2 border-white/20',
+                  )}
+                >
                   <Link href="/podcast/category/entrepreneurship" passHref>
-                    <NavigationMenuLink>Entrepreneurship</NavigationMenuLink>
+                    <NavigationMenuLink
+                      className={mergeClasses(
+                        pathName.split('/')[3] === 'entrepreneurship' && 'text-white',
+                        '',
+                      )}
+                    >
+                      Entrepreneurship
+                    </NavigationMenuLink>
                   </Link>
                 </NavigationMenuItem>
-                <NavigationMenuItem>
+                <NavigationMenuItem
+                  className={mergeClasses(
+                    pathName.split('/')[3] === 'finance' && 'border-b-2 border-white/20',
+                  )}
+                >
                   <Link href="/podcast/category/finance" passHref>
-                    <NavigationMenuLink>Finance</NavigationMenuLink>
+                    <NavigationMenuLink
+                      className={mergeClasses(
+                        pathName.split('/')[3] === 'finance' && 'text-white',
+                        '',
+                      )}
+                    >
+                      Finance
+                    </NavigationMenuLink>
                   </Link>
                 </NavigationMenuItem>
-                <NavigationMenuItem>
+                <NavigationMenuItem
+                  className={mergeClasses(
+                    pathName.split('/')[3] === 'serial' && 'border-b-2 border-white/20',
+                  )}
+                >
                   <Link href="/podcast/category/serial" passHref>
-                    <NavigationMenuLink>Serial</NavigationMenuLink>
+                    <NavigationMenuLink
+                      className={mergeClasses(
+                        pathName.split('/')[3] === 'serial' && 'text-white',
+                        '',
+                      )}
+                    >
+                      Serial
+                    </NavigationMenuLink>
                   </Link>
                 </NavigationMenuItem>
               </NavigationMenuList>

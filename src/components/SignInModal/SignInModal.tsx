@@ -74,7 +74,7 @@ export function SignInModalForm({ className, toggleValue }: SignInModalProps) {
   return (
     <FormProvider {...form}>
       <Form onSubmit={handleSignInFormSubmit}>
-        <div className="mx-auto mt-4 w-fit">
+        <div className="mx-auto mt-3 w-fit">
           <Dialog>
             <DialogTrigger asChild>
               <Button variant="subtle" size="md">
