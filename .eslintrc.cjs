@@ -76,6 +76,8 @@ module.exports = {
       "error",
       { prefer: "type-imports" },
     ],
+    "unicorn/prevent-abbreviations": "off",
+    "unicorn/filename-case": "off",
     "no-restricted-imports": [
       "warn",
       {

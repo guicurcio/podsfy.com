@@ -1,4 +1,4 @@
-import { twMerge } from 'tailwind-merge';
+import { twMerge } from "tailwind-merge"
 
 /**
  * PodBehind Props description
@@ -7,21 +7,21 @@ export interface PodBehindProps {
   /**
    * Custom class names passed to the root element.
    */
-  className?: string;
+  className?: string
   /**
    * image url
    */
-  image?: string;
+  image?: string
   /**
    * image url
    */
-  genre?: string | null;
+  genre?: string | null
   /**
    * image url
    */
-  rating?: number;
-  tags?: string;
-  podcastTitle?: string;
+  rating?: number
+  tags?: string
+  podcastTitle?: string
 }
 
 /**
@@ -31,12 +31,11 @@ export default function PodBehind({
   className,
   genre,
   rating,
-  tags,
-  podcastTitle = 'Podcast',
 }: PodBehindProps) {
-  // const { toast } = useToast();
   return (
-    <div className={twMerge('grid w-full grid-flow-row  gap-2  py-1', className)}>
+    <div
+      className={twMerge("grid w-full grid-flow-row  gap-2  py-1", className)}
+    >
       <div className="grid grid-flow-col items-center justify-items-center  gap-2 py-2 ">
         <button
           // onClick={() => {
@@ -58,7 +57,7 @@ export default function PodBehind({
             <path
               d="M7.22303 0.665992C7.32551 0.419604 7.67454 0.419604 7.77702 0.665992L9.41343 4.60039C9.45663 4.70426 9.55432 4.77523 9.66645 4.78422L13.914 5.12475C14.18 5.14607 14.2878 5.47802 14.0852 5.65162L10.849 8.42374C10.7636 8.49692 10.7263 8.61176 10.7524 8.72118L11.7411 12.866C11.803 13.1256 11.5206 13.3308 11.2929 13.1917L7.6564 10.9705C7.5604 10.9119 7.43965 10.9119 7.34365 10.9705L3.70718 13.1917C3.47945 13.3308 3.19708 13.1256 3.25899 12.866L4.24769 8.72118C4.2738 8.61176 4.23648 8.49692 4.15105 8.42374L0.914889 5.65162C0.712228 5.47802 0.820086 5.14607 1.08608 5.12475L5.3336 4.78422C5.44573 4.77523 5.54342 4.70426 5.58662 4.60039L7.22303 0.665992Z"
               fill="currentColor"
-             />
+            />
           </svg>
           <p className="text-center text-[13px] text-[#d9e8ed]">Favorite</p>
         </button>
@@ -76,7 +75,7 @@ export default function PodBehind({
               fill="currentColor"
               fillRule="evenodd"
               clipRule="evenodd"
-             />
+            />
           </svg>
           <p className="text-center text-[13px] text-[#d9e8ed]">PodList</p>
         </div>
@@ -92,7 +91,7 @@ export default function PodBehind({
             <path
               d="M1.35248 4.90532C1.35248 2.94498 2.936 1.35248 4.89346 1.35248C6.25769 1.35248 6.86058 1.92336 7.50002 2.93545C8.13946 1.92336 8.74235 1.35248 10.1066 1.35248C12.064 1.35248 13.6476 2.94498 13.6476 4.90532C13.6476 6.74041 12.6013 8.50508 11.4008 9.96927C10.2636 11.3562 8.92194 12.5508 8.00601 13.3664C7.94645 13.4194 7.88869 13.4709 7.83291 13.5206C7.64324 13.6899 7.3568 13.6899 7.16713 13.5206C7.11135 13.4709 7.05359 13.4194 6.99403 13.3664C6.0781 12.5508 4.73641 11.3562 3.59926 9.96927C2.39872 8.50508 1.35248 6.74041 1.35248 4.90532Z"
               fill="currentColor"
-             />
+            />
           </svg>
           <p className="text-center text-[13px] text-[#d9e8ed]">Like</p>
         </div>
@@ -135,10 +134,10 @@ export default function PodBehind({
               Genre:
             </p>
             <p className="space-x-1 self-center  truncate align-middle font-visuelt text-[14px] font-normal text-white/70 text-opacity-60">
-              {genre.split(',').map((str, i) => (
-                <span className="capitalize">
+              {genre.split(",").map((str, i) => (
+                <span key={str} className="capitalize">
                   {str}
-                  {i === genre.split(',').length - 1 ? '.' : ','}
+                  {i === genre.split(",").length - 1 ? "." : ","}
                 </span>
               ))}
             </p>
@@ -146,8 +145,10 @@ export default function PodBehind({
         )}
       </div>
       <div className="">
-        <div className="absolute right-[-20px] top-[40px] ">{/* <Toaster></Toaster> */}</div>
+        <div className="absolute right-[-20px] top-[40px] ">
+          {/* <Toaster></Toaster> */}
+        </div>
       </div>
     </div>
-  );
+  )
 }
