@@ -31,11 +31,24 @@ const NavigationMenuList = React.forwardRef<
 ));
 NavigationMenuList.displayName = NavigationMenuPrimitive.List.displayName;
 
-const NavigationMenuItem = NavigationMenuPrimitive.Item;
+// const NavigationMenuItem = NavigationMenuPrimitive.Item;
 
 const navigationMenuTriggerStyle = cva(
   'inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus:outline-none focus:bg-slate-100 disabled:opacity-50 dark:focus:bg-slate-800 disabled:pointer-events-none bg-transparent hover:bg-slate-100 dark:hover:bg-slate-800 dark:text-slate-100 dark:hover:text-slate-100 data-[state=open]:bg-slate-50 dark:data-[state=open]:bg-slate-800 h-10 py-2 px-4 group w-max',
 );
+
+const NavigationMenuItem = React.forwardRef<
+  React.ElementRef<typeof NavigationMenuPrimitive.Item>,
+  React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Item>
+>(({ className, children, ...props }, ref) => (
+  <NavigationMenuPrimitive.Item
+    ref={ref}
+    {...props}
+    className={mergeClasses('pb-[2px]', className)}
+  >
+    {children}
+  </NavigationMenuPrimitive.Item>
+));
 
 const NavigationMenuTrigger = React.forwardRef<
   React.ElementRef<typeof NavigationMenuPrimitive.Trigger>,
@@ -53,6 +66,7 @@ const NavigationMenuTrigger = React.forwardRef<
     />
   </NavigationMenuPrimitive.Trigger>
 ));
+
 NavigationMenuTrigger.displayName = NavigationMenuPrimitive.Trigger.displayName;
 
 const NavigationMenuContent = React.forwardRef<
@@ -89,7 +103,7 @@ const NavigationMenuLink = ({ className, ...props }: NavigationMenuComponentLink
       'focus:ring-transparent focus:ring-offset-0 focus:ring-offset-transparent',
       'self-center bg-transparent disabled:pointer-events-none disabled:opacity-50',
       'hover:text-white',
-      'hover:bg-fondy',
+      // 'hover:bg-fondy',
       'group py-2 px-3',
       className,
     )}
