@@ -105,7 +105,7 @@ export default function CompanySidebar({
             </NavigationMenuLink>
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <Link href="/changelog">
+            <Link href="/changelog" legacyBehavior passHref>
               <NavigationMenuLink className="grid w-[275px] cursor-pointer grid-flow-col items-start justify-start gap-3 font-normal text-white/80">
                 <CheckSquareIcon className="h-4 w-4 self-center align-middle" />
                 <span>Changelog</span>
@@ -113,10 +113,12 @@ export default function CompanySidebar({
             </Link>
           </NavigationMenuItem>
           <NavigationMenuItem>
-            <NavigationMenuLink className="grid w-[275px] cursor-pointer grid-flow-col items-start justify-start gap-3 font-normal text-white/80">
-              <Code2Icon className="h-4 w-4 self-center align-middle" />
-              <span>Engineering</span>
-            </NavigationMenuLink>
+            <Link href="/engineering" legacyBehavior passHref>
+              <NavigationMenuLink className="grid w-[275px] cursor-pointer grid-flow-col items-start justify-start gap-3 font-normal text-white/80">
+                <Code2Icon className="h-4 w-4 self-center align-middle" />
+                <span>Engineering</span>
+              </NavigationMenuLink>
+            </Link>
           </NavigationMenuItem>
           <NavigationMenuItem>
             <Link href="/about">

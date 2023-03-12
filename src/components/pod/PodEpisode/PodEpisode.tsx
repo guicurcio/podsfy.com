@@ -69,9 +69,13 @@ export default function PodEpisode({
         </div>
       </AccordionTrigger>
       <AccordionContent>
-        <p className="px-4 font-visuelt text-[14px] font-normal leading-[24px] tracking-[0.5px] text-[#9ab] text-opacity-80  antialiased">
-          {title}
-        </p>
+        <div className="grid grid-flow-row gap-[8px]">
+          {description.split('\\n').map((line, index) => (
+            <p className="ml-[2px] font-visuelt text-[14px] font-normal leading-[24px] tracking-[0.5px] text-[#9ab] text-opacity-80  antialiased">
+              {line}
+            </p>
+          ))}
+        </div>
       </AccordionContent>
     </AccordionItem>
   );
