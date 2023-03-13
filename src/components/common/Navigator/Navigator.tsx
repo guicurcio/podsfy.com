@@ -20,9 +20,9 @@ export interface NavigatorProps {
   className?: string
 }
 
-export function CustomNagivationMenuLink({ href, children }) {
+export function CustomNagivationMenuLink({ href, children, className = "" }) {
   return (
-    <NavigationMenuLink asChild>
+    <NavigationMenuLink asChild className={className}>
       <Link href={href}>{children}</Link>
     </NavigationMenuLink>
   )
@@ -32,10 +32,13 @@ function isActiveNavItem(path, navItemPath) {
   return path.split("/")[3] === navItemPath
 }
 
-function CustomNavigationMenuItem({ isActive, children }) {
+function CustomNavigationMenuItem({ isActive, children, className = "" }) {
   return (
     <NavigationMenuItem
-      className={mergeClasses(isActive && "border-b-[2px] border-white/20")}
+      className={mergeClasses(
+        isActive && "border-b-[2px] border-white/20",
+        className
+      )}
     >
       {children}
     </NavigationMenuItem>
@@ -64,7 +67,7 @@ export default function Navigator({ className }: NavigatorProps) {
   return (
     <div
       className={mergeClasses(
-        "mx-auto grid w-[1200px]  max-w-[1200px] grid-flow-col   items-center justify-center",
+        "mx-auto grid grid-flow-col  items-center justify-center",
         className
       )}
     >
@@ -74,6 +77,9 @@ export default function Navigator({ className }: NavigatorProps) {
             <CustomNavigationMenuItem
               key={item.path}
               isActive={isActiveNavItem(pathName, item.path)}
+              className={
+                item.path.split("/")[1] === "category" ? "hidden md:block" : ""
+              }
             >
               <CustomNagivationMenuLink href={`/${item.path}`}>
                 {item.label}

@@ -34,7 +34,7 @@ export default function PodBehind({
 }: PodBehindProps) {
   return (
     <div
-      className={twMerge("grid w-full grid-flow-row  gap-2  py-1", className)}
+      className={twMerge("hidden md:grid  w-full grid-flow-row  gap-2  py-1", className)}
     >
       <div className="grid grid-flow-col items-center justify-items-center  gap-2 py-2 ">
         <button

@@ -58,7 +58,7 @@ const Search = ({
           className={mergeClasses(
             "group h-[42px] self-center py-[12px] px-3 align-middle",
             " justify-between font-visuelt text-[14px] font-medium text-white/80",
-            "w-[630px]",
+            "lg:w-[630px]",
             className
           )}
         >
