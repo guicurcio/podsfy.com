@@ -69,7 +69,7 @@ export default function ChangelogPage() {
                 </div>
                 <div className="self-center">
                   <p className="text-left text-[13px] text-[#888]">
-                    March 11, 2023
+                    March 13, 2023
                   </p>
                 </div>
               </div>
@@ -88,12 +88,7 @@ export default function ChangelogPage() {
                 tweeted, their updates would appear in users' timelines quickly.
               </p>
 
-              <p className="font-visuelt text-[15px] font-normal leading-[24px] tracking-[0.5px] text-[#9ab] text-opacity-80  antialiased">
-                And this made a lot of sense at the time; for sure you would not
-                handle your neighbors tweet the same way as the barrage of
-                tweets from a celebrity. Here's a quote from the book:
-              </p>
-
+              {/*
               <p className="mt-[20px] mb-[40px] w-[650px] rounded-md bg-fondy py-[20px] pl-[20px] pr-[20px] text-justify font-visuelt text-[15px] font-normal italic leading-[25px]  tracking-[0.6px] text-[#9ab] text-opacity-80 antialiased">
                 Most users’ tweets continue to be fanned out to home timelines
                 at the time when they are posted, but a small number of users
@@ -101,13 +96,7 @@ export default function ChangelogPage() {
                 fan-out. Instead, when the home timelineisread,the tweets from
                 celebrities followed by the user are fetched separately and
                 mergedwiththehome timeline when the timeline is read
-              </p>
-
-              <p className="font-visuelt text-[15px] font-normal leading-[24px] tracking-[0.5px] text-[#9ab] text-opacity-80  antialiased">
-                We decided to choose a similar approach for our own system. We
-                created a separate set of databases and back-end services for
-                the most popular accounts on our platform.
-              </p>
+              </p> */}
 
               {/* <p className="text-left font-inter text-[16px] font-normal text-white/50">
               <span className="">- You can now add environment variables </span>

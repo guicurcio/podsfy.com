@@ -1,4 +1,5 @@
 import Footer from "components/common/Footer"
+import { Suspense } from "react"
 import PodcastCover from "components/pod/PodcastCover/PodcastCover"
 import SignInModal from "components/SignInModal"
 import Join from "components/SignUpModal"
@@ -20,7 +21,9 @@ export default function Page() {
             </a>
             <div className="hidden self-center rounded-md py-2 px-3 align-middle text-[#CDCDCD] md:block">
               <div className="h-full w-full backdrop-brightness-[125%]">
-                <SignInModal></SignInModal>
+                <Suspense>
+                  <SignInModal></SignInModal>
+                </Suspense>
               </div>
             </div>
           </div>
@@ -28,7 +31,9 @@ export default function Page() {
             <h1 className="cursor-default  select-none px-[5px] text-center font-SpaceGrotesk text-[55px] font-normal leading-[55px] tracking-[-0.08em] text-white text-opacity-[75%]   brightness-[200%] drop-shadow-2xl md:w-full md:px-[0] md:text-[90px] md:leading-[95px] md:tracking-[-0.06em]">
               Your companion for podcasts reviews and rankings
             </h1>
-            <Join></Join>
+            <Suspense>
+              <Join></Join>
+            </Suspense>
           </div>
           <div className="mx-auto grid grid-flow-row gap-y-[14px] ">
             <h1 className="mx-auto w-[250px] text-center font-moderat text-[14px] font-medium tracking-[-8%]  text-[#BDBDBD] md:w-full md:text-[16.5px] ">
