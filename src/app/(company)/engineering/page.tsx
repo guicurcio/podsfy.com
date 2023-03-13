@@ -38,9 +38,14 @@ export default function EngineeringPage() {
                 </defs>
               </svg>
               <p className="text-sm">
-                <span className="text-sm text-[#888]">Make sure to follow us on </span>
+                <span className="text-sm text-[#888]">
+                  Make sure to follow us on{" "}
+                </span>
                 <span className="text-sm text-white">Twitter</span>
-                <span className="text-sm text-[#888]"> to hear about these changes first!</span>
+                <span className="text-sm text-[#888]">
+                  {" "}
+                  to hear about these changes first!
+                </span>
               </p>
             </div>
           </div>
@@ -68,38 +73,64 @@ export default function EngineeringPage() {
                 </div>
               </div>
               <div className="self-center">
-                <p className="text-left text-[13px] text-[#888]">March 11, 2023</p>
+                <p className="text-left text-[13px] text-[#888]">
+                  March 11, 2023
+                </p>
               </div>
             </div>
-            <h1 className="text-[28px] font-medium text-white/80">Behind the curtains</h1>
+            <h1 className="text-[28px] font-medium text-white/80">
+              Behind the curtains
+            </h1>
 
             <p className="font-visuelt text-[15px] font-normal leading-[24px] tracking-[0.5px] text-[#9ab] text-opacity-80  antialiased">
-              I recall having read Martin Kleppmann's impressive book on Data Intensive
-              Applications, which included a noteworthy observation about Twitter's engineering
-              team: Twitter had created different back-end systems for different sets of accounts.
-              Specifically, Twitter employed isolated databases and back-end services for highly
-              followed accounts (e.g. Elon Musk, Justin Bieber, and Kim Kardashian.) This approach
-              ensured that whenever these accounts tweeted, their updates would appear in users'
-              timelines quickly.
+              I recall having read Martin Kleppmann's impressive book on Data
+              Intensive Applications, which included a noteworthy observation
+              about Twitter's engineering team: Twitter had created different
+              back-end systems for different sets of accounts. Specifically,
+              Twitter employed isolated databases and back-end services for
+              highly followed accounts (e.g. Elon Musk, Justin Bieber, and Kim
+              Kardashian.) This approach ensured that whenever these accounts
+              tweeted, their updates would appear in users' timelines quickly.
             </p>
 
             <p className="font-visuelt text-[15px] font-normal leading-[24px] tracking-[0.5px] text-[#9ab] text-opacity-80  antialiased">
-              And this made a lot of sense at the time; for sure you would not handle your neighbors
-              tweet the same way as the barrage of tweets from a celebrity. Here's a quote from the
-              book:
+              And this made a lot of sense at the time; for sure you would not
+              handle your neighbors tweet the same way as the barrage of tweets
+              from a celebrity. Here's a quote from the book:
             </p>
 
             <p className="mt-[20px] mb-[40px] w-[650px] rounded-md bg-fondy py-[20px] pl-[20px] pr-[20px] text-justify font-visuelt text-[15px] font-normal italic leading-[25px]  tracking-[0.6px] text-[#9ab] text-opacity-80 antialiased">
-              Most users’ tweets continue to be fanned out to home timelines at the time when they
-              are posted, but a small number of users withaverylargenumber of followers are excepted
-              from this fan-out. Instead, when the home timelineisread,the tweets from celebrities
-              followed by the user are fetched separately and mergedwiththehome timeline when the
-              timeline is read
+              Most users’ tweets continue to be fanned out to home timelines at
+              the time when they are posted, but a small number of users
+              withaverylargenumber of followers are excepted from this fan-out.
+              Instead, when the home timelineisread,the tweets from celebrities
+              followed by the user are fetched separately and mergedwiththehome
+              timeline when the timeline is read
             </p>
 
             <p className="font-visuelt text-[15px] font-normal leading-[24px] tracking-[0.5px] text-[#9ab] text-opacity-80  antialiased">
-              We decided to choose a similar approach for our own system. We created a separate set
-              of databases and back-end services for the most popular accounts on our platform.
+              We decided to choose a similar approach for our own system. We
+              created a separate set of databases and back-end services for the
+              most popular podcasts in our platform; each subset gets a
+              dedicated SQLite database and are not created equally. The most
+              famous podcasts (we assign a "popularity" score to each one based
+              on sentiment, rankings on different pages like Youtube, Google,
+              and Apple) we put in one database which is going to be used only
+              for building pages at build-time.
+            </p>
+
+            <p className="font-visuelt text-[15px] font-normal leading-[24px] tracking-[0.5px] text-[#9ab] text-opacity-80  antialiased">
+              Withing the subset you would find podcasts like: - The Joe Rogan
+              Experience- Call Her Daddy - The Lex Fridman Podcast - The Tim
+              Ferriss Show - The Huberman Lab - The Joe Budden Podcast - ALL-IN
+              Podcast
+            </p>
+
+            <p className="font-visuelt text-[15px] font-normal leading-[24px] tracking-[0.5px] text-[#9ab] text-opacity-80  antialiased">
+              And quite a few more (we have a trade-off here that the more
+              podcasts we add here, the slower the build time will be, but the
+              also the most popular podcasts with the more traffic will be
+              exquisitely fast to enter.)
             </p>
 
             {/* <p className="text-left font-inter text-[16px] font-normal text-white/50">
@@ -112,5 +143,5 @@ export default function EngineeringPage() {
         </div>
       </div>
     </div>
-  );
+  )
 }
