@@ -1,15 +1,15 @@
-'use client';
+"use client"
 
-import Link from 'next/link';
-import { twMerge } from 'tailwind-merge';
+import Link from "next/link"
+import { twMerge } from "tailwind-merge"
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from 'ui/components/Accordion';
-import Button from 'ui/components/Button';
-import PodComment from '../PodComment';
+} from "ui/components/Accordion"
+import Button from "ui/components/Button"
+import PodComment from "../PodComment"
 
 /**
  * PodEpisodes Props description
@@ -19,29 +19,29 @@ export interface PodEpisodeProps {
    * Pass a custom title to the component.
    * @default ""
    */
-  title?: string;
+  title?: string
   /**
    * Pass a custom description to the component.
    * @default ""
    */
-  description?: string;
+  description?: string
   /**
    * Pass a custom description to the component.
    * @default ""
    */
-  whereToWatchOrListenLink?: string;
+  whereToWatchOrListenLink?: string
   /**
    * Custom class names passed to the root element.
    */
-  className?: string;
+  className?: string
   /**
    *
    */
-  defaultCoverImage?: string;
+  defaultCoverImage?: string
 }
 
 export default function PodEpisode({
-  className = '',
+  className = "",
   description,
   title,
   whereToWatchOrListenLink,
@@ -50,9 +50,10 @@ export default function PodEpisode({
   return (
     <AccordionItem
       value={title}
+      key={title}
       className={twMerge(
-        'grid w-full grid-flow-row gap-2 border-0 px-3 hover:bg-fondy/20',
-        className,
+        "grid w-full grid-flow-row gap-2 border-0 px-3 hover:bg-fondy/20",
+        className
       )}
     >
       <AccordionTrigger>
@@ -70,13 +71,16 @@ export default function PodEpisode({
       </AccordionTrigger>
       <AccordionContent>
         <div className="grid grid-flow-row gap-[8px]">
-          {description.split('\\n').map((line, index) => (
-            <p className="ml-[2px] font-visuelt text-[14px] font-normal leading-[24px] tracking-[0.5px] text-[#9ab] text-opacity-80  antialiased">
+          {description.split("\\n").map((line, index) => (
+            <p
+              key={line}
+              className="ml-[2px] font-visuelt text-[14px] font-normal leading-[24px] tracking-[0.5px] text-[#9ab] text-opacity-80  antialiased"
+            >
               {line}
             </p>
           ))}
         </div>
       </AccordionContent>
     </AccordionItem>
-  );
+  )
 }

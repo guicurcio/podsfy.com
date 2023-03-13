@@ -1,8 +1,9 @@
 import Footer from "components/common/Footer"
-import { Suspense } from "react"
+import { Suspense, lazy } from "react"
 import PodcastCover from "components/pod/PodcastCover/PodcastCover"
-import SignInModal from "components/SignInModal"
-import Join from "components/SignUpModal"
+
+const Join = lazy(() => import("components/SignUpModal"))
+const SignInModal = lazy(() => import("components/SignInModal"))
 
 export default function Page() {
   return (
