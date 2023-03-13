@@ -34,6 +34,17 @@ model Podcast {
   similarPodcastsRelation Podcast[]        @relation("similarPodcasts")
   reviews                 Review[]
   streamingAt             StreamingSites[]
+  lastUpdate              Int?
+  isItExplicit            Boolean?
+  isItBlocked             Boolean?
+  hasNotBeenUpdating      Boolean?
+  outsideImageUrl         String?
+  language                String?
+  amountOfEpisodes        Int?
+  popularity              Int?
+  priority                Int?
+  podcastCreatedOn        DateTime?
+  frequencyOfUpdates      Int?
 
   @@index([slug])
 }

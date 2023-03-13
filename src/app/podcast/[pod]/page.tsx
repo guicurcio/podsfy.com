@@ -1,7 +1,6 @@
 import PodBehind from "components/pod/PodBehind"
 import PodDetails from "components/pod/PodDetails"
 import PodEpisodes from "components/pod/PodEpisodes"
-import PodImage from "components/pod/PodImage"
 import PodReviews from "components/pod/PodReviews"
 import PodSimilar from "components/pod/PodSimilar"
 import PodStreaming from "components/pod/PodStreaming"
@@ -82,9 +81,9 @@ export async function generateStaticParams() {
   }))
 }
 
-export async function generateMetadata({ params, searchParams }) {
-  const staticPodcastData = await getPodInfo(params.pod);
-  return { title: `${staticPodcastData?.title} - podsfy.com` };
+export async function generateMetadata({ params }) {
+  const staticPodcastData = await getPodInfo(params.pod)
+  return { title: `${staticPodcastData?.title} - podsfy.com` }
 }
 
 export default async function PodcastPage({ params }) {
@@ -95,18 +94,7 @@ export default async function PodcastPage({ params }) {
   }
 
   return (
-    <div className="">
-      <PodImage
-        imageClassName={
-          staticPodcastData.backgroundCoverImage ? `top-[-20px]` : `top-[150px]`
-        }
-        image={
-          // staticPodcastData.backgroundCoverImage
-          //   ? `../${staticPodcastData.backgroundCoverImage}`
-          //   : `./bg/bg.png`
-          `/bg.png`
-        }
-      />
+    <div className="overflow-x-hidden">
       <div className="   mx-auto pt-[90px] backdrop-blur-[8px] backdrop-brightness-[60%] ">
         <div
           className="mx-auto

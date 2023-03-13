@@ -1,6 +1,6 @@
 import Card from "components/common/Card"
 
-export default function PodcastCategoryPage() {
+export default function HomePage() {
   return (
     <div className="grid w-full grid-flow-col grid-cols-1 gap-[100px]">
       <Card

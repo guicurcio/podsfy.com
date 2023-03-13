@@ -1,4 +1,4 @@
-import { twMerge } from 'tailwind-merge';
+import { twMerge } from "tailwind-merge"
 
 /**
  * PodDetails Props description
@@ -7,17 +7,17 @@ export interface PodDetailsProps {
   /**
    * Custom class names passed to the root element.
    */
-  className?: string;
+  className?: string
   /**
    * Pass a custom title to the component.
    */
-  title?: string;
+  title?: string
   /**
    * Pass a custom description to the component.
    * @default ""
    */
-  description?: string;
-  podcastHostName?: string;
+  description?: string
+  podcastHostName?: string
 }
 
 /**
@@ -25,15 +25,17 @@ export interface PodDetailsProps {
  */
 export default function PodDetails({
   className,
-  title = '',
+  title = "",
   description,
   podcastHostName,
 }: PodDetailsProps) {
   return (
     <div
-      className={twMerge('grid grid-flow-row justify-start gap-6 pb-[10px] text-left', className)}
+      className={twMerge(
+        "grid grid-flow-row justify-start gap-6 pb-[10px] text-left",
+        className
+      )}
     >
-      
       <div className="grid grid-flow-row gap-[1px]">
         <h1 className="-ml-[3px] justify-start font-lausanne text-[41px] font-normal capitalize tracking-[-0.04em] text-[#fff] text-opacity-90 brightness-[180%]">
           {title}
@@ -48,15 +50,18 @@ export default function PodDetails({
         )}
       </div>
       <div className="grid h-[250px] grid-flow-row overflow-ellipsis">
-        {description.split('\\n').map((line, index) => (
+        {description.split("\\n").map((line) => (
           // <p className="ml-[2px] mt-[-2px] font-visuelt text-[15px] font-normal leading-[25px] tracking-[0.5px] text-dimmed2 text-opacity-80  antialiased">
-          <p className="ml-[2px] font-visuelt text-[15px] font-normal leading-[25px] tracking-[0.5px] text-dimmed2 text-opacity-70  antialiased">
+          <p
+            key={line}
+            className="ml-[2px] font-visuelt text-[15px] font-normal leading-[25px] tracking-[0.5px] text-dimmed2 text-opacity-70  antialiased"
+          >
             {line}
           </p>
         ))}
       </div>
     </div>
-  );
+  )
 }
 
 //
