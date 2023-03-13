@@ -1,71 +1,51 @@
-import CompanySidebar from 'components/common/CompanySidebar';
-import Footer from 'components/common/Footer';
-import Header from 'components/pod/Header';
-import PodImage from 'components/pod/PodImage';
-import mergeClasses from 'utils/mergeClasses';
+import CompanySidebar from "components/common/CompanySidebar"
+import Footer from "components/common/Footer"
+import Header from "components/pod/Header"
+import Image from "next/image"
+import { Suspense } from "react"
+import mergeClasses from "utils/mergeClasses"
+/* eslint-disable-next-line import/no-absolute-path, import/extensions */
+import backgroundImage from "/public/bg.png"
 
-export const podcasts = [
-  {
-    slug: 'the-joe-rogan-experience',
-    name: 'The Joe Rogan Experience',
-  },
-  {
-    slug: 'on-purpose-with-jay-shetty',
-    name: 'On Purpose with Jay Shetty',
-  },
-  {
-    slug: 'call-her-daddy',
-    name: 'Call Her Daddy',
-  },
-  {
-    slug: 'found-my-fitness',
-    name: 'Found My Fitness',
-  },
-  {
-    slug: 'all-in-podcast',
-    name: 'All-In',
-  },
-  {
-    slug: 'the-huberman-lab-podcast',
-    name: 'The Huberman Lab Podcast',
-  },
-  {
-    slug: 'between-good-and-evil',
-    name: 'Between Good and Evil',
-  },
-];
-
-export default async function DashboardLayout({
-  children, // will be a page or nested layout
-}: {
-  children: React.ReactNode;
-}) {
+export default function HomeLayout({ children }) {
   return (
-    <div className="relative overflow-x-hidden bg-[#0D0E12]">
-      <PodImage imageClassName={`top-[-20px]`} image={`./bg/bg.png`}></PodImage>
-      <div className="backdrop-brightness-[40%]">
+    <div className="relative w-[1920px] overflow-x-hidden bg-[#0D0E12]">
+      <Suspense>
         <Header></Header>
-        <div className="relative z-50 m-[80px] mx-auto max-w-[1100px]">
+      </Suspense>
+      <Image
+        className="absolute overflow-hidden  bg-[#0D0E12] object-cover brightness-[60%] md:top-[50px] md:rotate-[8deg] md:scale-[120%] xl:top-[-120px] xl:translate-x-[25px] xl:scale-x-[105%] xl:scale-y-[100%]"
+        src={backgroundImage}
+        alt="Podcasts"
+      ></Image>
+      <div className="overflow-x-hidden">
+        <div className="   mx-auto pt-[50px] backdrop-blur-[8px] backdrop-brightness-[60%] ">
           <div
-            className={mergeClasses(
-              'min-h-[1200px] w-[1100px]',
-              ' overflow-hidden rounded-[5px]',
-              'bg-[#0D0E12] py-[25px]',
-              'border border-sharper border-opacity-10',
-              'px-[20px] font-visuelt shadow-3xl backdrop-blur-[10px]',
-            )}
+            className="mx-auto
+max-w-[1200px]  rounded-[9px]    bg-opacity-[95%] py-[25px]  px-[20px] font-visuelt shadow-3xl backdrop-blur-[10px]
+      "
           >
-            <div className="grid w-full  grid-flow-col items-start justify-start justify-items-start gap-[24px]">
-              <div className="grid w-[300px] max-w-[300px] grid-flow-row py-4 px-4">
-                <CompanySidebar></CompanySidebar>
-              </div>
+            <div
+              className={mergeClasses(
+                "min-h-[1200px] w-[1250px]",
+                " overflow-hidden rounded-[5px]",
+                "bg-[#0D0E12] py-[25px]",
+                "border border-sharper border-opacity-10",
+                "px-[20px] font-visuelt shadow-3xl backdrop-blur-[10px] "
+              )}
+            >
+              <div className="grid w-full  grid-flow-col items-start justify-start justify-items-start gap-[84px]">
+                <div className="mt-[20px] grid w-[320px] max-w-[310px] grid-flow-row rounded-[4px] border border-white border-opacity-10 bg-black    bg-opacity-[35%]  px-4 pb-4 pt-[20px] shadow-3xl backdrop-blur-[10px]">
+                  <CompanySidebar></CompanySidebar>
+                </div>
 
-              {children}
+                {children}
+              </div>
             </div>
           </div>
         </div>
-        <Footer></Footer>
       </div>
+      <Footer className="border-0 bg-transparent pt-[60px] backdrop-blur-[8px] backdrop-brightness-[60%]"></Footer>
     </div>
-  );
+  )
 }

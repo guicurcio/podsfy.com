@@ -98,16 +98,16 @@ export default async function PodcastPage({ params }) {
       <div className="   mx-auto pt-[90px] backdrop-blur-[8px] backdrop-brightness-[60%] ">
         <div
           className="mx-auto
-  max-w-[1200px]  rounded-[9px] border  border-sharper border-opacity-10  bg-[#0D0E12]  bg-opacity-[95%] py-[25px]  px-[20px] font-visuelt shadow-3xl backdrop-blur-[10px]
+  rounded-[9px] border  border-sharper border-opacity-10  bg-[#0D0E12] bg-opacity-[95%]  py-[25px]  px-[20px] font-visuelt  shadow-3xl backdrop-blur-[10px] xl:max-w-[1100px] 2xl:max-w-[1200px]
         "
         >
-          <div className="grid grid-flow-col justify-start    gap-[50px] px-3 py-4">
-            <div className="grid  w-[300px] grid-flow-row place-content-start items-start  justify-start justify-items-start">
+          <div className="grid grid-flow-row px-3 py-4   lg:grid-flow-col lg:justify-start lg:gap-[50px]">
+            <div className="grid  grid-flow-row lg:place-content-start lg:items-start lg:justify-start  lg:justify-items-start 2xl:w-[300px]">
               <div className="relative z-0 inline-flex w-full items-center justify-center rounded-[2px] border-2 border-[#171717] bg-[#050607f2] hover:brightness-[99%] focus:outline-none focus:ring-0 focus:ring-offset-0 disabled:pointer-events-none disabled:opacity-50">
                 <img
                   src={`../${staticPodcastData.cover}`}
                   draggable={false}
-                  className="h-[320px] w-[300px] rounded-[2px] border border-white border-opacity-10 brightness-[98%]"
+                  className="rounded-[2px] border border-white border-opacity-10 brightness-[98%] lg:h-[320px] lg:w-[300px]"
                 />
               </div>
 
@@ -118,7 +118,7 @@ export default async function PodcastPage({ params }) {
                 podcastTitle={staticPodcastData.title}
               />
             </div>
-            <div className="-mt-3 grid h-full w-[800px] grid-flow-row  items-start gap-[32px] pr-10">
+            <div className="mt-[20px] grid h-full grid-flow-row gap-[32px] lg:-mt-3   lg:items-start lg:pr-10 2xl:w-[800px]">
               <PodDetails
                 title={`${generateGoodTitleForReviews(
                   staticPodcastData.title

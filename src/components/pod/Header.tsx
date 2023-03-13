@@ -28,21 +28,23 @@ export default function Header({ className }: HeaderProps) {
         className
       )}
     >
-      <div className="mx-auto w-full max-w-[1350px]">
-        <div className="mx-auto grid grid-flow-row items-center  pr-[90px] pl-[60px] pt-1">
-          <div className="grid grid-flow-col place-content-between pb-1.5">
+      <div className="mx-auto w-full lg:max-w-[1100px] 2xl:max-w-[1200px]">
+        <div className="mx-auto grid w-full grid-flow-row items-center pt-1   md:mx-0">
+          <div className="mx-auto grid grid-flow-row place-content-between pb-1.5 md:mx-0 lg:mx-0 lg:grid-flow-col">
             <Link
               href="/"
               className={mergeClasses(
-                "cursor-pointer py-2 px-3 font-SpaceGrotesk text-[26px] font-bold tracking-[-0.08em] text-[#CDCDCD]"
+                "mx-auto cursor-pointer py-2 px-3 font-SpaceGrotesk text-[26px] font-bold tracking-[-0.08em] text-[#CDCDCD] md:mx-0"
               )}
             >
               podsfy
             </Link>
             <Search podcasts={staticPodcastData()} className=""></Search>
-            <Suspense>
-              <SignInModal></SignInModal>
-            </Suspense>
+            <div className="hidden md:block">
+              <Suspense>
+                <SignInModal></SignInModal>
+              </Suspense>
+            </div>
           </div>
           <Suspense>
             <Navigator></Navigator>
