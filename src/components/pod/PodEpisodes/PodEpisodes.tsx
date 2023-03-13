@@ -1,7 +1,7 @@
-'use client';
+"use client"
 
-import { Accordion } from 'ui/components/Accordion';
-import PodEpisode from '../PodEpisode/PodEpisode';
+import { Accordion } from "ui/components/Accordion"
+import PodEpisode from "../PodEpisode/PodEpisode"
 
 /**
  * PodEpisodes Props description
@@ -10,14 +10,14 @@ export interface PodEpisodesProps {
   /**
    * Custom class names passed to the root element.
    */
-  className?: string;
+  className?: string
   /**
    * Pass a custom title to the component.
    * @default ""
    */
-  title?: string;
-  episodes?: PodcastEpisode[];
-  defaultCoverImage?: string;
+  title?: string
+  episodes?: PodcastEpisode[]
+  defaultCoverImage?: string
 }
 
 type PodcastEpisode = {
@@ -25,29 +25,29 @@ type PodcastEpisode = {
    * Pass a custom title to the component.
    * @default ""
    */
-  title?: string;
+  title?: string
   /**
    * Pass a custom description to the component.
    * @default ""
    */
-  description?: string;
+  description?: string
   /**
    * Pass a custom description to the component.
    * @default ""
    */
-  whereToWatchOrListenLink?: string;
+  whereToWatchOrListenLink?: string
   /**
    *
    */
-  defaultCoverImage?: string;
-};
+  defaultCoverImage?: string
+}
 
 /**
  * PodEpisodes Component
  */
 export default function PodEpisodes({
   className,
-  title = 'Episodes',
+  title = "Episodes",
   episodes = [],
   defaultCoverImage,
 }: PodEpisodesProps) {
@@ -89,19 +89,16 @@ export default function PodEpisodes({
           type="multiple"
           className="grid w-full grid-flow-row  divide-y-[1px] divide-fondy/50 border-t   border-fondy/50 backdrop-brightness-[50%]"
         >
-          {episodes &&
-            episodes
-              .slice(0, 3)
-              .map((episode) => (
-                <PodEpisode
-                  key={episode.title}
-                  defaultCoverImage={defaultCoverImage}
-                  title={episode.title}
-                  description={episode.description}
-                ></PodEpisode>
-              ))}
+          {episodes?.slice(0, 3).map((episode) => (
+            <PodEpisode
+              key={episode.title}
+              defaultCoverImage={defaultCoverImage}
+              title={episode.title}
+              description={episode.description}
+            ></PodEpisode>
+          ))}
         </Accordion>
       </div>
     </div>
-  );
+  )
 }

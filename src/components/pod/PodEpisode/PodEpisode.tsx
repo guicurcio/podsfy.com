@@ -1,15 +1,12 @@
 "use client"
 
-import Link from "next/link"
+import Image from "next/image"
 import { twMerge } from "tailwind-merge"
 import {
-  Accordion,
   AccordionContent,
   AccordionItem,
-  AccordionTrigger,
+  AccordionTrigger
 } from "ui/components/Accordion"
-import Button from "ui/components/Button"
-import PodComment from "../PodComment"
 
 /**
  * PodEpisodes Props description
@@ -44,7 +41,6 @@ export default function PodEpisode({
   className = "",
   description,
   title,
-  whereToWatchOrListenLink,
   defaultCoverImage,
 }: PodEpisodeProps) {
   return (
@@ -59,10 +55,13 @@ export default function PodEpisode({
       <AccordionTrigger>
         <div className="grid grid-flow-row items-start justify-start gap-4">
           <div className="grid grid-flow-col items-center gap-3">
-            <img
-              src={defaultCoverImage}
+            <Image
+              src={`/pod/${defaultCoverImage}`}
               className="h-[32px] w-[32px] rounded-sm border border-[#88888820] shadow-3xl"
-            ></img>
+              alt="Podcast cover"
+              width={32}
+              height={32}
+            ></Image>
             <h2 className="w-full text-left font-moderat text-[14px] text-white text-opacity-75">
               {title}
             </h2>
@@ -71,7 +70,7 @@ export default function PodEpisode({
       </AccordionTrigger>
       <AccordionContent>
         <div className="grid grid-flow-row gap-[8px]">
-          {description.split("\\n").map((line, index) => (
+          {description.split("\\n").map((line) => (
             <p
               key={line}
               className="ml-[2px] font-visuelt text-[14px] font-normal leading-[24px] tracking-[0.5px] text-[#9ab] text-opacity-80  antialiased"

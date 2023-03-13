@@ -1,6 +1,9 @@
 import Footer from "components/common/Footer"
-import { Suspense, lazy } from "react"
 import PodcastCover from "components/pod/PodcastCover/PodcastCover"
+import Image from "next/image"
+import { lazy, Suspense } from "react"
+/* eslint-disable-next-line import/no-absolute-path, import/extensions */
+import backgroundImage from "/public/bg.png"
 
 const Join = lazy(() => import("components/SignUpModal"))
 const SignInModal = lazy(() => import("components/SignInModal"))
@@ -8,12 +11,11 @@ const SignInModal = lazy(() => import("components/SignInModal"))
 export default function Page() {
   return (
     <div className="relative overflow-x-hidden bg-[#0D0E12]">
-      <div className="">
-        <img
-          className="absolute bg-[#0D0E12] object-cover brightness-[60%] md:top-[50px] md:rotate-[8deg] md:scale-[120%] xl:top-[-120px] xl:translate-x-[25px] xl:scale-x-[105%] xl:scale-y-[100%]"
-          src="/bg/bg.png"
-        ></img>
-      </div>
+      <Image
+        className="absolute bg-[#0D0E12] object-cover brightness-[60%] md:top-[50px] md:rotate-[8deg] md:scale-[120%] xl:top-[-120px] xl:translate-x-[25px] xl:scale-x-[105%] xl:scale-y-[100%]"
+        src={backgroundImage}
+        alt="Podcasts"
+      ></Image>
       <div className="backdrop-blur-[8px] backdrop-brightness-[50%]">
         <div className="relative z-50 mx-auto grid cursor-default select-none grid-flow-row gap-y-[30px] backdrop-blur-[0.1px] backdrop-brightness-[120%]">
           <div className="mx-auto grid  grid-flow-col place-content-between items-center py-[12px] md:min-w-[1280px]">
