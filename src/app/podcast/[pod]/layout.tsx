@@ -7,7 +7,7 @@ import backgroundImage from "/public/bg.png"
 
 export default function PodcastPage({ children }) {
   return (
-    <div className="relative w-[1920px] overflow-x-hidden bg-[#0D0E12]">
+    <div className="relative  w-full overflow-x-hidden bg-[#0D0E12]">
       <Suspense>
         <Header></Header>
       </Suspense>

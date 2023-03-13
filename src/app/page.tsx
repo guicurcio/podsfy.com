@@ -86,7 +86,7 @@ export default function Page() {
               <h1 className="text-center font-moderat text-[17px]  font-medium tracking-[-8%] text-[#BDBDBD] ">
                 The social network for podcast lovers
               </h1>
-              <div className="mx-auto grid w-[250px] grid-cols-2 gap-[18px] pt-[12px] md:w-full md:grid-cols-6 2xl:grid-flow-col">
+              <div className="mx-auto grid w-[250px] grid-cols-2 gap-[18px] pt-[12px] md:w-full md:grid-cols-5 2xl:grid-flow-col">
                 <PodcastCover
                   imageURL="/optimized/podcast/found-my-fitness.webp"
                   podcastURL="/podcast/found-my-fitness"
@@ -110,6 +110,7 @@ export default function Page() {
                 <PodcastCover
                   imageURL="/to-optimize/lex.png"
                   podcastURL="/podcast/lex-fridman-podcast"
+                  className="hidden 2xl:block"
                 ></PodcastCover>
                 {/* <PodcastCover
                   imageURL="/optimized/podcast/charlotte.webp"

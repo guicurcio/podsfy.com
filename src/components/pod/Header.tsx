@@ -28,9 +28,9 @@ export default function Header({ className }: HeaderProps) {
         className
       )}
     >
-      <div className="mx-auto w-full max-w-[1350px]">
-        <div className="mx-auto grid grid-flow-row items-center  pr-[90px] pl-[60px] pt-1">
-          <div className="grid grid-flow-col place-content-between pb-1.5">
+      <div className="mx-auto w-full max-w-[800px] 2xl:max-w-[1200px]">
+        <div className="grid grid-flow-row items-center   pt-1">
+          <div className=" grid grid-flow-row place-content-between pb-1.5 lg:mx-0 lg:grid-flow-col">
             <Link
               href="/"
               className={mergeClasses(
@@ -40,9 +40,11 @@ export default function Header({ className }: HeaderProps) {
               podsfy
             </Link>
             <Search podcasts={staticPodcastData()} className=""></Search>
-            <Suspense>
-              <SignInModal></SignInModal>
-            </Suspense>
+            <div className="hidden md:block">
+              <Suspense>
+                <SignInModal></SignInModal>
+              </Suspense>
+            </div>
           </div>
           <Suspense>
             <Navigator></Navigator>
