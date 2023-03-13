@@ -4,7 +4,7 @@ import "styles/fonts.css"
 import "styles/globals.css"
 
 export const siteConfig = {
-  name: "Podsfy",
+  name: "Podsfy.com",
   description:
     "Podsfy is a platform for podcast reviews and rankings of podcasts from all streaming services.",
   url: "https://www.podsfy.com",
@@ -60,7 +60,7 @@ export const metadata = {
     creator: "@podsfy",
   },
   icons: {
-    icon: "/favicon.ico",
+    icon: "/favicon.svg",
     shortcut: "/favicon-16x16.png",
     apple: "/apple-touch-icon.png",
   },
