@@ -24,17 +24,17 @@ export default function Header({ className }: HeaderProps) {
   return (
     <div
       className={mergeClasses(
-        "relative z-50 h-full w-full border-b border-gray-700 border-opacity-25 bg-[#0D0E12] bg-opacity-100",
+        "relative z-50 h-full w-full max-w-full border-b border-gray-700 border-opacity-25 bg-[#0D0E12] bg-opacity-100",
         className
       )}
     >
-      <div className="mx-auto w-full lg:max-w-[1100px] 2xl:max-w-[1200px]">
-        <div className="mx-auto grid w-full grid-flow-row items-center pt-1   md:mx-0">
-          <div className="mx-auto grid grid-flow-row place-content-between py-2 pb-1.5 md:mx-0 lg:mx-0 lg:grid-flow-col 2xl:max-w-[1100px]">
+      <div className="mx-auto w-full max-w-[1300px] ">
+        <div className="mx-auto grid w-full grid-flow-row items-center gap-1  md:mx-0">
+          <div className="mx-auto grid grid-flow-row place-content-between items-center py-3 pb-1.5 md:mx-0 lg:mx-0 lg:grid-flow-col 2xl:max-w-[1250px]">
             <Link
               href="/"
               className={mergeClasses(
-                "mx-auto cursor-pointer px-3 font-SpaceGrotesk text-[26px] font-bold tracking-[-0.08em] text-[#CDCDCD] md:mx-0"
+                "mx-auto cursor-pointer pt-[-2px] pl-[50px] font-SpaceGrotesk text-[26px] font-bold tracking-[-0.08em] text-[#CDCDCD] md:mx-0"
               )}
             >
               podsfy
@@ -51,7 +51,9 @@ export default function Header({ className }: HeaderProps) {
                   </div>
                 }
               >
-                <User></User>
+                <div className="pr-[10px]">
+                  <User></User>
+                </div>
               </Suspense>
             </div>
           </div>

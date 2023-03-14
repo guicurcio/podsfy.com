@@ -6,6 +6,7 @@ import { nhost } from "lib/setupBackendConfig"
 import asyncTuple from "lib/try/try"
 import { Twitch, Twitter } from "lucide-react"
 import { useRouter } from "next/navigation"
+import { useState } from "react"
 import { FormProvider, useForm } from "react-hook-form"
 import { twMerge } from "tailwind-merge"
 import Button from "ui/components/Button"
@@ -60,6 +61,9 @@ export default function SignUpModal({ className }: JoinProps) {
   const router = useRouter()
   const [loading, toggleLoading] = useToggle(false)
   const [error, toggleError] = useToggle(false)
+  const [action, setSignAction] = useState<"REGISTERING" | "SIGNING IN">(
+    "REGISTERING"
+  )
 
   const form = useForm<SignUpModalFormValues>({
     reValidateMode: "onSubmit",
@@ -87,6 +91,19 @@ export default function SignUpModal({ className }: JoinProps) {
     }
   }
 
+  const handleSignInFormSubmit = async ({
+    email,
+    password,
+  }: SignUpModalFormValues) => {
+    const [data] = await asyncTuple(
+      nhost.auth.signIn({
+        email,
+        password,
+      })
+    )
+    console.log(data)
+  }
+
   return (
     <div className={twMerge("mx-auto mt-3 w-fit", className)}>
       <Dialog>
@@ -98,10 +115,12 @@ export default function SignUpModal({ className }: JoinProps) {
         <DialogContent className="sm:max-w-[500px]">
           <DialogHeader>
             <DialogTitle className="text-[32px]">
-              Create a Podsfy Account
+              {action === "REGISTERING" ? "Create an account" : "Sign in"}
             </DialogTitle>
             <DialogDescription className="mx-auto max-w-[300px] text-center text-white/60">
-              Create a free account to get access to all the features of Podsfy.
+              {action === "REGISTERING"
+                ? "  Create a free account to get access to all the features of Podsfy."
+                : "Sign in to your account to get access to all the features of Podsfy."}
             </DialogDescription>
           </DialogHeader>
           {error && (
@@ -114,7 +133,11 @@ export default function SignUpModal({ className }: JoinProps) {
           )}
           <FormProvider {...form}>
             <Form
-              onSubmit={handleSignUpFormSubmit}
+              onSubmit={
+                action === "REGISTERING"
+                  ? handleSignUpFormSubmit
+                  : handleSignInFormSubmit
+              }
               className="grid grid-flow-row gap-3"
             >
               <div className="grid grid-flow-row items-center gap-2">
@@ -179,7 +202,9 @@ export default function SignUpModal({ className }: JoinProps) {
                 //   })
                 // }}
               >
-                Register Now
+                {action === "REGISTERING"
+                  ? "Register your Podsfy account"
+                  : "Sign In"}
               </Button>
             </Form>
           </FormProvider>
@@ -272,12 +297,22 @@ export default function SignUpModal({ className }: JoinProps) {
             <Button
               variant="subtle"
               className="relative mx-auto grid w-fit grid-flow-col gap-[9px]"
+              onClick={() => {
+                if (action === "SIGNING IN") {
+                  setSignAction("REGISTERING")
+                }
+                if (action === "REGISTERING") {
+                  setSignAction("SIGNING IN")
+                }
+              }}
             >
               <p className="text-center text-sm text-white/70">
-                Already have an account?
+                {action === "SIGNING IN"
+                  ? " Already have an account?"
+                  : `Don't have an account already?`}
               </p>
               <button className="text-[14px] font-medium text-white">
-                Sign In
+                {action === "SIGNING IN" ? "Sign Up" : "Sign In"}
               </button>
             </Button>
           </DialogFooter>

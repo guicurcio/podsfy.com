@@ -95,7 +95,7 @@ export default async function PodcastPage({ params }) {
 
   return (
     <div className="overflow-x-hidden">
-      <div className="   mx-auto pt-[90px] backdrop-blur-[8px] backdrop-brightness-[60%] ">
+      <div className="   mx-auto pt-[80px] backdrop-blur-[8px] backdrop-brightness-[60%] ">
         <div
           className="mx-auto
   rounded-[9px] border  border-sharper border-opacity-10  bg-[#0D0E12] bg-opacity-[95%]  py-[25px]  px-[20px] font-visuelt  shadow-3xl backdrop-blur-[10px] xl:max-w-[1100px] 2xl:max-w-[1200px]
@@ -112,9 +112,9 @@ export default async function PodcastPage({ params }) {
               </div>
 
               <PodBehind
-               title={`${generateGoodTitleForReviews(
-                staticPodcastData.title
-              )}`}
+                title={`${generateGoodTitleForReviews(
+                  staticPodcastData.title
+                )}`}
                 genre={staticPodcastData.genre}
                 rating={staticPodcastData.rating}
                 tags={staticPodcastData.tags}

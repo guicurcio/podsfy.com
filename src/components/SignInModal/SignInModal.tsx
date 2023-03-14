@@ -15,7 +15,7 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger
+  DialogTrigger,
 } from "ui/components/Dialog"
 import { Input } from "ui/components/Input"
 import Label from "ui/components/Label"
@@ -23,7 +23,7 @@ import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
-  TooltipTrigger
+  TooltipTrigger,
 } from "ui/components/Tooltip"
 import * as z from "zod"
 
@@ -66,16 +66,25 @@ export default function SignInModal({ className }: SignInModalProps) {
     email,
     password,
   }: SignInModalFormValues) => {
-    const userSignedIn = await asyncTuple(
+    const [data] = await asyncTuple(
       nhost.auth.signIn({
         email,
         password,
       })
     )
-    if (userSignedIn[0]) {
-      router.push("/home")
-    }
+    console.log(data)
   }
+
+  //     {session: null, error: {…}, mfa: null}
+  // error
+  // :
+  // error
+  // :
+  // "invalid-email-password"
+  // message
+  // :
+  // "Incorrect email or password
+  //   }
 
   return (
     <FormProvider {...form}>

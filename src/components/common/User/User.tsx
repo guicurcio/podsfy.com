@@ -2,6 +2,8 @@
 
 import { twMerge } from "tailwind-merge"
 
+import { nhost } from "lib/setupBackendConfig"
+import asyncTuple from "lib/try/try"
 import { CreditCard, Keyboard, LogOut, Settings, UserCheck } from "lucide-react"
 import { Avatar, AvatarFallback, AvatarImage } from "ui/components/Avatar"
 import Button from "ui/components/Button"
@@ -26,9 +28,31 @@ export interface UserProps {
 }
 
 /**
+ * User
+ */
+export interface HandleUserSignOutArgs {
+  /**
+   *
+   */
+}
+
+/**
  * User Component
  */
 export default function User({ className }: UserProps): JSX.Element {
+  const user = nhost.auth.getUser()
+
+  /**
+   *
+   * User
+   *
+   * @param
+   * @returns
+   */
+  async function handleUserSignOut() {
+    await asyncTuple(nhost.auth.signOut())
+  }
+
   return (
     <div className={twMerge("", className)}>
       <DropdownMenu>
@@ -70,7 +94,7 @@ export default function User({ className }: UserProps): JSX.Element {
               </Avatar>
             </div>
             <div className="self-center align-middle">
-              <h1 className="font-normal text-white/50">User Name</h1>
+              <h1 className="font-normal text-white/50">{user?.email}</h1>
             </div>
           </div>
           <DropdownMenuSeparator className="mx-[4px]" />
@@ -99,7 +123,7 @@ export default function User({ className }: UserProps): JSX.Element {
             </DropdownMenuItem>
           </DropdownMenuGroup>
           <DropdownMenuSeparator className="mx-[4px]" />
-          <DropdownMenuItem>
+          <DropdownMenuItem onClick={handleUserSignOut}>
             <LogOut className="mr-3 h-4 w-4 self-center align-middle" />
             <span className="h-4 self-center align-middle">Log out</span>
             <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
