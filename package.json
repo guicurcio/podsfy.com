@@ -11,6 +11,8 @@
     "prisma:format": "prisma format",
     "prisma:push": "prisma db push",
     "prisma:push:users": "prisma db push --schema C:/Users/ito/Documents/ally/holder/podsfy/src/lib/userAuthenticationModel/schema2.prisma",
+    "prisma:pull:platform": "prisma db pull --schema C:/Users/ito/Documents/ally/holder/podsfy/src/lib/platformORM/platform-schema.prisma",
+    "prisma:generate:platform": "prisma generate --schema C:/Users/ito/Documents/ally/holder/podsfy/src/lib/platformORM/platform-schema.prisma",
     "postinstall": "prisma generate"
   },
   "dependencies": {

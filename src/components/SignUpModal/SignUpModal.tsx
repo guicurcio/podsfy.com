@@ -17,7 +17,7 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger
+  DialogTrigger,
 } from "ui/components/Dialog"
 import { Input } from "ui/components/Input"
 import Label from "ui/components/Label"
@@ -25,7 +25,7 @@ import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
-  TooltipTrigger
+  TooltipTrigger,
 } from "ui/components/Tooltip"
 import useToggle from "ui/hooks/useToggle"
 import * as z from "zod"
