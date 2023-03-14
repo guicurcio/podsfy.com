@@ -34,7 +34,7 @@ export default function Page() {
             <h1 className="cursor-default  select-none px-[5px] text-center font-SpaceGrotesk text-[55px] font-normal leading-[55px] tracking-[-0.08em] text-white text-opacity-[75%]   brightness-[200%] drop-shadow-2xl md:w-full md:px-[0] md:text-[90px] md:leading-[95px] md:tracking-[-0.06em]">
               Your companion for podcasts reviews and rankings
             </h1>
-            <Suspense>
+            <Suspense fallback={<div></div>}>
               <Join></Join>
             </Suspense>
           </div>

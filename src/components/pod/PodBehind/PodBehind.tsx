@@ -1,4 +1,9 @@
+"use client"
+
+import { generateGoodTitleForReviews } from "app/podcast/[pod]/page"
 import { twMerge } from "tailwind-merge"
+import { Toaster } from "ui/components/Toaster"
+import { toast } from "ui/hooks/use-toast"
 
 /**
  * PodBehind Props description
@@ -24,6 +29,13 @@ export interface PodBehindProps {
   podcastTitle?: string
 }
 
+function triggerInteraction(podcastTitle, interactionType) {
+  toast({
+    title: `${podcastTitle} added to ${interactionType}`,
+    description: `Now you can find it in your ${interactionType}`,
+  })
+}
+
 /**
  * PodBehind Component
  */
@@ -31,19 +43,20 @@ export default function PodBehind({
   className,
   genre,
   rating,
+  podcastTitle,
 }: PodBehindProps) {
   return (
     <div
-      className={twMerge("hidden md:grid  w-full grid-flow-row  gap-2  py-1", className)}
+      className={twMerge(
+        "hidden w-full  grid-flow-row gap-2  py-1  md:grid",
+        className
+      )}
     >
       <div className="grid grid-flow-col items-center justify-items-center  gap-2 py-2 ">
         <button
-          // onClick={() => {
-          //   toast({
-          //     title: `${generateGoodTitleForReviews(podcastTitle)} added to favorites`,
-          //     description: 'Now you can find it in your favorites',
-          //   });
-          // }}
+          onClick={() => {
+            triggerInteraction(podcastTitle, "Favorite Podcasts")
+          }}
           className="grid h-[55px] w-[70px] cursor-pointer grid-flow-row gap-1 rounded-md p-2 hover:bg-fondy hover:bg-opacity-[90%] hover:backdrop-brightness-[75%]"
         >
           <svg
@@ -146,7 +159,7 @@ export default function PodBehind({
       </div>
       <div className="">
         <div className="absolute right-[-20px] top-[40px] ">
-          {/* <Toaster></Toaster> */}
+          <Toaster></Toaster>
         </div>
       </div>
     </div>

@@ -6,6 +6,8 @@ import Link from "next/link"
 import { Suspense } from "react"
 import { twMerge } from "tailwind-merge"
 import mergeClasses from "utils/mergeClasses/mergeClasses"
+import { getServerSession } from "next-auth/next"
+import { authOptions } from "pages/api/auth/[...nextauth]"
 
 /**
  * Header Props description
@@ -20,7 +22,7 @@ export interface HeaderProps {
 /**
  * Header Component
  */
-export default function Header({ className }: HeaderProps) {
+export default async function Header({ className }: HeaderProps) {
   return (
     <div
       className={twMerge(
@@ -39,7 +41,10 @@ export default function Header({ className }: HeaderProps) {
             >
               podsfy
             </Link>
-            <Search podcasts={staticPodcastData()} className=""></Search>
+            <Search
+              podcasts={staticPodcastData()}
+              className="lg:w-[630px]"
+            ></Search>
             <div className="hidden md:block">
               <Suspense>
                 <SignInModal></SignInModal>

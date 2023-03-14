@@ -1,12 +1,20 @@
-'use client';
+"use client"
 
-import { zodResolver } from '@hookform/resolvers/zod';
-import Form from 'components/Form/Form';
-import { AppleIcon, Twitch, TwitchIcon, Twitter, TwitterIcon } from 'lucide-react';
-import { useRouter } from 'next/navigation';
-import { FormProvider, useForm } from 'react-hook-form';
-import { twMerge } from 'tailwind-merge';
-import Button from 'ui/components/Button';
+import { zodResolver } from "@hookform/resolvers/zod"
+import Form from "components/Form/Form"
+import { nhost } from "lib/setupBackendConfig"
+import asyncTuple from "lib/try/try"
+import {
+  AppleIcon,
+  Twitch,
+  TwitchIcon,
+  Twitter,
+  TwitterIcon,
+} from "lucide-react"
+import { useRouter } from "next/navigation"
+import { FormProvider, useForm } from "react-hook-form"
+import { twMerge } from "tailwind-merge"
+import Button from "ui/components/Button"
 import {
   Dialog,
   DialogContent,
@@ -15,11 +23,16 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from 'ui/components/Dialog';
-import { Input } from 'ui/components/Input';
-import Label from 'ui/components/Label';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from 'ui/components/Tooltip';
-import * as z from 'zod';
+} from "ui/components/Dialog"
+import { Input } from "ui/components/Input"
+import Label from "ui/components/Label"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "ui/components/Tooltip"
+import * as z from "zod"
 
 /**
  * Join Props description
@@ -28,7 +41,7 @@ export interface JoinProps {
   /**
    * Custom class names passed to the root element.
    */
-  className?: string;
+  className?: string
 }
 
 const SIGN_UP_MODAL_VALIDATION_SCHEMA = z.object({
@@ -36,42 +49,49 @@ const SIGN_UP_MODAL_VALIDATION_SCHEMA = z.object({
     .string()
     .email()
     .min(4)
-    .max(32, { message: 'The Email should be at most 32 characters long.' }),
-  password: z.string().min(9, { message: 'Password is required' }),
-});
+    .max(32, { message: "The Email should be at most 32 characters long." }),
+  password: z.string().min(9, { message: "Password is required" }),
+})
 
 export default function SignUpModal({ className }: JoinProps) {
-  return <SignUpModalForm></SignUpModalForm>;
+  return <SignUpModalForm></SignUpModalForm>
 }
 
 export interface SignUpModalFormValues {
-  email: string;
-  password: string;
+  email: string
+  password: string
 }
 
 /**
  * SignUpModal Component
  */
 export function SignUpModalForm({ className }: JoinProps) {
-  const router = useRouter();
+  const router = useRouter()
 
   const form = useForm<SignUpModalFormValues>({
-    reValidateMode: 'onSubmit',
+    reValidateMode: "onSubmit",
     resolver: zodResolver(SIGN_UP_MODAL_VALIDATION_SCHEMA),
-  });
+  })
 
-  const { register, formState } = form;
+  const { register, formState } = form
 
-  const handleSignUpFormSubmit = async ({ email, password }: SignUpModalFormValues) => {
-    try {
-      // const newUser = await signUpEmailPassword(email, password);
-    } catch (error) {
-      console.log(error);
+  const handleSignUpFormSubmit = async ({
+    email,
+    password,
+  }: SignUpModalFormValues) => {
+    const user = await asyncTuple(
+      nhost.auth.signUp({
+        email,
+        password,
+      })
+    )
+    if (user[0]) {
+      router.push("/home")
     }
-  };
+  }
 
   return (
-    <div className={twMerge('mx-auto mt-3 w-fit', className)}>
+    <div className={twMerge("mx-auto mt-3 w-fit", className)}>
       <Dialog>
         <DialogTrigger asChild>
           <Button variant="default" size="lg">
@@ -80,19 +100,32 @@ export function SignUpModalForm({ className }: JoinProps) {
         </DialogTrigger>
         <DialogContent className="sm:max-w-[500px]">
           <DialogHeader>
-            <DialogTitle className="text-[32px]">Create a Podsfy Account</DialogTitle>
+            <DialogTitle className="text-[32px]">
+              Create a Podsfy Account
+            </DialogTitle>
             <DialogDescription className="mx-auto max-w-[300px] text-center text-white/60">
               Create a free account to get access to all the features of Podsfy.
             </DialogDescription>
           </DialogHeader>
 
           <FormProvider {...form}>
-            <Form onSubmit={handleSignUpFormSubmit} className="grid grid-flow-row gap-3">
+            <Form
+              onSubmit={handleSignUpFormSubmit}
+              className="grid grid-flow-row gap-3"
+            >
               <div className="grid grid-flow-row items-center gap-2">
-                <Label htmlFor="email" className="text-left font-moderat text-[14px] text-white/80">
+                <Label
+                  htmlFor="email"
+                  className="text-left font-moderat text-[14px] text-white/80"
+                >
                   Email
                 </Label>
-                <Input id="email" {...register('email')} name="email" aria-label="email" />
+                <Input
+                  id="email"
+                  {...register("email")}
+                  name="email"
+                  aria-label="email"
+                />
                 {formState.errors?.email && (
                   <p className="ml-1 self-center font-visuelt text-xs text-red-500">
                     {formState.errors?.email?.message}
@@ -110,14 +143,17 @@ export function SignUpModalForm({ className }: JoinProps) {
                 <Input id="name" className="col-span-4" />
               </div> */}
               <div className="grid grid-flow-row items-center gap-2">
-                <Label htmlFor="email" className="text-left font-moderat text-[14px] text-white/80">
+                <Label
+                  htmlFor="email"
+                  className="text-left font-moderat text-[14px] text-white/80"
+                >
                   Password
                 </Label>
                 <Input
                   id="password"
-                  type={'password'}
+                  type={"password"}
                   className="col-span-4"
-                  {...register('password')}
+                  {...register("password")}
                   tabIndex={2}
                 />
                 {formState.errors?.password && (
@@ -131,6 +167,12 @@ export function SignUpModalForm({ className }: JoinProps) {
                 variant="subtle"
                 className="mt-[14px] w-full text-white/80 backdrop-brightness-[60%]"
                 size="lg"
+                // onClick={() => {
+                //   nhost.auth.signUp({
+                //     email: "joe@example.com",
+                //     password: "secret-password",
+                //   })
+                // }}
               >
                 Register Now
               </Button>
@@ -147,7 +189,11 @@ export function SignUpModalForm({ className }: JoinProps) {
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger asChild tabIndex={-1} autoFocus={false}>
-                    <Button className="h-[65px] w-[75px]" tabIndex={-1} autoFocus={false}>
+                    <Button
+                      className="h-[65px] w-[75px]"
+                      tabIndex={-1}
+                      autoFocus={false}
+                    >
                       <Twitter className="h-5 w-5 self-center align-middle" />
                     </Button>
                   </TooltipTrigger>
@@ -185,7 +231,11 @@ export function SignUpModalForm({ className }: JoinProps) {
                 </Tooltip>
                 <Tooltip>
                   <TooltipTrigger asChild tabIndex={-1} autoFocus={false}>
-                    <Button className="h-[65px] w-[75px]" tabIndex={-1} autoFocus={false}>
+                    <Button
+                      className="h-[65px] w-[75px]"
+                      tabIndex={-1}
+                      autoFocus={false}
+                    >
                       {/* <Discord className="h-5 w-5 self-center align-middle" /> */}
                       <svg
                         width="15"
@@ -218,12 +268,16 @@ export function SignUpModalForm({ className }: JoinProps) {
               variant="subtle"
               className="relative mx-auto grid w-fit grid-flow-col gap-[9px]"
             >
-              <p className="text-center text-sm text-white/70">Already have an account?</p>
-              <button className="text-[14px] font-medium text-white">Sign In</button>
+              <p className="text-center text-sm text-white/70">
+                Already have an account?
+              </p>
+              <button className="text-[14px] font-medium text-white">
+                Sign In
+              </button>
             </Button>
           </DialogFooter>
         </DialogContent>
       </Dialog>
     </div>
-  );
+  )
 }

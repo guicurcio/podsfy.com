@@ -113,9 +113,11 @@ export default function Footer({ className }: FooterProps) {
                   Podsfy PRO
                 </a>
               </Link>
-              <a className="cursor-pointer font-moderat text-[13px] text-[#e3e5e8]/[0.72]">
-                {" "}
-              </a>
+              <Link href="/podsfy-labs" legacyBehavior passHref>
+                <a className="cursor-pointer font-moderat text-[13px] text-[#e3e5e8]/[0.72]">
+                  Podsfy Labs
+                </a>
+              </Link>
               <a className="cursor-pointer font-moderat text-[13px] text-[#e3e5e8]/[0.72]">
                 {" "}
               </a>

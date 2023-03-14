@@ -11,6 +11,7 @@ specifiers:
   '@next-auth/prisma-adapter': ^1.0.5
   '@next/bundle-analyzer': ^12.3.4
   '@nhost/nextjs': ^1.13.15
+  '@nhost/nhost-js': ^2.0.9
   '@prisma/client': ^4.11.0
   '@radix-ui/colors': ^0.1.8
   '@radix-ui/react-accordion': ^1.1.1
@@ -44,6 +45,7 @@ specifiers:
   cmdk: ^0.1.22
   concurrently: ^7.6.0
   doctoc: 2.1.0
+  encoding: ^0.1.13
   esbuild: 0.14.10
   eslint: ^8.36.0
   eslint-config-airbnb: ^19.0.4
@@ -97,7 +99,8 @@ specifiers:
 dependencies:
   '@hookform/resolvers': 2.9.11_react-hook-form@7.43.5
   '@next-auth/prisma-adapter': 1.0.5_knaw3qxw4zwoiwojd3fn43zthi
-  '@nhost/nextjs': 1.13.15_vghoxepainrjfz7s4hsaqwq37e
+  '@nhost/nextjs': 1.13.15_4on63nfnjhozmvvmdk7tjtawce
+  '@nhost/nhost-js': 2.0.9_rjjjs2nwgns3bcvnnqb5eu5nry
   '@prisma/client': 4.11.0_prisma@4.11.0
   '@radix-ui/colors': 0.1.8
   '@radix-ui/react-accordion': 1.1.1_biqbaboplfbrettd7655fr4n2y
@@ -120,6 +123,7 @@ dependencies:
   clsx: 1.2.1
   cmdk: 0.1.22_zula6vjvt3wdocc4mwcxqa6nzi
   concurrently: 7.6.0
+  encoding: 0.1.13
   framer-motion: 9.1.7_biqbaboplfbrettd7655fr4n2y
   graphql: 16.6.0
   lucide-react: 0.115.0_react@18.2.0
@@ -2068,23 +2072,23 @@ packages:
     dev: false
     optional: true
 
-  /@nhost/graphql-js/0.0.5_graphql@16.6.0:
+  /@nhost/graphql-js/0.0.5_rjjjs2nwgns3bcvnnqb5eu5nry:
     resolution: {integrity: sha512-QIItMjoNsInfy1s1EHBUnBwoGKUSJqD0Y2QOTAz0unSiEVe4dXRBEb/Ct4+oFjo1VewuhMN0gtOsnsheUVSOOA==}
     peerDependencies:
       graphql: ^14.0.0 || ^15.0.0 || ^16.0.0
     dependencies:
       '@graphql-typed-document-node/core': 3.1.2_graphql@16.6.0
       graphql: 16.6.0
-      isomorphic-unfetch: 3.1.0
+      isomorphic-unfetch: 3.1.0_encoding@0.1.13
     transitivePeerDependencies:
       - encoding
     dev: false
 
-  /@nhost/hasura-auth-js/2.0.2:
+  /@nhost/hasura-auth-js/2.0.2_encoding@0.1.13:
     resolution: {integrity: sha512-bZ3bZBPyYNQZr6JB/DQYXWEO0RWSq0tYNIn9Pdu5XBmSs8S/Ii5FcWUzY8L5oUAGFXUgJv1wNvia3m0dVGj5xw==}
     dependencies:
       '@simplewebauthn/browser': 6.2.2
-      isomorphic-unfetch: 3.1.0
+      isomorphic-unfetch: 3.1.0_encoding@0.1.13
       js-cookie: 3.0.1
       jwt-decode: 3.1.2
       xstate: 4.37.0
@@ -2092,25 +2096,25 @@ packages:
       - encoding
     dev: false
 
-  /@nhost/hasura-storage-js/2.0.3:
+  /@nhost/hasura-storage-js/2.0.3_encoding@0.1.13:
     resolution: {integrity: sha512-4oNpKS9ep6Zn0JkxfWwDp97Q/XQfByhXYssjP0KfM/0B+g77UOmzBdHFBc3YtwiYMDuNbAyGztGzUzYbQBNjcA==}
     dependencies:
       form-data: 4.0.0
-      isomorphic-unfetch: 3.1.0
+      isomorphic-unfetch: 3.1.0_encoding@0.1.13
       xstate: 4.37.0
     transitivePeerDependencies:
       - encoding
     dev: false
 
-  /@nhost/nextjs/1.13.15_vghoxepainrjfz7s4hsaqwq37e:
+  /@nhost/nextjs/1.13.15_4on63nfnjhozmvvmdk7tjtawce:
     resolution: {integrity: sha512-AC2d60LfzRNwEi9qAMvVop+b8tN1k+KxwMxk+yR6coGD8lsclcBiVyk8nicVo4hHEXsHq8D7nvQ6s5n186rnew==}
     peerDependencies:
       next: ^12.0.10 || ^13.0.0
       react: ^17.0.0 || ^18.0.0
       react-dom: ^17.0.0 || ^18.0.0
     dependencies:
-      '@nhost/react': 2.0.9_4hkbjrep5ureiqkcwz4kv7433y
-      isomorphic-unfetch: 3.1.0
+      '@nhost/react': 2.0.9_3xthoflx6pyt5ykllyhqsraqiu
+      isomorphic-unfetch: 3.1.0_encoding@0.1.13
       js-cookie: 3.0.1
       next: 13.2.5-canary.1_6m24vuloj5ihw4zc5lbsktc4fu
       react: 18.2.0
@@ -2123,27 +2127,27 @@ packages:
       - graphql
     dev: false
 
-  /@nhost/nhost-js/2.0.9_graphql@16.6.0:
+  /@nhost/nhost-js/2.0.9_rjjjs2nwgns3bcvnnqb5eu5nry:
     resolution: {integrity: sha512-3Tz2fUoFUAm7I8oHEaeqcT6lcVG0C03G9zEejY0+OUEqNrhzfpGqfiTnzPZ5AJn+bEcmPj7OktbMaOonq3maJA==}
     peerDependencies:
       graphql: ^14.0.0 || ^15.0.0 || ^16.0.0
     dependencies:
-      '@nhost/graphql-js': 0.0.5_graphql@16.6.0
-      '@nhost/hasura-auth-js': 2.0.2
-      '@nhost/hasura-storage-js': 2.0.3
+      '@nhost/graphql-js': 0.0.5_rjjjs2nwgns3bcvnnqb5eu5nry
+      '@nhost/hasura-auth-js': 2.0.2_encoding@0.1.13
+      '@nhost/hasura-storage-js': 2.0.3_encoding@0.1.13
       graphql: 16.6.0
-      isomorphic-unfetch: 3.1.0
+      isomorphic-unfetch: 3.1.0_encoding@0.1.13
     transitivePeerDependencies:
       - encoding
     dev: false
 
-  /@nhost/react/2.0.9_4hkbjrep5ureiqkcwz4kv7433y:
+  /@nhost/react/2.0.9_3xthoflx6pyt5ykllyhqsraqiu:
     resolution: {integrity: sha512-Kiw7k/5nbvB+ETS/n/NsyfvPkZc2IxDLff+9lgfcOMndp4ZDx0rH9IYN2PRDewChH9Ih2k8goo98iTtsatpzjA==}
     peerDependencies:
       react: ^17.0.0 || ^18.1.0
       react-dom: ^17.0.0 || ^18.1.0
     dependencies:
-      '@nhost/nhost-js': 2.0.9_graphql@16.6.0
+      '@nhost/nhost-js': 2.0.9_rjjjs2nwgns3bcvnnqb5eu5nry
       '@xstate/react': 3.2.1_o53l3h553defh3ruq4yellezcm
       jwt-decode: 3.1.2
       react: 18.2.0
@@ -4667,6 +4671,12 @@ packages:
     engines: {node: '>= 4'}
     dev: true
 
+  /encoding/0.1.13:
+    resolution: {integrity: sha512-ETBauow1T35Y/WZMkio9jiM0Z5xjHHmJ4XmjZOq1l/dXz3lr2sRn87nJy20RupqSh1F2m3HHPSp8ShIPQJrJ3A==}
+    dependencies:
+      iconv-lite: 0.6.3
+    dev: false
+
   /end-of-stream/1.4.4:
     resolution: {integrity: sha512-+uw1inIHVPQoaVuHzRyXd21icM+cnt4CzD5rW+NC1wjOUSTOs+Te7FOv7AhN7vS9x/oIyhLP5PR1H+phQAHu5Q==}
     dependencies:
@@ -6306,6 +6316,13 @@ packages:
       safer-buffer: 2.1.2
     dev: true
 
+  /iconv-lite/0.6.3:
+    resolution: {integrity: sha512-4fCk79wshMdzMp2rH06qWrJE4iolqLhCUH+OiuIgU++RB0+94NlDL81atO7GX55uUKueo0txHNtvEyI6D7WdMw==}
+    engines: {node: '>=0.10.0'}
+    dependencies:
+      safer-buffer: 2.1.2
+    dev: false
+
   /ignore/4.0.6:
     resolution: {integrity: sha512-cyFDKrqc/YdcWFniJhzI42+AzS+gNwmUzOSFcRCQYwySuBBBy/KjuxWLZ/FHEH6Moq1NizMOBWyTcv8O4OZIMg==}
     engines: {node: '>= 4'}
@@ -6889,10 +6906,10 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  /isomorphic-unfetch/3.1.0:
+  /isomorphic-unfetch/3.1.0_encoding@0.1.13:
     resolution: {integrity: sha512-geDJjpoZ8N0kWexiwkX8F9NkTsXhetLPVbZFQ+JTW239QNOwvB0gniuR1Wc6f0AMTn7/mFGyXvHTifrCp/GH8Q==}
     dependencies:
-      node-fetch: 2.6.9
+      node-fetch: 2.6.9_encoding@0.1.13
       unfetch: 4.2.0
     transitivePeerDependencies:
       - encoding
@@ -8092,7 +8109,7 @@ packages:
     resolution: {integrity: sha512-1nh45deeb5olNY7eX82BkPO7SSxR5SSYJiPTrTdFUVYwAl8CKMA5N9PjTYkHiRjisVcxcQ1HXdLhx2qxxJzLNQ==}
     dev: true
 
-  /node-fetch/2.6.9:
+  /node-fetch/2.6.9_encoding@0.1.13:
     resolution: {integrity: sha512-DJm/CJkZkRjKKj4Zi4BsKVZh3ValV5IR5s7LVZnW+6YMh0W1BfNA8XSs6DLMGYlId5F3KnA70uu2qepcR08Qqg==}
     engines: {node: 4.x || >=6.0.0}
     peerDependencies:
@@ -8101,6 +8118,7 @@ packages:
       encoding:
         optional: true
     dependencies:
+      encoding: 0.1.13
       whatwg-url: 5.0.0
     dev: false
 
@@ -9271,7 +9289,6 @@ packages:
 
   /safer-buffer/2.1.2:
     resolution: {integrity: sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==}
-    dev: true
 
   /saxes/5.0.1:
     resolution: {integrity: sha512-5LBh1Tls8c9xgGjw3QrMwETmTMVk0oFgvrFSvWx62llR2hcEInrKNZ2GZCCuuy2lvWrdl5jhbpeqc5hRYKFOcw==}

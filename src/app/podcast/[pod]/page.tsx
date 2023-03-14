@@ -8,7 +8,7 @@ import { db } from "lib/setupDBConfig/setupDBConfig"
 import { notFound } from "next/navigation"
 import { cache } from "react"
 
-const generateGoodTitleForReviews = (title: string) => {
+export const generateGoodTitleForReviews = (title: string) => {
   let newTitle = title
     .split(" ")
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
@@ -112,6 +112,9 @@ export default async function PodcastPage({ params }) {
               </div>
 
               <PodBehind
+               title={`${generateGoodTitleForReviews(
+                staticPodcastData.title
+              )}`}
                 genre={staticPodcastData.genre}
                 rating={staticPodcastData.rating}
                 tags={staticPodcastData.tags}
