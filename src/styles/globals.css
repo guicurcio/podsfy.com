@@ -1,6 +1,10 @@
 @tailwind base;
 @tailwind components;
 
+html {
+  overflow-y: scroll;
+}
+
 ::selection {
   background: hotpink;
   color: white;
@@ -287,7 +291,7 @@ input[type="text"]:focus {
   /* background: rgb(11, 11, 12); */
   border-radius: 18px;
   z-index: 5;
-  @apply w-full h-full font-mono;
+  @apply h-full w-full font-mono;
 }
 
 .banner {
@@ -719,7 +723,7 @@ input[type="text"]:focus {
 /* .cth {
     animation: cth 50s ease-in 50s;
   }
-  
+
   @keyframes cth {
     0% {
      @apply brightness-[51%];

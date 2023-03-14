@@ -1,9 +1,11 @@
 import Footer from "components/common/Footer"
-import Header from "components/pod/Header"
 import Image from "next/image"
-import { Suspense } from "react"
+import { lazy, Suspense } from "react"
+
 /* eslint-disable-next-line import/no-absolute-path, import/extensions */
 import backgroundImage from "/public/bg.png"
+
+const Header = lazy(() => import("components/pod/Header"))
 
 export default function PodcastPage({ children }) {
   return (

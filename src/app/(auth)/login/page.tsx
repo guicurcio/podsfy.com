@@ -1,19 +1,23 @@
 import Footer from "components/common/Footer"
 import PodcastCover from "components/pod/PodcastCover/PodcastCover"
+import Link from "next/link"
 import { lazy, Suspense } from "react"
 /* eslint-disable-next-line import/no-absolute-path, import/extensions */
 
 const Join = lazy(() => import("components/SignUpModal"))
 const SignInModal = lazy(() => import("components/SignInModal"))
 
-export default function Page() {
+export default function LoginPage() {
   return (
     <div className="backdrop-blur-[8px] backdrop-brightness-[50%]">
       <div className="relative z-50 mx-auto grid cursor-default select-none grid-flow-row gap-y-[30px] backdrop-blur-[0.1px] backdrop-brightness-[120%]">
         <div className="mx-auto grid  grid-flow-col place-content-between items-center py-[12px] md:min-w-[1280px]">
-          <a className="cursor-pointer py-2 px-3 text-center font-SpaceGrotesk text-[30px] font-bold tracking-[-0.08em] text-[#CDCDCD] md:text-left ">
+          <Link
+            href="/"
+            className="cursor-pointer py-2 px-3 text-center font-SpaceGrotesk text-[30px] font-bold tracking-[-0.08em] text-[#CDCDCD] md:text-left "
+          >
             podsfy
-          </a>
+          </Link>
           <div className="hidden self-center rounded-md py-2 px-3 align-middle text-[#CDCDCD] md:block">
             <div className="h-full w-full backdrop-brightness-[125%]">
               <Suspense>

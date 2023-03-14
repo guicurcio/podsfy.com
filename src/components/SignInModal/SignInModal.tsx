@@ -1,11 +1,13 @@
 "use client"
 
 import { zodResolver } from "@hookform/resolvers/zod"
-import { signIn, signOut } from "next-auth/react"
 import Form from "components/Form/Form"
+import { nhost } from "lib/setupBackendConfig"
+import asyncTuple from "lib/try/try"
 import { Twitch, Twitter } from "lucide-react"
 import { useRouter } from "next/navigation"
 import { FormProvider, useForm } from "react-hook-form"
+import { twMerge } from "tailwind-merge"
 import Button from "ui/components/Button"
 import {
   Dialog,
@@ -13,7 +15,7 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
+  DialogTrigger
 } from "ui/components/Dialog"
 import { Input } from "ui/components/Input"
 import Label from "ui/components/Label"
@@ -21,13 +23,9 @@ import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
-  TooltipTrigger,
+  TooltipTrigger
 } from "ui/components/Tooltip"
 import * as z from "zod"
-import { nhost } from "lib/setupBackendConfig"
-import asyncTuple from "lib/try/try"
-import Link from "next/link"
-import { Suspense } from "react"
 
 const schema = z.object({
   email: z.string().email().min(4).max(18),
@@ -42,7 +40,6 @@ export interface SignInModalProps {
    * Custom class names passed to the root element.
    */
   className?: string
-  toggleValue?: () => void
 }
 
 export interface SignInModalFormValues {
@@ -50,18 +47,13 @@ export interface SignInModalFormValues {
   password: string
 }
 
-export default function SignInModal({ className }: SignInModalProps) {
-  return <SignInModalForm></SignInModalForm>
-}
-
 /**
  * SignInModal Component
  */
-export function SignInModalForm({ className, toggleValue }: SignInModalProps) {
+export default function SignInModal({ className }: SignInModalProps) {
   // const { signInEmailPassword, isLoading, isSuccess, isError, error } =
   //   useSignInEmailPassword();
   const router = useRouter()
-  const user = nhost.auth.getUser()
 
   const form = useForm<SignInModalFormValues>({
     reValidateMode: "onSubmit",
@@ -85,22 +77,10 @@ export function SignInModalForm({ className, toggleValue }: SignInModalProps) {
     }
   }
 
-  if (user) {
-    return (
-      <Suspense fallback={<div></div>}>
-        <Link href="/home">
-          <Button variant="subtle" size="md">
-            Home
-          </Button>
-        </Link>
-      </Suspense>
-    )
-  }
-
   return (
     <FormProvider {...form}>
       <Form onSubmit={handleSignInFormSubmit}>
-        <div className="mx-auto mt-3 w-fit">
+        <div className={twMerge("mx-auto mt-3 w-fit", className)}>
           <Dialog>
             <DialogTrigger asChild>
               <Button variant="subtle" size="md">
@@ -112,9 +92,6 @@ export function SignInModalForm({ className, toggleValue }: SignInModalProps) {
                 <DialogTitle className="text-[32px]">
                   Sign in to your Podsfy account
                 </DialogTitle>
-                {/* <DialogDescription className="mx-auto max-w-[300px] text-center text-white/60">
-                  Create a free account to get access to all the features of Podsfy.
-                </DialogDescription> */}
               </DialogHeader>
               <div className="grid grid-flow-row gap-6 py-4">
                 <form className="grid gap-4">
@@ -175,7 +152,6 @@ export function SignInModalForm({ className, toggleValue }: SignInModalProps) {
                           className="h-[65px] w-[75px]"
                           tabIndex={-1}
                           autoFocus={false}
-                          onClick={() => signIn("github")}
                         >
                           <Twitter className="h-5 w-5 self-center align-middle" />
                         </Button>
@@ -250,12 +226,9 @@ export function SignInModalForm({ className, toggleValue }: SignInModalProps) {
                 <Button
                   variant="subtle"
                   className="mx-auto grid w-fit grid-flow-col gap-[5px]"
-                  // onClick={() => {
-                  //   toggleValue();
-                  // }}
                 >
                   <p className="text-center text-sm text-white/70">
-                    Don't have an account already?
+                    Don{"'"}t have an account already?
                   </p>
                   <button className="mx-auto flex w-fit self-center text-center align-middle font-visuelt text-sm font-medium text-white">
                     Sign Up

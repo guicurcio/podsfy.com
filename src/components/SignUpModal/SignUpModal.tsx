@@ -4,13 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import Form from "components/Form/Form"
 import { nhost } from "lib/setupBackendConfig"
 import asyncTuple from "lib/try/try"
-import {
-  AppleIcon,
-  Twitch,
-  TwitchIcon,
-  Twitter,
-  TwitterIcon,
-} from "lucide-react"
+import { Twitch, Twitter } from "lucide-react"
 import { useRouter } from "next/navigation"
 import { FormProvider, useForm } from "react-hook-form"
 import { twMerge } from "tailwind-merge"
@@ -22,7 +16,7 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
+  DialogTrigger
 } from "ui/components/Dialog"
 import { Input } from "ui/components/Input"
 import Label from "ui/components/Label"
@@ -30,8 +24,9 @@ import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
-  TooltipTrigger,
+  TooltipTrigger
 } from "ui/components/Tooltip"
+import useToggle from "ui/hooks/useToggle"
 import * as z from "zod"
 
 /**
@@ -53,10 +48,6 @@ const SIGN_UP_MODAL_VALIDATION_SCHEMA = z.object({
   password: z.string().min(9, { message: "Password is required" }),
 })
 
-export default function SignUpModal({ className }: JoinProps) {
-  return <SignUpModalForm></SignUpModalForm>
-}
-
 export interface SignUpModalFormValues {
   email: string
   password: string
@@ -65,8 +56,10 @@ export interface SignUpModalFormValues {
 /**
  * SignUpModal Component
  */
-export function SignUpModalForm({ className }: JoinProps) {
+export default function SignUpModal({ className }: JoinProps) {
   const router = useRouter()
+  const [loading, toggleLoading] = useToggle(false)
+  const [error, toggleError] = useToggle(false)
 
   const form = useForm<SignUpModalFormValues>({
     reValidateMode: "onSubmit",
@@ -79,6 +72,7 @@ export function SignUpModalForm({ className }: JoinProps) {
     email,
     password,
   }: SignUpModalFormValues) => {
+    toggleLoading()
     const user = await asyncTuple(
       nhost.auth.signUp({
         email,
@@ -87,6 +81,9 @@ export function SignUpModalForm({ className }: JoinProps) {
     )
     if (user[0]) {
       router.push("/home")
+    } else {
+      toggleLoading()
+      toggleError()
     }
   }
 
@@ -107,7 +104,14 @@ export function SignUpModalForm({ className }: JoinProps) {
               Create a free account to get access to all the features of Podsfy.
             </DialogDescription>
           </DialogHeader>
-
+          {error && (
+            <div className="my-[10px] rounded-[5px] border-white border-opacity-10 bg-fondy px-4 py-4">
+              <p className="self-center font-moderat text-[13px] text-red-500">
+                There was an error while trying to create your account. Please
+                try again, or contact us if the problem persists.
+              </p>
+            </div>
+          )}
           <FormProvider {...form}>
             <Form
               onSubmit={handleSignUpFormSubmit}
@@ -167,6 +171,7 @@ export function SignUpModalForm({ className }: JoinProps) {
                 variant="subtle"
                 className="mt-[14px] w-full text-white/80 backdrop-brightness-[60%]"
                 size="lg"
+                loading={loading}
                 // onClick={() => {
                 //   nhost.auth.signUp({
                 //     email: "joe@example.com",
