@@ -16,7 +16,7 @@ generator client {
 // 3
 model Podcast {
   id                      Int              @id @default(autoincrement())
-  uid                     String?          @default(uuid())
+  uid                     String           @default(uuid())
   title                   String
   createdAt               DateTime         @default(now())
   updatedAt               DateTime         @default(now()) @map(name: "updated_at")

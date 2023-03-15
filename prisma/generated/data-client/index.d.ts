@@ -16,6 +16,7 @@ type UnwrapTuple<Tuple extends readonly unknown[]> = {
  */
 export type Podcast = {
   id: number
+  uid: string | null
   title: string
   createdAt: Date
   updatedAt: Date
@@ -1123,6 +1124,7 @@ export namespace Prisma {
 
   export type PodcastMinAggregateOutputType = {
     id: number | null
+    uid: string | null
     title: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -1151,6 +1153,7 @@ export namespace Prisma {
 
   export type PodcastMaxAggregateOutputType = {
     id: number | null
+    uid: string | null
     title: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -1179,6 +1182,7 @@ export namespace Prisma {
 
   export type PodcastCountAggregateOutputType = {
     id: number
+    uid: number
     title: number
     createdAt: number
     updatedAt: number
@@ -1229,6 +1233,7 @@ export namespace Prisma {
 
   export type PodcastMinAggregateInputType = {
     id?: true
+    uid?: true
     title?: true
     createdAt?: true
     updatedAt?: true
@@ -1257,6 +1262,7 @@ export namespace Prisma {
 
   export type PodcastMaxAggregateInputType = {
     id?: true
+    uid?: true
     title?: true
     createdAt?: true
     updatedAt?: true
@@ -1285,6 +1291,7 @@ export namespace Prisma {
 
   export type PodcastCountAggregateInputType = {
     id?: true
+    uid?: true
     title?: true
     createdAt?: true
     updatedAt?: true
@@ -1401,6 +1408,7 @@ export namespace Prisma {
 
   export type PodcastGroupByOutputType = {
     id: number
+    uid: string | null
     title: string
     createdAt: Date
     updatedAt: Date
@@ -1448,6 +1456,7 @@ export namespace Prisma {
 
   export type PodcastSelect = {
     id?: boolean
+    uid?: boolean
     title?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -6311,6 +6320,7 @@ export namespace Prisma {
 
   export const PodcastScalarFieldEnum: {
     id: 'id',
+    uid: 'uid',
     title: 'title',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
@@ -6388,6 +6398,7 @@ export namespace Prisma {
     OR?: Enumerable<PodcastWhereInput>
     NOT?: Enumerable<PodcastWhereInput>
     id?: IntFilter | number
+    uid?: StringNullableFilter | string | null
     title?: StringFilter | string
     createdAt?: DateTimeFilter | Date | string
     updatedAt?: DateTimeFilter | Date | string
@@ -6422,6 +6433,7 @@ export namespace Prisma {
 
   export type PodcastOrderByWithRelationInput = {
     id?: SortOrder
+    uid?: SortOrder
     title?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -6461,6 +6473,7 @@ export namespace Prisma {
 
   export type PodcastOrderByWithAggregationInput = {
     id?: SortOrder
+    uid?: SortOrder
     title?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -6497,6 +6510,7 @@ export namespace Prisma {
     OR?: Enumerable<PodcastScalarWhereWithAggregatesInput>
     NOT?: Enumerable<PodcastScalarWhereWithAggregatesInput>
     id?: IntWithAggregatesFilter | number
+    uid?: StringNullableWithAggregatesFilter | string | null
     title?: StringWithAggregatesFilter | string
     createdAt?: DateTimeWithAggregatesFilter | Date | string
     updatedAt?: DateTimeWithAggregatesFilter | Date | string
@@ -6767,6 +6781,7 @@ export namespace Prisma {
   }
 
   export type PodcastCreateInput = {
+    uid?: string | null
     title: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -6800,6 +6815,7 @@ export namespace Prisma {
 
   export type PodcastUncheckedCreateInput = {
     id?: number
+    uid?: string | null
     title: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -6832,6 +6848,7 @@ export namespace Prisma {
   }
 
   export type PodcastUpdateInput = {
+    uid?: NullableStringFieldUpdateOperationsInput | string | null
     title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -6865,6 +6882,7 @@ export namespace Prisma {
 
   export type PodcastUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
+    uid?: NullableStringFieldUpdateOperationsInput | string | null
     title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -6897,6 +6915,7 @@ export namespace Prisma {
   }
 
   export type PodcastUpdateManyMutationInput = {
+    uid?: NullableStringFieldUpdateOperationsInput | string | null
     title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -6924,6 +6943,7 @@ export namespace Prisma {
 
   export type PodcastUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
+    uid?: NullableStringFieldUpdateOperationsInput | string | null
     title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -7224,6 +7244,20 @@ export namespace Prisma {
     not?: NestedIntFilter | number
   }
 
+  export type StringNullableFilter = {
+    equals?: string | null
+    in?: Enumerable<string> | null
+    notIn?: Enumerable<string> | null
+    lt?: string
+    lte?: string
+    gt?: string
+    gte?: string
+    contains?: string
+    startsWith?: string
+    endsWith?: string
+    not?: NestedStringNullableFilter | string | null
+  }
+
   export type StringFilter = {
     equals?: string
     in?: Enumerable<string>
@@ -7247,20 +7281,6 @@ export namespace Prisma {
     gt?: Date | string
     gte?: Date | string
     not?: NestedDateTimeFilter | Date | string
-  }
-
-  export type StringNullableFilter = {
-    equals?: string | null
-    in?: Enumerable<string> | null
-    notIn?: Enumerable<string> | null
-    lt?: string
-    lte?: string
-    gt?: string
-    gte?: string
-    contains?: string
-    startsWith?: string
-    endsWith?: string
-    not?: NestedStringNullableFilter | string | null
   }
 
   export type IntNullableFilter = {
@@ -7337,6 +7357,7 @@ export namespace Prisma {
 
   export type PodcastCountOrderByAggregateInput = {
     id?: SortOrder
+    uid?: SortOrder
     title?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -7375,6 +7396,7 @@ export namespace Prisma {
 
   export type PodcastMaxOrderByAggregateInput = {
     id?: SortOrder
+    uid?: SortOrder
     title?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -7403,6 +7425,7 @@ export namespace Prisma {
 
   export type PodcastMinOrderByAggregateInput = {
     id?: SortOrder
+    uid?: SortOrder
     title?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -7455,6 +7478,23 @@ export namespace Prisma {
     _max?: NestedIntFilter
   }
 
+  export type StringNullableWithAggregatesFilter = {
+    equals?: string | null
+    in?: Enumerable<string> | null
+    notIn?: Enumerable<string> | null
+    lt?: string
+    lte?: string
+    gt?: string
+    gte?: string
+    contains?: string
+    startsWith?: string
+    endsWith?: string
+    not?: NestedStringNullableWithAggregatesFilter | string | null
+    _count?: NestedIntNullableFilter
+    _min?: NestedStringNullableFilter
+    _max?: NestedStringNullableFilter
+  }
+
   export type StringWithAggregatesFilter = {
     equals?: string
     in?: Enumerable<string>
@@ -7484,23 +7524,6 @@ export namespace Prisma {
     _count?: NestedIntFilter
     _min?: NestedDateTimeFilter
     _max?: NestedDateTimeFilter
-  }
-
-  export type StringNullableWithAggregatesFilter = {
-    equals?: string | null
-    in?: Enumerable<string> | null
-    notIn?: Enumerable<string> | null
-    lt?: string
-    lte?: string
-    gt?: string
-    gte?: string
-    contains?: string
-    startsWith?: string
-    endsWith?: string
-    not?: NestedStringNullableWithAggregatesFilter | string | null
-    _count?: NestedIntNullableFilter
-    _min?: NestedStringNullableFilter
-    _max?: NestedStringNullableFilter
   }
 
   export type IntNullableWithAggregatesFilter = {
@@ -7781,16 +7804,16 @@ export namespace Prisma {
     connect?: Enumerable<StreamingSitesWhereUniqueInput>
   }
 
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
 
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
-  }
-
-  export type NullableStringFieldUpdateOperationsInput = {
-    set?: string | null
   }
 
   export type NullableIntFieldUpdateOperationsInput = {
@@ -8152,6 +8175,20 @@ export namespace Prisma {
     not?: NestedIntFilter | number
   }
 
+  export type NestedStringNullableFilter = {
+    equals?: string | null
+    in?: Enumerable<string> | null
+    notIn?: Enumerable<string> | null
+    lt?: string
+    lte?: string
+    gt?: string
+    gte?: string
+    contains?: string
+    startsWith?: string
+    endsWith?: string
+    not?: NestedStringNullableFilter | string | null
+  }
+
   export type NestedStringFilter = {
     equals?: string
     in?: Enumerable<string>
@@ -8175,20 +8212,6 @@ export namespace Prisma {
     gt?: Date | string
     gte?: Date | string
     not?: NestedDateTimeFilter | Date | string
-  }
-
-  export type NestedStringNullableFilter = {
-    equals?: string | null
-    in?: Enumerable<string> | null
-    notIn?: Enumerable<string> | null
-    lt?: string
-    lte?: string
-    gt?: string
-    gte?: string
-    contains?: string
-    startsWith?: string
-    endsWith?: string
-    not?: NestedStringNullableFilter | string | null
   }
 
   export type NestedIntNullableFilter = {
@@ -8245,6 +8268,23 @@ export namespace Prisma {
     not?: NestedFloatFilter | number
   }
 
+  export type NestedStringNullableWithAggregatesFilter = {
+    equals?: string | null
+    in?: Enumerable<string> | null
+    notIn?: Enumerable<string> | null
+    lt?: string
+    lte?: string
+    gt?: string
+    gte?: string
+    contains?: string
+    startsWith?: string
+    endsWith?: string
+    not?: NestedStringNullableWithAggregatesFilter | string | null
+    _count?: NestedIntNullableFilter
+    _min?: NestedStringNullableFilter
+    _max?: NestedStringNullableFilter
+  }
+
   export type NestedStringWithAggregatesFilter = {
     equals?: string
     in?: Enumerable<string>
@@ -8274,23 +8314,6 @@ export namespace Prisma {
     _count?: NestedIntFilter
     _min?: NestedDateTimeFilter
     _max?: NestedDateTimeFilter
-  }
-
-  export type NestedStringNullableWithAggregatesFilter = {
-    equals?: string | null
-    in?: Enumerable<string> | null
-    notIn?: Enumerable<string> | null
-    lt?: string
-    lte?: string
-    gt?: string
-    gte?: string
-    contains?: string
-    startsWith?: string
-    endsWith?: string
-    not?: NestedStringNullableWithAggregatesFilter | string | null
-    _count?: NestedIntNullableFilter
-    _min?: NestedStringNullableFilter
-    _max?: NestedStringNullableFilter
   }
 
   export type NestedIntNullableWithAggregatesFilter = {
@@ -8406,6 +8429,7 @@ export namespace Prisma {
   }
 
   export type PodcastCreateWithoutSimilarPodcastsRelationInput = {
+    uid?: string | null
     title: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -8438,6 +8462,7 @@ export namespace Prisma {
 
   export type PodcastUncheckedCreateWithoutSimilarPodcastsRelationInput = {
     id?: number
+    uid?: string | null
     title: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -8474,6 +8499,7 @@ export namespace Prisma {
   }
 
   export type PodcastCreateWithoutSimilarPodcastsInput = {
+    uid?: string | null
     title: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -8506,6 +8532,7 @@ export namespace Prisma {
 
   export type PodcastUncheckedCreateWithoutSimilarPodcastsInput = {
     id?: number
+    uid?: string | null
     title: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -8666,6 +8693,7 @@ export namespace Prisma {
     OR?: Enumerable<PodcastScalarWhereInput>
     NOT?: Enumerable<PodcastScalarWhereInput>
     id?: IntFilter | number
+    uid?: StringNullableFilter | string | null
     title?: StringFilter | string
     createdAt?: DateTimeFilter | Date | string
     updatedAt?: DateTimeFilter | Date | string
@@ -8764,6 +8792,7 @@ export namespace Prisma {
   }
 
   export type PodcastCreateWithoutPodcastHostInput = {
+    uid?: string | null
     title: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -8796,6 +8825,7 @@ export namespace Prisma {
 
   export type PodcastUncheckedCreateWithoutPodcastHostInput = {
     id?: number
+    uid?: string | null
     title: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -8896,6 +8926,7 @@ export namespace Prisma {
   }
 
   export type PodcastCreateWithoutEpisodesInput = {
+    uid?: string | null
     title: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -8928,6 +8959,7 @@ export namespace Prisma {
 
   export type PodcastUncheckedCreateWithoutEpisodesInput = {
     id?: number
+    uid?: string | null
     title: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -9000,6 +9032,7 @@ export namespace Prisma {
   }
 
   export type PodcastUpdateWithoutEpisodesInput = {
+    uid?: NullableStringFieldUpdateOperationsInput | string | null
     title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -9032,6 +9065,7 @@ export namespace Prisma {
 
   export type PodcastUncheckedUpdateWithoutEpisodesInput = {
     id?: IntFieldUpdateOperationsInput | number
+    uid?: NullableStringFieldUpdateOperationsInput | string | null
     title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -9094,6 +9128,7 @@ export namespace Prisma {
   }
 
   export type PodcastCreateWithoutStreamingAtInput = {
+    uid?: string | null
     title: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -9126,6 +9161,7 @@ export namespace Prisma {
 
   export type PodcastUncheckedCreateWithoutStreamingAtInput = {
     id?: number
+    uid?: string | null
     title: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -9178,6 +9214,7 @@ export namespace Prisma {
   }
 
   export type PodcastCreateWithoutReviewsInput = {
+    uid?: string | null
     title: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -9210,6 +9247,7 @@ export namespace Prisma {
 
   export type PodcastUncheckedCreateWithoutReviewsInput = {
     id?: number
+    uid?: string | null
     title: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -9251,6 +9289,7 @@ export namespace Prisma {
   }
 
   export type PodcastUpdateWithoutReviewsInput = {
+    uid?: NullableStringFieldUpdateOperationsInput | string | null
     title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -9283,6 +9322,7 @@ export namespace Prisma {
 
   export type PodcastUncheckedUpdateWithoutReviewsInput = {
     id?: IntFieldUpdateOperationsInput | number
+    uid?: NullableStringFieldUpdateOperationsInput | string | null
     title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -9354,6 +9394,7 @@ export namespace Prisma {
   }
 
   export type PodcastUpdateWithoutSimilarPodcastsRelationInput = {
+    uid?: NullableStringFieldUpdateOperationsInput | string | null
     title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -9386,6 +9427,7 @@ export namespace Prisma {
 
   export type PodcastUncheckedUpdateWithoutSimilarPodcastsRelationInput = {
     id?: IntFieldUpdateOperationsInput | number
+    uid?: NullableStringFieldUpdateOperationsInput | string | null
     title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -9418,6 +9460,7 @@ export namespace Prisma {
 
   export type PodcastUncheckedUpdateManyWithoutSimilarPodcastsInput = {
     id?: IntFieldUpdateOperationsInput | number
+    uid?: NullableStringFieldUpdateOperationsInput | string | null
     title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -9445,6 +9488,7 @@ export namespace Prisma {
   }
 
   export type PodcastUpdateWithoutSimilarPodcastsInput = {
+    uid?: NullableStringFieldUpdateOperationsInput | string | null
     title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -9477,6 +9521,7 @@ export namespace Prisma {
 
   export type PodcastUncheckedUpdateWithoutSimilarPodcastsInput = {
     id?: IntFieldUpdateOperationsInput | number
+    uid?: NullableStringFieldUpdateOperationsInput | string | null
     title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -9509,6 +9554,7 @@ export namespace Prisma {
 
   export type PodcastUncheckedUpdateManyWithoutSimilarPodcastsRelationInput = {
     id?: IntFieldUpdateOperationsInput | number
+    uid?: NullableStringFieldUpdateOperationsInput | string | null
     title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -9582,6 +9628,7 @@ export namespace Prisma {
   }
 
   export type PodcastUpdateWithoutPodcastHostInput = {
+    uid?: NullableStringFieldUpdateOperationsInput | string | null
     title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -9614,6 +9661,7 @@ export namespace Prisma {
 
   export type PodcastUncheckedUpdateWithoutPodcastHostInput = {
     id?: IntFieldUpdateOperationsInput | number
+    uid?: NullableStringFieldUpdateOperationsInput | string | null
     title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -9646,6 +9694,7 @@ export namespace Prisma {
 
   export type PodcastUncheckedUpdateManyWithoutPodcastInput = {
     id?: IntFieldUpdateOperationsInput | number
+    uid?: NullableStringFieldUpdateOperationsInput | string | null
     title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -9751,6 +9800,7 @@ export namespace Prisma {
   }
 
   export type PodcastUpdateWithoutStreamingAtInput = {
+    uid?: NullableStringFieldUpdateOperationsInput | string | null
     title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -9783,6 +9833,7 @@ export namespace Prisma {
 
   export type PodcastUncheckedUpdateWithoutStreamingAtInput = {
     id?: IntFieldUpdateOperationsInput | number
+    uid?: NullableStringFieldUpdateOperationsInput | string | null
     title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -9815,6 +9866,7 @@ export namespace Prisma {
 
   export type PodcastUncheckedUpdateManyWithoutPodcastsInput = {
     id?: IntFieldUpdateOperationsInput | number
+    uid?: NullableStringFieldUpdateOperationsInput | string | null
     title?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string

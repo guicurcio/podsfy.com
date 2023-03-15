@@ -84,6 +84,7 @@ export default function Page() {
                 key={index}
                 src={img.src}
                 className="pod-streaming border-2 border-[#88888820] shadow-3xl"
+                alt="streaming service"
               ></img>
             ))}
           </div>
@@ -101,21 +102,7 @@ export default function Page() {
                 ></PodcastCover>
               ))}
             </div>
-            {/* <h1 className="font-moderat text-[16.5px] font-medium  text-[#BDBDBD] tracking-[-8%] text-center">
-              The social network for podcast lovers
-            </h1> */}
           </div>
-          {/* <div className="grid grid-flow-col mt-[40px] scale-x-[98%]">
-            <CardBlend title="The New Queen Of Podcast"></CardBlend>
-            <CardBlend
-              title="Top 10 Joe Rogan Episodes"
-              img={"./rogan2.webp"}
-            ></CardBlend>
-            <CardBlend
-              title="Top 10 Life Changing Podcasts"
-              img={"./goggins.jpg"}
-            ></CardBlend>
-          </div> */}
         </div>
       </div>
       <Footer></Footer>

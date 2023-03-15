@@ -10,7 +10,7 @@ import {
   TooltipContent,
   TooltipPortal,
   TooltipProvider,
-  TooltipTrigger
+  TooltipTrigger,
 } from "ui/components/Tooltip"
 import mergeClasses from "utils/mergeClasses"
 import UnitOfContent from "../UnitOfContent"

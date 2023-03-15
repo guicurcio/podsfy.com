@@ -1,0 +1,7 @@
+mutation AddPodcastToFavorites($profileID: uuid, $podcastID: uuid) {
+  likePodcast(object: {profile_id: $profileID, podcast_id: $podcastID}) {
+    id
+    podcast_id
+    profile_id
+  }
+}

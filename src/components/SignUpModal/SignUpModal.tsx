@@ -89,7 +89,6 @@ export default function SignUpModal({ className, baseState }: JoinProps) {
         email,
         password,
       })
-      console.log(session)
 
       if (session?.session) {
         router.push("/home")
@@ -155,7 +154,8 @@ export default function SignUpModal({ className, baseState }: JoinProps) {
         }
         if (session.error.error === "invalid-email-password") {
           setError({
-            message: "Invalid email or password. Please try again.",
+            message:
+              "Invalid email or password. Please either sign up or try again.",
             isError: true,
           })
           return

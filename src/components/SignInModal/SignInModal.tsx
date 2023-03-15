@@ -236,9 +236,7 @@ export default function SignInModal({ className }: SignInModalProps) {
                   variant="subtle"
                   className="mx-auto grid w-fit grid-flow-col gap-[5px]"
                 >
-                  <p className="text-center text-sm text-white/70">
-
-                  </p>
+                  <p className="text-center text-sm text-white/70"></p>
                   <button className="mx-auto flex w-fit self-center text-center align-middle font-visuelt text-sm font-medium text-white">
                     Sign Up
                   </button>

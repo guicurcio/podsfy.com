@@ -1735,6 +1735,17 @@ export type Favorites_Aggregate = {
   nodes: Array<Favorites>;
 };
 
+export type Favorites_Aggregate_Bool_Exp = {
+  count?: InputMaybe<Favorites_Aggregate_Bool_Exp_Count>;
+};
+
+export type Favorites_Aggregate_Bool_Exp_Count = {
+  arguments?: InputMaybe<Array<Favorites_Select_Column>>;
+  distinct?: InputMaybe<Scalars['Boolean']>;
+  filter?: InputMaybe<Favorites_Bool_Exp>;
+  predicate: Int_Comparison_Exp;
+};
+
 /** aggregate fields of "favorites" */
 export type Favorites_Aggregate_Fields = {
   __typename?: 'favorites_aggregate_fields';
@@ -1748,6 +1759,20 @@ export type Favorites_Aggregate_Fields = {
 export type Favorites_Aggregate_FieldsCountArgs = {
   columns?: InputMaybe<Array<Favorites_Select_Column>>;
   distinct?: InputMaybe<Scalars['Boolean']>;
+};
+
+/** order by aggregate values of table "favorites" */
+export type Favorites_Aggregate_Order_By = {
+  count?: InputMaybe<Order_By>;
+  max?: InputMaybe<Favorites_Max_Order_By>;
+  min?: InputMaybe<Favorites_Min_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "favorites" */
+export type Favorites_Arr_Rel_Insert_Input = {
+  data: Array<Favorites_Insert_Input>;
+  /** upsert condition */
+  on_conflict?: InputMaybe<Favorites_On_Conflict>;
 };
 
 /** Boolean expression to filter rows from the table "favorites". All fields are combined with a logical 'AND'. */
@@ -1781,12 +1806,26 @@ export type Favorites_Max_Fields = {
   profile_id?: Maybe<Scalars['uuid']>;
 };
 
+/** order by max() on columns of table "favorites" */
+export type Favorites_Max_Order_By = {
+  id?: InputMaybe<Order_By>;
+  podcast_id?: InputMaybe<Order_By>;
+  profile_id?: InputMaybe<Order_By>;
+};
+
 /** aggregate min on columns */
 export type Favorites_Min_Fields = {
   __typename?: 'favorites_min_fields';
   id?: Maybe<Scalars['uuid']>;
   podcast_id?: Maybe<Scalars['uuid']>;
   profile_id?: Maybe<Scalars['uuid']>;
+};
+
+/** order by min() on columns of table "favorites" */
+export type Favorites_Min_Order_By = {
+  id?: InputMaybe<Order_By>;
+  podcast_id?: InputMaybe<Order_By>;
+  profile_id?: InputMaybe<Order_By>;
 };
 
 /** response of any mutation on the table "favorites" */
@@ -1979,8 +2018,6 @@ export type Mutation_Root = {
   insertUsers?: Maybe<Users_Mutation_Response>;
   /** insert data into the table: "favorites" */
   insert_favorites?: Maybe<Favorites_Mutation_Response>;
-  /** insert a single row into the table: "favorites" */
-  insert_favorites_one?: Maybe<Favorites>;
   /** insert data into the table: "profiles" */
   insert_profiles?: Maybe<Profiles_Mutation_Response>;
   /** insert a single row into the table: "profiles" */
@@ -1993,6 +2030,8 @@ export type Mutation_Root = {
   insert_watchlist?: Maybe<Watchlist_Mutation_Response>;
   /** insert a single row into the table: "watchlist" */
   insert_watchlist_one?: Maybe<Watchlist>;
+  /** insert a single row into the table: "favorites" */
+  likePodcast?: Maybe<Favorites>;
   /** update single row of the table: "auth.providers" */
   updateAuthProvider?: Maybe<AuthProviders>;
   /** update single row of the table: "auth.provider_requests" */
@@ -2332,13 +2371,6 @@ export type Mutation_RootInsert_FavoritesArgs = {
 
 
 /** mutation root */
-export type Mutation_RootInsert_Favorites_OneArgs = {
-  object: Favorites_Insert_Input;
-  on_conflict?: InputMaybe<Favorites_On_Conflict>;
-};
-
-
-/** mutation root */
 export type Mutation_RootInsert_ProfilesArgs = {
   objects: Array<Profiles_Insert_Input>;
   on_conflict?: InputMaybe<Profiles_On_Conflict>;
@@ -2377,6 +2409,13 @@ export type Mutation_RootInsert_WatchlistArgs = {
 export type Mutation_RootInsert_Watchlist_OneArgs = {
   object: Watchlist_Insert_Input;
   on_conflict?: InputMaybe<Watchlist_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootLikePodcastArgs = {
+  object: Favorites_Insert_Input;
+  on_conflict?: InputMaybe<Favorites_On_Conflict>;
 };
 
 
@@ -2668,14 +2707,40 @@ export type Profiles = {
   bio?: Maybe<Scalars['String']>;
   created_at: Scalars['timestamptz'];
   creator_user_id: Scalars['uuid'];
+  /** An array relationship */
+  favoritePodcasts: Array<Favorites>;
+  /** An aggregate relationship */
+  favoritePodcasts_aggregate: Favorites_Aggregate;
   id: Scalars['uuid'];
   karma?: Maybe<Scalars['String']>;
   location?: Maybe<Scalars['String']>;
   name?: Maybe<Scalars['String']>;
+  /** An object relationship */
+  profileOwner: Users;
   profile_num: Scalars['Int'];
   updated_at: Scalars['timestamptz'];
   username: Scalars['String'];
   website?: Maybe<Scalars['String']>;
+};
+
+
+/** profile connected to users */
+export type ProfilesFavoritePodcastsArgs = {
+  distinct_on?: InputMaybe<Array<Favorites_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Favorites_Order_By>>;
+  where?: InputMaybe<Favorites_Bool_Exp>;
+};
+
+
+/** profile connected to users */
+export type ProfilesFavoritePodcasts_AggregateArgs = {
+  distinct_on?: InputMaybe<Array<Favorites_Select_Column>>;
+  limit?: InputMaybe<Scalars['Int']>;
+  offset?: InputMaybe<Scalars['Int']>;
+  order_by?: InputMaybe<Array<Favorites_Order_By>>;
+  where?: InputMaybe<Favorites_Bool_Exp>;
 };
 
 /** aggregated selection of "profiles" */
@@ -2723,10 +2788,13 @@ export type Profiles_Bool_Exp = {
   bio?: InputMaybe<String_Comparison_Exp>;
   created_at?: InputMaybe<Timestamptz_Comparison_Exp>;
   creator_user_id?: InputMaybe<Uuid_Comparison_Exp>;
+  favoritePodcasts?: InputMaybe<Favorites_Bool_Exp>;
+  favoritePodcasts_aggregate?: InputMaybe<Favorites_Aggregate_Bool_Exp>;
   id?: InputMaybe<Uuid_Comparison_Exp>;
   karma?: InputMaybe<String_Comparison_Exp>;
   location?: InputMaybe<String_Comparison_Exp>;
   name?: InputMaybe<String_Comparison_Exp>;
+  profileOwner?: InputMaybe<Users_Bool_Exp>;
   profile_num?: InputMaybe<Int_Comparison_Exp>;
   updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
   username?: InputMaybe<String_Comparison_Exp>;
@@ -2756,10 +2824,12 @@ export type Profiles_Insert_Input = {
   bio?: InputMaybe<Scalars['String']>;
   created_at?: InputMaybe<Scalars['timestamptz']>;
   creator_user_id?: InputMaybe<Scalars['uuid']>;
+  favoritePodcasts?: InputMaybe<Favorites_Arr_Rel_Insert_Input>;
   id?: InputMaybe<Scalars['uuid']>;
   karma?: InputMaybe<Scalars['String']>;
   location?: InputMaybe<Scalars['String']>;
   name?: InputMaybe<Scalars['String']>;
+  profileOwner?: InputMaybe<Users_Obj_Rel_Insert_Input>;
   profile_num?: InputMaybe<Scalars['Int']>;
   updated_at?: InputMaybe<Scalars['timestamptz']>;
   username?: InputMaybe<Scalars['String']>;
@@ -2822,10 +2892,12 @@ export type Profiles_Order_By = {
   bio?: InputMaybe<Order_By>;
   created_at?: InputMaybe<Order_By>;
   creator_user_id?: InputMaybe<Order_By>;
+  favoritePodcasts_aggregate?: InputMaybe<Favorites_Aggregate_Order_By>;
   id?: InputMaybe<Order_By>;
   karma?: InputMaybe<Order_By>;
   location?: InputMaybe<Order_By>;
   name?: InputMaybe<Order_By>;
+  profileOwner?: InputMaybe<Users_Order_By>;
   profile_num?: InputMaybe<Order_By>;
   updated_at?: InputMaybe<Order_By>;
   username?: InputMaybe<Order_By>;
@@ -4873,17 +4945,66 @@ export type Watchlist_Updates = {
   where: Watchlist_Bool_Exp;
 };
 
+export type AddPodcastToFavoritesMutationVariables = Exact<{
+  profileID?: InputMaybe<Scalars['uuid']>;
+  podcastID?: InputMaybe<Scalars['uuid']>;
+}>;
+
+
+export type AddPodcastToFavoritesMutation = { __typename?: 'mutation_root', likePodcast?: { __typename?: 'favorites', id: any, podcast_id: any, profile_id: any } | null };
+
 export type GetProfileBioQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type GetProfileBioQuery = { __typename?: 'query_root', profiles: Array<{ __typename?: 'profiles', bio?: string | null, username: string }> };
+export type GetProfileBioQuery = { __typename?: 'query_root', profiles: Array<{ __typename?: 'profiles', avatar?: string | null, bio?: string | null, username: string, favoritePodcasts: Array<{ __typename?: 'favorites', id: any, podcast_id: any }> }> };
 
 
+export const AddPodcastToFavoritesDocument = gql`
+    mutation AddPodcastToFavorites($profileID: uuid, $podcastID: uuid) {
+  likePodcast(object: {profile_id: $profileID, podcast_id: $podcastID}) {
+    id
+    podcast_id
+    profile_id
+  }
+}
+    `;
+export type AddPodcastToFavoritesMutationFn = Apollo.MutationFunction<AddPodcastToFavoritesMutation, AddPodcastToFavoritesMutationVariables>;
+
+/**
+ * __useAddPodcastToFavoritesMutation__
+ *
+ * To run a mutation, you first call `useAddPodcastToFavoritesMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useAddPodcastToFavoritesMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [addPodcastToFavoritesMutation, { data, loading, error }] = useAddPodcastToFavoritesMutation({
+ *   variables: {
+ *      profileID: // value for 'profileID'
+ *      podcastID: // value for 'podcastID'
+ *   },
+ * });
+ */
+export function useAddPodcastToFavoritesMutation(baseOptions?: Apollo.MutationHookOptions<AddPodcastToFavoritesMutation, AddPodcastToFavoritesMutationVariables>) {
+        const options = {...defaultOptions, ...baseOptions}
+        return Apollo.useMutation<AddPodcastToFavoritesMutation, AddPodcastToFavoritesMutationVariables>(AddPodcastToFavoritesDocument, options);
+      }
+export type AddPodcastToFavoritesMutationHookResult = ReturnType<typeof useAddPodcastToFavoritesMutation>;
+export type AddPodcastToFavoritesMutationResult = Apollo.MutationResult<AddPodcastToFavoritesMutation>;
+export type AddPodcastToFavoritesMutationOptions = Apollo.BaseMutationOptions<AddPodcastToFavoritesMutation, AddPodcastToFavoritesMutationVariables>;
 export const GetProfileBioDocument = gql`
     query GetProfileBio {
   profiles {
+    avatar
     bio
     username
+    favoritePodcasts {
+      id
+      podcast_id
+    }
   }
 }
     `;

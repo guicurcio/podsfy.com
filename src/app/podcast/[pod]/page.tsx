@@ -65,20 +65,7 @@ export async function generateStaticParams() {
   }))
 }
 
-// export async function generateMetadata({ params }) {
-//   if (!params?.pod) {
-//     return {
-//       title: "Podsfy - Find your next favorite podcast",
-//     }
-//   }
-//   if (typeof params?.pod !== "string") {
-//     return {
-//       title: "Podsfy - Find your next favorite podcast",
-//     }
-//   }
-//   const staticPodcastData = await getPodInfo(params?.pod)
-//   return { title: `${staticPodcastData?.title} - podsfy.com` }
-// }
+
 
 export default async function PodcastPage({ params }) {
   const staticPodcastData = await getPodInfo(params?.pod)
