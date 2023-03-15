@@ -122,12 +122,12 @@ const NavigationMenuLink = ({
 }: NavigationMenuComponentLinkProps) => (
   <NavigationMenuPrimitive.Link
     className={mergeClasses(
-      "grid grid-flow-row gap-2 rounded-t-[3px] rounded-r-[3px] rounded-l-[3px] font-visuelt ",
+      "font-visuelt text-white/60",
+      "grid grid-flow-row gap-2 rounded-t-[3px] rounded-r-[3px] rounded-l-[3px]  ",
       "transition-colors focus:outline-none focus:outline-0 focus:ring-0",
       "focus:ring-transparent focus:ring-offset-0 focus:ring-offset-transparent",
       "self-center bg-transparent disabled:pointer-events-none disabled:opacity-50",
       "hover:text-white",
-      // 'hover:bg-fondy',
       "group py-2 px-3",
       className
     )}

@@ -1,10 +1,10 @@
-'use client';
+"use client"
 
-import * as React from 'react';
-import * as TabsPrimitive from '@radix-ui/react-tabs';
-import mergeClasses from 'utils/mergeClasses';
+import * as TabsPrimitive from "@radix-ui/react-tabs"
+import * as React from "react"
+import mergeClasses from "utils/mergeClasses"
 
-const Tabs = TabsPrimitive.Root;
+const Tabs = TabsPrimitive.Root
 
 const TabsList = React.forwardRef<
   React.ElementRef<typeof TabsPrimitive.List>,
@@ -12,14 +12,11 @@ const TabsList = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <TabsPrimitive.List
     ref={ref}
-    className={mergeClasses(
-      'bg-slate-100 dark:bg-slate-800 inline-flex items-center justify-center rounded-md p-1',
-      className,
-    )}
+    className={mergeClasses("", className)}
     {...props}
   />
-));
-TabsList.displayName = TabsPrimitive.List.displayName;
+))
+TabsList.displayName = TabsPrimitive.List.displayName
 
 const TabsTrigger = React.forwardRef<
   React.ElementRef<typeof TabsPrimitive.Trigger>,
@@ -27,28 +24,33 @@ const TabsTrigger = React.forwardRef<
 >(({ className, ...props }, ref) => (
   <TabsPrimitive.Trigger
     className={mergeClasses(
-      'text-slate-700 data-[state=active]:text-slate-900 dark:text-slate-200 dark:data-[state=active]:bg-slate-900 dark:data-[state=active]:text-slate-100 inline-flex min-w-[100px]  items-center justify-center rounded-[0.185rem] px-3  py-1.5 text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 data-[state=active]:bg-white data-[state=active]:shadow-sm',
-      className,
+      " data-[state=active]:font-medium data-[state=active]:text-white/70",
+      " font-normal text-white/40",
+      "font-visuelt text-[14px] tracking-[-0.01em]",
+      "inline-flex min-w-[100px] items-center justify-center rounded-[0.185rem] py-[12px] transition-all",
+      "disabled:pointer-events-none disabled:opacity-50  data-[state=active]:shadow-sm",
+      "bg-[#0D0E12]  text-white/20 shadow-2xl  backdrop-brightness-[75%]",
+      "duration-300",
+      // "border border-white border-opacity-5",
+      // data-[state=active]:bg-fondy
+      className
     )}
     {...props}
     ref={ref}
   />
-));
-TabsTrigger.displayName = TabsPrimitive.Trigger.displayName;
+))
+TabsTrigger.displayName = TabsPrimitive.Trigger.displayName
 
 const TabsContent = React.forwardRef<
   React.ElementRef<typeof TabsPrimitive.Content>,
   React.ComponentPropsWithoutRef<typeof TabsPrimitive.Content>
 >(({ className, ...props }, ref) => (
   <TabsPrimitive.Content
-    className={mergeClasses(
-      'border-slate-200 dark:border-slate-700 mt-2 rounded-md border p-6',
-      className,
-    )}
+    className={mergeClasses("", className)}
     {...props}
     ref={ref}
   />
-));
-TabsContent.displayName = TabsPrimitive.Content.displayName;
+))
+TabsContent.displayName = TabsPrimitive.Content.displayName
 
-export { Tabs, TabsList, TabsTrigger, TabsContent };
+export { Tabs, TabsList, TabsTrigger, TabsContent }

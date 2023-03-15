@@ -7,23 +7,7 @@ import PodStreaming from "components/pod/PodStreaming"
 import { db } from "lib/setupDBConfig/setupDBConfig"
 import { notFound } from "next/navigation"
 import { cache } from "react"
-
-export const generateGoodTitleForReviews = (title: string) => {
-  let newTitle = title
-    .split(" ")
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(" ")
-
-  if (!title.startsWith("The ")) {
-    newTitle = `The ${newTitle}`
-  }
-
-  if (!title.endsWith("Podcast")) {
-    newTitle += " Podcast"
-  }
-
-  return newTitle
-}
+import generateGoodTitleForReviews from "utils/generateGoodTitleForReviews"
 
 const getPodInfo = cache(async (pod: string) =>
   db.podcast.findUnique({
@@ -81,13 +65,23 @@ export async function generateStaticParams() {
   }))
 }
 
-export async function generateMetadata({ params }) {
-  const staticPodcastData = await getPodInfo(params.pod)
-  return { title: `${staticPodcastData?.title} - podsfy.com` }
-}
+// export async function generateMetadata({ params }) {
+//   if (!params?.pod) {
+//     return {
+//       title: "Podsfy - Find your next favorite podcast",
+//     }
+//   }
+//   if (typeof params?.pod !== "string") {
+//     return {
+//       title: "Podsfy - Find your next favorite podcast",
+//     }
+//   }
+//   const staticPodcastData = await getPodInfo(params?.pod)
+//   return { title: `${staticPodcastData?.title} - podsfy.com` }
+// }
 
 export default async function PodcastPage({ params }) {
-  const staticPodcastData = await getPodInfo(params.pod)
+  const staticPodcastData = await getPodInfo(params?.pod)
 
   if (!staticPodcastData?.title) {
     notFound()
@@ -103,7 +97,7 @@ export default async function PodcastPage({ params }) {
         >
           <div className="grid grid-flow-row px-3 py-4   lg:grid-flow-col lg:justify-start lg:gap-[50px]">
             <div className="grid  grid-flow-row lg:place-content-start lg:items-start lg:justify-start  lg:justify-items-start 2xl:w-[300px]">
-              <div className="relative z-0 inline-flex w-full items-center justify-center rounded-[2px] border-2 border-[#171717] bg-[#050607f2] hover:brightness-[99%] focus:outline-none focus:ring-0 focus:ring-offset-0 disabled:pointer-events-none disabled:opacity-50">
+              <div className="relative z-0 inline-flex w-full items-center justify-center rounded-[2px] border-2 border-[#171717] bg-[#050607f2] focus:outline-none focus:ring-0 focus:ring-offset-0 disabled:pointer-events-none disabled:opacity-50 hover:brightness-[99%]">
                 <img
                   src={`../${staticPodcastData.cover}`}
                   draggable={false}
@@ -112,9 +106,6 @@ export default async function PodcastPage({ params }) {
               </div>
 
               <PodBehind
-                title={`${generateGoodTitleForReviews(
-                  staticPodcastData.title
-                )}`}
                 genre={staticPodcastData.genre}
                 rating={staticPodcastData.rating}
                 tags={staticPodcastData.tags}

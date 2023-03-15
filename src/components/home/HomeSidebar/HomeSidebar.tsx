@@ -1,25 +1,26 @@
 "use client"
 
 import {
-  Archive,
-  Archive as ArchiveIcon,
-  CheckSquare as CheckSquareIcon,
-  Code2 as Code2Icon,
-  HelpCircle as HelpCircleIcon,
-  Users as UsersIcon
+  File,
+  Globe,
+  Home,
+  Inbox,
+  MessageSquare,
+  Search,
+  User,
 } from "lucide-react"
 import Link from "next/link"
 import {
   NavigationMenu,
   NavigationMenuItem,
   NavigationMenuLink,
-  NavigationMenuList
+  NavigationMenuList,
 } from "ui/components/NavigationMenu/NavigationMenu"
 import mergeClasses from "utils/mergeClasses"
 
 const commonClassName = mergeClasses(
   "focus:bg-slate-100 dark:splitfocus:bg-slate-700 relative grid w-fit cursor-pointer select-none  grid-flow-col items-center",
-  "justify-start  gap-[15px] rounded-[4px] py-1.5 px-[16px] font-visuelt text-[16px]  font-normal text-white/80",
+  "justify-start  gap-[15px] rounded-[4px] py-[7px] pl-[16px] pr-[18px] font-visuelt text-[15px]  font-normal text-white/60",
   "outline-none transition-colors duration-200 hover:bg-fondy data-[disabled]:pointer-events-none data-[disabled]:opacity-50"
 )
 
@@ -27,38 +28,37 @@ const menuItems = [
   {
     label: "Home",
     href: "/home",
-    icon: ArchiveIcon,
+    icon: Home,
   },
   {
     label: "Explore",
     href: "/home",
-    icon: CheckSquareIcon,
+    icon: Globe,
   },
   {
-    label: "Popular",
+    label: "Lists",
     href: "/home",
-    icon: Code2Icon,
+    icon: File,
   },
   {
     label: "Search",
     href: "/home",
-    icon: UsersIcon,
-  },
-
-  {
-    label: "Lists",
-    href: "/home",
-    icon: Archive,
+    icon: Search,
   },
   {
     label: "Notifications",
     href: "/home",
-    icon: HelpCircleIcon,
+    icon: Inbox,
+  },
+  {
+    label: "Messages",
+    href: "/home",
+    icon: MessageSquare,
   },
   {
     label: "Profile",
     href: "/home",
-    icon: HelpCircleIcon,
+    icon: User,
   },
 ]
 
@@ -81,7 +81,7 @@ export default function HomeSidebar({
   return (
     <div
       className={mergeClasses(
-        "bg-[#0D0E12] py-[25px]",
+        "bg-[#0D0E12]",
         "border-l border-sharper border-opacity-10",
         "grid grid-flow-col shadow-3xl backdrop-blur-[10px]",
         "h-screen max-h-screen min-h-screen overflow-hidden",
@@ -89,14 +89,16 @@ export default function HomeSidebar({
       )}
     >
       <NavigationMenu className=" py-4 px-[20px]">
-        <NavigationMenuList className="grid grid-flow-row gap-2 !text-[21px] ">
+        <NavigationMenuList className="grid grid-flow-row gap-2">
           {menuItems.map((item) => (
             <NavigationMenuItem key={item.label}>
               {item.href ? (
                 <Link href={item.href} legacyBehavior passHref>
                   <NavigationMenuLink className={commonClassName}>
-                    <item.icon className="h-4 w-4 self-center align-middle" />
-                    <span>{item.label}</span>
+                    <item.icon className="h-4 w-4 self-center align-middle text-white/60" />
+                    <span className="self-center align-middle font-visuelt text-[15px] font-normal text-white/60">
+                      {item.label}
+                    </span>
                   </NavigationMenuLink>
                 </Link>
               ) : (

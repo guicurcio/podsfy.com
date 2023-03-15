@@ -10,7 +10,6 @@ import {
 } from "ui/components/Hover"
 
 import mergeClasses from "utils/mergeClasses"
-import { string } from "zod"
 
 /**
  * Props for the UnitOfContent component.
@@ -59,7 +58,7 @@ export default function UnitOfContent({
     <div
       key={title}
       className={mergeClasses(
-        "grid  w-full grid-flow-row gap-3 border-0 py-[18px] px-[18px] hover:bg-fondy/20",
+        "grid  w-full grid-flow-row gap-3 border-0 py-[18px] px-[18px] hover:brightness-[105%]",
         className
       )}
     >
@@ -103,10 +102,13 @@ export default function UnitOfContent({
         <div className=" grid grid-flow-col items-start justify-start px-[1px]">
           <HoverCard key="spotify">
             <HoverCardTrigger asChild>
-              <Button variant="subtle" className="w-10 p-0">
+              <Button
+                variant="subtle"
+                className="h-[42px] w-[42px] rounded-[7px] border-[2px] border-[#88888820]  p-0 shadow-3xl"
+              >
                 <img
                   src={`/pods/spotify.webp`}
-                  className="h-[42px] w-[42px] rounded-[7px] border-2 border-[#88888820] shadow-3xl"
+                  className="h-[42px] w-[42px] scale-[60%] object-scale-down "
                 ></img>
               </Button>
             </HoverCardTrigger>
@@ -135,3 +137,11 @@ export default function UnitOfContent({
 }
 
 UnitOfContent.displayName = "UnitOfContent"
+
+// to-use
+
+/* <AvatarFallback className="border border-white border-opacity-5 bg-fondy  shadow-2xl">
+                <span className="self-center align-middle font-moderat text-[10px] text-white/60">
+                  US
+                </span>
+              </AvatarFallback> */

@@ -1,11 +1,12 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
+
 "use client"
 
 import { twMerge } from "tailwind-merge"
 
 import { nhost } from "lib/setupBackendConfig"
 import asyncTuple from "lib/try/try"
-import { Home, LogOut, Mail, Settings, UserCheck } from "lucide-react"
+import { Home, Inbox, LogOut, Mail, Settings, UserCheck } from "lucide-react"
 import { Avatar, AvatarFallback, AvatarImage } from "ui/components/Avatar"
 import Button from "ui/components/Button"
 import {
@@ -15,7 +16,7 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuShortcut,
-  DropdownMenuTrigger
+  DropdownMenuTrigger,
 } from "ui/components/Dropdown"
 
 /**
@@ -58,7 +59,7 @@ export default function User({ className }: UserProps): JSX.Element {
     <div className={twMerge("", className)}>
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
-          <Button className="relative h-[32px] w-[32px] self-center rounded-full align-middle">
+          <Button className=" h-[32px] w-[32px] self-center rounded-full align-middle">
             <Avatar className="h-[32px] w-[32px]">
               <AvatarImage
                 // src="/avatars/mike.jpg"

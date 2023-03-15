@@ -159,7 +159,8 @@ export default function Footer({ className }: FooterProps) {
         <div className="mb-6 h-px w-full bg-[#2b303b]/40" />
 
         <p className=" mx-auto text-center font-moderat text-[11px] font-medium text-[#3f4550] md:w-[600px] ">
-          Copyright © 2023 Podsfy.com part of Subjeto Inc. All rights reserved.
+          Copyright © 2023 Podsfy.com a platform of subjeto inc. All rights
+          reserved.
         </p>
 
         <p className=" mx-auto pt-[10px] text-center font-moderat text-[11px] font-medium text-[#3f4550] md:w-[600px]">

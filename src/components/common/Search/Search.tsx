@@ -10,7 +10,7 @@ import {
   CommandEmpty,
   CommandGroup,
   CommandInput,
-  CommandItem
+  CommandItem,
 } from "ui/components/Command"
 import { Popover, PopoverContent, PopoverTrigger } from "ui/components/Popover"
 import mergeClasses from "utils/mergeClasses/mergeClasses"
@@ -50,7 +50,10 @@ const Search = ({
 
   return (
     <Popover open={open} onOpenChange={setOpen} {...props}>
-      <PopoverTrigger className="py-2" asChild>
+      <PopoverTrigger
+        className="border-x  border-sharper border-opacity-5 py-2"
+        asChild
+      >
         <Button
           role="combobox"
           aria-label="Search podcasts, episodes, guests, notes..."

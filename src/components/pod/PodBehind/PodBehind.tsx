@@ -1,9 +1,5 @@
-/* @ts-expect-error Async Server Component */
-
 "use client"
 
-import { gql, GraphQLClient } from "graphql-request"
-import { nhost } from "lib/setupBackendConfig"
 import { twMerge } from "tailwind-merge"
 import Button from "ui/components/Button"
 import { Toaster } from "ui/components/Toaster"
@@ -33,22 +29,12 @@ export interface PodBehindProps {
   podcastTitle?: string
 }
 
-function triggerInteraction(podcastTitle, interactionType) {
+function triggerInteraction(podcastTitle: string, interactionType: string) {
   toast({
     title: `${podcastTitle} added to ${interactionType}`,
     description: `Now you can find it in your ${interactionType}`,
   })
 }
-
-const getProfileBio = gql`
-  query getProfile {
-    profiles {
-      bio
-    }
-  }
-`
-
-const client = new GraphQLClient("http://localhost:8080/v1/graphql")
 
 /**
  * PodBehind Component
@@ -59,10 +45,6 @@ export default function PodBehind({
   rating,
   podcastTitle,
 }: PodBehindProps) {
-  const userToken = nhost.auth.getAccessToken()
-
-  console.log("userToken")
-
   // useEffect( () => {
   //   if (userToken) {
   //     client.setHeader("authorization", `Bearer ${userToken}`)
