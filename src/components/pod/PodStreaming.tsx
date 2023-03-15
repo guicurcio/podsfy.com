@@ -1,7 +1,12 @@
-'use client';
+"use client"
 
-import Button from 'ui/components/Button';
-import { HoverCard, HoverCardContent, HoverCardTrigger } from 'ui/components/Hover';
+import { HoverCardPortal } from "@radix-ui/react-hover-card"
+import Button from "ui/components/Button"
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger
+} from "ui/components/Hover"
 // import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from 'ui/components/Tooltip';
 
 /**
@@ -11,13 +16,13 @@ export interface PodStreamingProps {
   /**
    * Class names passed to the root element.
    */
-  className?: string;
+  className?: string
   /**
    *
    */
   streamingSites?: {
-    title: string;
-  }[];
+    title: string
+  }[]
 }
 
 /**
@@ -50,14 +55,15 @@ export default function PodStreaming({ streamingSites }) {
         </p>
       </div>
 
-      <div className="relative grid grid-flow-col px-4  items-start justify-start gap-x-2 border-t border-fondy/50 px-3 py-4 backdrop-brightness-[50%]">
+      <div className=" grid grid-flow-col items-start  justify-start gap-x-2 border-t border-fondy/50 px-4 px-3 py-4 backdrop-brightness-[50%]">
         {/* <TooltipProvider>
           <Tooltip>
             <TooltipTrigger >
               <div className="relative"> */}
+
         {streamingSites?.length >= 1 &&
           streamingSites?.map((site) => (
-            <HoverCard>
+            <HoverCard key={site?.title}>
               <HoverCardTrigger asChild>
                 <Button variant="subtle" className="w-10 p-0">
                   <img
@@ -66,24 +72,26 @@ export default function PodStreaming({ streamingSites }) {
                   ></img>
                 </Button>
               </HoverCardTrigger>
-              <HoverCardContent className="w-80">
-                <div className="flex justify-between space-x-4">
-                  <div className="space-y-1">
-                    <h4 className="text-sm font-semibold">@nextjs</h4>
-                    <p className="text-sm">
-                      The React Framework – created and maintained by @vercel.
-                    </p>
-                    <div className="flex items-center pt-2">
-                      <span className="text-slate-500 dark:text-slate-400 text-xs">
-                        Joined December 2021
-                      </span>
+              <HoverCardPortal>
+                <HoverCardContent className="w-80">
+                  <div className="flex justify-between space-x-4">
+                    <div className="space-y-1">
+                      <h4 className="text-sm font-semibold">@nextjs</h4>
+                      <p className="text-sm">
+                        The React Framework – created and maintained by @vercel.
+                      </p>
+                      <div className="flex items-center pt-2">
+                        <span className="text-slate-500 dark:text-slate-400 text-xs">
+                          Joined December 2021
+                        </span>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </HoverCardContent>
+                </HoverCardContent>
+              </HoverCardPortal>
             </HoverCard>
           ))}
       </div>
     </div>
-  );
+  )
 }

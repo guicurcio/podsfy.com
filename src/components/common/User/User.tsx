@@ -1,10 +1,11 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
 "use client"
 
 import { twMerge } from "tailwind-merge"
 
 import { nhost } from "lib/setupBackendConfig"
 import asyncTuple from "lib/try/try"
-import { CreditCard, Keyboard, LogOut, Settings, UserCheck } from "lucide-react"
+import { Home, LogOut, Mail, Settings, UserCheck } from "lucide-react"
 import { Avatar, AvatarFallback, AvatarImage } from "ui/components/Avatar"
 import Button from "ui/components/Button"
 import {
@@ -105,8 +106,8 @@ export default function User({ className }: UserProps): JSX.Element {
               <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
             </DropdownMenuItem>
             <DropdownMenuItem>
-              <CreditCard className="mr-3 h-4 w-4 self-center align-middle" />
-              <span className="h-4 self-center align-middle">Billing</span>
+              <Home className="mr-3 h-4 w-4 self-center align-middle" />
+              <span className="h-4 self-center align-middle">Home</span>
               <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
             </DropdownMenuItem>
             <DropdownMenuItem>
@@ -115,15 +116,17 @@ export default function User({ className }: UserProps): JSX.Element {
               <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
             </DropdownMenuItem>
             <DropdownMenuItem>
-              <Keyboard className="mr-3 h-4 w-4 self-center align-middle" />
-              <span className="h-4 self-center align-middle">
-                Keyboard shortcuts
-              </span>
+              <Mail className="mr-3 h-4 w-4 self-center align-middle" />
+              <span className="h-4 self-center align-middle">Contact Us</span>
               <DropdownMenuShortcut>⌘K</DropdownMenuShortcut>
             </DropdownMenuItem>
           </DropdownMenuGroup>
           <DropdownMenuSeparator className="mx-[4px]" />
-          <DropdownMenuItem onClick={handleUserSignOut}>
+          <DropdownMenuItem
+            onClick={async () => {
+              await handleUserSignOut()
+            }}
+          >
             <LogOut className="mr-3 h-4 w-4 self-center align-middle" />
             <span className="h-4 self-center align-middle">Log out</span>
             <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>

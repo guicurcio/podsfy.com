@@ -1,4 +1,5 @@
-import { NhostClient } from "@nhost/nhost-js"
+import { NhostClient } from "@nhost/nextjs"
+import schemaNhost from "graphql/schemas/schema-nhost"
 
 export type BackendUrl = {
   /**

@@ -1,6 +1,11 @@
+/* @ts-expect-error Async Server Component */
+
 "use client"
 
+import { gql, GraphQLClient } from "graphql-request"
+import { nhost } from "lib/setupBackendConfig"
 import { twMerge } from "tailwind-merge"
+import Button from "ui/components/Button"
 import { Toaster } from "ui/components/Toaster"
 import { toast } from "ui/hooks/use-toast"
 
@@ -35,6 +40,16 @@ function triggerInteraction(podcastTitle, interactionType) {
   })
 }
 
+const getProfileBio = gql`
+  query getProfile {
+    profiles {
+      bio
+    }
+  }
+`
+
+const client = new GraphQLClient("http://localhost:8080/v1/graphql")
+
 /**
  * PodBehind Component
  */
@@ -44,6 +59,22 @@ export default function PodBehind({
   rating,
   podcastTitle,
 }: PodBehindProps) {
+  const userToken = nhost.auth.getAccessToken()
+
+  console.log("userToken")
+
+  // useEffect( () => {
+  //   if (userToken) {
+  //     client.setHeader("authorization", `Bearer ${userToken}`)
+  //   } else {
+  //     return
+  //   }
+  //   const sdk = getSdk(client)
+  //   const data = await sdk.getProfile()
+
+  //   console.log(data)
+  // }, [userToken])
+
   return (
     <div
       className={twMerge(
@@ -52,9 +83,10 @@ export default function PodBehind({
       )}
     >
       <div className="grid grid-flow-col items-center justify-items-center  gap-2 py-2 ">
-        <button
+        <Button
+          variant="subtle"
           onClick={() => {
-            triggerInteraction(podcastTitle, "Favorite Podcasts")
+            triggerInteraction(podcastTitle, "Favorite Podcasts List")
           }}
           className="grid h-[55px] w-[70px] cursor-pointer grid-flow-row gap-1 rounded-md p-2 hover:bg-fondy hover:bg-opacity-[90%] hover:backdrop-brightness-[75%]"
         >
@@ -72,8 +104,14 @@ export default function PodBehind({
             />
           </svg>
           <p className="text-center text-[13px] text-[#d9e8ed]">Favorite</p>
-        </button>
-        <div className="grid h-[55px] w-[70px] cursor-pointer grid-flow-row gap-1 rounded-md p-2 hover:bg-fondy hover:bg-opacity-[90%] hover:backdrop-brightness-[75%]">
+        </Button>
+        <Button
+          variant="subtle"
+          onClick={() => {
+            triggerInteraction(podcastTitle, "your Listen Later list.")
+          }}
+          className="grid h-[55px] w-[70px] cursor-pointer grid-flow-row gap-1 rounded-md p-2 hover:bg-fondy hover:bg-opacity-[90%] hover:backdrop-brightness-[75%]"
+        >
           <svg
             width="15"
             height="15"
@@ -90,8 +128,14 @@ export default function PodBehind({
             />
           </svg>
           <p className="text-center text-[13px] text-[#d9e8ed]">PodList</p>
-        </div>
-        <div className="grid h-[55px] w-[70px] cursor-pointer grid-flow-row gap-1 rounded-md p-2 hover:bg-fondy hover:bg-opacity-[90%] hover:backdrop-brightness-[75%]">
+        </Button>
+        <Button
+          variant="subtle"
+          onClick={() => {
+            triggerInteraction(podcastTitle, "Liked Podcasts List")
+          }}
+          className="grid h-[55px] w-[70px] cursor-pointer grid-flow-row gap-1 rounded-md p-2 hover:bg-fondy hover:bg-opacity-[90%] hover:backdrop-brightness-[75%]"
+        >
           <svg
             width="15"
             height="15"
@@ -106,7 +150,7 @@ export default function PodBehind({
             />
           </svg>
           <p className="text-center text-[13px] text-[#d9e8ed]">Like</p>
-        </div>
+        </Button>
         {/* <div className="grid grid-flow-row h-[55px] rounded-md w-[70px] gap-1 p-2 hover:backdrop-brightness-[75%] cursor-pointer hover:bg-fondy hover:bg-opacity-[90%]">
      <svg
       width="15"
@@ -157,7 +201,7 @@ export default function PodBehind({
         )}
       </div>
       <div className="">
-        <div className="absolute right-[-20px] top-[40px] ">
+        <div className="absolute right-0 top-[6%] ">
           <Toaster></Toaster>
         </div>
       </div>

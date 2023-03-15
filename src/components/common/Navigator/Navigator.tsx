@@ -18,6 +18,7 @@ export interface NavigatorProps {
    * Custom class names passed to the root element.
    */
   className?: string
+  navItems?: { path: string; label: string }[]
 }
 
 export function CustomNagivationMenuLink({ href, children, className = "" }) {
@@ -45,7 +46,7 @@ function CustomNavigationMenuItem({ isActive, children, className = "" }) {
   )
 }
 
-const navItems = [
+const defaultNavItems = [
   { path: "home", label: "Home" },
   { path: "for-you", label: "For You" },
   { path: "charts", label: "Top Charts" },
@@ -60,7 +61,10 @@ const navItems = [
 /**
  * Header Component
  */
-export default function Navigator({ className }: NavigatorProps) {
+export default function Navigator({
+  className,
+  navItems = defaultNavItems,
+}: NavigatorProps) {
   const pathName = usePathname()
   // .split("/")[3] // replace with actual path name
 
@@ -72,7 +76,7 @@ export default function Navigator({ className }: NavigatorProps) {
       )}
     >
       <NavigationMenu>
-        <NavigationMenuList className="mx-auto grid grid-flow-col items-center gap-[8px]">
+        <NavigationMenuList className="mx-auto grid grid-flow-col items-center gap-[8px] text-[14px] text-white/60">
           {navItems.map((item) => (
             <CustomNavigationMenuItem
               key={item.path}

@@ -17,7 +17,7 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
+  DialogTrigger
 } from "ui/components/Dialog"
 import { Input } from "ui/components/Input"
 import Label from "ui/components/Label"
@@ -25,7 +25,7 @@ import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
-  TooltipTrigger,
+  TooltipTrigger
 } from "ui/components/Tooltip"
 import useToggle from "ui/hooks/useToggle"
 import * as z from "zod"
@@ -38,6 +38,8 @@ export interface JoinProps {
    * Custom class names passed to the root element.
    */
   className?: string
+
+  baseState?: "SIGNING IN" | "REGISTERING"
 }
 
 const SIGN_UP_MODAL_VALIDATION_SCHEMA = z.object({
@@ -57,12 +59,12 @@ export interface SignUpModalFormValues {
 /**
  * SignUpModal Component
  */
-export default function SignUpModal({ className }: JoinProps) {
+export default function SignUpModal({ className, baseState }: JoinProps) {
   const router = useRouter()
   const [loading, toggleLoading] = useToggle(false)
   const [error, toggleError] = useToggle(false)
   const [action, setSignAction] = useState<"REGISTERING" | "SIGNING IN">(
-    "REGISTERING"
+    baseState || "REGISTERING"
   )
 
   const form = useForm<SignUpModalFormValues>({
@@ -95,21 +97,32 @@ export default function SignUpModal({ className }: JoinProps) {
     email,
     password,
   }: SignUpModalFormValues) => {
-    const [data] = await asyncTuple(
+    toggleLoading()
+    const user = await asyncTuple(
       nhost.auth.signIn({
         email,
         password,
       })
     )
-    console.log(data)
+    if (user[0]) {
+      router.push("/home")
+    } else {
+      toggleLoading()
+      toggleError()
+    }
   }
 
   return (
     <div className={twMerge("mx-auto mt-3 w-fit", className)}>
       <Dialog>
         <DialogTrigger asChild>
-          <Button variant="default" size="lg">
-            Discover New Podcasts - it‘s free!
+          <Button
+            variant={baseState === "REGISTERING" ? "default" : "subtle"}
+            size="lg"
+          >
+            {baseState === "REGISTERING"
+              ? "Discover New Podcasts - it‘s free!"
+              : "Sign in"}
           </Button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-[500px]">

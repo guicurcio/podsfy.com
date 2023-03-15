@@ -1,10 +1,6 @@
 @tailwind base;
 @tailwind components;
 
-html {
-  overflow-y: scroll;
-}
-
 ::selection {
   background: hotpink;
   color: white;
