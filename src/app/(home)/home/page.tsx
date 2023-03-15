@@ -9,10 +9,23 @@ import Scroller from "components/home/Scroller/Scroller"
 import Trending from "components/home/Trending"
 import staticPodcastData from "data/staticPodcastData"
 import { nhost } from "lib/setupBackendConfig"
-import { Inbox } from "lucide-react"
+import {
+  LucideInbox, LucideMessageSquare
+} from "lucide-react"
 import Link from "next/link"
 import Button from "ui/components/Button"
+import {
+  Tooltip,
+  TooltipArrow,
+  TooltipContent,
+  TooltipPortal,
+  TooltipProvider,
+  TooltipTrigger
+} from "ui/components/Tooltip"
 import mergeClasses from "utils/mergeClasses"
+
+export const iconClasses =
+  "h-[16px] w-[16px] self-center align-middle text-white/60"
 
 export default function HomePage() {
   return (
@@ -40,7 +53,7 @@ export default function HomePage() {
                 <Link
                   href="/"
                   className={mergeClasses(
-                    "col-span-2 cursor-pointer text-left pl-[20px] pt-[8px] font-SpaceGrotesk text-[32px] font-bold tracking-[-0.08em] text-[#CDCDCD]"
+                    "col-span-2 cursor-pointer pl-[20px] pt-[8px] text-left font-SpaceGrotesk text-[32px] font-bold tracking-[-0.08em] text-[#CDCDCD]"
                   )}
                 >
                   podsfy
@@ -56,13 +69,75 @@ export default function HomePage() {
 
                 <div
                   className={mergeClasses(
-                    "col-span-3 grid w-full grid-flow-col place-items-end items-end justify-end justify-items-end"
+                    "col-span-3 grid w-full grid-flow-col place-items-end items-end justify-end justify-items-end gap-[10px]"
                   )}
                 >
-                  <Button className="h-[16px] w-[16px]" variant="subtle">
-                    <Inbox className="h-[16px] w-[16px] self-center align-middle"></Inbox>
-                  </Button>
-                  <User className=""></User>
+                  <TooltipProvider>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <Button
+                          className="h-[28px] self-center rounded-md px-2 align-middle text-[13px]"
+                          variant="subtle"
+                          size="none"
+                        >
+                          <LucideInbox
+                            className={mergeClasses(
+                              iconClasses,
+                              "h-4 w-4 text-white/40 hover:text-white/70"
+                            )}
+                          ></LucideInbox>
+                        </Button>
+                      </TooltipTrigger>
+                      <TooltipPortal>
+                        <TooltipContent
+                          className="overflow-x-hidden rounded-[3px] border-0 bg-[#1f1f23] font-visuelt text-[13px] font-normal text-white/50 shadow-3xl"
+                          side="bottom"
+                          align="center"
+                        >
+                          <p>Notifications</p>
+                          <TooltipArrow></TooltipArrow>
+                        </TooltipContent>
+                      </TooltipPortal>
+                    </Tooltip>
+                    <Tooltip>
+                      <TooltipTrigger asChild>
+                        <Button
+                          className="h-8 self-center rounded-md px-2 align-middle text-[13px]"
+                          variant="subtle"
+                          size="none"
+                        >
+                          <LucideMessageSquare
+                            className={mergeClasses(
+                              iconClasses,
+                              "h-4 w-4 text-white/40 hover:text-white/70"
+                            )}
+                          ></LucideMessageSquare>
+                        </Button>
+                      </TooltipTrigger>
+                      <TooltipPortal>
+                        <TooltipContent
+                          className="overflow-x-hidden rounded-[3px] border-0 bg-[#1f1f23] font-visuelt text-[13px] font-normal text-white/50 shadow-3xl"
+                          side="bottom"
+                          align="center"
+                        >
+                          <p>Messages</p>
+                          <TooltipArrow></TooltipArrow>
+                        </TooltipContent>
+                      </TooltipPortal>
+                    </Tooltip>
+                  </TooltipProvider>
+
+                  {/* <Button
+                    className="m-0 h-[32px] w-full gap-2  self-center rounded-[1px] bg-fondy px-2 shadow-2xl"
+                    variant="none"
+                    size="none"
+                  >
+                    <Archive className="h-[16px] w-[16px] self-center align-middle text-white/60"></Archive>
+                    <span className="self-center  align-middle font-moderat text-[13px] text-white/60">
+                      Get Bits
+                    </span>
+                  </Button> */}
+                  <User className="self-center"></User>
                 </div>
               </div>
               {/* <HomeNavigator></HomeNavigator> */}

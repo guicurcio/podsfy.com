@@ -1,5 +1,20 @@
+"use client"
+
+import { iconClasses } from "app/(home)/home/page"
 import { useGetProfileBioQuery } from "graphql/schemas/generated/apollo/apollo"
+import { LucideCog, RefreshCcw } from "lucide-react"
+import { useRef } from "react"
+import Button from "ui/components/Button"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "ui/components/Tabs"
+import {
+  Tooltip,
+  TooltipArrow,
+  TooltipContent,
+  TooltipPortal,
+  TooltipProvider,
+  TooltipTrigger,
+} from "ui/components/Tooltip"
+import TooltipTwo from "ui/components/TooltipTwo/TooltipTwo"
 import mergeClasses from "utils/mergeClasses"
 import UnitOfContent from "../UnitOfContent"
 
@@ -18,11 +33,10 @@ export interface ScrollerProps {
  */
 export default function Scroller({ className }: ScrollerProps): JSX.Element {
   const { data, loading, error } = useGetProfileBioQuery()
-  console.log(data, loading, error)
+
   return (
     <div
       className={mergeClasses(
-        " w-full ",
         "bg-[#0D0E12]",
         "border-x border-sharper border-opacity-5",
         // border-b border-gray-700 border-opacity-25
@@ -33,14 +47,72 @@ export default function Scroller({ className }: ScrollerProps): JSX.Element {
       <Tabs defaultValue="for-you" className="z-50 w-full border-0">
         <TabsList
           className={mergeClasses(
-            "grid grid-flow-col justify-start",
+            "grid grid-flow-col justify-between",
             "border-b border-sharper border-opacity-5"
           )}
         >
-          <TabsTrigger value="for-you" className="">
-            For You
-          </TabsTrigger>
-          <TabsTrigger value="following">Following</TabsTrigger>
+          <div>
+            <TabsTrigger value="for-you" className="">
+              For You
+            </TabsTrigger>
+            <TabsTrigger value="following">Following</TabsTrigger>
+          </div>
+          <div className=" grid h-full w-full grid-flow-col gap-[7px] self-center pr-[10px] align-middle">
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button
+                    className="h-[28px] self-center rounded-md px-2 align-middle text-[13px]"
+                    variant="subtle"
+                    size="none"
+                  >
+                    <RefreshCcw
+                      className={mergeClasses(
+                        iconClasses,
+                        "h-4 w-4 text-white/40 hover:text-white/70"
+                      )}
+                    ></RefreshCcw>
+                  </Button>
+                </TooltipTrigger>
+                <TooltipPortal>
+                  <TooltipContent
+                    className="overflow-x-hidden rounded-[3px] border-0 bg-[#1f1f23] font-visuelt text-[13px] font-normal text-white/50 shadow-3xl"
+                    side="bottom"
+                    align="center"
+                  >
+                    <p>Refresh feed</p>
+                    <TooltipArrow></TooltipArrow>
+                  </TooltipContent>
+                </TooltipPortal>
+              </Tooltip>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Button
+                    className="h-8 self-center rounded-md px-2 align-middle text-[13px]"
+                    variant="subtle"
+                    size="none"
+                  >
+                    <LucideCog
+                      className={mergeClasses(
+                        iconClasses,
+                        "h-4 w-4 text-white/40 hover:text-white/70"
+                      )}
+                    ></LucideCog>
+                  </Button>
+                </TooltipTrigger>
+                <TooltipPortal>
+                  <TooltipContent
+                    className="overflow-x-hidden rounded-[3px] border-0 bg-[#1f1f23] font-visuelt text-[13px] font-normal text-white/50 shadow-3xl"
+                    side="bottom"
+                    align="center"
+                  >
+                    <p>Configure feed</p>
+                    <TooltipArrow></TooltipArrow>
+                  </TooltipContent>
+                </TooltipPortal>
+              </Tooltip>
+            </TooltipProvider>
+          </div>
         </TabsList>
         <TabsContent
           value="for-you"
