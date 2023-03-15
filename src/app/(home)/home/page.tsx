@@ -9,10 +9,9 @@ import Scroller from "components/home/Scroller/Scroller"
 import Trending from "components/home/Trending"
 import staticPodcastData from "data/staticPodcastData"
 import { nhost } from "lib/setupBackendConfig"
-import {
-  LucideInbox, LucideMessageSquare
-} from "lucide-react"
+import { LucideInbox, LucideMessageSquare } from "lucide-react"
 import Link from "next/link"
+import { Toaster } from "sonner"
 import Button from "ui/components/Button"
 import {
   Tooltip,
@@ -42,6 +41,7 @@ export default function HomePage() {
             )}
           >
             <div className="mx-auto max-w-[1200px]">
+              <Toaster position="top-center" />
               <div
                 className={mergeClasses(
                   "mx-auto grid w-[1100px] min-w-[1100px] max-w-[1100px] grid-flow-col grid-cols-12",

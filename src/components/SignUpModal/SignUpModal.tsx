@@ -17,7 +17,7 @@ import {
   DialogFooter,
   DialogHeader,
   DialogTitle,
-  DialogTrigger
+  DialogTrigger,
 } from "ui/components/Dialog"
 import { Input } from "ui/components/Input"
 import Label from "ui/components/Label"
@@ -25,7 +25,7 @@ import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
-  TooltipTrigger
+  TooltipTrigger,
 } from "ui/components/Tooltip"
 import useToggle from "ui/hooks/useToggle"
 import * as z from "zod"
@@ -48,7 +48,9 @@ const SIGN_UP_MODAL_VALIDATION_SCHEMA = z.object({
     .email()
     .min(4)
     .max(32, { message: "The Email should be at most 32 characters long." }),
-  password: z.string().min(9, { message: "Password is required" }),
+  password: z
+    .string()
+    .min(3, { message: "The password should be at least 3 characters long." }),
 })
 
 export interface SignUpModalFormValues {
@@ -62,13 +64,16 @@ export interface SignUpModalFormValues {
 export default function SignUpModal({ className, baseState }: JoinProps) {
   const router = useRouter()
   const [loading, toggleLoading] = useToggle(false)
-  const [error, toggleError] = useToggle(false)
   const [action, setSignAction] = useState<"REGISTERING" | "SIGNING IN">(
     baseState || "REGISTERING"
   )
+  const [error, setError] = useState({
+    message: "",
+    isError: false,
+  })
 
   const form = useForm<SignUpModalFormValues>({
-    reValidateMode: "onSubmit",
+    reValidateMode: "onChange",
     resolver: zodResolver(SIGN_UP_MODAL_VALIDATION_SCHEMA),
   })
 
@@ -79,17 +84,49 @@ export default function SignUpModal({ className, baseState }: JoinProps) {
     password,
   }: SignUpModalFormValues) => {
     toggleLoading()
-    const user = await asyncTuple(
-      nhost.auth.signUp({
+    try {
+      const session = await nhost.auth.signUp({
         email,
         password,
       })
-    )
-    if (user[0]) {
+      console.log(session)
+
+      if (session?.session) {
+        router.push("/home")
+        return
+      }
+
+      if (session?.error) {
+        toggleLoading()
+        if (session.error.error === "already-signed-in") {
+          router.push("/home")
+          return
+        }
+
+        if (session.error.error === "email-already-in-use") {
+          setError({
+            message:
+              "This email is already in use. Please sign in or try another one.",
+            isError: true,
+          })
+          return
+        }
+
+        setError({
+          message: error.message,
+          isError: true,
+        })
+        return
+      }
       router.push("/home")
-    } else {
+    } catch (error_) {
+      console.log(error_, "error_")
+
       toggleLoading()
-      toggleError()
+      setError({
+        message: error_.message,
+        isError: true,
+      })
     }
   }
 
@@ -97,18 +134,39 @@ export default function SignUpModal({ className, baseState }: JoinProps) {
     email,
     password,
   }: SignUpModalFormValues) => {
+    console.log("SIGNING IN")
     toggleLoading()
-    const user = await asyncTuple(
-      nhost.auth.signIn({
+    try {
+      const session = await nhost.auth.signIn({
         email,
         password,
       })
-    )
-    if (user[0]) {
-      router.push("/home")
-    } else {
+      console.log(session, "loginsession")
+      if (session?.session) {
+        router.push("/home")
+        return
+      }
+
+      if (session?.error) {
+        toggleLoading()
+        if (session.error.error === "already-signed-in") {
+          router.push("/home")
+          return
+        }
+        if (session.error.error === "invalid-email-password") {
+          setError({
+            message: "Invalid email or password. Please try again.",
+            isError: true,
+          })
+          return
+        }
+      }
+    } catch (error_) {
       toggleLoading()
-      toggleError()
+      setError({
+        message: error_.message,
+        isError: true,
+      })
     }
   }
 
@@ -136,11 +194,11 @@ export default function SignUpModal({ className, baseState }: JoinProps) {
                 : "Sign in to your account to get access to all the features of Podsfy."}
             </DialogDescription>
           </DialogHeader>
-          {error && (
+          {error.isError && (
             <div className="my-[10px] rounded-[5px] border-white border-opacity-10 bg-fondy px-4 py-4">
               <p className="self-center font-moderat text-[13px] text-red-500">
-                There was an error while trying to create your account. Please
-                try again, or contact us if the problem persists.
+                {error.message ||
+                  "We couldn't sign you in. We have been notified and will fix this as soon as possible. Please try again in a few second to see if this isue persist or in a few minutes. "}
               </p>
             </div>
           )}
@@ -165,6 +223,7 @@ export default function SignUpModal({ className, baseState }: JoinProps) {
                   {...register("email")}
                   name="email"
                   aria-label="email"
+                  tabIndex={1}
                 />
                 {formState.errors?.email && (
                   <p className="ml-1 self-center font-visuelt text-xs text-red-500">
@@ -203,9 +262,10 @@ export default function SignUpModal({ className, baseState }: JoinProps) {
                 )}
               </div>
               <Button
+                tabIndex={3}
                 type="submit"
                 variant="subtle"
-                className="mt-[14px] w-full text-white/80 backdrop-brightness-[60%]"
+                className="mt-[14px] w-full text-white/80 backdrop-brightness-[60%] focus:border-white/80 "
                 size="lg"
                 loading={loading}
                 // onClick={() => {

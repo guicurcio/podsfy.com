@@ -6,7 +6,8 @@ import { twMerge } from "tailwind-merge"
 
 import { nhost } from "lib/setupBackendConfig"
 import asyncTuple from "lib/try/try"
-import { Home, Inbox, LogOut, Mail, Settings, UserCheck } from "lucide-react"
+import { Home, LogOut, Mail, Settings, UserCheck } from "lucide-react"
+import { useRouter } from "next/navigation"
 import { Avatar, AvatarFallback, AvatarImage } from "ui/components/Avatar"
 import Button from "ui/components/Button"
 import {
@@ -16,7 +17,7 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuShortcut,
-  DropdownMenuTrigger,
+  DropdownMenuTrigger
 } from "ui/components/Dropdown"
 
 /**
@@ -43,6 +44,7 @@ export interface HandleUserSignOutArgs {
  */
 export default function User({ className }: UserProps): JSX.Element {
   const user = nhost.auth.getUser()
+  const router = useRouter()
 
   /**
    *
@@ -53,6 +55,7 @@ export default function User({ className }: UserProps): JSX.Element {
    */
   async function handleUserSignOut() {
     await asyncTuple(nhost.auth.signOut())
+    router.push("/")
   }
 
   return (

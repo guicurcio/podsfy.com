@@ -12,8 +12,18 @@ Tooltip.displayName = TooltipPrimitive.Tooltip.displayName
 
 const TooltipTrigger = TooltipPrimitive.Trigger
 
-const TooltipArrow = TooltipPrimitive.Arrow
 const TooltipPortal = TooltipPrimitive.Portal
+
+const TooltipArrow = React.forwardRef<
+  React.ElementRef<typeof TooltipPrimitive.Arrow>,
+  React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Arrow>
+>(({ className, ...props }, ref) => (
+  <TooltipPrimitive.Arrow
+    ref={ref}
+    className={mergeClasses("fill-[#1f1f23] text-[#1f1f23]", className)}
+    {...props}
+  />
+))
 
 const TooltipContent = React.forwardRef<
   React.ElementRef<typeof TooltipPrimitive.Content>,
