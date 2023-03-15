@@ -17,9 +17,9 @@ export default function Trending({ className }: TrendingProps): JSX.Element {
   return (
     <div
       className={mergeClasses(
-        "col-span-2 mx-auto w-full overflow-hidden",
+        "col-span-3 mx-auto w-full overflow-hidden",
         "bg-[#0D0E12] py-[15px]",
-        "border-x border-sharper border-opacity-10",
+        "border-r border-sharper border-opacity-10",
         "grid grid-flow-col px-[20px] font-visuelt shadow-3xl backdrop-blur-[10px] ",
         "h-screen max-h-screen min-h-screen overflow-hidden",
         className

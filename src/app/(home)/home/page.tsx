@@ -38,18 +38,19 @@ export default function HomePage() {
                 </Link>
                 <Search
                   podcasts={staticPodcastData()}
-                  className="col-span-8 w-full self-center align-middle"
+                  className="col-span-7 w-full self-center align-middle"
+                  popoverClassName="col-span-7"
                 ></Search>
-                <User className="col-span-2 hidden justify-end  md:block"></User>
+                <User className="col-span-3 hidden justify-end  md:block"></User>
               </div>
               {/* <HomeNavigator></HomeNavigator> */}
             </div>
           </div>
           <div className="mx-auto max-w-[1200px]">
-            <div className="mx-auto grid h-screen max-h-screen min-h-screen w-[1150px] min-w-[1150px] max-w-[1150px] grid-flow-col grid-cols-12">
+            <div className="mx-auto grid h-full  max-w-[1100px] grid-flow-col grid-cols-12">
               <HomeSidebar className="col-span-2"></HomeSidebar>
-              <Scroller className="col-span-8"></Scroller>
-              <Trending className="col-span-2 "></Trending>
+              <Scroller className="col-span-7"></Scroller>
+              <Trending className="col-span-3 "></Trending>
             </div>
           </div>
         </div>

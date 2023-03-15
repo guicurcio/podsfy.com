@@ -21,21 +21,55 @@ export default function Scroller({ className }: ScrollerProps): JSX.Element {
   return (
     <div
       className={mergeClasses(
-        "col-span-7  mx-auto  overflow-scroll",
-        "bg-[#0D0E12] py-[25px]",
+        "col-span-6 mx-auto   w-full ",
+        " overflow-scroll overflow-y-scroll bg-[#0D0E12]",
         "border-x border-sharper border-opacity-10",
         "grid grid-flow-row gap-[25px]  font-visuelt shadow-3xl backdrop-blur-[10px]",
-        "overflow-y-scroll scrollbar-none scrollbar-track-transparent scrollbar-thumb-transparent",
+        " scrollbar-thin scrollbar-track-fondy scrollbar-thumb-black",
+        "h-screen",
         className
       )}
     >
-      <UnitOfContent></UnitOfContent>
-      <UnitOfContent></UnitOfContent>
-      <UnitOfContent></UnitOfContent>
-      <UnitOfContent></UnitOfContent>
-      <UnitOfContent></UnitOfContent>
-      <UnitOfContent></UnitOfContent>
-      <UnitOfContent></UnitOfContent>
+      <div className="grid grid-flow-row divide-y-[1px] divide-fondy/50 border border-t  border-fondy/50 backdrop-brightness-[50%]">
+        <UnitOfContent
+          key="asd"
+          defaultCoverImage="./bg/png"
+          title="Episode 1"
+          description="assad"
+        ></UnitOfContent>
+        <UnitOfContent></UnitOfContent>
+        <UnitOfContent></UnitOfContent>
+        <UnitOfContent></UnitOfContent>
+        <UnitOfContent></UnitOfContent>
+        <UnitOfContent></UnitOfContent>
+        <UnitOfContent></UnitOfContent>
+        <UnitOfContent></UnitOfContent>
+        <UnitOfContent></UnitOfContent>
+        <UnitOfContent></UnitOfContent>
+        <UnitOfContent></UnitOfContent>
+        <UnitOfContent></UnitOfContent>
+        <UnitOfContent></UnitOfContent>
+        <UnitOfContent></UnitOfContent>
+        <UnitOfContent></UnitOfContent>
+        <UnitOfContent></UnitOfContent>
+        <UnitOfContent></UnitOfContent>
+        <UnitOfContent></UnitOfContent>
+        <UnitOfContent></UnitOfContent>
+        <UnitOfContent></UnitOfContent>
+        <UnitOfContent></UnitOfContent>
+        <UnitOfContent></UnitOfContent>
+        <UnitOfContent></UnitOfContent>
+        <UnitOfContent></UnitOfContent>
+        <UnitOfContent></UnitOfContent>
+        <UnitOfContent></UnitOfContent>
+        <UnitOfContent></UnitOfContent>
+        <UnitOfContent></UnitOfContent>
+        <UnitOfContent></UnitOfContent>
+        <UnitOfContent></UnitOfContent>
+        <UnitOfContent></UnitOfContent>
+        <UnitOfContent></UnitOfContent>
+        <UnitOfContent></UnitOfContent>
+      </div>
     </div>
   )
 }
