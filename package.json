@@ -45,7 +45,7 @@
     "class-variance-authority": "^0.4.0",
     "client-only": "^0.0.1",
     "clsx": "^1.2.1",
-    "cmdk": "^0.1.22",
+    "cmdk": "^0.2.0",
     "concurrently": "^7.6.0",
     "encoding": "^0.1.13",
     "framer-motion": "^9.1.7",

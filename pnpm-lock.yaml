@@ -56,7 +56,7 @@ specifiers:
   class-variance-authority: ^0.4.0
   client-only: ^0.0.1
   clsx: ^1.2.1
-  cmdk: ^0.1.22
+  cmdk: ^0.2.0
   concurrently: ^7.6.0
   doctoc: 2.1.0
   encoding: ^0.1.13
@@ -143,7 +143,7 @@ dependencies:
   class-variance-authority: 0.4.0_typescript@5.0.1-rc
   client-only: 0.0.1
   clsx: 1.2.1
-  cmdk: 0.1.22_6lmssa7l4ix4idbjhc7ppx2xy4
+  cmdk: 0.2.0_6lmssa7l4ix4idbjhc7ppx2xy4
   concurrently: 7.6.0
   encoding: 0.1.13
   framer-motion: 9.1.7_sj64kyh7sngwrjsu2c6fxsnj7q
@@ -5271,8 +5271,8 @@ packages:
     engines: {node: '>=6'}
     dev: false
 
-  /cmdk/0.1.22_6lmssa7l4ix4idbjhc7ppx2xy4:
-    resolution: {integrity: sha512-F0ffliBO/U6SXKGRud9AjsNuINvfF+d9BVUgi/y2+v3TSBHVOmIXl43CWLEyEEIOwc2DTnlXvIQenhGAEpwW0Q==}
+  /cmdk/0.2.0_6lmssa7l4ix4idbjhc7ppx2xy4:
+    resolution: {integrity: sha512-JQpKvEOb86SnvMZbYaFKYhvzFntWBeSZdyii0rZPhKJj9uwJBxu4DaVYDrRN7r3mPop56oPhRw+JYWTKs66TYw==}
     peerDependencies:
       react: ^18.0.0
       react-dom: ^18.0.0
