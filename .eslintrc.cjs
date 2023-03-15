@@ -78,6 +78,8 @@ module.exports = {
     ],
     "unicorn/prevent-abbreviations": "off",
     "unicorn/filename-case": "off",
+    "no-lone-blocks": "off",
+    "@typescript-eslint/no-unsafe-member-access": "off",
     "no-restricted-imports": [
       "warn",
       {

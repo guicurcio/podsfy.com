@@ -1,6 +1,7 @@
 "use client"
 
 import { Accordion } from "ui/components/Accordion"
+import mergeClasses from "utils/mergeClasses"
 import PodEpisode from "../PodEpisode/PodEpisode"
 
 /**
@@ -52,7 +53,12 @@ export default function PodEpisodes({
   defaultCoverImage,
 }: PodEpisodesProps) {
   return (
-    <div className="grid w-full grid-flow-row rounded-[4px]   border-[#252525] border-opacity-[20%] bg-[#0a0a0b] ">
+    <div
+      className={mergeClasses(
+        "grid w-full grid-flow-row rounded-[4px]   border-[#252525] border-opacity-[20%] bg-[#0a0a0b] ",
+        className
+      )}
+    >
       <div className="grid w-full grid-flow-col items-center justify-start gap-2  py-4  px-3  backdrop-brightness-[50%]">
         <svg
           width={16}
@@ -63,7 +69,7 @@ export default function PodEpisodes({
           className="h-[16px] w-[16px] border-[#252525] border-opacity-[30%] brightness-200"
           preserveAspectRatio="none"
         >
-          <g clip-path="url(#clip0_2_693)">
+          <g clipPath="url(#clip0_2_693)">
             <rect width={16} height={16} rx={9} fill="#0a0a0b" />
           </g>
           <defs>

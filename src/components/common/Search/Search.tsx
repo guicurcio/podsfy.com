@@ -50,7 +50,10 @@ const Search = ({
 
   return (
     <Popover open={open} onOpenChange={setOpen} {...props}>
-      <PopoverTrigger className="py-2" asChild>
+      <PopoverTrigger
+        className="border-x  border-sharper border-opacity-5 py-2"
+        asChild
+      >
         <Button
           role="combobox"
           aria-label="Search podcasts, episodes, guests, notes..."
@@ -58,7 +61,7 @@ const Search = ({
           className={mergeClasses(
             "group h-[42px] self-center py-[12px] px-3 align-middle",
             " justify-between font-visuelt text-[14px] font-medium text-white/80",
-            "lg:w-[630px]",
+            "",
             className
           )}
         >
@@ -72,15 +75,23 @@ const Search = ({
         </Button>
       </PopoverTrigger>
       <PopoverContent
-        className={mergeClasses("w-[800px] p-0", popoverClassName)}
+        className={mergeClasses(
+          "w-[630px] rounded-[3px] border-0 bg-[#1f1f23] p-0 font-visuelt text-[14px] font-normal text-white/50 shadow-3xl shadow-3xl",
+          popoverClassName
+        )}
       >
-        <Command>
-          <CommandInput placeholder="Search podcasts, episodes, guests, notes..." />
+        <Command className="rounded-r-[5px] rounded-t-[0px] rounded-b-[5px] rounded-l-[5px] border-0 bg-[#1f1f23] font-visuelt text-[14px] font-normal text-white/50 shadow-3xl">
+          <CommandInput
+            className="font-normal text-white/50 placeholder:text-white/70"
+            placeholder="Search for podcasts, episodes, guests, notes..."
+          />
+
           <CommandEmpty>No podcasts found.</CommandEmpty>
 
-          <CommandGroup>
+          <CommandGroup className="grid grid-flow-row divide-y-2 divide-black">
             {podcasts.map((podcast) => (
               <CommandItem
+                className="font-visuelt font-normal"
                 key={podcast.slug}
                 onSelect={() => {
                   setSelectedPodcast(podcast)
@@ -88,7 +99,11 @@ const Search = ({
                   router.push(`/podcast/${podcast.slug}`)
                 }}
               >
-                {podcast.name}
+                <span className="h-4 self-center  align-middle">
+                  {" "}
+                  {podcast.name}
+                </span>
+
                 <Check
                   className={mergeClasses(
                     "ml-auto h-4 w-4",

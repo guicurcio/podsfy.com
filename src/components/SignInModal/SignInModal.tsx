@@ -1,12 +1,14 @@
-'use client';
+"use client"
 
-import { zodResolver } from '@hookform/resolvers/zod';
-import Form from 'components/Form/Form';
-import SignUpModal, { SignUpModalForm } from 'components/SignUpModal';
-import { Twitch, Twitter } from 'lucide-react';
-import { useRouter } from 'next/navigation';
-import { FormProvider, useForm } from 'react-hook-form';
-import Button from 'ui/components/Button';
+import { zodResolver } from "@hookform/resolvers/zod"
+import Form from "components/Form/Form"
+import { nhost } from "lib/setupBackendConfig"
+import asyncTuple from "lib/try/try"
+import { Twitch, Twitter } from "lucide-react"
+import { useRouter } from "next/navigation"
+import { FormProvider, useForm } from "react-hook-form"
+import { twMerge } from "tailwind-merge"
+import Button from "ui/components/Button"
 import {
   Dialog,
   DialogContent,
@@ -14,17 +16,21 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from 'ui/components/Dialog';
-import { Input } from 'ui/components/Input';
-import Label from 'ui/components/Label';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from 'ui/components/Tooltip';
-import useToggle from 'ui/hooks/useToggle';
-import * as z from 'zod';
+} from "ui/components/Dialog"
+import { Input } from "ui/components/Input"
+import Label from "ui/components/Label"
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "ui/components/Tooltip"
+import * as z from "zod"
 
 const schema = z.object({
   email: z.string().email().min(4).max(18),
-  password: z.string().min(9, { message: 'Password is required' }),
-});
+  password: z.string().min(9, { message: "Password is required" }),
+})
 
 /**
  * SignInModal Props description
@@ -33,60 +39,68 @@ export interface SignInModalProps {
   /**
    * Custom class names passed to the root element.
    */
-  className?: string;
-  toggleValue?: () => void;
+  className?: string
 }
 
 export interface SignInModalFormValues {
-  email: string;
-  password: string;
-}
-
-export default function SignInModal({ className }: SignInModalProps) {
-  return <SignInModalForm></SignInModalForm>;
+  email: string
+  password: string
 }
 
 /**
  * SignInModal Component
  */
-export function SignInModalForm({ className, toggleValue }: SignInModalProps) {
+export default function SignInModal({ className }: SignInModalProps) {
   // const { signInEmailPassword, isLoading, isSuccess, isError, error } =
   //   useSignInEmailPassword();
-  const router = useRouter();
+  const router = useRouter()
 
   const form = useForm<SignInModalFormValues>({
-    reValidateMode: 'onSubmit',
+    reValidateMode: "onSubmit",
     resolver: zodResolver(schema),
-  });
+  })
 
-  const { register, formState } = form;
+  const { register, formState } = form
 
-  const handleSignInFormSubmit = async ({ email, password }: SignInModalFormValues) => {
-    try {
-      console.log('run');
-      // const user = await signInEmailPassword(email, password);
-      return;
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  const handleSignInFormSubmit = async ({
+    email,
+    password,
+  }: SignInModalFormValues) => {
+    const [data] = await asyncTuple(
+      nhost.auth.signIn({
+        email,
+        password,
+      })
+    )
+    console.log(data)
+  }
+
+  //     {session: null, error: {…}, mfa: null}
+  // error
+  // :
+  // error
+  // :
+  // "invalid-email-password"
+  // message
+  // :
+  // "Incorrect email or password
+  //   }
 
   return (
     <FormProvider {...form}>
       <Form onSubmit={handleSignInFormSubmit}>
-        <div className="mx-auto mt-3 w-fit">
+        <div className={twMerge("mx-auto mt-3 w-fit", className)}>
           <Dialog>
             <DialogTrigger asChild>
               <Button variant="subtle" size="md">
-                Sign In
+                Sign in
               </Button>
             </DialogTrigger>
             <DialogContent className="sm:max-w-[500px]">
               <DialogHeader>
-                <DialogTitle className="text-[32px]">Sign in to your Podsfy account</DialogTitle>
-                {/* <DialogDescription className="mx-auto max-w-[300px] text-center text-white/60">
-                  Create a free account to get access to all the features of Podsfy.
-                </DialogDescription> */}
+                <DialogTitle className="text-[32px]">
+                  Sign in to your Podsfy account
+                </DialogTitle>
               </DialogHeader>
               <div className="grid grid-flow-row gap-6 py-4">
                 <form className="grid gap-4">
@@ -99,7 +113,7 @@ export function SignInModalForm({ className, toggleValue }: SignInModalProps) {
                       <Input
                         className="col-span-4"
                         id="email"
-                        {...register('email')}
+                        {...register("email")}
                         name="email"
                         aria-label="email"
                       />
@@ -115,9 +129,9 @@ export function SignInModalForm({ className, toggleValue }: SignInModalProps) {
                       </Label>
                       <Input
                         id="password"
-                        type={'password'}
+                        type={"password"}
                         className="col-span-4"
-                        {...register('password')}
+                        {...register("password")}
                       />
                       {formState.errors?.password && (
                         <p className="ml-1 self-center font-visuelt text-xs text-red-500">
@@ -133,7 +147,9 @@ export function SignInModalForm({ className, toggleValue }: SignInModalProps) {
               </div>
               <div className="mx-auto grid w-fit  grid-flow-col items-center justify-items-center gap-x-2">
                 <div className="h-[1px] w-[100px] bg-white/20 " />
-                <h1 className="self-center font-visuelt text-sm uppercase">or</h1>
+                <h1 className="self-center font-visuelt text-sm uppercase">
+                  or
+                </h1>
                 <div className="h-[1px] w-[100px] bg-white/20 " />
               </div>
               <div className="grid grid-flow-row gap-6 py-2">
@@ -141,7 +157,11 @@ export function SignInModalForm({ className, toggleValue }: SignInModalProps) {
                   <TooltipProvider>
                     <Tooltip>
                       <TooltipTrigger asChild tabIndex={-1} autoFocus={false}>
-                        <Button className="h-[65px] w-[75px]" tabIndex={-1} autoFocus={false}>
+                        <Button
+                          className="h-[65px] w-[75px]"
+                          tabIndex={-1}
+                          autoFocus={false}
+                        >
                           <Twitter className="h-5 w-5 self-center align-middle" />
                         </Button>
                       </TooltipTrigger>
@@ -179,7 +199,11 @@ export function SignInModalForm({ className, toggleValue }: SignInModalProps) {
                     </Tooltip>
                     <Tooltip>
                       <TooltipTrigger asChild tabIndex={-1} autoFocus={false}>
-                        <Button className="h-[65px] w-[75px]" tabIndex={-1} autoFocus={false}>
+                        <Button
+                          className="h-[65px] w-[75px]"
+                          tabIndex={-1}
+                          autoFocus={false}
+                        >
                           {/* <Discord className="h-5 w-5 self-center align-middle" /> */}
                           <svg
                             width="15"
@@ -211,12 +235,9 @@ export function SignInModalForm({ className, toggleValue }: SignInModalProps) {
                 <Button
                   variant="subtle"
                   className="mx-auto grid w-fit grid-flow-col gap-[5px]"
-                  // onClick={() => {
-                  //   toggleValue();
-                  // }}
                 >
                   <p className="text-center text-sm text-white/70">
-                    Don't have an account already?
+
                   </p>
                   <button className="mx-auto flex w-fit self-center text-center align-middle font-visuelt text-sm font-medium text-white">
                     Sign Up
@@ -228,5 +249,5 @@ export function SignInModalForm({ className, toggleValue }: SignInModalProps) {
         </div>
       </Form>
     </FormProvider>
-  );
+  )
 }

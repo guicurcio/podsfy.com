@@ -38,15 +38,12 @@ const CommandInput = React.forwardRef<
   React.ElementRef<typeof CommandPrimitive.Input>,
   React.ComponentPropsWithoutRef<typeof CommandPrimitive.Input>
 >(({ className, ...props }, ref) => (
-  <div
-    className="border-b-slate-100 dark:border-b-slate-700 flex items-center border-b px-4"
-    cmdk-input-wrapper=""
-  >
+  <div className="flex items-center px-4" cmdk-input-wrapper="">
     <Search className="h-3 w-3 shrink-0 opacity-50" />
     <CommandPrimitive.Input
       ref={ref}
       className={mergeClasses(
-        "dark:text-slate-50 flex h-[50px] w-full rounded-md bg-transparent pt-4 pb-5 font-moderat text-[14px] outline-none placeholder:text-black/50 disabled:cursor-not-allowed disabled:opacity-50",
+        " flex h-[50px] w-full rounded-md bg-transparent pt-4 pb-5 font-moderat text-[14px] text-white outline-none placeholder:text-black/50 disabled:cursor-not-allowed disabled:opacity-50",
         className
       )}
       {...props}
@@ -120,9 +117,10 @@ const CommandItem = React.forwardRef<
   <CommandPrimitive.Item
     ref={ref}
     className={mergeClasses(
-      "relative flex cursor-default select-none items-center hover:cursor-pointer hover:bg-[#0D0E12] hover:text-white",
-      "rounded-md py-1.5 px-2 text-sm font-medium outline-none",
-      "aria-selected:bg-slate-100 dark:aria-selected:bg-slate-700 data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+      "flex cursor-pointer select-none items-center rounded-[3px]",
+      "pb-[10px] pt-[8px] px-2 font-lausanne text-[14px]  outline-none transition-colors",
+      "duration-200 hover:bg-fondy data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+      "self-center text-left align-middle  font-normal tracking-[-0.03em] text-[#a5a5a5]/90  antialiased",
       className
     )}
     {...props}

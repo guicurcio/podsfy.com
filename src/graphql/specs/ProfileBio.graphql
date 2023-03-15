@@ -1,0 +1,6 @@
+query GetProfileBio {
+  profiles {
+    bio
+    username
+  }
+}

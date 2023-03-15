@@ -1,4 +1,9 @@
+"use client"
+
 import { twMerge } from "tailwind-merge"
+import Button from "ui/components/Button"
+import { Toaster } from "ui/components/Toaster"
+import { toast } from "ui/hooks/use-toast"
 
 /**
  * PodBehind Props description
@@ -24,6 +29,13 @@ export interface PodBehindProps {
   podcastTitle?: string
 }
 
+function triggerInteraction(podcastTitle: string, interactionType: string) {
+  toast({
+    title: `${podcastTitle} added to ${interactionType}`,
+    description: `Now you can find it in your ${interactionType}`,
+  })
+}
+
 /**
  * PodBehind Component
  */
@@ -31,19 +43,33 @@ export default function PodBehind({
   className,
   genre,
   rating,
+  podcastTitle,
 }: PodBehindProps) {
+  // useEffect( () => {
+  //   if (userToken) {
+  //     client.setHeader("authorization", `Bearer ${userToken}`)
+  //   } else {
+  //     return
+  //   }
+  //   const sdk = getSdk(client)
+  //   const data = await sdk.getProfile()
+
+  //   console.log(data)
+  // }, [userToken])
+
   return (
     <div
-      className={twMerge("hidden md:grid  w-full grid-flow-row  gap-2  py-1", className)}
+      className={twMerge(
+        "hidden w-full  grid-flow-row gap-2  py-1  md:grid",
+        className
+      )}
     >
       <div className="grid grid-flow-col items-center justify-items-center  gap-2 py-2 ">
-        <button
-          // onClick={() => {
-          //   toast({
-          //     title: `${generateGoodTitleForReviews(podcastTitle)} added to favorites`,
-          //     description: 'Now you can find it in your favorites',
-          //   });
-          // }}
+        <Button
+          variant="subtle"
+          onClick={() => {
+            triggerInteraction(podcastTitle, "Favorite Podcasts List")
+          }}
           className="grid h-[55px] w-[70px] cursor-pointer grid-flow-row gap-1 rounded-md p-2 hover:bg-fondy hover:bg-opacity-[90%] hover:backdrop-brightness-[75%]"
         >
           <svg
@@ -60,8 +86,14 @@ export default function PodBehind({
             />
           </svg>
           <p className="text-center text-[13px] text-[#d9e8ed]">Favorite</p>
-        </button>
-        <div className="grid h-[55px] w-[70px] cursor-pointer grid-flow-row gap-1 rounded-md p-2 hover:bg-fondy hover:bg-opacity-[90%] hover:backdrop-brightness-[75%]">
+        </Button>
+        <Button
+          variant="subtle"
+          onClick={() => {
+            triggerInteraction(podcastTitle, "your Listen Later list.")
+          }}
+          className="grid h-[55px] w-[70px] cursor-pointer grid-flow-row gap-1 rounded-md p-2 hover:bg-fondy hover:bg-opacity-[90%] hover:backdrop-brightness-[75%]"
+        >
           <svg
             width="15"
             height="15"
@@ -78,8 +110,14 @@ export default function PodBehind({
             />
           </svg>
           <p className="text-center text-[13px] text-[#d9e8ed]">PodList</p>
-        </div>
-        <div className="grid h-[55px] w-[70px] cursor-pointer grid-flow-row gap-1 rounded-md p-2 hover:bg-fondy hover:bg-opacity-[90%] hover:backdrop-brightness-[75%]">
+        </Button>
+        <Button
+          variant="subtle"
+          onClick={() => {
+            triggerInteraction(podcastTitle, "Liked Podcasts List")
+          }}
+          className="grid h-[55px] w-[70px] cursor-pointer grid-flow-row gap-1 rounded-md p-2 hover:bg-fondy hover:bg-opacity-[90%] hover:backdrop-brightness-[75%]"
+        >
           <svg
             width="15"
             height="15"
@@ -94,7 +132,7 @@ export default function PodBehind({
             />
           </svg>
           <p className="text-center text-[13px] text-[#d9e8ed]">Like</p>
-        </div>
+        </Button>
         {/* <div className="grid grid-flow-row h-[55px] rounded-md w-[70px] gap-1 p-2 hover:backdrop-brightness-[75%] cursor-pointer hover:bg-fondy hover:bg-opacity-[90%]">
      <svg
       width="15"
@@ -145,8 +183,8 @@ export default function PodBehind({
         )}
       </div>
       <div className="">
-        <div className="absolute right-[-20px] top-[40px] ">
-          {/* <Toaster></Toaster> */}
+        <div className="absolute right-0 top-[6%] ">
+          <Toaster></Toaster>
         </div>
       </div>
     </div>
