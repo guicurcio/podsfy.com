@@ -10,7 +10,7 @@ import {
   CommandEmpty,
   CommandGroup,
   CommandInput,
-  CommandItem,
+  CommandItem
 } from "ui/components/Command"
 import { Popover, PopoverContent, PopoverTrigger } from "ui/components/Popover"
 import mergeClasses from "utils/mergeClasses/mergeClasses"
@@ -61,7 +61,6 @@ const Search = ({
           className={mergeClasses(
             "group h-[42px] self-center py-[12px] px-3 align-middle",
             " justify-between font-visuelt text-[14px] font-medium text-white/80",
-            "",
             className
           )}
         >
@@ -76,11 +75,11 @@ const Search = ({
       </PopoverTrigger>
       <PopoverContent
         className={mergeClasses(
-          "w-[630px] rounded-[3px] border-0 bg-[#1f1f23] p-0 font-visuelt text-[14px] font-normal text-white/50 shadow-3xl shadow-3xl",
+          "mt-[-20px] w-full border-0 bg-transparent ",
           popoverClassName
         )}
       >
-        <Command className="rounded-r-[5px] rounded-t-[0px] rounded-b-[5px] rounded-l-[5px] border-0 bg-[#1f1f23] font-visuelt text-[14px] font-normal text-white/50 shadow-3xl">
+        <Command className="n:rounded-b-[5px] rounded-[12px] rounded-t-[5px] rounded-r-[5px] rounded-l-[5px] border-x border-b border-gray-700 border-opacity-25 bg-[#1f1f23] font-visuelt text-[14px]  font-normal text-white/50 shadow-3xl drop-shadow-2xl backdrop:brightness-50">
           <CommandInput
             className="font-normal text-white/50 placeholder:text-white/70"
             placeholder="Search for podcasts, episodes, guests, notes..."

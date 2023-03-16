@@ -18,13 +18,13 @@ export default function HomePage() {
           "sticky top-0 z-50 w-screen min-w-full border-b border-gray-700 border-opacity-25 bg-[#0D0E12] bg-opacity-100"
         )}
       >
-        <div className="mx-auto max-w-[1200px]">
+        <div className="mx-auto w-full max-w-[1200px]">
           <div
             className={mergeClasses(
-              "mx-auto grid w-[1150px] min-w-[1150px] max-w-[1150px] grid-flow-col grid-cols-12",
+              "mx-auto grid w-[1200px] min-w-[1200px] max-w-[1200px] grid-flow-col grid-cols-12",
               // "border-b border-gray-700 border-opacity-25",
               " self-center",
-              "self-center px-[10px] align-middle"
+              "w-full self-center px-[10px] align-middle"
             )}
           >
             <Link
@@ -35,12 +35,12 @@ export default function HomePage() {
             >
               podsfy
             </Link>
-            <div className="col-span-7  py-3">
+            <div className="col-span-7  w-full py-3">
               {/* border-x border-sharper border-opacity-5 */}
               <Search
                 podcasts={staticPodcastData()}
                 className="col-span-7 w-full self-center  align-middle"
-                popoverClassName="col-span-7"
+                popoverClassName="w-[715px]"
               ></Search>
             </div>
 
@@ -49,7 +49,7 @@ export default function HomePage() {
         </div>
       </div>
       <div className="mx-auto max-w-[1200px]">
-        <div className="mx-auto grid h-full  max-w-[1150px] grid-flow-col grid-cols-12">
+        <div className="mx-auto grid h-full  max-w-[1200px] grid-flow-col grid-cols-12">
           <HomeSidebar className="col-span-2"></HomeSidebar>
           <Scroller className="col-span-7"></Scroller>
           <Trending className="col-span-3 "></Trending>

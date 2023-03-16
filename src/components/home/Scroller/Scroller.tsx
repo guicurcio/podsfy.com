@@ -1,5 +1,6 @@
 "use client"
 
+import { TooltipProvider } from "@radix-ui/react-tooltip"
 import TooltipContainer from "components/common/TooltipContainer"
 import TooltipIconButton from "components/home/TooltipIconButton"
 import { Cog, RefreshCcw } from "lucide-react"
@@ -8,6 +9,7 @@ import mergeClasses from "utils/mergeClasses"
 import FollowingFeed from "../feed/FollowingFeed"
 import ForYouFeed from "../feed/ForYouFeed"
 import LatestFeed from "../feed/LatestFeed"
+import TooltipWrapper from "../TooltipWrapper"
 
 /**
  * Props for the Scroller component.
@@ -43,24 +45,32 @@ export default function Scroller({ className }: ScrollerProps): JSX.Element {
           )}
         >
           <div>
-            <TabsTrigger
-              value="for-you"
-              className="outline-none ring-0 focus:ring-0"
-            >
-              For You
-            </TabsTrigger>
-            <TabsTrigger
-              value="latest"
-              className="outline-none ring-0 focus:ring-0"
-            >
-              Latest
-            </TabsTrigger>
-            <TabsTrigger
-              value="following"
-              className="outline-none ring-0 focus:ring-0"
-            >
-              Following
-            </TabsTrigger>
+            <TooltipProvider>
+              <TabsTrigger
+                value="for-you"
+                className="outline-none ring-0 focus:ring-0"
+              >
+                <TooltipWrapper tooltipContent="Our Suggestions">
+                  <p> For You</p>
+                </TooltipWrapper>
+              </TabsTrigger>
+              <TabsTrigger
+                value="latest"
+                className="outline-none ring-0 focus:ring-0"
+              >
+                <TooltipWrapper tooltipContent="Latest Podcasts">
+                  <p>Latest</p>
+                </TooltipWrapper>
+              </TabsTrigger>
+              <TabsTrigger
+                value="following"
+                className="outline-none ring-0 focus:ring-0"
+              >
+                <TooltipWrapper tooltipContent="Podcasts you follow">
+                  <p> Following</p>
+                </TooltipWrapper>
+              </TabsTrigger>
+            </TooltipProvider>
           </div>
           <TooltipContainer className="mr-[10px] grid h-full w-full grid-flow-col gap-[5px]  self-center  align-middle">
             <TooltipIconButton

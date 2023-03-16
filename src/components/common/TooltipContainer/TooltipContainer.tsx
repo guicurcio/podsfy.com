@@ -27,7 +27,9 @@ export default function TooltipContainer({
   return (
     <div
       className={mergeClasses(
-        "grid h-full w-full grid-flow-col gap-[8px] self-center align-middle",
+        className === "blank"
+          ? ""
+          : "grid h-full w-full grid-flow-col gap-[8px] self-center align-middle",
         className
       )}
     >

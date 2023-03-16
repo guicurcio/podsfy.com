@@ -1,2 +1,2 @@
-export * from "./TooltipIconButton"
-export { default } from "./TooltipIconButton"
+export * from "./TooltipWrapper"
+export { default } from "./TooltipWrapper"
