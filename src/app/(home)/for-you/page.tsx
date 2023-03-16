@@ -7,9 +7,6 @@ import staticPodcastData from "data/staticPodcastData";
 import Link from "next/link";
 import mergeClasses from "utils/mergeClasses";
 
-export const iconClasses =
-  "h-[16px] w-[16px] self-center align-middle text-white/60";
-
 export default function ForYouPage() {
   return (
     <div className="h-screen max-h-screen w-full overflow-hidden">
@@ -51,7 +48,7 @@ export default function ForYouPage() {
       <div className="mx-auto max-w-[1200px]">
         <div className="mx-auto grid h-full  max-w-[1200px] grid-flow-col grid-cols-12">
           <HomeSidebar className="col-span-2"></HomeSidebar>
-          <Scroller className="col-span-7"></Scroller>
+          <Scroller defaultFeed="for-you" className="col-span-7"></Scroller>
           <Trending className="col-span-3 "></Trending>
         </div>
       </div>

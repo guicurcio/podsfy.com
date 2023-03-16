@@ -6,10 +6,10 @@ import TooltipIconButton from "components/home/TooltipIconButton";
 import { Cog, RefreshCcw } from "lucide-react";
 import { Tabs, TabsList, TabsTrigger } from "ui/components/Tabs";
 import mergeClasses from "utils/mergeClasses";
-import FollowingFeed from "../feed/FollowingFeed";
-import ForYouFeed from "../feed/ForYouFeed";
-import LatestFeed from "../feed/LatestFeed";
-import TooltipWrapper from "../TooltipWrapper";
+import FollowingFeed from "components/home/feed/FollowingFeed";
+import ForYouFeed from "components/home/feed/ForYouFeed";
+import LatestFeed from "components/home/feed/LatestFeed";
+import TooltipWrapper from "components/home/TooltipWrapper";
 
 /**
  * Props for the Scroller component.
@@ -19,7 +19,7 @@ export interface ScrollerProps {
    * Custom class names passed to the root element.
    */
   className?: string;
-  defaultFeed: string;
+  defaultFeed?: string;
 }
 
 const defaultFeedValue = "for-you";
@@ -29,7 +29,7 @@ const defaultFeedValue = "for-you";
  */
 export default function Scroller({
   className,
-  defaultFeed,
+  defaultFeed = "home",
 }: ScrollerProps): JSX.Element {
   return (
     <div

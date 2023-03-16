@@ -1,21 +1,18 @@
-import Search from "components/common/Search"
-import HomeSidebar from "components/home/HomeSidebar"
-import ProfileTools from "components/home/ProfileTools"
-import Scroller from "components/home/Scroller/Scroller"
-import Trending from "components/home/Trending"
-import staticPodcastData from "data/staticPodcastData"
-import Link from "next/link"
-import mergeClasses from "utils/mergeClasses"
-
-export const iconClasses =
-  "h-[16px] w-[16px] self-center align-middle text-white/60"
+import Search from "components/common/Search";
+import HomeSidebar from "components/home/HomeSidebar";
+import ProfileTools from "components/home/ProfileTools";
+import Scroller from "components/home/Scroller/Scroller";
+import Trending from "components/home/Trending";
+import staticPodcastData from "data/staticPodcastData";
+import Link from "next/link";
+import mergeClasses from "utils/mergeClasses";
 
 export default function HomePage() {
   return (
     <div className="h-screen max-h-screen w-full overflow-hidden">
       <div
         className={mergeClasses(
-          "sticky top-0 z-50 w-screen min-w-full border-b border-gray-700 border-opacity-25 bg-[#0D0E12] bg-opacity-100"
+          "sticky top-0 z-50 w-screen min-w-full border-b border-gray-700 border-opacity-25 bg-[#0D0E12] bg-opacity-100",
         )}
       >
         <div className="mx-auto w-full max-w-[1200px]">
@@ -24,13 +21,13 @@ export default function HomePage() {
               "mx-auto grid w-[1200px] min-w-[1200px] max-w-[1200px] grid-flow-col grid-cols-12",
               // "border-b border-gray-700 border-opacity-25",
               " self-center",
-              "w-full self-center px-[10px] align-middle"
+              "w-full self-center px-[10px] align-middle",
             )}
           >
             <Link
               href="/"
               className={mergeClasses(
-                "col-span-2 cursor-pointer pl-[35px] pt-[8px] text-left font-SpaceGrotesk text-[32px] font-bold tracking-[-0.08em] text-[#CDCDCD]"
+                "col-span-2 cursor-pointer pl-[35px] pt-[8px] text-left font-SpaceGrotesk text-[32px] font-bold tracking-[-0.08em] text-[#CDCDCD]",
               )}
             >
               podsfy
@@ -56,5 +53,5 @@ export default function HomePage() {
         </div>
       </div>
     </div>
-  )
+  );
 }

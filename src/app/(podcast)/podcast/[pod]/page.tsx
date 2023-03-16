@@ -1,13 +1,13 @@
-import PodBehind from "components/pod/PodBehind"
-import PodDetails from "components/pod/PodDetails"
-import PodEpisodes from "components/pod/PodEpisodes"
-import PodReviews from "components/pod/PodReviews"
-import PodSimilar from "components/pod/PodSimilar"
-import PodStreaming from "components/pod/PodStreaming"
-import { db } from "lib/setupDBConfig/setupDBConfig"
-import { notFound } from "next/navigation"
-import { cache } from "react"
-import generateGoodTitleForReviews from "utils/generateGoodTitleForReviews"
+import PodBehind from "components/pod/PodBehind";
+import PodDetails from "components/pod/PodDetails";
+import PodEpisodes from "components/pod/PodEpisodes";
+import PodReviews from "components/pod/PodReviews";
+import PodSimilar from "components/pod/PodSimilar";
+import PodStreaming from "components/pod/PodStreaming";
+import { db } from "lib/setupDBConfig/setupDBConfig";
+import { notFound } from "next/navigation";
+import { cache } from "react";
+import generateGoodTitleForReviews from "utils/generateGoodTitleForReviews";
 
 const getPodInfo = cache(async (pod: string) =>
   db.podcast.findUnique({
@@ -48,28 +48,28 @@ const getPodInfo = cache(async (pod: string) =>
         },
       },
     },
-  })
-)
+  }),
+);
 
 const getPodcastsToStaticallyGenerate = async () =>
   db.podcast.findMany({
     select: {
       slug: true,
     },
-  })
+  });
 
 export async function generateStaticParams() {
-  const podcasts = await getPodcastsToStaticallyGenerate()
+  const podcasts = await getPodcastsToStaticallyGenerate();
   return podcasts.map((podcast) => ({
     pod: podcast.slug,
-  }))
+  }));
 }
 
 export default async function PodcastPage({ params }) {
-  const staticPodcastData = await getPodInfo(params?.pod)
+  const staticPodcastData = await getPodInfo(params?.pod);
 
   if (!staticPodcastData?.title) {
-    notFound()
+    notFound();
   }
 
   return (
@@ -100,7 +100,7 @@ export default async function PodcastPage({ params }) {
             <div className="mt-[20px] grid h-full grid-flow-row gap-[32px] lg:-mt-3   lg:items-start lg:pr-10 2xl:w-[800px]">
               <PodDetails
                 title={`${generateGoodTitleForReviews(
-                  staticPodcastData.title
+                  staticPodcastData.title,
                 )}`}
                 description={staticPodcastData.description}
                 podcastHostName={staticPodcastData?.podcastHost?.name}
@@ -109,14 +109,14 @@ export default async function PodcastPage({ params }) {
                 <div className="grid w-full grid-flow-row gap-[32px]">
                   <PodEpisodes
                     title={`Featured Episodes of ${generateGoodTitleForReviews(
-                      staticPodcastData.title
+                      staticPodcastData.title,
                     )}`}
                     episodes={staticPodcastData.episodes}
-                    defaultCoverImage={`../${staticPodcastData.cover}`}
+                    defaultCoverImage={`/${staticPodcastData.cover}`}
                   />
                   <PodEpisodes
                     title={`Latest Episodes of ${generateGoodTitleForReviews(
-                      staticPodcastData.title
+                      staticPodcastData.title,
                     )}`}
                     episodes={staticPodcastData.episodes}
                     defaultCoverImage={`../${staticPodcastData.cover}`}
@@ -131,7 +131,7 @@ export default async function PodcastPage({ params }) {
                   {staticPodcastData.reviews.length > 0 && (
                     <PodReviews
                       title={generateGoodTitleForReviews(
-                        staticPodcastData.title
+                        staticPodcastData.title,
                       )}
                       reviews={staticPodcastData.reviews}
                     />
@@ -150,5 +150,5 @@ export default async function PodcastPage({ params }) {
         </div>
       </div>
     </div>
-  )
+  );
 }
