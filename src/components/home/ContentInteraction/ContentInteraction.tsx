@@ -45,7 +45,7 @@ export default function ContentInteraction({
 }: ContentInteractionProps): JSX.Element {
   // const [addPodcastToFavoritesMutation, status] =
   //   useAddPodcastToFavoritesMutation()
-  const getProfileBio = useGetProfileBioLazyQuery()
+  // const getProfileBio = useGetProfileBioLazyQuery()
 
   const [isToggled, setIsToggled] = useToggle(false)
 

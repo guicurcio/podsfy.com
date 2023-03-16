@@ -39,13 +39,11 @@ const styleGroupingPlugin = {
 }
 
 const source =
-  `"absolute  self-center transition-colors ease-in-out",
-   "font-moderat font-medium font-normal",
-   "text-md text-xs text-white text-white text-opacity"`
+  "absolute text-opacity font-basier text-[14px] self-center text-red/50 font-moderat text-md font-normal text-white text-white font-medium transition-colors text-xs ease-in-out"
 
-const formatted = format(source, {
+const formatted = format(`"${source}"`, {
   parser: "babel",
   plugins: [styleGroupingPlugin],
 })
 
-console.log("formatted", formatted)
+console.log(formatted)

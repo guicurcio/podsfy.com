@@ -1,3 +1,9 @@
+/*---------------------------------------------------------------------------------------------
+ *
+ *  Copyright (c) Podsfy.com. All rights reserved.
+ *
+ *--------------------------------------------------------------------------------------------*/
+
 // eslint-disable-next-line import/extensions
 import "styles/fonts.css"
 // eslint-disable-next-line import/extensions
@@ -87,7 +93,9 @@ export default function RootLayout({
               src={backgroundImage}
               alt="Podcasts"
             ></Image>
-            {children}
+            <div className="backdrop-blur-[8px] backdrop-brightness-[50%]">
+              {children}
+            </div>
           </div>
         </div>
       </body>

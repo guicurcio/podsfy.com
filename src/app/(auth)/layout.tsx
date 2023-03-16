@@ -1,8 +1,13 @@
+// eslint-disable-next-line import/extensions
+import "styles/fonts.css"
+// eslint-disable-next-line import/extensions
+import "styles/globals.css"
+
+/* eslint-disable-next-line import/no-absolute-path, import/extensions */
+
 import Footer from "components/common/Footer"
 import PodcastCover from "components/pod/PodcastCover/PodcastCover"
-import { lazy, Suspense } from "react"
-
-const Join = lazy(() => import("components/SignUpModal"))
+import Link from "next/link"
 
 const podImages = [
   { src: "/pods/tunein.webp" },
@@ -49,19 +54,31 @@ const featuredPodcasts = [
   },
 ]
 
-export default function Page() {
+export default function AuthLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
   return (
-    <div className="backdrop-blur-[8px] backdrop-brightness-[50%]">
+    <div>
       <div className="relative z-50 mx-auto grid cursor-default select-none grid-flow-row gap-y-[30px] backdrop-blur-[0.1px] backdrop-brightness-[120%]">
         <div className="mx-auto grid  grid-flow-col place-content-between items-center py-[12px] md:min-w-[1280px]">
-          <a className="cursor-pointer py-2 px-3 text-center font-SpaceGrotesk text-[30px] font-bold tracking-[-0.08em] text-[#CDCDCD] md:text-left ">
+          <Link
+            href="/"
+            className="cursor-pointer py-2 px-3 text-center font-SpaceGrotesk text-[30px] font-bold tracking-[-0.08em] text-[#CDCDCD] md:text-left"
+          >
             podsfy
-          </a>
+          </Link>
+
           <div className="hidden self-center rounded-md py-2 px-3 align-middle text-[#CDCDCD] md:block">
             <div className="h-full w-full backdrop-brightness-[125%]">
-              <Suspense>
-                <Join baseState="SIGNING IN"></Join>
-              </Suspense>
+              {children}
+              {/* <Suspense>
+                        <Join
+                          openModalState={true}
+                          baseState="SIGNING IN"
+                        ></Join>
+                      </Suspense> */}
             </div>
           </div>
         </div>
@@ -69,9 +86,9 @@ export default function Page() {
           <h1 className="cursor-default  select-none px-[5px] text-center font-SpaceGrotesk text-[55px] font-normal leading-[55px] tracking-[-0.08em] text-white text-opacity-[75%]   brightness-[200%] drop-shadow-2xl md:w-full md:px-[0] md:text-[90px] md:leading-[95px] md:tracking-[-0.06em]">
             Your companion for podcasts reviews and rankings
           </h1>
-          <Suspense fallback={<div></div>}>
-            <Join baseState="REGISTERING"></Join>
-          </Suspense>
+          {/* <Suspense fallback={<div></div>}>
+                    <Join baseState="REGISTERING"></Join>
+                  </Suspense> */}
         </div>
         <div className="mx-auto grid grid-flow-row gap-y-[14px] ">
           <h1 className="mx-auto w-[250px] text-center font-moderat text-[14px] font-medium tracking-[-8%]  text-[#BDBDBD] md:w-full md:text-[16.5px] ">
@@ -105,6 +122,7 @@ export default function Page() {
         </div>
       </div>
       <Footer></Footer>
+      {children}
     </div>
   )
 }

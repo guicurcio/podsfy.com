@@ -3,7 +3,6 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import Form from "components/Form/Form"
 import { nhost } from "lib/setupBackendConfig"
-import asyncTuple from "lib/try/try"
 import { Twitch, Twitter } from "lucide-react"
 import { useRouter } from "next/navigation"
 import { useState } from "react"
@@ -40,6 +39,7 @@ export interface JoinProps {
   className?: string
 
   baseState?: "SIGNING IN" | "REGISTERING"
+  openModalState?: boolean
 }
 
 const SIGN_UP_MODAL_VALIDATION_SCHEMA = z.object({
@@ -61,12 +61,19 @@ export interface SignUpModalFormValues {
 /**
  * SignUpModal Component
  */
-export default function SignUpModal({ className, baseState }: JoinProps) {
+export default function SignUpModal({
+  className,
+  baseState,
+  openModalState,
+}: JoinProps) {
   const router = useRouter()
   const [loading, toggleLoading] = useToggle(false)
   const [action, setSignAction] = useState<"REGISTERING" | "SIGNING IN">(
     baseState || "REGISTERING"
   )
+
+  const [isModalToggled, toggleModalState] = useToggle(openModalState)
+
   const [error, setError] = useState({
     message: "",
     isError: false,
@@ -171,8 +178,8 @@ export default function SignUpModal({ className, baseState }: JoinProps) {
   }
 
   return (
-    <div className={twMerge("mx-auto mt-3 w-fit", className)}>
-      <Dialog>
+    <div className={twMerge("", className)}>
+      <Dialog open={isModalToggled}>
         <DialogTrigger asChild>
           <Button
             variant={baseState === "REGISTERING" ? "default" : "subtle"}
