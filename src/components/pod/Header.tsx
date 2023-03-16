@@ -1,11 +1,11 @@
-import Navigator from "components/common/Navigator"
-import Search from "components/common/Search"
-import User from "components/common/User"
+import Navigator from "components/common/Navigator";
+import Search from "components/common/Search";
+import User from "components/common/User";
 // import User from "components/common/User"
-import staticPodcastData from "data/staticPodcastData"
-import Link from "next/link"
-import { Suspense } from "react"
-import mergeClasses from "utils/mergeClasses/mergeClasses"
+import staticPodcastData from "data/staticPodcastData";
+import Link from "next/link";
+import { Suspense } from "react";
+import mergeClasses from "utils/mergeClasses/mergeClasses";
 
 /**
  * Header Props description
@@ -14,8 +14,8 @@ export interface HeaderProps {
   /**
    * Custom class names passed to the root element.
    */
-  className?: string
-  navItems?: any
+  className?: string;
+  navItems?: any;
 }
 
 /**
@@ -27,7 +27,7 @@ export default function Header({ className, navItems }: HeaderProps) {
       <div
         className={mergeClasses(
           "relative z-50 h-full w-full max-w-full border-b border-gray-700 border-opacity-25 bg-[#0D0E12] bg-opacity-100",
-          className
+          className,
         )}
       >
         <div className="mx-auto w-full max-w-[1300px] ">
@@ -36,7 +36,7 @@ export default function Header({ className, navItems }: HeaderProps) {
               <Link
                 href="/"
                 className={mergeClasses(
-                  "mx-auto cursor-pointer pt-[-2px] pl-[50px] font-SpaceGrotesk text-[26px] font-bold tracking-[-0.08em] text-[#CDCDCD] md:mx-0"
+                  "mx-auto cursor-pointer pt-[-2px] pl-[50px] font-SpaceGrotesk text-[26px] font-bold tracking-[-0.08em] text-[#CDCDCD] md:mx-0",
                 )}
               >
                 podsfy
@@ -66,7 +66,7 @@ export default function Header({ className, navItems }: HeaderProps) {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-Header.displayName = "DashboardHeader"
+Header.displayName = "DashboardHeader";
