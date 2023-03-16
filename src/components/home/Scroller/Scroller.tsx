@@ -2,14 +2,14 @@
 
 import { TooltipProvider } from "@radix-ui/react-tooltip";
 import TooltipContainer from "components/common/TooltipContainer";
-import TooltipIconButton from "components/home/TooltipIconButton";
-import { Cog, RefreshCcw } from "lucide-react";
-import { Tabs, TabsList, TabsTrigger } from "ui/components/Tabs";
-import mergeClasses from "utils/mergeClasses";
 import FollowingFeed from "components/home/feed/FollowingFeed";
 import ForYouFeed from "components/home/feed/ForYouFeed";
 import LatestFeed from "components/home/feed/LatestFeed";
+import TooltipIconButton from "components/home/TooltipIconButton";
 import TooltipWrapper from "components/home/TooltipWrapper";
+import { Cog, RefreshCcw } from "lucide-react";
+import { Tabs, TabsList, TabsTrigger } from "ui/components/Tabs";
+import mergeClasses from "utils/mergeClasses";
 
 /**
  * Props for the Scroller component.
@@ -22,29 +22,23 @@ export interface ScrollerProps {
   defaultFeed?: string;
 }
 
-const defaultFeedValue = "for-you";
-
 /**
  * Scroller Component
  */
 export default function Scroller({
   className,
-  defaultFeed = "home",
+  defaultFeed = "for-you",
 }: ScrollerProps): JSX.Element {
   return (
     <div
       className={mergeClasses(
         "bg-[#0D0E12]",
         "border-x border-sharper border-opacity-5",
-        // border-b border-gray-700 border-opacity-25
         "grid grid-flow-row gap-[25px]  font-visuelt shadow-3xl backdrop-blur-[10px]",
         className,
       )}
     >
-      <Tabs
-        defaultValue={defaultFeed || defaultFeedValue}
-        className="z-50 w-full border-0"
-      >
+      <Tabs defaultValue={defaultFeed} className="z-50 w-full border-0">
         <TabsList
           className={mergeClasses(
             "grid grid-flow-col justify-between",
@@ -79,7 +73,7 @@ export default function Scroller({
               </TabsTrigger>
             </TooltipProvider>
           </div>
-          <TooltipContainer className="mr-[10px] grid h-full w-full grid-flow-col gap-[5px]  self-center  align-middle">
+          <TooltipContainer className="mr-[20px] grid h-full w-full grid-flow-col gap-[5px]  self-center  align-middle">
             <TooltipIconButton
               className="h-[28px] self-center rounded-md px-2 align-middle text-[13px]"
               Icon={RefreshCcw}

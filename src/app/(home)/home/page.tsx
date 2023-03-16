@@ -19,7 +19,6 @@ export default function HomePage() {
           <div
             className={mergeClasses(
               "mx-auto grid w-[1200px] min-w-[1200px] max-w-[1200px] grid-flow-col grid-cols-12",
-              // "border-b border-gray-700 border-opacity-25",
               " self-center",
               "w-full self-center px-[10px] align-middle",
             )}
@@ -48,7 +47,7 @@ export default function HomePage() {
       <div className="mx-auto max-w-[1200px]">
         <div className="mx-auto grid h-full  max-w-[1200px] grid-flow-col grid-cols-12">
           <HomeSidebar className="col-span-2"></HomeSidebar>
-          <Scroller className="col-span-7"></Scroller>
+          <Scroller defaultFeed="for-you" className="col-span-7"></Scroller>
           <Trending className="col-span-3 "></Trending>
         </div>
       </div>
