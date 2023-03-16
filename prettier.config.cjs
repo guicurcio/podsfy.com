@@ -11,10 +11,10 @@ module.exports = {
     },
   ],
   endOfLine: "lf",
-  semi: false,
+  semi: true,
   singleQuote: false,
   tabWidth: 2,
-  trailingComma: "es5",
+  trailingComma: "all",
   importOrder: [
     "^(react/(.*)$)|^(react$)",
     "^(next/(.*)$)|^(next$)",

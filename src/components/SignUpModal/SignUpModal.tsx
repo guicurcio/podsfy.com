@@ -1,33 +1,38 @@
-"use client"
+"use client";
 
-import { zodResolver } from "@hookform/resolvers/zod"
-import Form from "components/Form/Form"
-import { nhost } from "lib/setupBackendConfig"
-import { Twitch, Twitter } from "lucide-react"
-import { useRouter } from "next/navigation"
-import { useState } from "react"
-import { FormProvider, useForm } from "react-hook-form"
-import { twMerge } from "tailwind-merge"
-import Button from "ui/components/Button"
+import { zodResolver } from "@hookform/resolvers/zod";
+import Form from "components/Form/Form";
+import { nhost } from "lib/setupBackendConfig";
+import { Twitch, Twitter, X } from "lucide-react";
+import { useRouter } from "next/navigation";
+import type { EffectCallback } from "react";
+import { useEffect, useRef, useState } from "react";
+import { FormProvider, useForm } from "react-hook-form";
+import Button from "ui/components/Button";
 import {
   Dialog,
+  DialogClose,
   DialogContent,
   DialogDescription,
   DialogFooter,
   DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "ui/components/Dialog"
-import { Input } from "ui/components/Input"
-import Label from "ui/components/Label"
+  DialogOverlay,
+  DialogPortal,
+  DialogTitle
+} from "ui/components/Dialog";
+import { Input } from "ui/components/Input";
+import Label from "ui/components/Label";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
-  TooltipTrigger,
-} from "ui/components/Tooltip"
-import useToggle from "ui/hooks/useToggle"
-import * as z from "zod"
+  TooltipTrigger
+} from "ui/components/Tooltip";
+import useOnClickOutside from "ui/hooks/useClickOutside/useClickOutside";
+import useToggle from "ui/hooks/useToggle";
+import * as z from "zod";
+
+const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 /**
  * Join Props description
@@ -36,10 +41,10 @@ export interface JoinProps {
   /**
    * Custom class names passed to the root element.
    */
-  className?: string
+  className?: string;
 
-  baseState?: "SIGNING IN" | "REGISTERING"
-  openModalState?: boolean
+  baseState?: "SIGNING IN" | "REGISTERING";
+  openModalState?: boolean;
 }
 
 const SIGN_UP_MODAL_VALIDATION_SCHEMA = z.object({
@@ -51,11 +56,16 @@ const SIGN_UP_MODAL_VALIDATION_SCHEMA = z.object({
   password: z
     .string()
     .min(3, { message: "The password should be at least 3 characters long." }),
-})
+});
+
+function useEffectOnce(effect: EffectCallback) {
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(effect, []);
+}
 
 export interface SignUpModalFormValues {
-  email: string
-  password: string
+  email: string;
+  password: string;
 }
 
 /**
@@ -66,47 +76,70 @@ export default function SignUpModal({
   baseState,
   openModalState,
 }: JoinProps) {
-  const router = useRouter()
-  const [loading, toggleLoading] = useToggle(false)
+  const router = useRouter();
+  const [loading, toggleLoading] = useToggle(false);
   const [action, setSignAction] = useState<"REGISTERING" | "SIGNING IN">(
-    baseState || "REGISTERING"
-  )
+    baseState || "REGISTERING",
+  );
 
-  const [isModalToggled, toggleModalState] = useToggle(openModalState)
+  const [isModalToggled, toggleModalState] = useToggle(false);
+  const clickOutsideRef = useRef(null);
+
+  useEffect(() => {
+    if (openModalState) {
+      toggleModalState();
+      console.log(
+        "'%c EFFECT:",
+        "color: blue; font-family:monospace; font-size: 20px",
+      );
+    }
+  }, [openModalState]);
+
+  const handleClickOutside = () => {
+    // Your custom logic here
+    console.log("clicked outside");
+  };
+
+  const handleClickInside = () => {
+    // Your custom logic here
+    console.log("clicked inside");
+  };
+
+  useOnClickOutside(clickOutsideRef, handleClickOutside);
 
   const [error, setError] = useState({
     message: "",
     isError: false,
-  })
+  });
 
   const form = useForm<SignUpModalFormValues>({
     reValidateMode: "onChange",
     resolver: zodResolver(SIGN_UP_MODAL_VALIDATION_SCHEMA),
-  })
+  });
 
-  const { register, formState } = form
+  const { register, formState } = form;
 
   const handleSignUpFormSubmit = async ({
     email,
     password,
   }: SignUpModalFormValues) => {
-    toggleLoading()
+    toggleLoading();
     try {
       const session = await nhost.auth.signUp({
         email,
         password,
-      })
+      });
 
       if (session?.session) {
-        router.push("/home")
-        return
+        router.push("/home");
+        return;
       }
 
       if (session?.error) {
-        toggleLoading()
+        toggleLoading();
         if (session.error.error === "already-signed-in") {
-          router.push("/home")
-          return
+          router.push("/home");
+          return;
         }
 
         if (session.error.error === "email-already-in-use") {
@@ -114,83 +147,95 @@ export default function SignUpModal({
             message:
               "This email is already in use. Please sign in or try another one.",
             isError: true,
-          })
-          return
+          });
+          return;
         }
 
         setError({
           message: error.message,
           isError: true,
-        })
-        return
+        });
+        return;
       }
-      router.push("/home")
+      router.push("/home");
     } catch (error_) {
-      console.log(error_, "error_")
+      console.log(error_, "error_");
 
-      toggleLoading()
+      toggleLoading();
       setError({
         message: error_.message,
         isError: true,
-      })
+      });
     }
-  }
+  };
 
   const handleSignInFormSubmit = async ({
     email,
     password,
   }: SignUpModalFormValues) => {
-    console.log("SIGNING IN")
-    toggleLoading()
+    console.log("SIGNING IN");
+    toggleLoading();
     try {
       const session = await nhost.auth.signIn({
         email,
         password,
-      })
-      console.log(session, "loginsession")
+      });
+      console.log(session, "loginsession");
       if (session?.session) {
-        router.push("/home")
-        return
+        router.push("/home");
+        return;
       }
 
       if (session?.error) {
-        toggleLoading()
+        toggleLoading();
         if (session.error.error === "already-signed-in") {
-          router.push("/home")
-          return
+          router.push("/home");
+          return;
         }
         if (session.error.error === "invalid-email-password") {
           setError({
             message:
               "Invalid email or password. Please either sign up or try again.",
             isError: true,
-          })
-          return
+          });
+          return;
         }
       }
     } catch (error_) {
-      toggleLoading()
+      toggleLoading();
       setError({
         message: error_.message,
         isError: true,
-      })
+      });
     }
-  }
+  };
 
   return (
-    <div className={twMerge("", className)}>
-      <Dialog open={isModalToggled}>
-        <DialogTrigger asChild>
-          <Button
-            variant={baseState === "REGISTERING" ? "default" : "subtle"}
-            size="lg"
+    <Dialog open={isModalToggled}>
+      <DialogPortal className="h-fit w-fit bg-red-500">
+        <DialogOverlay
+          className="z-0"
+          onClick={() => {
+            // toggleModalState();
+            delay(300).then(() => {
+              router.push("/");
+            });
+          }}
+        ></DialogOverlay>
+        <DialogContent
+          className="z-50 w-full border border-red-900 sm:max-w-[500px]"
+          forceMount
+        >
+          <DialogClose
+            tabIndex={-1}
+            onClick={() => {
+              router.push("/");
+            }}
+            className="focus:ring-slate-400 data-[state=open]:bg-slate-100 dark:focus:ring-slate-400 dark:focus:ring-offset-slate-900 dark:data-[state=open]:bg-slate-800 absolute top-4 right-4 rounded-sm opacity-70 transition-opacity focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:pointer-events-none hover:opacity-100"
           >
-            {baseState === "REGISTERING"
-              ? "Discover New Podcasts - it‘s free!"
-              : "Sign in"}
-          </Button>
-        </DialogTrigger>
-        <DialogContent className="sm:max-w-[500px]">
+            <X className="h-4 w-4" />
+            <span className="sr-only">Close</span>
+          </DialogClose>
           <DialogHeader>
             <DialogTitle className="text-[32px]">
               {action === "REGISTERING" ? "Create an account" : "Sign in"}
@@ -216,7 +261,7 @@ export default function SignUpModal({
                   ? handleSignUpFormSubmit
                   : handleSignInFormSubmit
               }
-              className="grid grid-flow-row gap-3"
+              className="z-50 grid h-full w-full grid-flow-row gap-3"
             >
               <div className="grid grid-flow-row items-center gap-2">
                 <Label
@@ -379,10 +424,10 @@ export default function SignUpModal({
               className="relative mx-auto grid w-fit grid-flow-col gap-[9px]"
               onClick={() => {
                 if (action === "SIGNING IN") {
-                  setSignAction("REGISTERING")
+                  setSignAction("REGISTERING");
                 }
                 if (action === "REGISTERING") {
-                  setSignAction("SIGNING IN")
+                  setSignAction("SIGNING IN");
                 }
               }}
             >
@@ -397,7 +442,7 @@ export default function SignUpModal({
             </Button>
           </DialogFooter>
         </DialogContent>
-      </Dialog>
-    </div>
-  )
+      </DialogPortal>
+    </Dialog>
+  );
 }

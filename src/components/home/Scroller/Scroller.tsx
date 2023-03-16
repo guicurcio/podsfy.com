@@ -1,15 +1,15 @@
-"use client"
+"use client";
 
-import { TooltipProvider } from "@radix-ui/react-tooltip"
-import TooltipContainer from "components/common/TooltipContainer"
-import TooltipIconButton from "components/home/TooltipIconButton"
-import { Cog, RefreshCcw } from "lucide-react"
-import { Tabs, TabsList, TabsTrigger } from "ui/components/Tabs"
-import mergeClasses from "utils/mergeClasses"
-import FollowingFeed from "../feed/FollowingFeed"
-import ForYouFeed from "../feed/ForYouFeed"
-import LatestFeed from "../feed/LatestFeed"
-import TooltipWrapper from "../TooltipWrapper"
+import { TooltipProvider } from "@radix-ui/react-tooltip";
+import TooltipContainer from "components/common/TooltipContainer";
+import TooltipIconButton from "components/home/TooltipIconButton";
+import { Cog, RefreshCcw } from "lucide-react";
+import { Tabs, TabsList, TabsTrigger } from "ui/components/Tabs";
+import mergeClasses from "utils/mergeClasses";
+import FollowingFeed from "../feed/FollowingFeed";
+import ForYouFeed from "../feed/ForYouFeed";
+import LatestFeed from "../feed/LatestFeed";
+import TooltipWrapper from "../TooltipWrapper";
 
 /**
  * Props for the Scroller component.
@@ -18,15 +18,19 @@ export interface ScrollerProps {
   /**
    * Custom class names passed to the root element.
    */
-  className?: string
+  className?: string;
+  defaultFeed: string;
 }
 
-const defaultFeedValue = "for-you"
+const defaultFeedValue = "for-you";
 
 /**
  * Scroller Component
  */
-export default function Scroller({ className }: ScrollerProps): JSX.Element {
+export default function Scroller({
+  className,
+  defaultFeed,
+}: ScrollerProps): JSX.Element {
   return (
     <div
       className={mergeClasses(
@@ -34,14 +38,17 @@ export default function Scroller({ className }: ScrollerProps): JSX.Element {
         "border-x border-sharper border-opacity-5",
         // border-b border-gray-700 border-opacity-25
         "grid grid-flow-row gap-[25px]  font-visuelt shadow-3xl backdrop-blur-[10px]",
-        className
+        className,
       )}
     >
-      <Tabs defaultValue={defaultFeedValue} className="z-50 w-full border-0">
+      <Tabs
+        defaultValue={defaultFeed || defaultFeedValue}
+        className="z-50 w-full border-0"
+      >
         <TabsList
           className={mergeClasses(
             "grid grid-flow-col justify-between",
-            "border-b border-sharper border-opacity-5"
+            "border-b border-sharper border-opacity-5",
           )}
         >
           <div>
@@ -88,7 +95,7 @@ export default function Scroller({ className }: ScrollerProps): JSX.Element {
         <FollowingFeed></FollowingFeed>
       </Tabs>
     </div>
-  )
+  );
 }
 
-Scroller.displayName = "Scroller"
+Scroller.displayName = "Scroller";

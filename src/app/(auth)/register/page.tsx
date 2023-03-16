@@ -1,13 +1,44 @@
-import Card from "components/common/Card"
+"use client";
 
-export default function HomePage() {
+import SignUpModal from "components/SignUpModal";
+import { useEffect } from "react";
+import useIsMounted from "ui/hooks/useIsMounted";
+import useToggle from "ui/hooks/useToggle";
+
+const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
+export default function Page() {
+  const isMounted = useIsMounted();
+  const [toggle, setToggle] = useToggle(false);
+  console.log("----------isMounted----------", isMounted());
+  console.log("----------toggle----------", toggle);
+
+  useEffect(() => {
+    console.log("----------isMounted useffec----------", isMounted());
+
+    if (!isMounted() || toggle) {
+      return;
+    }
+    console.log(
+      "----------isMounted useffec----------",
+      isMounted(),
+      toggle,
+      "toggle",
+    );
+
+    void delay(500).then(() => {
+      console.log("delay");
+
+      setToggle();
+    });
+  }, [isMounted]);
+
   return (
-    <div className="grid w-full grid-flow-col grid-cols-1 gap-[100px]">
-      <Card
-        title="Trending Episodes"
-        className="col-span-1 grid"
-        descriptionClassname="w-[470px]"
-      ></Card>
-    </div>
-  )
+    <>
+      <SignUpModal
+        openModalState={toggle}
+        baseState="REGISTERING"
+      ></SignUpModal>
+    </>
+  );
 }
