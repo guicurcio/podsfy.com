@@ -1,15 +1,29 @@
 "use client"
 
-import * as TooltipPrimitive from "@radix-ui/react-tooltip"
 import * as React from "react"
+import * as TooltipPrimitive from "@radix-ui/react-tooltip"
 import mergeClasses from "utils/mergeClasses"
 
 const TooltipProvider = TooltipPrimitive.Provider
 
 const Tooltip = ({ ...props }) => <TooltipPrimitive.Root {...props} />
+
 Tooltip.displayName = TooltipPrimitive.Tooltip.displayName
 
 const TooltipTrigger = TooltipPrimitive.Trigger
+
+const TooltipPortal = TooltipPrimitive.Portal
+
+const TooltipArrow = React.forwardRef<
+  React.ElementRef<typeof TooltipPrimitive.Arrow>,
+  React.ComponentPropsWithoutRef<typeof TooltipPrimitive.Arrow>
+>(({ className, ...props }, ref) => (
+  <TooltipPrimitive.Arrow
+    ref={ref}
+    className={mergeClasses("fill-[#1f1f23] text-[#1f1f23]", className)}
+    {...props}
+  />
+))
 
 const TooltipContent = React.forwardRef<
   React.ElementRef<typeof TooltipPrimitive.Content>,
@@ -27,5 +41,11 @@ const TooltipContent = React.forwardRef<
 ))
 TooltipContent.displayName = TooltipPrimitive.Content.displayName
 
-export { Tooltip, TooltipTrigger, TooltipContent, TooltipProvider }
-
+export {
+  Tooltip,
+  TooltipTrigger,
+  TooltipContent,
+  TooltipProvider,
+  TooltipArrow,
+  TooltipPortal,
+}

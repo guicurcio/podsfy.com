@@ -1,3 +1,4 @@
+// eslint-disable-next-line eslint-comments/disable-enable-pair
 /* eslint-disable @typescript-eslint/no-misused-promises */
 
 "use client"
@@ -6,7 +7,8 @@ import { twMerge } from "tailwind-merge"
 
 import { nhost } from "lib/setupBackendConfig"
 import asyncTuple from "lib/try/try"
-import { Home, Inbox, LogOut, Mail, Settings, UserCheck } from "lucide-react"
+import { Home, LogOut, Mail, Settings, UserCheck } from "lucide-react"
+import { useRouter } from "next/navigation"
 import { Avatar, AvatarFallback, AvatarImage } from "ui/components/Avatar"
 import Button from "ui/components/Button"
 import {
@@ -16,7 +18,7 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuShortcut,
-  DropdownMenuTrigger,
+  DropdownMenuTrigger
 } from "ui/components/Dropdown"
 
 /**
@@ -30,19 +32,11 @@ export interface UserProps {
 }
 
 /**
- * User
- */
-export interface HandleUserSignOutArgs {
-  /**
-   *
-   */
-}
-
-/**
  * User Component
  */
 export default function User({ className }: UserProps): JSX.Element {
   const user = nhost.auth.getUser()
+  const router = useRouter()
 
   /**
    *
@@ -53,6 +47,7 @@ export default function User({ className }: UserProps): JSX.Element {
    */
   async function handleUserSignOut() {
     await asyncTuple(nhost.auth.signOut())
+    router.push("/")
   }
 
   return (
@@ -76,7 +71,7 @@ export default function User({ className }: UserProps): JSX.Element {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent
-          className="w-[232px] overflow-x-auto rounded-[3px] border-0 bg-[#1f1f23] font-visuelt text-[14px] font-normal text-white/50 shadow-3xl"
+          className="w-[200px] overflow-x-auto rounded-[4px] border-0 bg-[#1f1f23] font-visuelt text-[14px] font-normal text-white/50 shadow-3xl"
           align="end"
           forceMount
         >

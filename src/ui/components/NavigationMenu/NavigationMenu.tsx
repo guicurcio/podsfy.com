@@ -52,8 +52,11 @@ const NavigationMenuList = React.forwardRef<
 ))
 NavigationMenuList.displayName = NavigationMenuPrimitive.List.displayName
 
-const navigationMenuTriggerStyle = cva(
-  "inline-flex items-center justify-center rounded-md transition-colors focus:outline-none focus:bg-slate-100 disabled:opacity-50 dark:focus:bg-slate-800 disabled:pointer-events-none bg-transparent hover:bg-slate-100 dark:hover:bg-slate-800 dark:text-slate-100 dark:hover:text-slate-100 data-[state=open]:bg-slate-50 dark:data-[state=open]:bg-slate-800 h-10 py-2 px-4 group w-max"
+const navigationMenuTriggerStyle = mergeClasses(
+  "inline-flex items-center justify-center rounded-md transition-colors focus:outline-none focus:bg-slate-100",
+  "disabled:opacity-50 dark:focus:bg-slate-800 disabled:pointer-events-none bg-transparent",
+  "dark:hover:bg-slate-800 dark:text-slate-100 dark:hover:text-slate-100 data-[state=open]:bg-slate-50 dark:data-[state=open]:bg-slate-800",
+  "h-10 py-2 px-4 group w-max"
 )
 
 const NavigationMenuItem = React.forwardRef<
@@ -77,7 +80,7 @@ const NavigationMenuTrigger = React.forwardRef<
 >(({ className, children, ...props }, ref) => (
   <NavigationMenuPrimitive.Trigger
     ref={ref}
-    className={mergeClasses(navigationMenuTriggerStyle(), "group", className)}
+    className={mergeClasses(navigationMenuTriggerStyle, "group", className)}
     {...props}
   >
     {children}{" "}
@@ -97,7 +100,9 @@ const NavigationMenuContent = React.forwardRef<
   <NavigationMenuPrimitive.Content
     ref={ref}
     className={mergeClasses(
-      "top-0 left-0 w-full data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out data-[motion=to-start]:slide-out-to-left-52 data-[motion=to-end]:slide-out-to-right-52 data-[motion=from-start]:slide-in-from-left-52 data-[motion=from-end]:slide-in-from-right-52 md:absolute md:w-auto ",
+      "top-0 left-0 w-full data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out data-[motion^=from-]:fade-in",
+      "data-[motion^=to-]:fade-out data-[motion=to-start]:slide-out-to-left-52 data-[motion=to-end]:slide-out-to-right-52",
+      "data-[motion=from-start]:slide-in-from-left-52 data-[motion=from-end]:slide-in-from-right-52 md:absolute md:w-auto ",
       className
     )}
     {...props}
@@ -142,7 +147,8 @@ const NavigationMenuIndicator = React.forwardRef<
   <NavigationMenuPrimitive.Indicator
     ref={ref}
     className={mergeClasses(
-      "top-full z-[1] flex h-1.5 items-end justify-center overflow-hidden data-[state=visible]:animate-in data-[state=hidden]:animate-out data-[state=visible]:fade-in data-[state=hidden]:fade-out",
+      "top-full z-[1] flex h-1.5 items-end justify-center overflow-hidden data-[state=visible]:animate-in",
+      "data-[state=hidden]:animate-out data-[state=visible]:fade-in data-[state=hidden]:fade-out",
       className
     )}
     {...props}

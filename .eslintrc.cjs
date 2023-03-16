@@ -36,6 +36,11 @@ module.exports = {
     "react/jsx-props-no-spreading": "off",
     "react/require-default-props": "off",
     "react-hooks/exhaustive-deps": "warn",
+    "no-promise-executor-return": "off",
+    curly: "off",
+    "no-void": "off",
+    "promise/always-return": "off",
+    "react-hooks/exhaustive-deps": "off",
     "import/order": "off",
     "import/extensions": ["error", "never", { json: "always" }],
     "react/jsx-filename-extension": ["warn", { extensions: [".jsx", ".tsx"] }],
@@ -108,4 +113,4 @@ module.exports = {
       },
     },
   ],
-}
+};

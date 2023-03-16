@@ -1,6 +1,5 @@
-"use client"
-
 import { HoverCardPortal } from "@radix-ui/react-hover-card"
+import { BellPlus, ExternalLink, Heart, MessageCircle } from "lucide-react"
 import Image from "next/image"
 import Button from "ui/components/Button"
 import {
@@ -9,6 +8,9 @@ import {
   HoverCardTrigger,
 } from "ui/components/Hover"
 
+import NhostContainer from "components/common/NhostContainer"
+import TooltipContainer from "components/common/TooltipContainer"
+import ContentInteraction from "components/home/ContentInteraction/ContentInteraction"
 import mergeClasses from "utils/mergeClasses"
 
 /**
@@ -62,49 +64,30 @@ export default function UnitOfContent({
         className
       )}
     >
-      <div className="grid grid-flow-row items-start justify-start gap-4">
-        <div className="grid grid-flow-col items-center gap-3">
-          <Image
-            src={defaultCoverImage || "/joe-rogan-experience.jpeg"}
-            className="h-[64px] w-[64px] rounded-[5px] border border-[#88888820] shadow-3xl"
-            alt="Podcast cover"
-            width={64}
-            height={64}
-          ></Image>
-          <div className="grid grid-flow-row gap-[1px]">
-            <h2 className="w-full text-left font-moderat text-[15px] font-medium text-[#E7E9EA]">
-              {title}
-            </h2>
-            <h2 className="w-full text-left font-moderat text-[15px] font-normal text-[#71767B]">
-              {description}
-            </h2>
+      <div className="grid w-full grid-flow-row gap-4">
+        <div className="grid w-full grid-flow-col items-center justify-between self-center align-middle ">
+          <div className="grid grid-flow-col items-center gap-3">
+            <Image
+              src={defaultCoverImage || "/joe-rogan-experience.jpeg"}
+              className="h-[64px] w-[64px] rounded-[5px] border border-[#88888820] shadow-3xl"
+              alt="Podcast cover"
+              width={64}
+              height={64}
+            ></Image>
+            <div className="grid w-[450px] grid-flow-row gap-[1px]">
+              <h2 className="w-full text-left font-moderat text-[15px] font-medium text-[#E7E9EA] ">
+                {title}
+              </h2>
+              <h2 className="w-full text-left font-moderat text-[15px] font-normal text-[#71767B]">
+                {description}
+              </h2>
+            </div>
           </div>
-        </div>
-      </div>
-      <div className="grid grid-flow-row gap-[8px]">
-        <p className="ml-[2px] font-visuelt text-[14px] font-normal leading-[24px] tracking-[0.5px] text-[#9ab] text-opacity-80  antialiased">
-          {content}
-        </p>
-
-        {/* {description.split("\\n").map((line) => (
-          <p
-            key={line}
-            className="ml-[2px] font-visuelt text-[14px] font-normal leading-[24px] tracking-[0.5px] text-[#9ab] text-opacity-80  antialiased"
-          >
-            {line}
-          </p>
-        ))} */}
-      </div>
-      <div className=" mt-[-5px] grid grid-flow-row items-start justify-start gap-[8px]">
-        {/* <p className="self-center text-left align-middle font-moderat text-[13.5px] font-medium tracking-[-0.03em] text-[#a5a5a5]/80 antialiased">
-          Streaming At
-        </p> */}
-        <div className=" grid grid-flow-col items-start justify-start px-[1px]">
           <HoverCard key="spotify">
             <HoverCardTrigger asChild>
               <Button
                 variant="subtle"
-                className="h-[42px] w-[42px] rounded-[7px] border-[2px] border-[#88888820]  p-0 shadow-3xl"
+                className="h-[42px] w-[42px] self-center rounded-[7px] border-[2px] border-[#88888820] p-0  align-middle shadow-3xl"
               >
                 <img
                   src={`/pods/spotify.webp`}
@@ -123,14 +106,45 @@ export default function UnitOfContent({
                       Joe Rogan Experience
                     </h2>
                   </div>
-                  <span className="cursor-pointer text-[14px] text-[#1D9BF0]">
-                    https://open.spotify.com/episode/
-                  </span>
+                  <div className="grid grid-flow-col justify-start gap-2">
+                    <span className="cursor-pointer text-[14px] text-[#1D9BF0]">
+                      https://open.spotify.com/episode/
+                    </span>
+                    <ExternalLink className="h-3 w-3  cursor-pointer text-[14px] text-[#1D9BF0]"></ExternalLink>
+                  </div>
                 </div>
               </HoverCardContent>
             </HoverCardPortal>
           </HoverCard>
         </div>
+      </div>
+      <div className="grid grid-flow-row gap-[8px]">
+        <p className="ml-[2px] font-visuelt text-[14px] font-normal leading-[24px] tracking-[0.5px] text-[#9ab] text-opacity-80  antialiased">
+          {content}
+        </p>
+      </div>
+      <div className=" mt-[-5px] grid grid-flow-row items-start justify-start gap-[8px]">
+        <NhostContainer>
+          <TooltipContainer className="gap-[32px]">
+            <ContentInteraction
+              Icon={Heart}
+              likeCount={150}
+              tooltipContent="Hold to Like"
+            ></ContentInteraction>
+            <ContentInteraction
+              Icon={BellPlus}
+              likeCount={322}
+              tooltipContent="Hold to Follow"
+              likeCountClassName="right-[-20px]"
+            ></ContentInteraction>
+            <ContentInteraction
+              Icon={MessageCircle}
+              likeCount={322}
+              tooltipContent="Hold to Comment"
+              likeCountClassName="right-[-19px]"
+            ></ContentInteraction>
+          </TooltipContainer>
+        </NhostContainer>
       </div>
     </div>
   )

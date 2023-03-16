@@ -1,11 +1,17 @@
-// eslint-disable-next-line import/extensions
-import "styles/fonts.css"
-// eslint-disable-next-line import/extensions
-import "styles/globals.css"
+/*---------------------------------------------------------------------------------------------
+ *
+ *  Copyright (c) Podsfy.com. All rights reserved.
+ *
+ *--------------------------------------------------------------------------------------------*/
 
-import Image from "next/image"
+// eslint-disable-next-line import/extensions
+import "styles/fonts.css";
+// eslint-disable-next-line import/extensions
+import "styles/globals.css";
+
+import Image from "next/image";
 /* eslint-disable-next-line import/no-absolute-path, import/extensions */
-import backgroundImage from "/public/bg.png"
+import backgroundImage from "/public/bg.png";
 
 export const siteConfig = {
   name: "Podsfy.com",
@@ -16,10 +22,10 @@ export const siteConfig = {
   links: {
     twitter: "https://twitter.com/podsfy",
   },
-}
+};
 
 export function absoluteUrl(path: string) {
-  return `${process.env.NEXT_PUBLIC_APP_URL}${path}`
+  return `${process.env.NEXT_PUBLIC_APP_URL}${path}`;
 }
 
 export const metadata = {
@@ -69,12 +75,12 @@ export const metadata = {
     apple: "/apple-touch-icon.png",
   },
   manifest: `${siteConfig.url}/site.webmanifest`,
-}
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en">
@@ -87,10 +93,12 @@ export default function RootLayout({
               src={backgroundImage}
               alt="Podcasts"
             ></Image>
-            {children}
+            <div className="backdrop-blur-[8px] backdrop-brightness-[50%]">
+              {children}
+            </div>
           </div>
         </div>
       </body>
     </html>
-  )
+  );
 }

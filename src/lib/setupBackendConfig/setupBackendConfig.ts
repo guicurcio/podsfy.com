@@ -1,5 +1,4 @@
-import { NhostClient } from "@nhost/nextjs"
-import schemaNhost from "graphql/schemas/schema-nhost"
+import { NhostClient } from "@nhost/nhost-js"
 
 export type BackendUrl = {
   /**
@@ -132,14 +131,6 @@ export interface NhostClientConstructorParams
    */
   adminSecret?: string
 }
-
-type NewNhostClient = Omit<
-  NhostClientConstructorParams,
-  | "clientStorage"
-  | "clientStorageType"
-  | "clientStorageGetter"
-  | "clientStorageSetter"
->
 
 export const nhost = new NhostClient({
   authUrl: "http://localhost:4000",

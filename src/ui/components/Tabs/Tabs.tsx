@@ -16,6 +16,7 @@ const TabsList = React.forwardRef<
     {...props}
   />
 ))
+
 TabsList.displayName = TabsPrimitive.List.displayName
 
 const TabsTrigger = React.forwardRef<
@@ -29,7 +30,7 @@ const TabsTrigger = React.forwardRef<
       "font-visuelt text-[14px] tracking-[-0.01em]",
       "inline-flex min-w-[100px] items-center justify-center rounded-[0.185rem] py-[12px] transition-all",
       "disabled:pointer-events-none disabled:opacity-50  data-[state=active]:shadow-sm",
-      "bg-[#0D0E12]  text-white/20 shadow-2xl  backdrop-brightness-[75%]",
+      "bg-[#0D0E12] shadow-2xl  backdrop-brightness-[75%]",
       "duration-300",
       // "border border-white border-opacity-5",
       // data-[state=active]:bg-fondy

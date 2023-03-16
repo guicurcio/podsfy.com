@@ -19,9 +19,9 @@ import {
 import mergeClasses from "utils/mergeClasses"
 
 const commonClassName = mergeClasses(
-  "focus:bg-slate-100 dark:splitfocus:bg-slate-700 relative grid w-fit cursor-pointer select-none  grid-flow-col items-center",
-  "justify-start  gap-[15px] rounded-[4px] py-[7px] pl-[16px] pr-[18px] font-visuelt text-[15px]  font-normal text-white/60",
-  "outline-none transition-colors duration-200 hover:bg-fondy data-[disabled]:pointer-events-none data-[disabled]:opacity-50"
+  "focus:bg-slate-100 relative grid w-fit cursor-pointer select-none grid-flow-col items-center",
+  "justify-start  gap-[15px] rounded-[12px] py-[9px] pl-[16px] pr-[18px] font-visuelt text-[15px]  font-normal text-white/60",
+  "outline-none transition-colors duration-300 hover:bg-fondy hover:bg-opacity-60 bg-backdrop-brightness-[50%] data-[disabled]:pointer-events-none data-[disabled]:opacity-50"
 )
 
 const menuItems = [
@@ -88,8 +88,8 @@ export default function HomeSidebar({
         className
       )}
     >
-      <NavigationMenu className=" py-4 px-[20px]">
-        <NavigationMenuList className="grid grid-flow-row gap-2">
+      <NavigationMenu className="px-[20px] pb-4 pt-2">
+        <NavigationMenuList className="grid grid-flow-row gap-[6px]">
           {menuItems.map((item) => (
             <NavigationMenuItem key={item.label}>
               {item.href ? (

@@ -1,8 +1,8 @@
 import type { VariantProps } from "class-variance-authority"
 import { cva } from "class-variance-authority"
+import { Loader2 } from "lucide-react"
 import * as React from "react"
 import mergeClasses from "utils/mergeClasses"
-import { Loader2 } from "lucide-react"
 
 export const buttonVariants = cva(
   "inline-flex items-center justify-center tracking-[-0.01em] font-medium font-visuelt rounded-md focus:outline-none focus:ring-0 focus:ring-offset-0 dark:hover:bg-slate-800 dark:hover:text-slate-100 disabled:opacity-50 dark:focus:ring-slate-400 disabled:pointer-events-none dark:focus:ring-offset-slate-900 data-[state=open]:bg-slate-100 dark:data-[state=open]:bg-slate-800",
@@ -21,9 +21,12 @@ export const buttonVariants = cva(
           "bg-transparent relative hover:bg-slate-100 dark:hover:bg-slate-800 dark:text-slate-100 dark:hover:text-slate-100 data-[state=open]:bg-transparent dark:data-[state=open]:bg-transparent",
         link: "bg-transparent underline-offset-4 hover:underline text-slate-900 dark:text-slate-100 hover:bg-transparent dark:hover:bg-transparent",
         main: "bg-[#050607f2]  border border-[#171717] text-white/75 hover:brightness-[120%] dark:bg-slate-50 dark:text-slate-900 font-SpaceGrotesk tracking-[-0.08em] text-[18px] font-medium",
+        icon: "grid h-[28px] grid-flow-col self-center align-middle text-[13px]",
+        none: "",
       },
       size: {
         default: "h-10 py-2 px-4 rounded-md text-[12px]",
+        none: "",
         subtle: "text-[14px]",
         sm: "h-9 px-3 rounded-md text-[13px]",
         md: "px-3 py-1.5 rounded-md text-[15px]",

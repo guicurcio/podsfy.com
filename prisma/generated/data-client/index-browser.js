@@ -117,6 +117,7 @@ exports.Prisma.PersonScalarFieldEnum = makeEnum({
 
 exports.Prisma.PodcastScalarFieldEnum = makeEnum({
   id: 'id',
+  uid: 'uid',
   title: 'title',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
