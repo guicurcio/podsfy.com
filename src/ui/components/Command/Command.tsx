@@ -118,8 +118,8 @@ const CommandItem = React.forwardRef<
     ref={ref}
     className={mergeClasses(
       "flex cursor-pointer select-none items-center rounded-[3px]",
-      "pb-[10px] pt-[8px] px-2 font-lausanne text-[14px]  outline-none transition-colors",
-      "duration-200 hover:bg-fondy data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+      "px-2 pb-[10px] pt-[8px] font-lausanne text-[14px]  outline-none transition-colors",
+      "duration-200 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 hover:bg-fondy",
       "self-center text-left align-middle  font-normal tracking-[-0.03em] text-[#a5a5a5]/90  antialiased",
       className
     )}

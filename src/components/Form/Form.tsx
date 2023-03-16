@@ -1,32 +1,32 @@
-import type { DetailedHTMLProps, HTMLProps, KeyboardEvent } from 'react';
-import { useFormContext } from 'react-hook-form';
+import type { DetailedHTMLProps, HTMLProps, KeyboardEvent } from "react"
+import { useFormContext } from "react-hook-form"
 
 export interface FormProps
   extends DetailedHTMLProps<HTMLProps<HTMLFormElement>, HTMLFormElement> {
   /**
    * Function to be called when the form is submitted.
    */
-  onSubmit?: (...args: any[]) => any;
+  onSubmit?: (...args: any[]) => any
 }
 
 export default function Form({ onSubmit, onKeyDown, ...props }: FormProps) {
   const {
     handleSubmit,
     formState: { isSubmitting },
-  } = useFormContext();
+  } = useFormContext()
 
   function handleKeyDown(event: KeyboardEvent) {
     if (
-      event.key !== 'Enter' ||
+      event.key !== "Enter" ||
       (!event.ctrlKey && !event.metaKey) ||
       isSubmitting
     ) {
-      return;
+      return
     }
 
-    event.preventDefault();
+    event.preventDefault()
 
-    handleSubmit(onSubmit)(event);
+    handleSubmit(onSubmit)(event)
   }
 
   return (
@@ -36,12 +36,12 @@ export default function Form({ onSubmit, onKeyDown, ...props }: FormProps) {
       {...props}
       onKeyDown={(event) => {
         if (onKeyDown) {
-          onKeyDown(event);
+          onKeyDown(event)
         }
 
-        handleKeyDown(event);
+        handleKeyDown(event)
       }}
       onSubmit={handleSubmit(onSubmit)}
     />
-  );
+  )
 }

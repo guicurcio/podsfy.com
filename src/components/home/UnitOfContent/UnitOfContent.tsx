@@ -1,11 +1,5 @@
-"use client"
-
-import { HoverCardArrow, HoverCardPortal } from "@radix-ui/react-hover-card"
-import {
-  useAddPodcastToFavoritesMutation,
-  useGetProfileBioQuery,
-} from "graphql/schemas/generated/apollo/apollo"
-import { ExternalLink, Heart, ListPlus } from "lucide-react"
+import { HoverCardPortal } from "@radix-ui/react-hover-card"
+import { BellPlus, ExternalLink, Heart, MessageCircle } from "lucide-react"
 import Image from "next/image"
 import Button from "ui/components/Button"
 import {
@@ -13,19 +7,11 @@ import {
   HoverCardContent,
   HoverCardTrigger,
 } from "ui/components/Hover"
-import {
-  Tooltip,
-  TooltipArrow,
-  TooltipContent,
-  TooltipPortal,
-  TooltipProvider,
-  TooltipTrigger,
-} from "ui/components/Tooltip"
 
+import NhostContainer from "components/common/NhostContainer"
+import TooltipContainer from "components/common/TooltipContainer"
+import ContentInteraction from "components/home/ContentInteraction/ContentInteraction"
 import mergeClasses from "utils/mergeClasses"
-
-export const iconClasses =
-  "h-[16px] w-[16px] self-center align-middle text-white/60"
 
 /**
  * Props for the UnitOfContent component.
@@ -70,18 +56,6 @@ export default function UnitOfContent({
   discussing his early struggles as a comedian and the challenges he
   faced breaking into the entertainment industry.`,
 }: UnitOfContentProps): JSX.Element {
-  const [addPodcastToFavoritesMutation, status] =
-    useAddPodcastToFavoritesMutation()
-  const { data, loading, error } = useGetProfileBioQuery()
-
-  const podId = "0561e16c-09d5-4738-9173-1efe1541ac50"
-
-  if (loading) {
-    return <div>Loading</div>
-  }
-
-  console.log(data)
-
   return (
     <div
       key={title}
@@ -100,8 +74,8 @@ export default function UnitOfContent({
               width={64}
               height={64}
             ></Image>
-            <div className="grid grid-flow-row gap-[1px]">
-              <h2 className="w-full text-left font-moderat text-[15px] font-medium text-[#E7E9EA]">
+            <div className="grid w-[450px] grid-flow-row gap-[1px]">
+              <h2 className="w-full text-left font-moderat text-[15px] font-medium text-[#E7E9EA] ">
                 {title}
               </h2>
               <h2 className="w-full text-left font-moderat text-[15px] font-normal text-[#71767B]">
@@ -148,109 +122,29 @@ export default function UnitOfContent({
         <p className="ml-[2px] font-visuelt text-[14px] font-normal leading-[24px] tracking-[0.5px] text-[#9ab] text-opacity-80  antialiased">
           {content}
         </p>
-
-        {/* {description.split("\\n").map((line) => (
-          <p
-            key={line}
-            className="ml-[2px] font-visuelt text-[14px] font-normal leading-[24px] tracking-[0.5px] text-[#9ab] text-opacity-80  antialiased"
-          >
-            {line}
-          </p>
-        ))} */}
       </div>
       <div className=" mt-[-5px] grid grid-flow-row items-start justify-start gap-[8px]">
-        {/* <p className="self-center text-left align-middle font-moderat text-[13.5px] font-medium tracking-[-0.03em] text-[#a5a5a5]/80 antialiased">
-          Streaming At
-        </p> */}
-        <div className=" grid grid-flow-col items-start justify-start gap-[4px] px-[1px] px-4">
-          {/* <div
-                  className={mergeClasses(
-                    "col-span-3 grid w-full grid-flow-col place-items-end items-end justify-end justify-items-end gap-[10px]"
-                  )}
-                > */}
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button
-                  className="grid h-[28px] grid-flow-col  self-center  align-middle text-[13px]"
-                  variant="subtle"
-                  size="none"
-                  onClick={async () => {
-                    if (!data?.profiles[0].id) {
-                      alert("no profile id")
-                    }
-                    const res = await addPodcastToFavoritesMutation({
-                      variables: {
-                        profileID: data?.profiles[0]?.id,
-                        podcastID: podId,
-                      },
-                    })
-                    console.log(res)
-                  }}
-                >
-                  <Heart
-                    className={mergeClasses(
-                      iconClasses,
-                      "h-4 w-4 text-white/40 hover:text-white/70",
-                      data?.profiles[0]?.favoritePodcasts[0]?.podcast_id ===
-                        podId && "fill-white/50 brightness-[100%]"
-                    )}
-                  ></Heart>
-                </Button>
-              </TooltipTrigger>
-              <span className="self-center align-middle font-moderat text-[12px] font-normal text-[#71767B]">
-                1124
-              </span>
-              <TooltipPortal>
-                <TooltipContent
-                  className="overflow-x-hidden rounded-[3px] border-0 bg-[#1f1f23] font-visuelt text-[13px] font-normal text-white/50 shadow-3xl"
-                  side="bottom"
-                  align="center"
-                >
-                  <p>Like</p>
-                  <TooltipArrow></TooltipArrow>
-                </TooltipContent>
-              </TooltipPortal>
-            </Tooltip>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button
-                  className="h-8 self-center rounded-md px-2 align-middle text-[13px]"
-                  variant="subtle"
-                  size="none"
-                >
-                  <ListPlus
-                    className={mergeClasses(
-                      iconClasses,
-                      "h-4 w-4 text-white/40 hover:text-white/70"
-                    )}
-                  ></ListPlus>
-                </Button>
-              </TooltipTrigger>
-              <TooltipPortal>
-                <TooltipContent
-                  className="overflow-x-hidden rounded-[3px] border-0 bg-[#1f1f23] font-visuelt text-[13px] font-normal text-white/50 shadow-3xl"
-                  side="bottom"
-                  align="center"
-                >
-                  <p>Follow</p>
-                  <TooltipArrow></TooltipArrow>
-                </TooltipContent>
-              </TooltipPortal>
-            </Tooltip>
-          </TooltipProvider>
-
-          {/* <Button
-                    className="m-0 h-[32px] w-full gap-2  self-center rounded-[1px] bg-fondy px-2 shadow-2xl"
-                    variant="none"
-                    size="none"
-                  >
-                    <Archive className="h-[16px] w-[16px] self-center align-middle text-white/60"></Archive>
-                    <span className="self-center  align-middle font-moderat text-[13px] text-white/60">
-                      Get Bits
-                    </span>
-                  </Button> */}
-        </div>
+        <NhostContainer>
+          <TooltipContainer className="gap-[32px]">
+            <ContentInteraction
+              Icon={Heart}
+              likeCount={150}
+              tooltipContent="Hold to Like"
+            ></ContentInteraction>
+            <ContentInteraction
+              Icon={BellPlus}
+              likeCount={322}
+              tooltipContent="Hold to Follow"
+              likeCountClassName="right-[-20px]"
+            ></ContentInteraction>
+            <ContentInteraction
+              Icon={MessageCircle}
+              likeCount={322}
+              tooltipContent="Hold to Comment"
+              likeCountClassName="right-[-19px]"
+            ></ContentInteraction>
+          </TooltipContainer>
+        </NhostContainer>
       </div>
     </div>
   )

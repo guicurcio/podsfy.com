@@ -7,7 +7,7 @@ import mergeClasses from "utils/mergeClasses"
 const HoverCard = HoverCardPrimitive.Root
 
 const HoverCardTrigger = HoverCardPrimitive.Trigger
-const {HoverCardPortal} = HoverCardPrimitive
+const { HoverCardPortal } = HoverCardPrimitive
 
 const HoverCardContent = React.forwardRef<
   React.ElementRef<typeof HoverCardPrimitive.Content>,
@@ -24,6 +24,6 @@ const HoverCardContent = React.forwardRef<
     {...props}
   />
 ))
-HoverCardContent.displayName = HoverCardPrimitive.Content.displayName
+HoverCardContent.displayName = "HoverCardPrimitive.Content.displayName"
 
-export { HoverCard, HoverCardTrigger, HoverCardContent }
+export { HoverCard, HoverCardTrigger, HoverCardContent, HoverCardPortal }

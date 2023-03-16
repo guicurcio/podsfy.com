@@ -29,6 +29,7 @@ module.exports = {
     "^[./]",
   ],
   importOrderSeparation: false,
+  pluginSearchDirs: ["./prettierPlugins"],
   importOrderSortSpecifiers: true,
   importOrderBuiltinModulesToTop: true,
   importOrderParserPlugins: ["typescript", "jsx", "decorators-legacy"],

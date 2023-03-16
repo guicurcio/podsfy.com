@@ -1,4 +1,3 @@
-/* eslint-disable-next-line import/no-absolute-path, import/extensions */
 import Footer from "components/common/Footer"
 import PodcastCover from "components/pod/PodcastCover/PodcastCover"
 import { lazy, Suspense } from "react"

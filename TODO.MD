@@ -1,0 +1,3 @@
+- ABSTRACT the updater into its own component.
+
+- tabs should not rely on context but instead of on the route, this way we SSR...

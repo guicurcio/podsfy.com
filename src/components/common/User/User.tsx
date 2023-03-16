@@ -1,3 +1,4 @@
+// eslint-disable-next-line eslint-comments/disable-enable-pair
 /* eslint-disable @typescript-eslint/no-misused-promises */
 
 "use client"
@@ -28,15 +29,6 @@ export interface UserProps {
    * Custom class names passed to the root element.
    */
   className?: string
-}
-
-/**
- * User
- */
-export interface HandleUserSignOutArgs {
-  /**
-   *
-   */
 }
 
 /**
@@ -79,7 +71,7 @@ export default function User({ className }: UserProps): JSX.Element {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent
-          className="w-[232px] overflow-x-auto rounded-[3px] border-0 bg-[#1f1f23] font-visuelt text-[14px] font-normal text-white/50 shadow-3xl"
+          className="w-[200px] overflow-x-auto rounded-[4px] border-0 bg-[#1f1f23] font-visuelt text-[14px] font-normal text-white/50 shadow-3xl"
           align="end"
           forceMount
         >

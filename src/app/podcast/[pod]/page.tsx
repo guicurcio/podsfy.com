@@ -65,8 +65,6 @@ export async function generateStaticParams() {
   }))
 }
 
-
-
 export default async function PodcastPage({ params }) {
   const staticPodcastData = await getPodInfo(params?.pod)
 
