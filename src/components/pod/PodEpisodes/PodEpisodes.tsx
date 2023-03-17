@@ -55,7 +55,7 @@ export default function PodEpisodes({
   return (
     <div
       className={mergeClasses(
-        "grid w-full grid-flow-row rounded-[4px]   border-[#252525] border-opacity-[20%] bg-[#0a0a0b] ",
+        "grid w-full grid-flow-row ]  rounded-[4px] border-0 bg-[#1f1f23] font-visuelt text-[14px] font-normal text-white/50 shadow-3xl backdrop-brightness-[30%]",
         className
       )}
     >

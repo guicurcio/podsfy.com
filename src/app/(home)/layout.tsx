@@ -1,6 +1,9 @@
-import Image from "next/image"
+import Image from "next/image";
 /* eslint-disable-next-line import/no-absolute-path, import/extensions */
-import backgroundImage from "/public/bg.png"
+import backgroundImage from "/public/bg.png";
+import HomeHeader from "components/home/HomeHeader/HomeHeader";
+import HomeSidebar from "components/home/HomeSidebar/HomeSidebar";
+import Trending from "components/home/Trending/Trending";
 
 export default function HomeLayout({ children }) {
   return (
@@ -16,8 +19,17 @@ bg-opacity-[95%] font-visuelt
   shadow-3xl backdrop-blur-[10px] backdrop-brightness-[60%]
       "
       >
-        {children}
+        <div className="h-screen max-h-screen w-full overflow-hidden">
+          <HomeHeader></HomeHeader>
+          <div className="mx-auto max-w-[1200px]">
+            <div className="mx-auto grid h-full  max-w-[1200px] grid-flow-col grid-cols-12">
+              <HomeSidebar className="col-span-2"></HomeSidebar>
+              {children}
+              <Trending></Trending>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  )
+  );
 }

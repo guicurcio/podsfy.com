@@ -34,7 +34,7 @@ export default function TooltipContainer({
     >
       <TooltipProvider delayDuration={100}>
         {React.Children.map(children, (child) => (
-          <div className="alignmid self-center">
+          <div className="self-center align-middle">
             {React.cloneElement(child as React.ReactElement)}
           </div>
         ))}
