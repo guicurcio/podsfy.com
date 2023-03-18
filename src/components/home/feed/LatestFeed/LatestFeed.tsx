@@ -1,10 +1,7 @@
-"use client"
-
-import UnitOfContent from "components/home/UnitOfContent"
-import { Suspense } from "react"
-import Skeleton from "ui/components/Skeleton"
-import { TabsContent } from "ui/components/Tabs"
-import mergeClasses from "utils/mergeClasses"
+import UnitOfContent from "components/home/UnitOfContent";
+import { Suspense } from "react";
+import Skeleton from "ui/components/Skeleton";
+import mergeClasses from "utils/mergeClasses";
 
 /**
  * Props for the LatestFeed component.
@@ -13,7 +10,7 @@ export interface LatestFeedProps {
   /**
    * Custom class names passed to the root element.
    */
-  className?: string
+  className?: string;
 }
 
 /**
@@ -23,11 +20,10 @@ export default function LatestFeed({
   className,
 }: LatestFeedProps): JSX.Element {
   return (
-    <TabsContent
-      value="latest"
+    <div
       className={mergeClasses(
         "h-screen overflow-scroll overflow-y-scroll scrollbar-none scrollbar-track-[#0D0E12] scrollbar-thumb-[#0D0E12]",
-        className
+        className,
       )}
     >
       <div className="grid grid-flow-row divide-y-[1px] divide-fondy/50  backdrop-brightness-[75%]">
@@ -69,8 +65,8 @@ export default function LatestFeed({
         <UnitOfContent></UnitOfContent>
         <UnitOfContent></UnitOfContent>
       </div>
-    </TabsContent>
-  )
+    </div>
+  );
 }
 
-LatestFeed.displayName = "LatestFeed"
+LatestFeed.displayName = "LatestFeed";

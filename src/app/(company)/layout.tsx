@@ -1,11 +1,13 @@
-import CompanySidebar from "components/common/CompanySidebar"
-import Footer from "components/common/Footer"
-import Header from "components/pod/Header"
-import Image from "next/image"
-import { Suspense } from "react"
-import mergeClasses from "utils/mergeClasses"
+import CompanySidebar from "components/common/CompanySidebar";
+import Footer from "components/common/Footer";
+import Header from "components/pod/Header";
+import Image from "next/image";
+import { Suspense } from "react";
+import mergeClasses from "utils/mergeClasses";
 /* eslint-disable-next-line import/no-absolute-path, import/extensions */
-import backgroundImage from "/public/bg.png"
+import backgroundImage from "/public/bg.png";
+
+export const dynamic = "force-static";
 
 export default function HomeLayout({ children }) {
   return (
@@ -31,7 +33,7 @@ max-w-[1200px]  rounded-[9px]    bg-opacity-[95%] py-[25px]  px-[20px] font-visu
                 " overflow-hidden rounded-[5px]",
                 "bg-[#0D0E12] py-[25px]",
                 "border border-sharper border-opacity-10",
-                "px-[20px] font-visuelt shadow-3xl backdrop-blur-[10px] "
+                "px-[20px] font-visuelt shadow-3xl backdrop-blur-[10px] ",
               )}
             >
               <div className="grid w-full  grid-flow-col items-start justify-start justify-items-start gap-[84px]">
@@ -47,5 +49,5 @@ max-w-[1200px]  rounded-[9px]    bg-opacity-[95%] py-[25px]  px-[20px] font-visu
       </div>
       <Footer className="border-0 bg-transparent pt-[60px] backdrop-blur-[8px] backdrop-brightness-[60%]"></Footer>
     </div>
-  )
+  );
 }

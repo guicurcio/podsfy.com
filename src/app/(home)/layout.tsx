@@ -6,6 +6,8 @@ import HomeSidebar from "components/home/HomeSidebar/HomeSidebar";
 import Trending from "components/home/Trending/Trending";
 import Scroller from "components/home/Scroller/Scroller";
 
+export const dynamic = "force-static";
+
 export default function HomeLayout({ children }) {
   return (
     <div className="  w-[1920px]  bg-[#0D0E12]">
@@ -25,9 +27,7 @@ bg-opacity-[95%] font-visuelt
           <div className="mx-auto max-w-[1200px]">
             <div className="mx-auto grid h-full  max-w-[1200px] grid-flow-col grid-cols-12">
               <HomeSidebar className="col-span-2"></HomeSidebar>
-              <Scroller className="col-span-7">
-                {children}
-              </Scroller>
+              <Scroller className="col-span-7">{children}</Scroller>
               <Trending></Trending>
             </div>
           </div>

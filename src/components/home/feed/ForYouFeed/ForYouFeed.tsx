@@ -1,8 +1,6 @@
-// import FeedUpdater from "components/home/FeedUpdater";
+"use server";
+
 import UnitOfContent from "components/home/UnitOfContent";
-import { Suspense } from "react";
-import Skeleton from "ui/components/Skeleton";
-// import { TabsContent } from "ui/components/Tabs"
 import mergeClasses from "utils/mergeClasses";
 
 /**
@@ -18,9 +16,8 @@ export interface ForYouFeedProps {
 /**
  * ForYouFeed Component
  */
-export default function ForYouFeed({
-  className,
-}: ForYouFeedProps): JSX.Element {
+// eslint-disable-next-line @typescript-eslint/require-await
+export default async function ForYouFeed({ className }: ForYouFeedProps) {
   return (
     <div
       className={mergeClasses(
@@ -30,15 +27,14 @@ export default function ForYouFeed({
     >
       <div className="grid grid-flow-row divide-y-[1px] divide-fondy/50  backdrop-brightness-[75%]">
         {/* <FeedUpdater feedUpdaterText="Show 11 new updates"></FeedUpdater> */}
-        <Suspense fallback={<Skeleton></Skeleton>}>
-          <UnitOfContent
-            key="asd"
-            defaultCoverImage="/joe-rogan-experience.jpeg"
-            title="Joe Rogan Experience #1278 - Kevin Hart"
-            description="Joe Rogan Experience"
-          ></UnitOfContent>
-        </Suspense>
+        {/* @ts-expect-error Async Server Component */}
         <UnitOfContent
+          key="asd"
+          defaultCoverImage="/joe-rogan-experience.jpeg"
+          title="Joe Rogan Experience #1278 - Kevin Hart"
+          description="Joe Rogan Experience"
+        ></UnitOfContent>
+        {/* <UnitOfContent
           title="Beyond Good and Evil"
           description="Beyond Good and Evil"
           defaultCoverImage="/pods/ab67656300005f1f988e1a5bd74eb65370c8478e.jfif"
@@ -66,7 +62,7 @@ export default function ForYouFeed({
         <UnitOfContent></UnitOfContent>
         <UnitOfContent></UnitOfContent>
         <UnitOfContent></UnitOfContent>
-        <UnitOfContent></UnitOfContent>
+        <UnitOfContent></UnitOfContent> */}
       </div>
     </div>
   );

@@ -1,18 +1,15 @@
-"use server";
-
 import NhostContainer from "components/common/NhostContainer";
 import TooltipContainer from "components/common/TooltipContainer";
 import ContentInteraction from "components/home/ContentInteraction/ContentInteraction";
 import HoverCardWrapper from "components/home/client/HoverCardWrapper/HoverCardWrapper";
-import { cookies } from "next/headers";
 import Image from "next/image";
 import Link from "next/link";
 import mergeClasses from "utils/mergeClasses";
 
 /**
- * Props for the UnitOfContent component.
+ * Props for the PodcastFeedUnit component.
  */
-export interface UnitOfContentProps {
+export interface PodcastFeedUnitProps {
   /**
    * Pass a custom title to the component.
    * @default ""
@@ -40,9 +37,9 @@ export interface UnitOfContentProps {
 }
 
 /**
- * UnitOfContent Component
+ * PodcastFeedUnit Component
  */
-export default async function UnitOfContent({
+export default function PodcastFeedUnit({
   className = "",
   description = "",
   title = "Joe Rogan Experience #1278 - Kevin Hart",
@@ -51,7 +48,7 @@ export default async function UnitOfContent({
   comedy.\n\nIn the episode, Kevin Hart opens up about his rise to fame,
   discussing his early struggles as a comedian and the challenges he
   faced breaking into the entertainment industry.`,
-}: UnitOfContentProps) {
+}: PodcastFeedUnitProps): JSX.Element {
   return (
     <div
       key={title}
@@ -116,4 +113,4 @@ export default async function UnitOfContent({
   );
 }
 
-UnitOfContent.displayName = "UnitOfContent";
+PodcastFeedUnit.displayName = "PodcastFeedUnit";
