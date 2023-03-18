@@ -5,7 +5,7 @@ import ForYouFeed from "components/home/feed/ForYouFeed";
 import LatestFeed from "components/home/feed/LatestFeed";
 import { Tabs } from "ui/components/Tabs";
 import mergeClasses from "utils/mergeClasses";
-import HomeFeedNavigator from "../HomeFeedNavigator/HomeFeedNavigator";
+import HomeFeedNavigator from "components/home/HomeFeedNavigator/HomeFeedNavigator";
 
 /**
  * Props for the Scroller component.
