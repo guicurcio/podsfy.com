@@ -19,7 +19,7 @@ export interface PodcastFeedUnitProps {
    * Pass a custom description to the component.
    * @default ""
    */
-  description?: string;
+  podcast?: string;
   /**
    * Pass a custom description to the component.
    * @default ""
@@ -33,7 +33,7 @@ export interface PodcastFeedUnitProps {
    *
    */
   defaultCoverImage?: string;
-  content?: string;
+  podcastEpisodeDescription?: string;
 }
 
 /**
@@ -41,13 +41,11 @@ export interface PodcastFeedUnitProps {
  */
 export default function PodcastFeedUnit({
   className = "",
-  description = "",
+  podcast = "",
   title = "Joe Rogan Experience #1278 - Kevin Hart",
   defaultCoverImage = "/joe-rogan-experience.jpeg",
-  content = `A lively and engaging conversation between two of the biggest names in
-  comedy.\n\nIn the episode, Kevin Hart opens up about his rise to fame,
-  discussing his early struggles as a comedian and the challenges he
-  faced breaking into the entertainment industry.`,
+  podcastEpisodeDescription = `A lively and engaging conversation between two of the biggest names in
+  comedy.`,
 }: PodcastFeedUnitProps): JSX.Element {
   return (
     <div
@@ -74,7 +72,7 @@ export default function PodcastFeedUnit({
                 {title}
               </h2>
               <h2 className="w-full text-left font-moderat text-[15px] font-normal text-[#71767B]">
-                {description}
+                {podcast}
               </h2>
             </div>
           </div>
@@ -83,10 +81,10 @@ export default function PodcastFeedUnit({
       </div>
       <div className="grid grid-flow-row gap-[8px]">
         <p className="ml-[2px] font-visuelt text-[14px] font-normal leading-[24px] tracking-[0.5px] text-[#9ab] text-opacity-80  antialiased">
-          {content}
+          {podcastEpisodeDescription}
         </p>
       </div>
-      <div className=" mt-[-5px] grid grid-flow-row items-start justify-start gap-[8px]">
+      <div className="mt-[-5px] grid grid-flow-row items-start justify-start gap-[8px]">
         <NhostContainer>
           <TooltipContainer className="gap-[32px]">
             <ContentInteraction
