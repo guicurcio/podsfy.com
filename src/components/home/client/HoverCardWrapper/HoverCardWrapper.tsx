@@ -2,7 +2,12 @@
 
 import { ExternalLink } from "lucide-react";
 import Button from "ui/components/Button";
-import { HoverCard, HoverCardPortal, HoverCardTrigger } from "ui/components/Hover";
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardPortal,
+  HoverCardTrigger,
+} from "ui/components/Hover";
 
 /**
  * Props for the HoverCardWrapper component.
@@ -13,17 +18,12 @@ export interface HoverCardWrapperProps {
    */
   className?: string;
   onLike?: () => void;
-  HoverCardContent?: string;
-  children?: React.ReactNode | React.ReactNode[];
 }
 
 /**
  * HoverCardWrapper Component
  */
-export default function HoverCardWrapper({
-  HoverCardContent = "",
-  children,
-}: HoverCardWrapperProps): JSX.Element {
+export default function HoverCardWrapper(): JSX.Element {
   return (
     <HoverCard key="spotify">
       <HoverCardTrigger asChild>
