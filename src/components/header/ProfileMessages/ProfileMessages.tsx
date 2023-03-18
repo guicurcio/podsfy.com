@@ -1,10 +1,10 @@
 // eslint-disable-next-line eslint-comments/disable-enable-pair
 /* eslint-disable @typescript-eslint/no-misused-promises */
 
-"use client"
+"use client";
 
-import TooltipIconButton from "components/home/TooltipIconButton"
-import { Home, Mail, MessageSquare, Settings } from "lucide-react"
+import TooltipIconButton from "components/home/TooltipIconButton";
+import { Home, Mail, MessageSquare, Settings } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -12,8 +12,8 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuTrigger
-} from "ui/components/Dropdown"
-import mergeClasses from "utils/mergeClasses"
+} from "ui/components/Dropdown";
+import mergeClasses from "utils/mergeClasses";
 
 /**
  * Props for the ProfileMessages component.
@@ -22,7 +22,7 @@ export interface ProfileMessagesProps {
   /**
    * Custom class names passed to the root element.
    */
-  className?: string
+  className?: string;
 }
 
 /**
@@ -34,7 +34,7 @@ export default function ProfileMessages({
   return (
     <div className={mergeClasses("self-center align-middle", className)}>
       <DropdownMenu>
-        <DropdownMenuTrigger>
+        <DropdownMenuTrigger asChild>
           <TooltipIconButton
             className="h-[28px] self-center rounded-md px-2 align-middle text-[13px]"
             Icon={MessageSquare}
@@ -73,7 +73,7 @@ export default function ProfileMessages({
         </DropdownMenuContent>
       </DropdownMenu>
     </div>
-  )
+  );
 }
 
-ProfileMessages.displayName = "ProfileMessages"
+ProfileMessages.displayName = "ProfileMessages";

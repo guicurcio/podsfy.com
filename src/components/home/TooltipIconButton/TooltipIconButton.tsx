@@ -1,17 +1,17 @@
-"use client"
+"use client";
 
-import type { LucideIcon } from "lucide-react"
-import { Heart } from "lucide-react"
-import { iconClasses } from "static/customStyles"
-import Button from "ui/components/Button"
+import type { LucideIcon } from "lucide-react";
+import { Heart } from "lucide-react";
+import { iconClasses } from "static/customStyles";
+import Button from "ui/components/Button";
 import {
   Tooltip,
   TooltipArrow,
   TooltipContent,
   TooltipPortal,
-  TooltipTrigger
-} from "ui/components/Tooltip"
-import mergeClasses from "utils/mergeClasses"
+  TooltipTrigger,
+} from "ui/components/Tooltip";
+import mergeClasses from "utils/mergeClasses";
 
 /**
  * Props for the TooltipIconButton component.
@@ -20,10 +20,12 @@ export interface TooltipIconButtonProps {
   /**
    * Custom class names passed to the root element.
    */
-  className?: string
-  onLike?: () => void
-  Icon?: LucideIcon | React.FC
-  tooltipContent?: string
+  className?: string;
+  onLike?: () => void;
+  Icon?: LucideIcon | React.FC;
+  tooltipContent?: string;
+  likeCount?: number;
+  likeCountClassName?: string;
 }
 
 /**
@@ -41,7 +43,7 @@ export default function TooltipIconButton({
         <Button
           className={mergeClasses(
             "grid h-[28px] grid-flow-col self-center align-middle text-[13px]",
-            className
+            className,
           )}
           variant="subtle"
           size="none"
@@ -51,14 +53,14 @@ export default function TooltipIconButton({
             <Icon
               className={mergeClasses(
                 iconClasses,
-                "h-4 w-4 text-white/40 transition-colors duration-1000 ease-in-out hover:text-white/70"
+                "h-4 w-4 text-white/40 transition-colors duration-1000 ease-in-out hover:text-white/70",
               )}
             ></Icon>
           ) : (
             <Heart
               className={mergeClasses(
                 iconClasses,
-                "h-4 w-4 text-white/40 transition-colors duration-1000 ease-in-out hover:text-white/70"
+                "h-4 w-4 text-white/40 transition-colors duration-1000 ease-in-out hover:text-white/70",
               )}
             ></Heart>
           )}
@@ -75,7 +77,7 @@ export default function TooltipIconButton({
         </TooltipContent>
       </TooltipPortal>
     </Tooltip>
-  )
+  );
 }
 
-TooltipIconButton.displayName = "TooltipIconButton"
+TooltipIconButton.displayName = "TooltipIconButton";

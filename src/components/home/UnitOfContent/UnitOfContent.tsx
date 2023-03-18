@@ -1,17 +1,10 @@
-import { HoverCardPortal } from "@radix-ui/react-hover-card"
-import { BellPlus, ExternalLink, Heart, MessageCircle } from "lucide-react"
-import Image from "next/image"
-import Button from "ui/components/Button"
-import {
-  HoverCard,
-  HoverCardContent,
-  HoverCardTrigger,
-} from "ui/components/Hover"
-
-import NhostContainer from "components/common/NhostContainer"
-import TooltipContainer from "components/common/TooltipContainer"
-import ContentInteraction from "components/home/ContentInteraction/ContentInteraction"
-import mergeClasses from "utils/mergeClasses"
+import Image from "next/image";
+import NhostContainer from "components/common/NhostContainer";
+import TooltipContainer from "components/common/TooltipContainer";
+import ContentInteraction from "components/home/ContentInteraction/ContentInteraction";
+import HoverCardWrapper from "components/home/client/HoverCardWrapper/HoverCardWrapper";
+import Link from "next/link";
+import mergeClasses from "utils/mergeClasses";
 
 /**
  * Props for the UnitOfContent component.
@@ -21,26 +14,26 @@ export interface UnitOfContentProps {
    * Pass a custom title to the component.
    * @default ""
    */
-  title?: string
+  title?: string;
   /**
    * Pass a custom description to the component.
    * @default ""
    */
-  description?: string
+  description?: string;
   /**
    * Pass a custom description to the component.
    * @default ""
    */
-  whereToWatchOrListenLink?: string
+  whereToWatchOrListenLink?: string;
   /**
    * Custom class names passed to the root element.
    */
-  className?: string
+  className?: string;
   /**
    *
    */
-  defaultCoverImage?: string
-  content?: string
+  defaultCoverImage?: string;
+  content?: string;
 }
 
 /**
@@ -61,19 +54,21 @@ export default function UnitOfContent({
       key={title}
       className={mergeClasses(
         "grid  w-full grid-flow-row gap-3 border-0 py-[18px] px-[18px] hover:brightness-[105%]",
-        className
+        className,
       )}
     >
       <div className="grid w-full grid-flow-row gap-4">
         <div className="grid w-full grid-flow-col items-center justify-between self-center align-middle ">
           <div className="grid grid-flow-col items-center gap-3">
-            <Image
-              src={defaultCoverImage || "/joe-rogan-experience.jpeg"}
-              className="h-[64px] w-[64px] rounded-[5px] border border-[#88888820] shadow-3xl"
-              alt="Podcast cover"
-              width={64}
-              height={64}
-            ></Image>
+            <Link href="/podcast/found-my-fitness">
+              <Image
+                src={defaultCoverImage || "/joe-rogan-experience.jpeg"}
+                className="h-[64px] w-[64px] rounded-[5px] border border-[#88888820] shadow-3xl"
+                alt="Podcast cover"
+                width={64}
+                height={64}
+              ></Image>
+            </Link>
             <div className="grid w-[450px] grid-flow-row gap-[1px]">
               <h2 className="w-full text-left font-moderat text-[15px] font-medium text-[#E7E9EA] ">
                 {title}
@@ -83,39 +78,7 @@ export default function UnitOfContent({
               </h2>
             </div>
           </div>
-          <HoverCard key="spotify">
-            <HoverCardTrigger asChild>
-              <Button
-                variant="subtle"
-                className="h-[42px] w-[42px] self-center rounded-[7px] border-[2px] border-[#88888820] p-0  align-middle shadow-3xl"
-              >
-                <img
-                  src={`/pods/spotify.webp`}
-                  className="h-[42px] w-[42px] scale-[60%] object-scale-down "
-                ></img>
-              </Button>
-            </HoverCardTrigger>
-            <HoverCardPortal>
-              <HoverCardContent className="w-[350px]">
-                <div className="grid grid-flow-row gap-2">
-                  <div className="grid grid-flow-row gap-[1px]">
-                    <h2 className="w-full text-left font-moderat text-[14px] font-medium text-fondy">
-                      Joe Rogan Experience #1278 - Kevin Hart
-                    </h2>
-                    <h2 className="w-full text-left font-moderat text-[12px] font-normal text-black">
-                      Joe Rogan Experience
-                    </h2>
-                  </div>
-                  <div className="grid grid-flow-col justify-start gap-2">
-                    <span className="cursor-pointer text-[14px] text-[#1D9BF0]">
-                      https://open.spotify.com/episode/
-                    </span>
-                    <ExternalLink className="h-3 w-3  cursor-pointer text-[14px] text-[#1D9BF0]"></ExternalLink>
-                  </div>
-                </div>
-              </HoverCardContent>
-            </HoverCardPortal>
-          </HoverCard>
+          <HoverCardWrapper></HoverCardWrapper>
         </div>
       </div>
       <div className="grid grid-flow-row gap-[8px]">
@@ -127,30 +90,30 @@ export default function UnitOfContent({
         <NhostContainer>
           <TooltipContainer className="gap-[32px]">
             <ContentInteraction
-              Icon={Heart}
               likeCount={150}
               tooltipContent="Hold to Like"
+              iconSpecification="LIKE"
             ></ContentInteraction>
             <ContentInteraction
-              Icon={BellPlus}
               likeCount={322}
               tooltipContent="Hold to Follow"
               likeCountClassName="right-[-20px]"
+              iconSpecification="NOTIFY"
             ></ContentInteraction>
             <ContentInteraction
-              Icon={MessageCircle}
               likeCount={322}
               tooltipContent="Hold to Comment"
               likeCountClassName="right-[-19px]"
+              iconSpecification="COMMENT"
             ></ContentInteraction>
           </TooltipContainer>
         </NhostContainer>
       </div>
     </div>
-  )
+  );
 }
 
-UnitOfContent.displayName = "UnitOfContent"
+UnitOfContent.displayName = "UnitOfContent";
 
 // to-use
 

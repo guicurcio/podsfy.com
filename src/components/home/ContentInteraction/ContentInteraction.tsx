@@ -1,7 +1,7 @@
 "use client";
 
 import type { LucideIcon } from "lucide-react";
-import { Heart } from "lucide-react";
+import { BellPlus, MessageCircle, Heart } from "lucide-react";
 import { iconClasses } from "static/customStyles";
 import Button from "ui/components/Button";
 import {
@@ -9,7 +9,7 @@ import {
   TooltipArrow,
   TooltipContent,
   TooltipPortal,
-  TooltipTrigger
+  TooltipTrigger,
 } from "ui/components/Tooltip";
 import useToggle from "ui/hooks/useToggle";
 import { useLongPress } from "use-long-press";
@@ -29,6 +29,7 @@ export interface ContentInteractionProps {
   Icon?: LucideIcon | React.FC;
   tooltipContent?: string;
   likeCountClassName?: string;
+  iconSpecification?: "LIKE" | "NOTIFY" | "COMMENT" | "SHARE";
 }
 
 /**
@@ -41,6 +42,7 @@ export default function ContentInteraction({
   Icon,
   tooltipContent = "Hold to like",
   likeCountClassName,
+  iconSpecification,
 }: ContentInteractionProps): JSX.Element {
   // const [addPodcastToFavoritesMutation, status] =
   //   useAddPodcastToFavoritesMutation()
@@ -66,7 +68,7 @@ export default function ContentInteraction({
             {...bind}
             onClick={onLike}
           >
-            {Icon ? (
+            {Icon && (
               <Icon
                 className={mergeClasses(
                   iconClasses,
@@ -74,7 +76,8 @@ export default function ContentInteraction({
                   isToggled && "fill-white/60 brightness-[100%]",
                 )}
               ></Icon>
-            ) : (
+            )}
+            {iconSpecification === "LIKE" && (
               <Heart
                 className={mergeClasses(
                   iconClasses,
@@ -82,6 +85,24 @@ export default function ContentInteraction({
                   isToggled && "fill-white/60 brightness-[100%]",
                 )}
               ></Heart>
+            )}
+            {iconSpecification === "NOTIFY" && (
+              <BellPlus
+                className={mergeClasses(
+                  iconClasses,
+                  "h-4 w-4 text-white/40 transition-colors duration-1000 ease-in-out hover:text-white/70",
+                  isToggled && "fill-white/60 brightness-[100%]",
+                )}
+              ></BellPlus>
+            )}
+            {iconSpecification === "COMMENT" && (
+              <MessageCircle
+                className={mergeClasses(
+                  iconClasses,
+                  "h-4 w-4 text-white/40 transition-colors duration-1000 ease-in-out hover:text-white/70",
+                  isToggled && "fill-white/60 brightness-[100%]",
+                )}
+              ></MessageCircle>
             )}
           </Button>
         </TooltipTrigger>

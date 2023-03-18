@@ -1,8 +1,7 @@
-"use client"
+"use client";
 
-import UnitOfContent from "components/home/UnitOfContent"
-import { TabsContent } from "ui/components/Tabs"
-import mergeClasses from "utils/mergeClasses"
+import UnitOfContent from "components/home/UnitOfContent";
+import mergeClasses from "utils/mergeClasses";
 
 /**
  * Props for the FollowingFeed component.
@@ -11,7 +10,7 @@ export interface FollowingFeedProps {
   /**
    * Custom class names passed to the root element.
    */
-  className?: string
+  className?: string;
 }
 
 /**
@@ -21,11 +20,10 @@ export default function FollowingFeed({
   className,
 }: FollowingFeedProps): JSX.Element {
   return (
-    <TabsContent
-      value="following"
+    <div
       className={mergeClasses(
         "h-screen overflow-scroll overflow-y-scroll scrollbar-none scrollbar-track-[#0D0E12] scrollbar-thumb-[#0D0E12]",
-        className
+        className,
       )}
     >
       <div className="grid grid-flow-row divide-y-[1px] divide-fondy/50  backdrop-brightness-[75%]">
@@ -46,8 +44,8 @@ export default function FollowingFeed({
         <UnitOfContent></UnitOfContent>
         <UnitOfContent></UnitOfContent>
       </div>
-    </TabsContent>
-  )
+    </div>
+  );
 }
 
-FollowingFeed.displayName = "FollowingFeed"
+FollowingFeed.displayName = "FollowingFeed";

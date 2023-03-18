@@ -41,7 +41,7 @@ export default function ProfileNotifications({
   return (
     <div className={mergeClasses("self-center align-middle", className)}>
       <DropdownMenu>
-        <DropdownMenuTrigger>
+        <DropdownMenuTrigger asChild>
           <TooltipIconButton
             className="h-[28px] self-center rounded-md px-2 align-middle text-[13px]"
             Icon={Inbox}

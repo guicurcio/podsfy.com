@@ -56,7 +56,7 @@ export default function PodEpisode({
         <div className="grid grid-flow-row items-start justify-start gap-4">
           <div className="grid grid-flow-col items-center gap-3">
             <Image
-              src={`/pod/${title}`}
+              src={defaultCoverImage}
               className="h-[32px] w-[32px] rounded-sm border border-[#88888820] shadow-3xl"
               alt="Podcast cover"
               width={32}
