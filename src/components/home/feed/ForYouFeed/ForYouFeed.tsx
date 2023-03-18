@@ -30,6 +30,7 @@ const getAllEpisodesInDB = async () =>
       podcast: {
         select: {
           title: true,
+          slug: true,
         },
       },
     },
@@ -57,10 +58,10 @@ export default async function ForYouFeed({ className }: ForYouFeedProps) {
             {/* @ts-expect-error Async Server Component */}
             <PodcastFeedUnit
               key={episode.id}
-              defaultCoverImage="/pods/ab67656300005f1f988e1a5bd74eb65370c8478e.jfif"
               title={episode.title}
               podcastEpisodeDescription={episode.description}
               podcast={episode.podcast.title}
+              podcastSlug={episode.podcast.slug}
             ></PodcastFeedUnit>
           </>
         ))}

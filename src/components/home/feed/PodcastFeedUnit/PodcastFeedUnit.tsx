@@ -34,6 +34,7 @@ export interface PodcastFeedUnitProps {
    */
   defaultCoverImage?: string;
   podcastEpisodeDescription?: string;
+  podcastSlug?: string;
 }
 
 /**
@@ -43,24 +44,25 @@ export default function PodcastFeedUnit({
   className = "",
   podcast = "",
   title = "Joe Rogan Experience #1278 - Kevin Hart",
-  defaultCoverImage = "/joe-rogan-experience.jpeg",
+  defaultCoverImage = "",
   podcastEpisodeDescription = `A lively and engaging conversation between two of the biggest names in
   comedy.`,
+  podcastSlug,
 }: PodcastFeedUnitProps): JSX.Element {
   return (
     <div
       key={title}
       className={mergeClasses(
-        "grid  w-full grid-flow-row gap-3 border-0 py-[18px] px-[18px] hover:brightness-[105%]",
+        "grid w-full grid-flow-row gap-3 border-0 py-[18px] px-[18px] hover:brightness-[105%]",
         className,
       )}
     >
       <div className="grid w-full grid-flow-row gap-4">
         <div className="grid w-full grid-flow-col items-center justify-between self-center align-middle ">
           <div className="grid grid-flow-col items-center gap-3">
-            <Link href="/podcast/found-my-fitness">
+            <Link href={`/home/podcast/${podcastSlug}`}>
               <Image
-                src={defaultCoverImage || "/joe-rogan-experience.jpeg"}
+                src={defaultCoverImage || `/pods/${podcastSlug}.png`}
                 className="h-[64px] w-[64px] rounded-[5px] border border-[#88888820] shadow-3xl"
                 alt="Podcast cover"
                 width={64}
