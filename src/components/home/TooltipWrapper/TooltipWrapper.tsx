@@ -36,8 +36,10 @@ export default function TooltipWrapper({
           className="overflow-x-hidden rounded-[3px] border-0 bg-[#1f1f23] font-visuelt text-[13px] font-normal text-white/50 shadow-3xl"
           side="bottom"
           align="center"
+
         >
           <p>{tooltipContent}</p>
+
           <TooltipArrow></TooltipArrow>
         </TooltipContent>
       </TooltipPortal>

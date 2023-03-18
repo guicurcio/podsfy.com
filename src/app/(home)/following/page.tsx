@@ -1,9 +1,5 @@
-import Scroller from "components/home/Scroller/Scroller";
+import FollowingFeed from "components/home/feed/FollowingFeed/FollowingFeed";
 
-export default function PageHomeFollowing() {
-  return (
-    <>
-      <Scroller defaultFeed="following" className="col-span-7"></Scroller>
-    </>
-  );
+export default function HomePage() {
+  return <FollowingFeed></FollowingFeed>;
 }

@@ -5,7 +5,11 @@ import * as React from "react"
 import mergeClasses from "utils/mergeClasses"
 
 export const buttonVariants = cva(
-  "inline-flex items-center justify-center tracking-[-0.01em] font-medium font-visuelt rounded-md focus:outline-none focus:ring-0 focus:ring-offset-0 dark:hover:bg-slate-800 dark:hover:text-slate-100 disabled:opacity-50 dark:focus:ring-slate-400 disabled:pointer-events-none dark:focus:ring-offset-slate-900 data-[state=open]:bg-slate-100 dark:data-[state=open]:bg-slate-800",
+  mergeClasses("inline-flex items-center justify-center tracking-[-0.01em]",
+  "font-medium font-visuelt rounded-md focus:outline-none focus:outline-0 focus-visible:outline-none focus-visible:outline-0  focus:ring-0 focus:ring-offset-0",
+  "focus-visible:ring-0 focus-visible:ring-offset-0",
+  "group-focus-visible:ring-0 group-focus-visible:ring-offset-0",
+  "disabled:pointer-events-none"),
   {
     variants: {
       variant: {

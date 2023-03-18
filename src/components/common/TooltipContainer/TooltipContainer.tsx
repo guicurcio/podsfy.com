@@ -34,7 +34,7 @@ export default function TooltipContainer({
         className,
       )}
     >
-      <TooltipProvider delayDuration={100}>
+      <TooltipProvider delayDuration={100} disableHoverableContent>
         {!spreadIntoDivs && children}
         { spreadIntoDivs && React.Children.map(children, (child) => (
           <div className="self-center align-middle">

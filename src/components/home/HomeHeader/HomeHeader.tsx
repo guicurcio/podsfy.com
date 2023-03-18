@@ -30,8 +30,8 @@ export default function HomeHeader({
         <div
           className={mergeClasses(
             "mx-auto grid w-[1200px] min-w-[1200px] max-w-[1200px] grid-flow-col grid-cols-12",
-            " self-center",
-            "w-full self-center px-[10px] align-middle",
+            "self-center",
+            "w-full self-center pl-[2px] pr-[13px] align-middle",
           )}
         >
           <Link

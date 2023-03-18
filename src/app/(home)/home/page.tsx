@@ -1,9 +1,6 @@
-import Scroller from "components/home/Scroller/Scroller";
+import ForYouFeed from "components/home/feed/ForYouFeed/ForYouFeed";
+
 
 export default function HomePage() {
-  return (
-    <>
-      <Scroller defaultFeed="for-you" className="col-span-7"></Scroller>
-    </>
-  );
+  return <ForYouFeed></ForYouFeed> ;
 }
