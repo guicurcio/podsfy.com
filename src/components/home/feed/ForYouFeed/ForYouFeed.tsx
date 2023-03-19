@@ -1,8 +1,4 @@
-"use server";
-
-import { db } from "lib/setupDBConfig";
 import mergeClasses from "utils/mergeClasses";
-import PodcastFeedUnit from "components/home/feed/PodcastFeedUnit/PodcastFeedUnit";
 
 /**
  * Props for the ForYouFeed component.
@@ -12,29 +8,13 @@ export interface ForYouFeedProps {
    * Custom class names passed to the root element.
    */
   className?: string;
+  children: React.ReactNode | React.ReactNode[];
 }
-
-const getAllEpisodesInDB = async () =>
-  db.episode.findMany({
-    select: {
-      id: true,
-      title: true,
-      description: true,
-      podcast: {
-        select: {
-          title: true,
-          slug: true,
-        },
-      },
-    },
-  });
 
 /**
  * ForYouFeed Component
  */
-// eslint-disable-next-line @typescript-eslint/require-await
-export default async function ForYouFeed({ className }: ForYouFeedProps) {
-  const forYouPodcastEpisodes = await getAllEpisodesInDB();
+export default function ForYouFeed({ className, children }: ForYouFeedProps) {
   return (
     <div
       className={mergeClasses(
@@ -44,16 +24,7 @@ export default async function ForYouFeed({ className }: ForYouFeedProps) {
       )}
     >
       <div className="grid grid-flow-row divide-y-[1px] divide-fondy/50  backdrop-brightness-[75%]">
-        {/* <FeedUpdater feedUpdaterText="Show 11 new updates"></FeedUpdater> */}
-        {forYouPodcastEpisodes.map((episode) => (
-          <PodcastFeedUnit
-            key={episode.id}
-            title={episode.title}
-            podcastEpisodeDescription={episode.description}
-            podcast={episode.podcast.title}
-            podcastSlug={episode.podcast.slug}
-          ></PodcastFeedUnit>
-        ))}
+        {children}
       </div>
     </div>
   );
