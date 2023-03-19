@@ -43,7 +43,7 @@ specifiers:
   '@radix-ui/react-toast': ^1.1.3
   '@radix-ui/react-tooltip': ^1.0.5
   '@types/debug': 4.1.7
-  '@types/jest': 29.4.4
+  '@types/jest': 29.5.0
   '@types/node': ^18.15.3
   '@types/react': ^18.0.28
   '@types/react-dom': ^18.0.11
@@ -190,7 +190,7 @@ devDependencies:
   '@ianvs/prettier-plugin-sort-imports': 3.7.1_prettier@2.8.4
   '@next/bundle-analyzer': 13.2.4
   '@types/debug': 4.1.7
-  '@types/jest': 29.4.4
+  '@types/jest': 29.5.0
   '@types/node': 18.15.3
   '@types/react': 18.0.28
   '@types/react-dom': 18.0.11
@@ -4234,8 +4234,8 @@ packages:
       '@types/istanbul-lib-report': 3.0.0
     dev: true
 
-  /@types/jest/29.4.4:
-    resolution: {integrity: sha512-qezb65VIH7X1wobSnd6Lvdve7PXSyQRa3dljTkhTtDhi603RvHQCshSlJcuyMLHJpeHgY3NKwvDJWxMOOHxGDQ==}
+  /@types/jest/29.5.0:
+    resolution: {integrity: sha512-3Emr5VOl/aoBwnWcH/EFQvlSAmjV+XtV9GGu5mwdYew5vhQh0IUZx/60x0TzHDu09Bi7HMx10t/namdJw5QIcg==}
     dependencies:
       expect: 29.5.0
       pretty-format: 29.5.0
