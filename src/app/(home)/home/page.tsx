@@ -24,7 +24,6 @@ export default async function HomePage() {
   const forYouPodcastEpisodes = await getAllEpisodesInDB();
 
   return (
-    /* @ts-expect-error Async Server Component */
     <ForYouFeed>
       {/* <FeedUpdater feedUpdaterText="Show 11 new updates"></FeedUpdater> */}
       {forYouPodcastEpisodes.map((episode) => (
