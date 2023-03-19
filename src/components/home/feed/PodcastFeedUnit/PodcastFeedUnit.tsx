@@ -1,4 +1,3 @@
-import NhostContainer from "components/common/NhostContainer";
 import TooltipContainer from "components/common/TooltipContainer";
 import ContentInteraction from "components/home/ContentInteraction/ContentInteraction";
 import HoverCardWrapper from "components/home/client/HoverCardWrapper/HoverCardWrapper";
@@ -87,27 +86,25 @@ export default function PodcastFeedUnit({
         </p>
       </div>
       <div className="mt-[-5px] grid grid-flow-row items-start justify-start gap-[8px]">
-        <NhostContainer>
-          <TooltipContainer className="gap-[32px]">
-            <ContentInteraction
-              likeCount={150}
-              tooltipContent="Hold to Like"
-              iconSpecification="LIKE"
-            ></ContentInteraction>
-            <ContentInteraction
-              likeCount={322}
-              tooltipContent="Hold to Follow"
-              likeCountClassName="right-[-20px]"
-              iconSpecification="NOTIFY"
-            ></ContentInteraction>
-            <ContentInteraction
-              likeCount={322}
-              tooltipContent="Hold to Comment"
-              likeCountClassName="right-[-19px]"
-              iconSpecification="COMMENT"
-            ></ContentInteraction>
-          </TooltipContainer>
-        </NhostContainer>
+        <TooltipContainer className="gap-[32px]">
+          <ContentInteraction
+            likeCount={150}
+            tooltipContent="Hold to Like"
+            iconSpecification="LIKE"
+          ></ContentInteraction>
+          <ContentInteraction
+            likeCount={322}
+            tooltipContent="Hold to Follow"
+            likeCountClassName="right-[-20px]"
+            iconSpecification="NOTIFY"
+          ></ContentInteraction>
+          <ContentInteraction
+            likeCount={322}
+            tooltipContent="Hold to Comment"
+            likeCountClassName="right-[-19px]"
+            iconSpecification="COMMENT"
+          ></ContentInteraction>
+        </TooltipContainer>
       </div>
     </div>
   );
