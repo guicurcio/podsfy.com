@@ -1,5 +1,3 @@
-"use server";
-
 import Image from "next/image";
 import mergeClasses from "utils/mergeClasses";
 
@@ -73,7 +71,7 @@ export async function generateStaticParams() {
 /**
  * HomePodcast Component
  */
-export default async function HomePodcast({ params }) {
+export default async function HomePodcastPage({ params }) {
   const staticPodcastData = await getPodInfo(params?.podcast);
 
   if (!staticPodcastData?.title) {
@@ -96,7 +94,7 @@ export default async function HomePodcast({ params }) {
         <div className="grid w-fit grid-flow-col place-items-start items-start justify-items-start gap-3 ">
           <Image
             src={`/${staticPodcastData.cover}`}
-            className="h-[156px] w-[156px] rounded-[4px]   self-center border-[2px] border-[#88888820] p-0  align-middle shadow-3xl"
+            className="h-[156px] w-[156px] self-center   rounded-[4px] border-[2px] border-[#88888820] p-0  align-middle shadow-3xl"
             alt="Podcast cover"
             width={156}
             height={156}
@@ -107,34 +105,38 @@ export default async function HomePodcast({ params }) {
               {generateGoodTitleForReviews(staticPodcastData.title)}
             </h2>
             <h2 className="mt-[-4px]  font-moderat text-[13px] text-[#fff] text-opacity-[50%]">
-            By <span className="underline">{staticPodcastData.podcastHost.name}</span>
-          </h2>
-            <h1 className="text-left font-moderat mt-[2px] text-[14px] break-before-avoid-page font-normal text-[#71767B]">
-            The Found My Fitness podcast is hosted by Rhonda Patrick, a biomedical scientist who focuses on nutrition, aging, and health.
+              By{" "}
+              <span className="underline">
+                {staticPodcastData.podcastHost.name}
+              </span>
+            </h2>
+            <h1 className="mt-[2px] break-before-avoid-page text-left font-moderat text-[14px] font-normal text-[#71767B]">
+              The Found My Fitness podcast is hosted by Rhonda Patrick, a
+              biomedical scientist who focuses on nutrition, aging, and health.
             </h1>
             <div className=" mt-[5px] grid grid-flow-row items-start justify-start gap-[8px]">
-          <TooltipContainer className="gap-[32px]">
-            <TooltipIconButton
-              likeCount={150}
-              tooltipContent="Hold to Like"
-            ></TooltipIconButton>
-            <TooltipIconButton
-              likeCount={322}
-              tooltipContent="Hold to Follow"
-              likeCountClassName="right-[-20px]"
-            ></TooltipIconButton>
-            <TooltipIconButton
-              likeCount={322}
-              tooltipContent="Hold to Comment"
-              likeCountClassName="right-[-19px]"
-            ></TooltipIconButton>
-          </TooltipContainer>
-          </div>
+              <TooltipContainer className="gap-[32px]">
+                <TooltipIconButton
+                  likeCount={150}
+                  tooltipContent="Hold to Like"
+                ></TooltipIconButton>
+                <TooltipIconButton
+                  likeCount={322}
+                  tooltipContent="Hold to Follow"
+                  likeCountClassName="right-[-20px]"
+                ></TooltipIconButton>
+                <TooltipIconButton
+                  likeCount={322}
+                  tooltipContent="Hold to Comment"
+                  likeCountClassName="right-[-19px]"
+                ></TooltipIconButton>
+              </TooltipContainer>
+            </div>
           </div>
         </div>
         <div className="grid w-full grid-flow-row gap-12">
           <div className="grid grid-flow-row gap-[1px]">
-          {/* {staticPodcastData.description.split("\\n").map((line) => (
+            {/* {staticPodcastData.description.split("\\n").map((line) => (
           // <p className="ml-[2px] mt-[-2px] font-visuelt text-[15px] font-normal leading-[25px] tracking-[0.5px] text-dimmed2 text-opacity-80  antialiased">
           <p
             key={line}
