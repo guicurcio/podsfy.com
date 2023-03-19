@@ -1,8 +1,10 @@
+export const dynamic = "force-static";
+
 export default function ChangelogPage() {
   return (
     <div className="grid w-[720px] grid-flow-row gap-4">
       <div className="grid w-full grid-flow-row gap-3 py-[10px]">
-        <p className="text-left font-SpaceGrotesk text-[40px] tracking-tighter font-semibold text-white/90">
+        <p className="text-left font-SpaceGrotesk text-[40px] font-semibold tracking-tighter text-white/90">
           Changelog
         </p>
         <div className="relative mx-auto flex w-full items-start justify-start gap-3 rounded-[6px] bg-[#111] py-5 text-center">
@@ -37,9 +39,14 @@ export default function ChangelogPage() {
               </defs>
             </svg>
             <p className="text-sm">
-              <span className="text-sm text-[#888]">Make sure to follow us on </span>
+              <span className="text-sm text-[#888]">
+                Make sure to follow us on{" "}
+              </span>
               <span className="text-sm text-white">Twitter</span>
-              <span className="text-sm text-[#888]"> to hear about these changes first!</span>
+              <span className="text-sm text-[#888]">
+                {" "}
+                to hear about these changes first!
+              </span>
             </p>
           </div>
         </div>
@@ -63,7 +70,9 @@ export default function ChangelogPage() {
             <p className="text-left text-[13px] text-[#888]">March 9, 2023</p>
           </div>
         </div>
-        <h1 className="text-[28px] font-medium text-white/80">Improvements and Fixes</h1>
+        <h1 className="text-[28px] font-medium text-white/80">
+          Improvements and Fixes
+        </h1>
         <p className="text-left font-inter text-[16px] font-normal text-white/50">
           <span className="">- You can now add environment variables </span>
         </p>

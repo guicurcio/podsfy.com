@@ -1,4 +1,4 @@
-"use client";
+"use server";
 
 import UnitOfContent from "components/home/UnitOfContent";
 import mergeClasses from "utils/mergeClasses";
@@ -16,9 +16,8 @@ export interface FollowingFeedProps {
 /**
  * FollowingFeed Component
  */
-export default function FollowingFeed({
-  className,
-}: FollowingFeedProps): JSX.Element {
+// eslint-disable-next-line @typescript-eslint/require-await
+export default async function FollowingFeed({ className }: FollowingFeedProps) {
   return (
     <div
       className={mergeClasses(
@@ -27,6 +26,7 @@ export default function FollowingFeed({
       )}
     >
       <div className="grid grid-flow-row divide-y-[1px] divide-fondy/50  backdrop-brightness-[75%]">
+        {/* @ts-expect-error Async Server Component */}
         <UnitOfContent
           key="asd"
           defaultCoverImage="/huberman-lab.jpeg"
@@ -34,15 +34,6 @@ export default function FollowingFeed({
           description="The Huberman Lab Podcast"
           content={`A fascinating discussion between neuroscientist Dr. Andrew Huberman and physician Dr. Peter Attia.\n\nIn the episode, Huberman delves into the science of sleep, exploring the importance of circadian rhythms and the ways in which sleep affects the body and brain. He also discusses the benefits and potential risks of various sleep supplements and strategies for improving sleep quality.\n\nThe conversation then turns to the topic of recovery, as Attia and Huberman discuss the latest research on the most effective ways to recover from physical activity and injury. They touch on the benefits of fasting and other dietary interventions for promoting recovery and overall health.\n\nThroughout the episode, Huberman and Attia share their deep knowledge and insights on the subject matter, making for a thought-provoking and informative listen. The "Dr. Andrew Huberman: Neuroscience of Sleep, Supplements, and Recovery | Peter Attia Drive #13" episode is recommended for anyone interested in learning more about the science of sleep, recovery, and optimal health.`}
         ></UnitOfContent>
-        <UnitOfContent></UnitOfContent>
-        <UnitOfContent></UnitOfContent>
-        <UnitOfContent></UnitOfContent>
-        <UnitOfContent></UnitOfContent>
-        <UnitOfContent></UnitOfContent>
-        <UnitOfContent></UnitOfContent>
-        <UnitOfContent></UnitOfContent>
-        <UnitOfContent></UnitOfContent>
-        <UnitOfContent></UnitOfContent>
       </div>
     </div>
   );

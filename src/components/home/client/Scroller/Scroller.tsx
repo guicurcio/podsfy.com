@@ -1,11 +1,7 @@
 "use client";
 
-import FollowingFeed from "components/home/feed/FollowingFeed";
-import ForYouFeed from "components/home/feed/ForYouFeed";
-import LatestFeed from "components/home/feed/LatestFeed";
 import { Tabs } from "ui/components/Tabs";
 import mergeClasses from "utils/mergeClasses";
-import HomeFeedNavigator from "components/home/HomeFeedNavigator/HomeFeedNavigator";
 
 /**
  * Props for the Scroller component.
@@ -16,6 +12,7 @@ export interface ScrollerProps {
    */
   className?: string;
   defaultFeed?: string;
+  children?: React.ReactNode | React.ReactNode[];
 }
 
 /**
@@ -24,6 +21,7 @@ export interface ScrollerProps {
 export default function Scroller({
   className,
   defaultFeed = "for-you",
+  children,
 }: ScrollerProps): JSX.Element {
   return (
     <div
@@ -35,10 +33,7 @@ export default function Scroller({
       )}
     >
       <Tabs defaultValue={defaultFeed} className="z-50 w-full border-0">
-        <HomeFeedNavigator></HomeFeedNavigator>
-        <ForYouFeed></ForYouFeed>
-        <LatestFeed></LatestFeed>
-        <FollowingFeed></FollowingFeed>
+        {children}
       </Tabs>
     </div>
   );

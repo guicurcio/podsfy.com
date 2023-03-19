@@ -128,6 +128,7 @@ export default function SignUpModal({
       const session = await nhost.auth.signUp({
         email,
         password,
+
       });
 
       if (session?.session) {

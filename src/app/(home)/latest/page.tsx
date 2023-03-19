@@ -1,9 +1,7 @@
-import Scroller from "components/home/Scroller/Scroller";
+import LatestFeed from "components/home/feed/LatestFeed/LatestFeed";
 
-export default function PageHomeLatest() {
-  return (
-    <>
-      <Scroller defaultFeed="latest" className="col-span-7"></Scroller>
-    </>
-  );
+// export const dynamic = "force-static";
+
+export default function LatestHomePage() {
+  return <LatestFeed></LatestFeed>;
 }

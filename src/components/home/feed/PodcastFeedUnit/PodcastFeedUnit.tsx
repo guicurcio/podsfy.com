@@ -1,18 +1,15 @@
-"use server";
-
 import NhostContainer from "components/common/NhostContainer";
 import TooltipContainer from "components/common/TooltipContainer";
 import ContentInteraction from "components/home/ContentInteraction/ContentInteraction";
 import HoverCardWrapper from "components/home/client/HoverCardWrapper/HoverCardWrapper";
-import { cookies } from "next/headers";
 import Image from "next/image";
 import Link from "next/link";
 import mergeClasses from "utils/mergeClasses";
 
 /**
- * Props for the UnitOfContent component.
+ * Props for the PodcastFeedUnit component.
  */
-export interface UnitOfContentProps {
+export interface PodcastFeedUnitProps {
   /**
    * Pass a custom title to the component.
    * @default ""
@@ -22,7 +19,7 @@ export interface UnitOfContentProps {
    * Pass a custom description to the component.
    * @default ""
    */
-  description?: string;
+  podcast?: string;
   /**
    * Pass a custom description to the component.
    * @default ""
@@ -36,36 +33,36 @@ export interface UnitOfContentProps {
    *
    */
   defaultCoverImage?: string;
-  content?: string;
+  podcastEpisodeDescription?: string;
+  podcastSlug?: string;
 }
 
 /**
- * UnitOfContent Component
+ * PodcastFeedUnit Component
  */
-export default async function UnitOfContent({
+export default function PodcastFeedUnit({
   className = "",
-  description = "",
+  podcast = "",
   title = "Joe Rogan Experience #1278 - Kevin Hart",
-  defaultCoverImage = "/joe-rogan-experience.jpeg",
-  content = `A lively and engaging conversation between two of the biggest names in
-  comedy.\n\nIn the episode, Kevin Hart opens up about his rise to fame,
-  discussing his early struggles as a comedian and the challenges he
-  faced breaking into the entertainment industry.`,
-}: UnitOfContentProps) {
+  defaultCoverImage = "",
+  podcastEpisodeDescription = `A lively and engaging conversation between two of the biggest names in
+  comedy.`,
+  podcastSlug,
+}: PodcastFeedUnitProps): JSX.Element {
   return (
     <div
       key={title}
       className={mergeClasses(
-        "grid  w-full grid-flow-row gap-3 border-0 py-[18px] px-[18px] hover:brightness-[105%]",
+        "grid w-full grid-flow-row gap-3 border-0 py-[18px] px-[18px] hover:brightness-[105%]",
         className,
       )}
     >
       <div className="grid w-full grid-flow-row gap-4">
         <div className="grid w-full grid-flow-col items-center justify-between self-center align-middle ">
           <div className="grid grid-flow-col items-center gap-3">
-            <Link href="/podcast/found-my-fitness">
+            <Link href={`/home/podcast/${podcastSlug}`}>
               <Image
-                src={defaultCoverImage || "/joe-rogan-experience.jpeg"}
+                src={defaultCoverImage || `/pods/${podcastSlug}.png`}
                 className="h-[64px] w-[64px] rounded-[5px] border border-[#88888820] shadow-3xl"
                 alt="Podcast cover"
                 width={64}
@@ -77,7 +74,7 @@ export default async function UnitOfContent({
                 {title}
               </h2>
               <h2 className="w-full text-left font-moderat text-[15px] font-normal text-[#71767B]">
-                {description}
+                {podcast}
               </h2>
             </div>
           </div>
@@ -86,10 +83,10 @@ export default async function UnitOfContent({
       </div>
       <div className="grid grid-flow-row gap-[8px]">
         <p className="ml-[2px] font-visuelt text-[14px] font-normal leading-[24px] tracking-[0.5px] text-[#9ab] text-opacity-80  antialiased">
-          {content}
+          {podcastEpisodeDescription}
         </p>
       </div>
-      <div className=" mt-[-5px] grid grid-flow-row items-start justify-start gap-[8px]">
+      <div className="mt-[-5px] grid grid-flow-row items-start justify-start gap-[8px]">
         <NhostContainer>
           <TooltipContainer className="gap-[32px]">
             <ContentInteraction
@@ -116,4 +113,4 @@ export default async function UnitOfContent({
   );
 }
 
-UnitOfContent.displayName = "UnitOfContent";
+PodcastFeedUnit.displayName = "PodcastFeedUnit";

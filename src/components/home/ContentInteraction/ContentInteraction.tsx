@@ -1,7 +1,7 @@
 "use client";
 
 import type { LucideIcon } from "lucide-react";
-import { BellPlus, MessageCircle, Heart } from "lucide-react";
+import { BellPlus, Heart, MessageCircle } from "lucide-react";
 import { iconClasses } from "static/customStyles";
 import Button from "ui/components/Button";
 import {
@@ -43,7 +43,7 @@ export default function ContentInteraction({
   tooltipContent = "Hold to like",
   likeCountClassName,
   iconSpecification,
-}: ContentInteractionProps): JSX.Element {
+}: ContentInteractionProps) {
   // const [addPodcastToFavoritesMutation, status] =
   //   useAddPodcastToFavoritesMutation()
   // const getProfileBio = useGetProfileBioLazyQuery()

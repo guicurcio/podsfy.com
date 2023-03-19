@@ -25,16 +25,13 @@ export default function Scroller({
       className={mergeClasses(
         "bg-[#0D0E12]",
         "border-x border-sharper border-opacity-5",
-        "grid grid-flow-row gap-[25px]  font-visuelt shadow-3xl backdrop-blur-[10px]",
+        "grid grid-flow-row gap-[25px] font-visuelt shadow-3xl backdrop-blur-[10px]",
         className,
       )}
     >
       <div className="z-50 w-full border-0">
         <HomeFeedNavigator></HomeFeedNavigator>
         {children}
-        {/* <ForYouFeed></ForYouFeed> */}
-        {/* <LatestFeed></LatestFeed> */}
-        {/* <FollowingFeed></FollowingFeed> */}
       </div>
     </div>
   );
