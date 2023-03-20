@@ -1,4 +1,4 @@
-import mergeClasses from "utils/mergeClasses"
+import mergeClasses from "utils/mergeClasses";
 
 /**
  * Props for the Trending component.
@@ -7,7 +7,7 @@ export interface TrendingProps {
   /**
    * Custom class names passed to the root element.
    */
-  className?: string
+  className?: string;
 }
 
 /**
@@ -22,10 +22,10 @@ export default function Trending({ className }: TrendingProps): JSX.Element {
         "border-r border-sharper border-opacity-10",
         "grid grid-flow-col px-[20px] font-visuelt shadow-3xl backdrop-blur-[10px] ",
         "h-screen max-h-screen min-h-screen overflow-hidden",
-        className
+        className,
       )}
     ></div>
-  )
+  );
 }
 
-Trending.displayName = "Trending"
+Trending.displayName = "Trending";

@@ -50,7 +50,6 @@ export default function HomeHeader({
               popoverClassName="w-[715px]"
             ></Search>
           </div>
-
           <ProfileTools></ProfileTools>
         </div>
       </div>

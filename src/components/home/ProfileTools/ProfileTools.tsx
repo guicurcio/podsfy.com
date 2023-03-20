@@ -2,6 +2,7 @@ import TooltipContainer from "components/common/TooltipContainer";
 import User from "components/common/User";
 import ProfileMessages from "components/header/ProfileMessages";
 import ProfileNotifications from "components/header/ProfileNotifications";
+import { nhost } from "lib/setupBackendConfig";
 import mergeClasses from "utils/mergeClasses";
 
 /**
@@ -20,6 +21,8 @@ export interface ProfileToolsProps {
 export default function ProfileTools({
   className,
 }: ProfileToolsProps): JSX.Element {
+  const isTheUserAunthenticated = nhost.auth.isAuthenticated();
+
   return (
     <div
       className={mergeClasses(

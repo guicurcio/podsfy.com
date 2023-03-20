@@ -1,16 +1,18 @@
 // eslint-disable-next-line eslint-comments/disable-enable-pair
 /* eslint-disable @typescript-eslint/no-misused-promises */
 
-"use client"
+"use client";
 
-import { twMerge } from "tailwind-merge"
+import { twMerge } from "tailwind-merge";
 
-import { nhost } from "lib/setupBackendConfig"
-import asyncTuple from "lib/try/try"
-import { Home, LogOut, Mail, Settings, UserCheck } from "lucide-react"
-import { useRouter } from "next/navigation"
-import { Avatar, AvatarFallback, AvatarImage } from "ui/components/Avatar"
-import Button from "ui/components/Button"
+import SignUpModal from "components/SignUpModal/SignUpModal";
+import { nhost } from "lib/setupBackendConfig";
+import asyncTuple from "lib/try/try";
+import { Home, LogOut, Mail, Settings, UserCheck } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { Avatar, AvatarFallback, AvatarImage } from "ui/components/Avatar";
+import Button from "ui/components/Button";
+import TestingNewButton from "ui/components/Button/Button.c";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -18,8 +20,9 @@ import {
   DropdownMenuItem,
   DropdownMenuSeparator,
   DropdownMenuShortcut,
-  DropdownMenuTrigger
-} from "ui/components/Dropdown"
+  DropdownMenuTrigger,
+} from "ui/components/Dropdown";
+import useToggle from "ui/hooks/useToggle/useToggle";
 
 /**
  * Props for the User component.
@@ -28,15 +31,18 @@ export interface UserProps {
   /**
    * Custom class names passed to the root element.
    */
-  className?: string
+  className?: string;
 }
 
 /**
  * User Component
  */
 export default function User({ className }: UserProps): JSX.Element {
-  const user = nhost.auth.getUser()
-  const router = useRouter()
+  const user = nhost.auth.getUser();
+  const router = useRouter();
+  const isTheUserAunthenticated = nhost.auth.isAuthenticated();
+
+  const [isUserOpeningModal, toggleIsUserOpeningModal] = useToggle(false);
 
   /**
    *
@@ -46,8 +52,32 @@ export default function User({ className }: UserProps): JSX.Element {
    * @returns
    */
   async function handleUserSignOut() {
-    await asyncTuple(nhost.auth.signOut())
-    router.push("/")
+    await asyncTuple(nhost.auth.signOut());
+    router.push("/");
+  }
+
+  if (!isTheUserAunthenticated) {
+    return (
+      <>
+        <SignUpModal
+          openModalState={isUserOpeningModal}
+          baseState="REGISTERING"
+          onClickOutside={() => {
+            toggleIsUserOpeningModal();
+          }}
+        ></SignUpModal>
+        <TestingNewButton
+          variant="SUBTLE"
+          size="DEFAULT"
+          className="self-center"
+          onClick={() => {
+            toggleIsUserOpeningModal();
+          }}
+        >
+          Login
+        </TestingNewButton>
+      </>
+    );
   }
 
   return (
@@ -120,7 +150,7 @@ export default function User({ className }: UserProps): JSX.Element {
           <DropdownMenuSeparator className="mx-[4px]" />
           <DropdownMenuItem
             onClick={async () => {
-              await handleUserSignOut()
+              await handleUserSignOut();
             }}
           >
             <LogOut className="mr-3 h-4 w-4 self-center align-middle" />
@@ -130,7 +160,7 @@ export default function User({ className }: UserProps): JSX.Element {
         </DropdownMenuContent>
       </DropdownMenu>
     </div>
-  )
+  );
 }
 
-User.displayName = "User"
+User.displayName = "User";

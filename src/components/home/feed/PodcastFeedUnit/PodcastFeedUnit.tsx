@@ -61,7 +61,7 @@ export default function PodcastFeedUnit({
       <div className="grid w-full grid-flow-row gap-4">
         <div className="grid w-full grid-flow-col items-center justify-between self-center align-middle ">
           <div className="grid grid-flow-col items-center gap-3">
-            <Link href={`/home/podcast/${podcastSlug}`}>
+            <Link href={`/podcast/${podcastSlug}`}>
               <Image
                 src={defaultCoverImage || `/pods/${podcastSlug}.png`}
                 className="h-[64px] w-[64px] rounded-[5px] border border-[#88888820] shadow-3xl"

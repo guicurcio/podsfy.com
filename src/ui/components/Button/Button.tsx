@@ -1,15 +1,17 @@
-import type { VariantProps } from "class-variance-authority"
-import { cva } from "class-variance-authority"
-import { Loader2 } from "lucide-react"
-import * as React from "react"
-import mergeClasses from "utils/mergeClasses"
+import type { VariantProps } from "class-variance-authority";
+import { cva } from "class-variance-authority";
+import { Loader2 } from "lucide-react";
+import * as React from "react";
+import mergeClasses from "utils/mergeClasses";
 
 export const buttonVariants = cva(
-  mergeClasses("inline-flex items-center justify-center tracking-[-0.01em]",
-  "font-medium font-visuelt rounded-md focus:outline-none focus:outline-0 focus-visible:outline-none focus-visible:outline-0  focus:ring-0 focus:ring-offset-0",
-  "focus-visible:ring-0 focus-visible:ring-offset-0",
-  "group-focus-visible:ring-0 group-focus-visible:ring-offset-0",
-  "disabled:pointer-events-none"),
+  mergeClasses(
+    "inline-flex items-center justify-center tracking-[-0.01em]",
+    "font-medium font-visuelt rounded-md focus:outline-none focus:outline-0 focus-visible:outline-none focus-visible:outline-0  focus:ring-0 focus:ring-offset-0",
+    "focus-visible:ring-0 focus-visible:ring-offset-0",
+    "group-focus-visible:ring-0 group-focus-visible:ring-offset-0",
+    "disabled:pointer-events-none",
+  ),
   {
     variants: {
       variant: {
@@ -41,8 +43,8 @@ export const buttonVariants = cva(
       variant: "default",
       size: "default",
     },
-  }
-)
+  },
+);
 
 /**
  *
@@ -53,7 +55,7 @@ export interface ButtonProps
   /**
    *  If true, the button will be disabled and show a loading indicator
    */
-  loading?: boolean
+  loading?: boolean;
 }
 
 /**
@@ -70,14 +72,14 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
               variant,
               size,
               className,
-            })
+            }),
           )}
           ref={ref}
           {...props}
         >
           <Loader2 className="h-5 w-5 animate-spin" />
         </button>
-      )
+      );
     }
     return (
       <button
@@ -87,15 +89,15 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
             variant,
             size,
             className,
-          })
+          }),
         )}
         ref={ref}
         {...props}
       />
-    )
-  }
-)
+    );
+  },
+);
 
-Button.displayName = "Button"
+Button.displayName = "Button";
 
-export default Button
+export default Button;

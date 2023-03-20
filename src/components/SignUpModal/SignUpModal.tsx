@@ -5,7 +5,6 @@ import Form from "components/Form/Form";
 import { nhost } from "lib/setupBackendConfig";
 import { Twitch, Twitter, X } from "lucide-react";
 import { useRouter } from "next/navigation";
-import type { EffectCallback } from "react";
 import { useEffect, useRef, useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import Button from "ui/components/Button";
@@ -45,6 +44,7 @@ export interface JoinProps {
 
   baseState?: "SIGNING IN" | "REGISTERING";
   openModalState?: boolean;
+  onClickOutside?: () => void;
 }
 
 const SIGN_UP_MODAL_VALIDATION_SCHEMA = z.object({
@@ -58,10 +58,10 @@ const SIGN_UP_MODAL_VALIDATION_SCHEMA = z.object({
     .min(3, { message: "The password should be at least 3 characters long." }),
 });
 
-function useEffectOnce(effect: EffectCallback) {
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(effect, []);
-}
+// function useEffectOnce(effect: EffectCallback) {
+//   // eslint-disable-next-line react-hooks/exhaustive-deps
+//   useEffect(effect, []);
+// }
 
 export interface SignUpModalFormValues {
   email: string;
@@ -75,6 +75,7 @@ export default function SignUpModal({
   className,
   baseState,
   openModalState,
+  onClickOutside,
 }: JoinProps) {
   const router = useRouter();
   const [loading, toggleLoading] = useToggle(false);
@@ -96,16 +97,20 @@ export default function SignUpModal({
   }, [openModalState]);
 
   const handleClickOutside = () => {
-    // Your custom logic here
+    // check that the modal is open before
+    // closing it
+    if (isModalToggled) {
+      onClickOutside();
+      toggleModalState();
+    }
+
     console.log("clicked outside");
   };
 
-  const handleClickInside = () => {
-    // Your custom logic here
-    console.log("clicked inside");
+  const handleCloseModal = () => {
+    onClickOutside();
+    toggleModalState();
   };
-
-  useOnClickOutside(clickOutsideRef, handleClickOutside);
 
   const [error, setError] = useState({
     message: "",
@@ -128,7 +133,6 @@ export default function SignUpModal({
       const session = await nhost.auth.signUp({
         email,
         password,
-
       });
 
       if (session?.session) {
@@ -217,10 +221,7 @@ export default function SignUpModal({
         <DialogOverlay
           className="z-0"
           onClick={() => {
-            // toggleModalState();
-            delay(300).then(() => {
-              router.push("/");
-            });
+            toggleModalState();
           }}
         ></DialogOverlay>
         <DialogContent
@@ -230,7 +231,7 @@ export default function SignUpModal({
           <DialogClose
             tabIndex={-1}
             onClick={() => {
-              router.push("/");
+              handleCloseModal();
             }}
             className="focus:ring-slate-400 data-[state=open]:bg-slate-100 dark:focus:ring-slate-400 dark:focus:ring-offset-slate-900 dark:data-[state=open]:bg-slate-800 absolute top-4 right-4 rounded-sm opacity-70 transition-opacity focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:pointer-events-none hover:opacity-100"
           >

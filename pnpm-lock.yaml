@@ -3,8 +3,11 @@ lockfileVersion: 5.4
 specifiers:
   '@apollo/client': ^3.7.10
   '@babel/core': ^7.21.3
+  '@babel/generator': ^7.21.3
+  '@babel/parser': ^7.21.3
   '@babel/preset-env': 7.20.2
   '@babel/preset-typescript': 7.21.0
+  '@babel/traverse': ^7.21.3
   '@commitlint/cli': 17.4.4
   '@commitlint/config-conventional': 17.4.4
   '@graphql-codegen/cli': ^3.2.2
@@ -174,8 +177,11 @@ dependencies:
 
 devDependencies:
   '@babel/core': 7.21.3
+  '@babel/generator': 7.21.3
+  '@babel/parser': 7.21.3
   '@babel/preset-env': 7.20.2_@babel+core@7.21.3
   '@babel/preset-typescript': 7.21.0_@babel+core@7.21.3
+  '@babel/traverse': 7.21.3
   '@commitlint/cli': 17.4.4
   '@commitlint/config-conventional': 17.4.4
   '@graphql-codegen/cli': 3.2.2_2mqzn4cmybkgmn65lotavg746y

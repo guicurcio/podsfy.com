@@ -33,6 +33,6 @@
     "strictNullChecks": false,
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "prettier-plugin-split/prettier-plugin-split.prettierplugin.js"],
   "exclude": ["node_modules"]
 }
