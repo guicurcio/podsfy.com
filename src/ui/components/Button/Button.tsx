@@ -7,7 +7,8 @@ import mergeClasses from "utils/mergeClasses";
 export const buttonVariants = cva(
   mergeClasses(
     "inline-flex items-center justify-center tracking-[-0.01em]",
-    "font-medium font-visuelt rounded-md focus:outline-none focus:outline-0 focus-visible:outline-none focus-visible:outline-0  focus:ring-0 focus:ring-offset-0",
+    "font-medium font-visuelt rounded-md focus:outline-none focus:outline-0",
+    "focus-visible:outline-none focus-visible:outline-0  focus:ring-0 focus:ring-offset-0",
     "focus-visible:ring-0 focus-visible:ring-offset-0",
     "group-focus-visible:ring-0 group-focus-visible:ring-offset-0",
     "disabled:pointer-events-none",
@@ -28,7 +29,7 @@ export const buttonVariants = cva(
         link: "bg-transparent underline-offset-4 hover:underline text-slate-900 dark:text-slate-100 hover:bg-transparent dark:hover:bg-transparent",
         main: "bg-[#050607f2]  border border-[#171717] text-white/75 hover:brightness-[120%] dark:bg-slate-50 dark:text-slate-900 font-SpaceGrotesk tracking-[-0.08em] text-[18px] font-medium",
         icon: "grid h-[28px] grid-flow-col self-center align-middle text-[13px]",
-        none: "",
+        none: "hover:brightness-[100%]",
       },
       size: {
         default: "h-10 py-2 px-4 rounded-md text-[12px]",

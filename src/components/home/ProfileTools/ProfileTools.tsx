@@ -1,9 +1,10 @@
 import TooltipContainer from "components/common/TooltipContainer";
-import User from "components/common/User";
 import ProfileMessages from "components/header/ProfileMessages";
 import ProfileNotifications from "components/header/ProfileNotifications";
-import { nhost } from "lib/setupBackendConfig";
+import { Suspense, lazy } from "react";
 import mergeClasses from "utils/mergeClasses";
+
+const User = lazy(() => import("components/common/User"));
 
 /**
  * Props for the ProfileTools component.
@@ -21,8 +22,6 @@ export interface ProfileToolsProps {
 export default function ProfileTools({
   className,
 }: ProfileToolsProps): JSX.Element {
-  const isTheUserAunthenticated = nhost.auth.isAuthenticated();
-
   return (
     <div
       className={mergeClasses(
@@ -34,7 +33,9 @@ export default function ProfileTools({
         <ProfileNotifications></ProfileNotifications>
         <ProfileMessages></ProfileMessages>
       </TooltipContainer>
-      <User className="self-center"></User>
+      <Suspense fallback={<div className="h-10 w-10 rounded-full"></div>}>
+        <User></User>
+      </Suspense>
     </div>
   );
 }

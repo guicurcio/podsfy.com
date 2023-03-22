@@ -66,26 +66,25 @@ export interface ButtonProps
   loading?: boolean;
 }
 
-export const TestingNewButton = React.forwardRef<
-  HTMLButtonElement,
-  ButtonProps
->(({ className, variant, size, color, ...props }, ref) => {
-  const passedClassName = className || "";
-  const fullClassName = getButtonClass({
-    variant,
-    color,
-    size,
-    passedClassName,
-  });
+const TestingNewButton = React.forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ className, variant, size, color, ...props }, ref) => {
+    const passedClassName = className || "";
+    const fullClassName = getButtonClass({
+      variant,
+      color,
+      size,
+      passedClassName,
+    });
 
-  return (
-    <button
-      className={mergeClasses(fullClassName, className)}
-      ref={ref}
-      {...props}
-    />
-  );
-});
+    return (
+      <button
+        className={mergeClasses(fullClassName, className)}
+        ref={ref}
+        {...props}
+      />
+    );
+  },
+);
 
 TestingNewButton.displayName = "Button";
 

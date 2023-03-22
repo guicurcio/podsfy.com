@@ -3,16 +3,20 @@
 
 "use client";
 
-import { twMerge } from "tailwind-merge";
-
 import SignUpModal from "components/SignUpModal/SignUpModal";
 import { nhost } from "lib/setupBackendConfig";
 import asyncTuple from "lib/try/try";
-import { Home, LogOut, Mail, Settings, UserCheck } from "lucide-react";
+import {
+  Home,
+  LogOut,
+  Mail,
+  Settings,
+  UserCheck,
+  User as UserIcon,
+} from "lucide-react";
 import { useRouter } from "next/navigation";
 import { Avatar, AvatarFallback, AvatarImage } from "ui/components/Avatar";
 import Button from "ui/components/Button";
-import TestingNewButton from "ui/components/Button/Button.c";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -37,12 +41,13 @@ export interface UserProps {
 /**
  * User Component
  */
-export default function User({ className }: UserProps): JSX.Element {
+export default function User(): JSX.Element {
   const user = nhost.auth.getUser();
   const router = useRouter();
   const isTheUserAunthenticated = nhost.auth.isAuthenticated();
 
   const [isUserOpeningModal, toggleIsUserOpeningModal] = useToggle(false);
+  const [dropdownToggle, toggleDropdown] = useToggle(false);
 
   /**
    *
@@ -53,36 +58,25 @@ export default function User({ className }: UserProps): JSX.Element {
    */
   async function handleUserSignOut() {
     await asyncTuple(nhost.auth.signOut());
-    router.push("/");
-  }
-
-  if (!isTheUserAunthenticated) {
-    return (
-      <>
-        <SignUpModal
-          openModalState={isUserOpeningModal}
-          baseState="REGISTERING"
-          onClickOutside={() => {
-            toggleIsUserOpeningModal();
-          }}
-        ></SignUpModal>
-        <TestingNewButton
-          variant="SUBTLE"
-          size="DEFAULT"
-          className="self-center"
-          onClick={() => {
-            toggleIsUserOpeningModal();
-          }}
-        >
-          Login
-        </TestingNewButton>
-      </>
-    );
+    router.refresh();
   }
 
   return (
-    <div className={twMerge("", className)}>
-      <DropdownMenu>
+    <div className="self-center align-middle">
+      <SignUpModal
+        openModalState={isUserOpeningModal}
+        baseState="REGISTERING"
+        onClickOutside={() => {
+          router.refresh();
+        }}
+      ></SignUpModal>
+      <DropdownMenu
+        defaultOpen={false}
+        open={dropdownToggle}
+        onOpenChange={() => {
+          toggleDropdown();
+        }}
+      >
         <DropdownMenuTrigger asChild>
           <Button className=" h-[32px] w-[32px] self-center rounded-full align-middle">
             <Avatar className="h-[32px] w-[32px]">
@@ -92,9 +86,7 @@ export default function User({ className }: UserProps): JSX.Element {
                 className="h-[32px] w-[32px] opacity-75 shadow-md brightness-[100%]"
               />
               <AvatarFallback className="border border-white border-opacity-5 bg-fondy  shadow-2xl">
-                <span className="self-center align-middle font-moderat text-[10px] text-white/60">
-                  US
-                </span>
+                <UserIcon className="h-[14px] w-[14px] text-white/40"></UserIcon>
               </AvatarFallback>
             </Avatar>
             {/* <DemoIndicator className="right-0 top-0" /> */}

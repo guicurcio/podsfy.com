@@ -5,7 +5,7 @@ import Form from "components/Form/Form";
 import { nhost } from "lib/setupBackendConfig";
 import { Twitch, Twitter, X } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import Button from "ui/components/Button";
 import {
@@ -27,11 +27,11 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "ui/components/Tooltip";
-import useOnClickOutside from "ui/hooks/useClickOutside/useClickOutside";
 import useToggle from "ui/hooks/useToggle";
+import mergeClasses from "utils/mergeClasses/mergeClasses";
 import * as z from "zod";
 
-const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+// const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
 /**
  * Join Props description
@@ -77,40 +77,13 @@ export default function SignUpModal({
   openModalState,
   onClickOutside,
 }: JoinProps) {
-  const router = useRouter();
   const [loading, toggleLoading] = useToggle(false);
   const [action, setSignAction] = useState<"REGISTERING" | "SIGNING IN">(
     baseState || "REGISTERING",
   );
 
-  const [isModalToggled, toggleModalState] = useToggle(false);
-  const clickOutsideRef = useRef(null);
-
-  useEffect(() => {
-    if (openModalState) {
-      toggleModalState();
-      console.log(
-        "'%c EFFECT:",
-        "color: blue; font-family:monospace; font-size: 20px",
-      );
-    }
-  }, [openModalState]);
-
-  const handleClickOutside = () => {
-    // check that the modal is open before
-    // closing it
-    if (isModalToggled) {
-      onClickOutside();
-      toggleModalState();
-    }
-
-    console.log("clicked outside");
-  };
-
-  const handleCloseModal = () => {
-    onClickOutside();
-    toggleModalState();
-  };
+  // const mounted = useIsMounted();
+  const router = useRouter();
 
   const [error, setError] = useState({
     message: "",
@@ -122,7 +95,75 @@ export default function SignUpModal({
     resolver: zodResolver(SIGN_UP_MODAL_VALIDATION_SCHEMA),
   });
 
-  const { register, formState } = form;
+  const { register, formState, setError: setFormError } = form;
+
+  const handleSignInFormSubmit = async ({
+    email,
+    password,
+  }: SignUpModalFormValues) => {
+    toggleLoading();
+    try {
+      const session = await nhost.auth.signIn({
+        email,
+        password,
+      });
+      if (session?.session) {
+        onClickOutside();
+        toggleLoading();
+
+        router.refresh();
+        return;
+      }
+
+      if (session?.error) {
+        toggleLoading();
+
+        if (session.error.error === "already-signed-in") {
+          onClickOutside();
+          router.refresh();
+          return;
+        }
+
+        if (session.error.error === "invalid-email-password") {
+          setFormError("root", {
+            type: "manual",
+            message:
+              "Incorrect email or password combination. Please try again, or sign up for a new account.",
+          });
+          return;
+        }
+
+        if (session.error.error === "invalid-request") {
+          if (session.error.message.includes("email")) {
+            setFormError("email", {
+              type: "manual",
+              message: session.error.message,
+            });
+            return;
+          }
+
+          setFormError("root", {
+            type: "manual",
+            message: session.error.message,
+          });
+          return;
+        }
+      }
+    } catch (error_) {
+      if (toggleLoading) {
+        toggleLoading();
+      }
+      toggleLoading();
+      setError({
+        message: error_.message as string,
+        isError: true,
+      });
+    } finally {
+      if (error.isError) {
+        toggleLoading();
+      }
+    }
+  };
 
   const handleSignUpFormSubmit = async ({
     email,
@@ -136,102 +177,62 @@ export default function SignUpModal({
       });
 
       if (session?.session) {
-        router.push("/home");
+        onClickOutside();
+        router.refresh();
         return;
       }
 
       if (session?.error) {
         toggleLoading();
         if (session.error.error === "already-signed-in") {
-          router.push("/home");
+          router.refresh();
+          // @TODO: Tell the user that they are already signed in
           return;
         }
 
         if (session.error.error === "email-already-in-use") {
-          setError({
+          setFormError("email", {
+            type: "manual",
             message:
               "This email is already in use. Please sign in or try another one.",
-            isError: true,
           });
-          return;
+          // handleSignInFormSubmit({ email, password }),
         }
-
-        setError({
-          message: error.message,
-          isError: true,
-        });
-        return;
       }
-      router.push("/home");
+      router.refresh();
     } catch (error_) {
       console.log(error_, "error_");
 
       toggleLoading();
-      setError({
-        message: error_.message,
-        isError: true,
-      });
-    }
-  };
-
-  const handleSignInFormSubmit = async ({
-    email,
-    password,
-  }: SignUpModalFormValues) => {
-    console.log("SIGNING IN");
-    toggleLoading();
-    try {
-      const session = await nhost.auth.signIn({
-        email,
-        password,
-      });
-      console.log(session, "loginsession");
-      if (session?.session) {
-        router.push("/home");
-        return;
-      }
-
-      if (session?.error) {
-        toggleLoading();
-        if (session.error.error === "already-signed-in") {
-          router.push("/home");
-          return;
-        }
-        if (session.error.error === "invalid-email-password") {
-          setError({
-            message:
-              "Invalid email or password. Please either sign up or try again.",
-            isError: true,
-          });
-          return;
-        }
-      }
-    } catch (error_) {
-      toggleLoading();
-      setError({
-        message: error_.message,
-        isError: true,
+      setFormError("root", {
+        type: "manual",
+        message:
+          (error_.message as string) ||
+          "Something went wrong during sign up, please try in a few minutes. We have been notified of this issue and will fix it as soon as possible.",
       });
     }
   };
 
   return (
-    <Dialog open={isModalToggled}>
-      <DialogPortal className="h-fit w-fit bg-red-500">
+    <Dialog open={openModalState}>
+      <DialogPortal className="">
         <DialogOverlay
           className="z-0"
           onClick={() => {
-            toggleModalState();
+            onClickOutside();
           }}
         ></DialogOverlay>
         <DialogContent
-          className="z-50 w-full border border-red-900 sm:max-w-[500px]"
+          className={mergeClasses(
+            "z-50 w-full border border-red-900 sm:max-w-[500px]",
+            className,
+          )}
           forceMount
         >
           <DialogClose
             tabIndex={-1}
             onClick={() => {
-              handleCloseModal();
+              onClickOutside();
             }}
             className="focus:ring-slate-400 data-[state=open]:bg-slate-100 dark:focus:ring-slate-400 dark:focus:ring-offset-slate-900 dark:data-[state=open]:bg-slate-800 absolute top-4 right-4 rounded-sm opacity-70 transition-opacity focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:pointer-events-none hover:opacity-100"
           >
@@ -248,11 +249,10 @@ export default function SignUpModal({
                 : "Sign in to your account to get access to all the features of Podsfy."}
             </DialogDescription>
           </DialogHeader>
-          {error.isError && (
-            <div className="my-[10px] rounded-[5px] border-white border-opacity-10 bg-fondy px-4 py-4">
+          {formState.errors?.root?.message && (
+            <div className="my-[1px] rounded-[5px] backdrop:brightness-[5%]">
               <p className="self-center font-moderat text-[13px] text-red-500">
-                {error.message ||
-                  "We couldn't sign you in. We have been notified and will fix this as soon as possible. Please try again in a few second to see if this isue persist or in a few minutes. "}
+                {formState.errors?.root?.message}
               </p>
             </div>
           )}
@@ -456,9 +456,9 @@ export default function SignUpModal({
                   ? " Already have an account?"
                   : `Don't have an account already?`}
               </p>
-              <button className="text-[14px] font-medium text-white">
+              <a className="text-[14px] font-medium text-white">
                 {action === "SIGNING IN" ? "Sign Up" : "Sign In"}
-              </button>
+              </a>
             </Button>
           </DialogFooter>
         </DialogContent>

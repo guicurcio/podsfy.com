@@ -16,7 +16,7 @@ export interface TooltipContainerProps {
    * Children to be rendered inside the component.
    */
   children?: React.ReactNode | React.ReactNode[];
-  spreadIntoDivs?: boolean
+  spreadIntoDivs?: boolean;
 }
 
 /**
@@ -36,11 +36,12 @@ export default function TooltipContainer({
     >
       <TooltipProvider delayDuration={100} disableHoverableContent>
         {!spreadIntoDivs && children}
-        { spreadIntoDivs && React.Children.map(children, (child) => (
-          <div className="self-center align-middle">
-            {React.cloneElement(child as React.ReactElement)}
-          </div>
-        ))}
+        {spreadIntoDivs &&
+          React.Children.map(children, (child) => (
+            <span className="self-center align-middle">
+              {React.cloneElement(child as React.ReactElement)}
+            </span>
+          ))}
       </TooltipProvider>
     </div>
   );

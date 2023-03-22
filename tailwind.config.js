@@ -1,6 +1,6 @@
-const defaultTheme = require("tailwindcss/defaultTheme")
-const colors = require("tailwindcss/colors")
-const { mauve } = require("@radix-ui/colors")
+const defaultTheme = require("tailwindcss/defaultTheme");
+const colors = require("tailwindcss/colors");
+const { mauve } = require("@radix-ui/colors");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -10,6 +10,7 @@ module.exports = {
     "./src/components/**/*.{js,ts,jsx,tsx}",
     "./src/app/**/*.{js,ts,jsx,tsx}",
     "./src/ui/**/*.{js,ts,jsx,tsx}",
+    "./src/lib/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
     textFillColor: (theme) => theme("borderColor"),
@@ -402,4 +403,4 @@ module.exports = {
     require("tailwindcss-radix")(),
     require("tailwind-scrollbar"),
   ],
-}
+};

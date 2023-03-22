@@ -77,6 +77,7 @@ const DialogFooter = ({
 }: React.HTMLAttributes<HTMLDivElement>) => (
   <div className={mergeClasses("", className)} {...props} />
 );
+
 DialogFooter.displayName = "DialogFooter";
 
 const DialogTitle = React.forwardRef<
