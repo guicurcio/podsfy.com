@@ -27,7 +27,7 @@ const DialogOverlay = React.forwardRef<
 >(({ className, children, ...props }, ref) => (
   <DialogPrimitive.Overlay
     className={mergeClasses(
-      "fixed inset-0 bg-black/70 backdrop-blur-sm transition-opacity animate-in fade-in fade-out",
+      "fixed inset-0 bg-black/50 backdrop-blur-sm transition-opacity animate-in fade-in fade-out",
       className,
     )}
     {...props}
@@ -45,9 +45,8 @@ const DialogContent = React.forwardRef<
   <DialogPrimitive.Content
     ref={ref}
     className={mergeClasses(
-      "w- z-50 grid w-full scale-100 gap-4 border border-white border-opacity-5 bg-[#0D0E12] text-white shadow-3xl",
-      "px-6 pt-8 pb-3 opacity-100 animate-in fade-in-90 slide-in-from-bottom-10 sm:max-w-lg sm:rounded-md sm:zoom-in-90 sm:slide-in-from-bottom-0",
-      "dark:bg-slate-900",
+      "z-50 grid w-full scale-100 border border-white border-opacity-5  text-white",
+      "px-[60px] py-[48px] pb-3 opacity-100 animate-in fade-in-90 slide-in-from-bottom-10 sm:max-w-lg sm:rounded-[8px] sm:zoom-in-90 sm:slide-in-from-bottom-0",
       className,
     )}
     {...props}
@@ -116,13 +115,13 @@ DialogDescription.displayName = DialogPrimitive.Description.displayName;
 
 export {
   Dialog,
-  DialogTrigger,
-  DialogContent,
-  DialogHeader,
-  DialogFooter,
-  DialogTitle,
-  DialogDescription,
   DialogClose,
-  DialogPortal,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
   DialogOverlay,
+  DialogPortal,
+  DialogTitle,
+  DialogTrigger,
 };

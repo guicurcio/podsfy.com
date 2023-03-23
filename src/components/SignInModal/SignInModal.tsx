@@ -1,14 +1,14 @@
-"use client"
+"use client";
 
-import { zodResolver } from "@hookform/resolvers/zod"
-import Form from "components/Form/Form"
-import { nhost } from "lib/setupBackendConfig"
-import asyncTuple from "lib/try/try"
-import { Twitch, Twitter } from "lucide-react"
-import { useRouter } from "next/navigation"
-import { FormProvider, useForm } from "react-hook-form"
-import { twMerge } from "tailwind-merge"
-import Button from "ui/components/Button"
+import { zodResolver } from "@hookform/resolvers/zod";
+import Form from "components/Form/Form";
+import { nhost } from "lib/setupBackendConfig";
+import asyncTuple from "lib/try/try";
+import { Twitch, Twitter } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { FormProvider, useForm } from "react-hook-form";
+import { twMerge } from "tailwind-merge";
+import Button from "ui/components/Button";
 import {
   Dialog,
   DialogContent,
@@ -16,21 +16,21 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "ui/components/Dialog"
-import { Input } from "ui/components/Input"
-import Label from "ui/components/Label"
+} from "ui/components/Dialog";
+import { Input } from "ui/components/Input";
+import Label from "ui/components/Label";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "ui/components/Tooltip"
-import * as z from "zod"
+} from "ui/components/Tooltip";
+import * as z from "zod";
 
 const schema = z.object({
   email: z.string().email().min(4).max(18),
   password: z.string().min(9, { message: "Password is required" }),
-})
+});
 
 /**
  * SignInModal Props description
@@ -39,12 +39,12 @@ export interface SignInModalProps {
   /**
    * Custom class names passed to the root element.
    */
-  className?: string
+  className?: string;
 }
 
 export interface SignInModalFormValues {
-  email: string
-  password: string
+  email: string;
+  password: string;
 }
 
 /**
@@ -53,14 +53,14 @@ export interface SignInModalFormValues {
 export default function SignInModal({ className }: SignInModalProps) {
   // const { signInEmailPassword, isLoading, isSuccess, isError, error } =
   //   useSignInEmailPassword();
-  const router = useRouter()
+  const router = useRouter();
 
   const form = useForm<SignInModalFormValues>({
     reValidateMode: "onSubmit",
     resolver: zodResolver(schema),
-  })
+  });
 
-  const { register, formState } = form
+  const { register, formState } = form;
 
   const handleSignInFormSubmit = async ({
     email,
@@ -70,10 +70,10 @@ export default function SignInModal({ className }: SignInModalProps) {
       nhost.auth.signIn({
         email,
         password,
-      })
-    )
-    console.log(data)
-  }
+      }),
+    );
+    console.log(data);
+  };
 
   //     {session: null, error: {…}, mfa: null}
   // error
@@ -247,5 +247,5 @@ export default function SignInModal({ className }: SignInModalProps) {
         </div>
       </Form>
     </FormProvider>
-  )
+  );
 }
