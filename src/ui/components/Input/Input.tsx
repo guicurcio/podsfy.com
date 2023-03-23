@@ -7,10 +7,13 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
   ({ className, ...props }, ref) => (
     <input
       className={mergeClasses(
-        "flex h-10 w-full rounded-[7px] bg-white/10",
+        "flex h-10 w-full rounded-[7px] bg-white/5",
         "py-2 px-3",
+        "border border-transparent",
+        "focus:border-1 ring-offset-transparent focus:border-white focus:border-white/10 focus:outline-none",
+        "focus:ring-0 focus:ring-transparent",
         "placeholder:text-white/50",
-        "font-moderat text-[14px] ",
+        "font-visuelt text-[14px] ",
         className,
       )}
       ref={ref}

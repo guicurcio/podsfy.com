@@ -20,6 +20,7 @@ import {
   DialogTitle,
 } from "ui/components/Dialog";
 import { Input } from "ui/components/Input";
+import FacebookIcon from "ui/components/icons/FacebookIcon/FacebookIcon";
 import GoogleIcon from "ui/components/icons/GoogleIcon/GoogleIcon";
 import TwitterIcon from "ui/components/icons/TwitterIcon/TwitterIcon";
 import useToggle from "ui/hooks/useToggle";
@@ -40,6 +41,18 @@ export interface JoinProps {
   baseState?: "SIGNING IN" | "REGISTERING";
   openModalState?: boolean;
   onClickOutside?: () => void;
+}
+
+function OrDivider() {
+  return (
+    <div className="mx-auto grid w-fit  grid-flow-col items-center justify-items-center gap-x-2">
+      <div className="h-[1px] w-[110px] bg-white/20 " />
+      <h1 className="self-center font-moderat text-sm uppercase text-white/80">
+        or
+      </h1>
+      <div className="h-[1px] w-[110px] bg-white/20 " />
+    </div>
+  );
 }
 
 const SIGN_UP_MODAL_VALIDATION_SCHEMA = z.object({
@@ -219,11 +232,14 @@ export default function SignUpModal({
         ></DialogOverlay>
         <DialogContent
           className={mergeClasses(
-            "z-50 mx-auto grid h-[500px] w-full grid-flow-row gap-[10px] bg-black  sm:max-w-[400px]",
+            "z-50 mx-auto grid h-fit w-full grid-flow-row gap-y-[14px] bg-black  sm:max-w-[400px]",
             className,
           )}
           forceMount
         >
+          <DialogHeader className="pb-[16px]">
+            <DialogTitle>Create Account</DialogTitle>
+          </DialogHeader>
           <DialogClose
             tabIndex={-1}
             onClick={() => {
@@ -235,53 +251,7 @@ export default function SignUpModal({
             <span className="sr-only">Close</span>
           </DialogClose>
 
-          <div className="grid w-full grid-flow-row gap-y-[1px]">
-            <div className="grid w-full grid-flow-row gap-y-[8px]">
-              <Button
-                variant="none"
-                className={mergeClasses(CLASSNAMES_BUTTON, "w-full")}
-              >
-                {/* <Twitter></Twitter> */}
-                <TwitterIcon className=""></TwitterIcon>
-                <span className="mx-auto w-[120px] self-center align-middle">
-                  Sign up with Twitter
-                </span>
-              </Button>
-              <Button
-                variant="none"
-                className={mergeClasses(CLASSNAMES_BUTTON, "w-full")}
-              >
-                {/* <Twitter></Twitter> */}
-                <GoogleIcon className=""></GoogleIcon>
-                <span className="w-[120px] self-center align-middle">
-                  Sign up with Google
-                </span>
-              </Button>
-              <Button
-                variant="none"
-                className={mergeClasses(CLASSNAMES_BUTTON, "w-full")}
-              >
-                {/* <Twitter></Twitter> */}
-                <GoogleIcon className=""></GoogleIcon>
-                <span className="w-[150px] self-center align-middle">
-                  Sign up with Facebook
-                </span>
-              </Button>
-            </div>
-            <div className="mx-auto grid w-fit  grid-flow-col items-center justify-items-center gap-x-2">
-              <div className="h-[1px] w-[110px] bg-white/20 " />
-              <h1 className="self-center font-moderat text-sm uppercase text-white/80">
-                or
-              </h1>
-              <div className="h-[1px] w-[110px] bg-white/20 " />
-            </div>
-            {formState.errors?.root?.message && (
-              <div className="my-[1px] rounded-[5px] backdrop:brightness-[5%]">
-                <p className="self-center font-moderat text-[13px] text-red-500">
-                  {formState.errors?.root?.message}
-                </p>
-              </div>
-            )}
+          <div className="grid h-full w-full grid-flow-row gap-y-[24px]">
             <FormProvider {...form}>
               <Form
                 onSubmit={
@@ -289,18 +259,18 @@ export default function SignUpModal({
                     ? handleSignUpFormSubmit
                     : handleSignInFormSubmit
                 }
-                className="z-50 grid grid-flow-row gap-3  px-[8px]"
+                className="z-50 grid grid-flow-row gap-y-[24px]"
               >
-                <div className="grid grid-flow-row items-center gap-2">
+                <div className="grid h-fit grid-flow-row items-center gap-2">
                   <Input
                     id="email"
                     {...register("email")}
                     name="email"
                     aria-label="email"
                     tabIndex={1}
-                    placeholder="Phone, email or username"
+                    placeholder="Phone, email, or username"
                   />
-                  {formState.errors?.email && (
+                  {formState?.errors?.email && (
                     <p className="ml-1 self-center font-visuelt text-xs text-red-500">
                       {formState.errors?.email?.message}
                     </p>
@@ -351,8 +321,62 @@ export default function SignUpModal({
                 >
                   {action === "REGISTERING" ? "Sign Up" : "Sign In"}
                 </Button>
+                {formState.errors?.root?.message && (
+                  <div className="my-[1px] rounded-[5px] backdrop:brightness-[5%]">
+                    <p className="self-center font-moderat text-[13px] text-red-500">
+                      {formState.errors?.root?.message}
+                    </p>
+                  </div>
+                )}
               </Form>
             </FormProvider>
+            <OrDivider></OrDivider>
+            <div className="grid w-full grid-flow-row gap-y-[16px]">
+              <Button
+                variant="none"
+                className={mergeClasses(
+                  CLASSNAMES_BUTTON,
+                  "mx-0 w-full grid-flow-col justify-items-start gap-x-2",
+                )}
+              >
+                <span className="grid w-[50px] grid-cols-1 justify-items-end ">
+                  <TwitterIcon className=""></TwitterIcon>
+                </span>
+                <span className="w-[150px]  text-left">
+                  Sign up with Twitter
+                </span>
+              </Button>
+              <Button
+                variant="none"
+                className={mergeClasses(
+                  CLASSNAMES_BUTTON,
+                  "mx-0 w-full grid-flow-col justify-items-start gap-x-2",
+                )}
+              >
+                {/* <Twitter></Twitter> */}
+                <span className="grid w-[50px] grid-cols-1 justify-items-end ">
+                  <GoogleIcon className=""></GoogleIcon>
+                </span>
+                <span className="w-[150px]  text-left">
+                  Sign up with Google
+                </span>
+              </Button>
+              <Button
+                variant="none"
+                className={mergeClasses(
+                  CLASSNAMES_BUTTON,
+                  "mx-0 w-full grid-flow-col justify-items-start gap-x-2",
+                )}
+              >
+                {/* <Twitter></Twitter> */}
+                <span className="grid w-[50px] grid-cols-1 justify-items-end">
+                  <FacebookIcon className="scale-[95%]"></FacebookIcon>
+                </span>
+                <span className="w-[150px] text-left">
+                  Sign up with Facebook
+                </span>
+              </Button>
+            </div>
             <DialogFooter className="grid w-full grid-flow-row">
               <Button
                 variant="none"
