@@ -8,8 +8,6 @@ import mergeClasses from "utils/mergeClasses/mergeClasses";
 /* eslint-disable-next-line import/no-absolute-path, import/extensions */
 import backgroundImage from "/public/bg.png";
 
-export const dynamic = "force-static";
-
 export default function HomeLayout({ children }) {
   return (
     <div className="bg-[#0D0E12] 2xl:w-[1920px]">
