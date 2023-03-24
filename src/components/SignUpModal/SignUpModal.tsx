@@ -379,8 +379,8 @@ export default function SignUpModal({
             </div>
             <DialogFooter className="grid w-full grid-flow-row">
               <Button
-                variant="none"
-                className="font-moderat text-[15px] font-normal text-[#71767B]"
+                variant="ghost"
+                className="font-moderat text-[15px] font-normal text-[#71767B] hover:bg-white/5"
                 onClick={() => {
                   if (action === "SIGNING IN") {
                     setSignAction("REGISTERING");
@@ -395,7 +395,7 @@ export default function SignUpModal({
                     ? " Already have an account?"
                     : `Don't have an account?`}
                 </span>
-                <span className="ml-1 text-[15px] font-semibold text-blue-800">
+                <span className="ml-1 text-[15px] font-semibold ">
                   {action === "SIGNING IN" ? "Sign Up" : "Sign In"}
                 </span>
               </Button>

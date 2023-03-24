@@ -3,7 +3,6 @@
 
 "use client";
 
-import SignUpModal from "components/SignUpModal/SignUpModal";
 import { nhost } from "lib/setupBackendConfig";
 import asyncTuple from "lib/try/try";
 import {
@@ -42,11 +41,8 @@ export interface UserProps {
  * User Component
  */
 export default function User(): JSX.Element {
-  const user = nhost.auth.getUser();
   const router = useRouter();
-  const isTheUserAunthenticated = nhost.auth.isAuthenticated();
 
-  const [isUserOpeningModal, toggleIsUserOpeningModal] = useToggle(false);
   const [dropdownToggle, toggleDropdown] = useToggle(false);
 
   /**
@@ -63,13 +59,6 @@ export default function User(): JSX.Element {
 
   return (
     <div className="self-center align-middle">
-      <SignUpModal
-        openModalState={isUserOpeningModal}
-        baseState="REGISTERING"
-        onClickOutside={() => {
-          router.refresh();
-        }}
-      ></SignUpModal>
       <DropdownMenu
         defaultOpen={false}
         open={dropdownToggle}
@@ -93,11 +82,11 @@ export default function User(): JSX.Element {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent
-          className="w-[200px] overflow-x-auto rounded-[4px] border-0 bg-[#1f1f23] font-visuelt text-[14px] font-normal text-white/50 shadow-3xl"
+          className="w-[200px] overflow-x-auto rounded-[4px] border-0 bg-[#1f1f23] py-1 font-visuelt text-[14px] font-normal text-white/50 shadow-3xl"
           align="end"
           forceMount
         >
-          <div className="grid grid-flow-col justify-center justify-items-center gap-[10px] py-2 px-2">
+          {/* <div className="grid grid-flow-col justify-center justify-items-center gap-[10px] py-2 px-2">
             <div className="self-center align-middle">
               <Avatar className="justify-center">
                 <AvatarImage
@@ -115,8 +104,8 @@ export default function User(): JSX.Element {
             <div className="self-center align-middle">
               <h1 className="font-normal text-white/50">{user?.email}</h1>
             </div>
-          </div>
-          <DropdownMenuSeparator className="mx-[4px]" />
+          </div> */}
+          {/* <DropdownMenuSeparator className="mx-[4px]" /> */}
           <DropdownMenuGroup className="font-normal text-white/50">
             <DropdownMenuItem className="font-normal text-white/50">
               <UserCheck className="mr-3 h-4 w-4 self-center align-middle" />

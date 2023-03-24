@@ -2,9 +2,7 @@
 
 import SignUpModal from "components/SignUpModal/SignUpModal";
 import CLASSNAMES_BUTTON from "lib/constants/constants";
-import { nhost } from "lib/setupBackendConfig";
 import { User } from "lucide-react";
-import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Button from "ui/components/Button/Button";
 import GoogleIcon from "ui/components/icons/GoogleIcon/GoogleIcon";
@@ -25,10 +23,6 @@ export interface TrendingProps {
  * Trending Component
  */
 export default function Trending({ className }: TrendingProps): JSX.Element {
-  const user = nhost.auth.getUser();
-  const router = useRouter();
-  const isTheUserAunthenticated = nhost.auth.isAuthenticated();
-
   const [isUserOpeningModal, setIsUserOpeningTheModal] = useState(false);
 
   return (

@@ -5,8 +5,6 @@ import Image from "next/image";
 import Link from "next/link";
 import mergeClasses from "utils/mergeClasses";
 
-
-
 /**
  * Props for the PodcastFeedUnit component.
  */
@@ -84,7 +82,7 @@ export default function PodcastFeedUnit({
       </div>
       <div className="grid grid-flow-row gap-[8px]">
         <p className="ml-[2px] font-visuelt text-[14px] font-normal leading-[24px] tracking-[0.5px] text-[#9ab] text-opacity-80  antialiased">
-          {podcastEpisodeDescription}
+          {`${podcastEpisodeDescription.slice(0, 200)}...`}
         </p>
       </div>
       <div className="mt-[-5px] grid grid-flow-row items-start justify-start gap-[8px]">
