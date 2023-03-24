@@ -3,8 +3,6 @@ import ForYouFeed from "components/home/feed/ForYouFeed/ForYouFeed";
 import PodcastFeedUnit from "components/home/feed/PodcastFeedUnit/PodcastFeedUnit";
 import { db } from "lib/setupDBConfig";
 
-// export const dynamic = "force-static";
-
 const getAllEpisodesInDB = async () =>
   db.episode.findMany({
     select: {
