@@ -1,8 +1,8 @@
 "use server";
 
+import PodcastFeedUnit from "components/home/feed/PodcastFeedUnit/PodcastFeedUnit";
 import { db } from "lib/setupDBConfig";
 import mergeClasses from "utils/mergeClasses";
-import PodcastFeedUnit from "components/home/feed/PodcastFeedUnit/PodcastFeedUnit";
 
 /**
  * Props for the ForYouFeed component.
@@ -12,6 +12,7 @@ export interface ForYouFeedProps {
    * Custom class names passed to the root element.
    */
   className?: string;
+  children?: React.ReactNode | React.ReactNode[] | Element | Element[];
 }
 
 const getAllEpisodesInDB = async () =>
@@ -33,7 +34,10 @@ const getAllEpisodesInDB = async () =>
  * ForYouFeed Component
  */
 // eslint-disable-next-line @typescript-eslint/require-await
-export default async function ForYouFeed({ className }: ForYouFeedProps) {
+export async function ForYouFeedComponent({
+  className,
+  ...props
+}: ForYouFeedProps) {
   const forYouPodcastEpisodes = await getAllEpisodesInDB();
   return (
     <div
@@ -42,6 +46,7 @@ export default async function ForYouFeed({ className }: ForYouFeedProps) {
         "scrollbar-thumb-[#0D0E12]",
         className,
       )}
+      {...props}
     >
       <div className="grid grid-flow-row divide-y-[1px] divide-fondy/50  backdrop-brightness-[75%]">
         {/* <FeedUpdater feedUpdaterText="Show 11 new updates"></FeedUpdater> */}
@@ -59,4 +64,9 @@ export default async function ForYouFeed({ className }: ForYouFeedProps) {
   );
 }
 
-ForYouFeed.displayName = "ForYouFeed";
+export default ForYouFeedComponent as unknown as ({
+  className,
+  ...props
+}: ForYouFeedProps) => JSX.Element;
+
+ForYouFeedComponent.displayName = "ForYouFeed";

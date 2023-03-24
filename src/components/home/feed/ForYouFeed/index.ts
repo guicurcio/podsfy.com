@@ -1,2 +1,2 @@
-export * from "./ForYouFeed"
-export { default } from "./ForYouFeed"
+export * from "./ForYouFeed";
+export { default } from "./ForYouFeed";

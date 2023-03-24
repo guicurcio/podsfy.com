@@ -1,5 +1,4 @@
-import ForYouFeed from "components/home/feed/ForYouFeed/ForYouFeed";
-
+import ForYouFeed from "components/home/feed/ForYouFeed";
 import PodcastFeedUnit from "components/home/feed/PodcastFeedUnit/PodcastFeedUnit";
 import { db } from "lib/setupDBConfig";
 

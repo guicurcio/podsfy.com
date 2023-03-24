@@ -7,7 +7,7 @@ type ButtonVariants = {
   size?: keyof typeof ButtonSizes;
 };
 
-const enum ButtonVariantsClasses {
+enum ButtonVariantsClasses {
   /**
    * The default button variant.
    * "px-2 py-1 rounded-md font-medium transition duration-200 ease-in-out"
@@ -23,21 +23,21 @@ const enum ButtonVariantsClasses {
   SUBTLE = "bg-transparent font-SpaceGrotesk text-white/90 hover:backdrop-brightness-[150%]",
 }
 
-const enum ButtonColors {
+enum ButtonColors {
   PRIMARY = "bg-blue-500 text-white",
   SECONDARY = "bg-purple-500 text-white",
 }
 
-const enum ButtonSizes {
+enum ButtonSizes {
   SM = "text-sm",
   MD = "text-base",
   LG = "px-4 py-3 text-lg",
   DEFAULT = "h-10 py-2 px-4 rounded-md text-[12px]",
 }
 
-type ButtonClass<V extends ButtonVariants> =
-  `${ButtonVariantsClasses[V["variant"]]} ${ButtonColors[V["color"]]} ${ButtonSizes[V["size"]]}`;
-type GetButtonClass = <V extends ButtonVariants>(variant: V) => ButtonClass<V>;
+// type ButtonClass<V extends ButtonVariants> =
+//   `${ButtonVariantsClasses[V["variant"]]} ${ButtonColors[V["color"]]} ${ButtonSizes[V["size"]]}`;
+type GetButtonClass = <V extends ButtonVariants>(variant: V) => string;
 
 // // We can use the `Required` utility type to make sure all properties of the `ButtonVariant` type are provided
 const getButtonClass: GetButtonClass = (variants) => {
