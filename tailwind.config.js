@@ -361,12 +361,15 @@ module.exports = {
       },
       fontFamily: {
         basier: ["BasierSquare", ...defaultTheme.fontFamily.sans],
-        moderat: ["Moderat", ...defaultTheme.fontFamily.sans],
+        moderat: ["var(--font-moderat)", ...defaultTheme.fontFamily.sans],
+        visuelt: ["var(--font-visuelt)", ...defaultTheme.fontFamily.sans],
+        SpaceGrotesk: [
+          "var(--font-space-grotesk)",
+          ...defaultTheme.fontFamily.sans,
+        ],
         calibre: ["Calibre", ...defaultTheme.fontFamily.sans],
         founders: ["Founders", ...defaultTheme.fontFamily.sans],
         lausanne: ["Lausanne", ...defaultTheme.fontFamily.sans],
-        visuelt: ["Visuelt", ...defaultTheme.fontFamily.sans],
-        SpaceGrotesk: ["SpaceGrotesk", ...defaultTheme.fontFamily.sans],
         FiraCode: ["FiraCode", ...defaultTheme.fontFamily.sans],
         untitled: ["UntitledSans", ...defaultTheme.fontFamily.sans],
         Domaine: ["Domaine", ...defaultTheme.fontFamily.sans],
