@@ -42,10 +42,6 @@ export const metadata = {
     },
   ],
   creator: "podsfy",
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "white" },
-    { media: "(prefers-color-scheme: dark)", color: "black" },
-  ],
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -70,11 +66,10 @@ export const metadata = {
     creator: "@podsfy",
   },
   icons: {
-    icon: "/favicon.svg",
-    shortcut: "/favicon-16x16.png",
-    apple: "/apple-touch-icon.png",
+    icon: "/favicon.png",
+    shortcut: "/favicon.png",
   },
-  manifest: `${siteConfig.url}/site.webmanifest`,
+  // manifest: `${siteConfig.url}/site.webmanifest`,
 };
 
 export default function RootLayout({
