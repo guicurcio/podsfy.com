@@ -6,7 +6,7 @@ import CLASSNAMES_BUTTON from "lib/constants/constants";
 import { nhost } from "lib/setupBackendConfig";
 import { X } from "lucide-react";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FormProvider, useForm } from "react-hook-form";
 import Button from "ui/components/Button";
 import {
@@ -23,7 +23,6 @@ import { Input } from "ui/components/Input";
 import FacebookIcon from "ui/components/icons/FacebookIcon/FacebookIcon";
 import GoogleIcon from "ui/components/icons/GoogleIcon/GoogleIcon";
 import TwitterIcon from "ui/components/icons/TwitterIcon/TwitterIcon";
-import useToggle from "ui/hooks/useToggle";
 import mergeClasses from "utils/mergeClasses/mergeClasses";
 import * as z from "zod";
 
@@ -61,9 +60,9 @@ const SIGN_UP_MODAL_VALIDATION_SCHEMA = z.object({
     .email()
     .min(4)
     .max(32, { message: "The Email should be at most 32 characters long." }),
-  password: z
-    .string()
-    .min(3, { message: "The password should be at least 3 characters long." }),
+  // password: z
+  //   .string()
+  //   .min(3, { message: "The password should be at least 3 characters long." }),
 });
 
 // function useEffectOnce(effect: EffectCallback) {
@@ -73,7 +72,7 @@ const SIGN_UP_MODAL_VALIDATION_SCHEMA = z.object({
 
 export interface SignUpModalFormValues {
   email: string;
-  password: string;
+  // password: string;
 }
 
 /**
@@ -85,7 +84,7 @@ export default function SignUpModal({
   openModalState,
   onClickOutside,
 }: JoinProps) {
-  const [loading, toggleLoading] = useToggle(false);
+  const [loading, setLoading] = useState(false);
   const [action, setSignAction] = useState<"REGISTERING" | "SIGNING IN">(
     baseState || "REGISTERING",
   );
@@ -98,23 +97,35 @@ export default function SignUpModal({
     isError: false,
   });
 
+  const toggleLoading = () => {
+    setLoading((prev) => !prev);
+  };
+
   const form = useForm<SignUpModalFormValues>({
     reValidateMode: "onChange",
     resolver: zodResolver(SIGN_UP_MODAL_VALIDATION_SCHEMA),
   });
 
-  const { register, formState, setError: setFormError } = form;
+  useEffect(() => {
+    if (openModalState) {
+      form.reset();
+      setError({
+        message: "",
+        isError: false,
+      });
+      setLoading(false);
+    }
+  }, [openModalState]);
 
-  const handleSignInFormSubmit = async ({
-    email,
-    password,
-  }: SignUpModalFormValues) => {
+  const { register, formState, getValues, setError: setFormError } = form;
+
+  const handleSignInFormSubmit = async ({ email }: SignUpModalFormValues) => {
     toggleLoading();
     try {
       const session = await nhost.auth.signIn({
         email,
-        password,
       });
+
       if (session?.session) {
         onClickOutside();
         toggleLoading();
@@ -157,6 +168,7 @@ export default function SignUpModal({
           return;
         }
       }
+      console.log("finally");
     } catch (error_) {
       if (toggleLoading) {
         toggleLoading();
@@ -167,22 +179,27 @@ export default function SignUpModal({
         isError: true,
       });
     } finally {
+      console.log("finally");
       if (error.isError) {
         toggleLoading();
       }
+      setLoading(false);
     }
   };
 
-  const handleSignUpFormSubmit = async ({
-    email,
-    password,
-  }: SignUpModalFormValues) => {
+  const handleSignUpFormSubmit = async ({ email }: SignUpModalFormValues) => {
     toggleLoading();
     try {
-      const session = await nhost.auth.signUp({
+      const sessionOTP = await nhost.auth.signIn({
         email,
-        password,
       });
+
+      const session = sessionOTP;
+      console.log(session);
+      // const signed = await nhost.auth.signUp({
+      //   email,
+      //   password,
+      // });
 
       if (session?.session) {
         onClickOutside();
@@ -207,7 +224,6 @@ export default function SignUpModal({
           // handleSignInFormSubmit({ email, password }),
         }
       }
-      router.refresh();
     } catch (error_) {
       console.log(error_, "error_");
 
@@ -218,6 +234,8 @@ export default function SignUpModal({
           (error_.message as string) ||
           "Something went wrong during sign up, please try in a few minutes. We have been notified of this issue and will fix it as soon as possible.",
       });
+    } finally {
+      setLoading(false);
     }
   };
 

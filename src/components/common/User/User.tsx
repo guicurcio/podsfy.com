@@ -53,7 +53,10 @@ export default function User(): JSX.Element {
    * @returns
    */
   async function handleUserSignOut() {
-    await asyncTuple(nhost.auth.signOut());
+    console.log("signing out");
+    await asyncTuple(nhost.auth.signOut(), (e: Error) =>
+      console.log(e, "error"),
+    );
     router.refresh();
   }
 

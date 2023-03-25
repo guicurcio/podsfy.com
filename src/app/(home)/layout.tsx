@@ -1,23 +1,28 @@
 import HomeHeader from "components/home/HomeHeader/HomeHeader";
 import HomeSidebar from "components/home/HomeSidebar/HomeSidebar";
 import Scroller from "components/home/Scroller/Scroller";
-import Trending from "components/home/Trending/Trending";
 import Image from "next/image";
+import { lazy } from "react";
 import mergeClasses from "utils/mergeClasses/mergeClasses";
 
 /* eslint-disable-next-line import/no-absolute-path, import/extensions */
 import backgroundImage from "/public/bg.png";
+
+// const Trending = lazy(() => import("components/home/Trending/Trending"));
+const Trending = lazy(() => import("components/home/Trending"));
 
 export default function HomeLayout({ children }) {
   return (
     <div className="bg-[#0D0E12] 2xl:w-[1920px]">
       <Image
         className={mergeClasses(
-          "absolute overflow-hidden  bg-[#0D0E12] object-cover brightness-[60%] md:top-[50px]",
-          "md:rotate-[8deg] md:scale-[120%] xl:top-[-120px] xl:translate-x-[25px] xl:scale-x-[105%] xl:scale-y-[100%]",
+          "absolute overflow-hidden  bg-[#0D0E12] object-fill brightness-[60%] md:top-[50px]",
+          " md:rotate-[11deg] md:scale-[130%] xl:top-[-100px] xl:translate-x-[25px] xl:scale-x-[115%] xl:scale-y-[95%]",
         )}
         src={backgroundImage}
         alt="Podcasts"
+        priority
+        quality={10}
       ></Image>
       <div
         className={mergeClasses(

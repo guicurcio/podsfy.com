@@ -25,13 +25,13 @@
  */
 export default async function asyncTuple<T>(
   promise: Promise<T>,
-  errorHandler: (error: Error) => void = console.error
+  errorHandler: (error: Error) => void = console.error,
 ): Promise<[T, null] | [null, Error]> {
   try {
-    const data = await promise
-    return [data, undefined]
+    const data = await promise;
+    return [data, undefined];
   } catch (error) {
-    errorHandler(error)
-    return [undefined, error]
+    errorHandler(error);
+    return [undefined, error];
   }
 }
