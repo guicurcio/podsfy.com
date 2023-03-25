@@ -107,7 +107,7 @@ export default async function HomePodcastPage({ params }) {
             <h2 className="mt-[-4px]  font-moderat text-[13px] text-[#fff] text-opacity-[50%]">
               By{" "}
               <span className="underline">
-                {staticPodcastData.podcastHost.name}
+                {staticPodcastData?.podcastHost?.name || ""}
               </span>
             </h2>
             <h1 className="mt-[2px] break-before-avoid-page text-left font-moderat text-[14px] font-normal text-[#71767B]">
