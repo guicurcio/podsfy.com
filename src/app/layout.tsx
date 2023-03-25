@@ -86,9 +86,11 @@ export default function RootLayout({
             <Image
               className="absolute bg-[#0D0E12] object-cover brightness-[60%] md:top-[50px] md:rotate-[8deg] md:scale-[120%] xl:top-[-120px] xl:translate-x-[25px] xl:scale-x-[105%] xl:scale-y-[100%]"
               src={backgroundImage}
+              height={1080}
+              width={1920}
               alt="Podcasts"
               priority
-              quality={10}
+              quality={1}
             ></Image>
             <div className="backdrop-blur-[8px] backdrop-brightness-[50%]">
               {children}

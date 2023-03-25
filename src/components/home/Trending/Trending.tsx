@@ -2,14 +2,12 @@
 
 import SignUpModal from "components/SignUpModal/SignUpModal";
 import CLASSNAMES_BUTTON from "lib/constants/constants";
-import { nhost } from "lib/setupBackendConfig";
 // @ts-ignore
 import { User } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Button from "ui/components/Button/Button";
 import GoogleIcon from "ui/components/icons/GoogleIcon/GoogleIcon";
 import TwitterIcon from "ui/components/icons/TwitterIcon/TwitterIcon";
-import useReadLocalStorage from "ui/hooks/useReadLocalStorage/useReadLocalStorage";
 import mergeClasses from "utils/mergeClasses";
 
 /**
@@ -29,21 +27,21 @@ type USER_AUTH_FLOW = false | true | "RENDERING";
  */
 export default function Trending({ className }: TrendingProps): JSX.Element {
   const [isUserOpeningModal, setIsUserOpeningTheModal] = useState(false);
-  const isAuthenticated = nhost.auth.isAuthenticated();
-  const [isUserAuthenticated, setIsUserAuthenticated] =
-    useState<USER_AUTH_FLOW>(false);
+  // const isAuthenticated = nhost.auth.isAuthenticated();
+  // const [isUserAuthenticated, setIsUserAuthenticated] =
+  //   useState<USER_AUTH_FLOW>(false);
 
-  const isInStorage = useReadLocalStorage<string>("nhostRefreshToken");
-  console.log(isInStorage, "isInStorage");
+  // const isInStorage = useReadLocalStorage<string>("nhostRefreshToken");
+  // console.log(isInStorage, "isInStorage");
 
-  useEffect(() => {
-    if (isInStorage) {
-      setIsUserAuthenticated(true);
-    }
-    return () => {
-      setIsUserAuthenticated(false);
-    };
-  }, [isInStorage]);
+  // useEffect(() => {
+  //   if (isInStorage) {
+  //     setIsUserAuthenticated(true);
+  //   }
+  //   return () => {
+  //     setIsUserAuthenticated(false);
+  //   };
+  // }, [isInStorage]);
 
   return (
     <div
@@ -66,7 +64,7 @@ export default function Trending({ className }: TrendingProps): JSX.Element {
       <div
         className={mergeClasses(
           "grid w-full grid-flow-row gap-[20px] p-3",
-          isUserAuthenticated && "opacity-0",
+          // isUserAuthenticated && "opacity-0",
           // !isInStorage && "invisible",
         )}
       >

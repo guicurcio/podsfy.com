@@ -46,9 +46,7 @@ export default function PodcastFeedUnit({
   defaultCoverImage = "",
   podcastEpisodeDescription = `A lively and engaging conversation between two of the biggest names in
   comedy.`,
-  podcastSlug,
 }: PodcastFeedUnitProps): JSX.Element {
-  console.log(title, podcast.title, podcast.id);
   return (
     <div
       key={title}

@@ -20,9 +20,11 @@ export default function HomeLayout({ children }) {
           " md:rotate-[11deg] md:scale-[130%] xl:top-[-100px] xl:translate-x-[25px] xl:scale-x-[115%] xl:scale-y-[95%]",
         )}
         src={backgroundImage}
+        height={1080}
+        width={1920}
         alt="Podcasts"
         priority
-        quality={10}
+        quality={1}
       ></Image>
       <div
         className={mergeClasses(
