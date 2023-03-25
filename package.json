@@ -7,6 +7,7 @@
     "dev": "next dev",
     "turbo dev": "concurrently \"next dev --turbo\" \"tailwindcss --input input.css --output output.css --watch\"",
     "build": "next build --no-lint",
+    "build:debug": "next build --debug --no-lint",
     "postinstall": "prisma generate",
     "prisma:generate:platform": "prisma generate --schema C:/Users/ito/Documents/ally/holder/podsfy/src/lib/platformORM/platform-schema.prisma",
     "prisma:pull:platform": "prisma db pull --schema C:/Users/ito/Documents/ally/holder/podsfy/src/lib/platformORM/platform-schema.prisma",
