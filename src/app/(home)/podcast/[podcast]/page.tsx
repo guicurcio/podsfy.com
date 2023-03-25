@@ -1,5 +1,3 @@
-"use client";
-
 import Image from "next/image";
 import mergeClasses from "utils/mergeClasses";
 
@@ -14,10 +12,10 @@ import { notFound } from "next/navigation";
 import { cache } from "react";
 import generateGoodTitleForReviews from "utils/generateGoodTitleForReviews";
 
-const getPodInfo = cache(async (pod: string) =>
+const getPodInfo = cache(async (podcastSlug: string) =>
   db.podcast.findUnique({
     where: {
-      slug: pod,
+      slug: podcastSlug,
     },
     select: {
       title: true,
@@ -66,7 +64,7 @@ const getPodcastsToStaticallyGenerate = async () =>
 export async function generateStaticParams() {
   const podcasts = await getPodcastsToStaticallyGenerate();
   return podcasts.map((podcast) => ({
-    pod: podcast.slug,
+    podcast: podcast.slug,
   }));
 }
 
