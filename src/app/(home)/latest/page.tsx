@@ -1,7 +1,23 @@
-import LatestFeed from "components/home/feed/LatestFeed/LatestFeed";
+import ForYouFeedJSONComponent from "components/home/feed/ForYouFeedJSON/ForYouFeedJSON";
+import PodcastFeedUnit from "components/home/feed/PodcastFeedUnit/PodcastFeedUnit";
+import episodes from "json/episodes.json";
+import podcast from "json/podcast.json";
 
-// export const dynamic = "force-static";
-
-export default function LatestHomePage() {
-  return <LatestFeed></LatestFeed>;
+export default async function HomeFollowingPage() {
+  return (
+    <ForYouFeedJSONComponent>
+      {episodes.slice(0, 1).map((episode) => {
+        return (
+          <PodcastFeedUnit
+            key={episode.id}
+            title={episode.title}
+            podcastEpisodeDescription={episode.description}
+            podcast={podcast.find(
+              (podcast) => podcast.id === episode.podcastId,
+            )}
+          ></PodcastFeedUnit>
+        );
+      })}
+    </ForYouFeedJSONComponent>
+  );
 }

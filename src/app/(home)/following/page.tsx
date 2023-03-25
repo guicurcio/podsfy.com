@@ -1,10 +1,23 @@
-import FollowingFeed from "components/home/feed/FollowingFeed/FollowingFeed";
+import ForYouFeedJSONComponent from "components/home/feed/ForYouFeedJSON/ForYouFeedJSON";
+import PodcastFeedUnit from "components/home/feed/PodcastFeedUnit/PodcastFeedUnit";
+import episodes from "json/episodes.json";
+import podcast from "json/podcast.json";
 
-// export const dynamic = "force-static";
-
-export default function HomePage() {
+export default async function HomeFollowingPage() {
   return (
-    /* @ts-expect-error Async Server Component */
-    <FollowingFeed></FollowingFeed>
+    <ForYouFeedJSONComponent>
+      {episodes.slice(0, 3).map((episode) => {
+        return (
+          <PodcastFeedUnit
+            key={episode.id}
+            title={episode.title}
+            podcastEpisodeDescription={episode.description}
+            podcast={podcast.find(
+              (podcast) => podcast.id === episode.podcastId,
+            )}
+          ></PodcastFeedUnit>
+        );
+      })}
+    </ForYouFeedJSONComponent>
   );
 }
