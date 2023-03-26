@@ -6,18 +6,15 @@ import podcast from "json/podcast.json";
 export default function FollowingPage() {
   return (
     <ForYouFeedJSONComponent>
-      {episodes.map((episode) => {
-        return (
-          <PodcastEpisodeFeedUnit
-            key={episode.id}
-            title={episode.title}
-            podcastEpisodeDescription={episode.description}
-            podcast={podcast.find(
-              (podcast) => podcast.id === episode.podcastId,
-            )}
-          ></PodcastEpisodeFeedUnit>
-        );
-      })}
+      {episodes.map((episode) => (
+        <PodcastEpisodeFeedUnit
+          key={episode.id}
+          podcastEpisode={episode}
+          podcast={podcast.find(
+            (individualPodcast) => individualPodcast.id === episode.podcastId,
+          )}
+        ></PodcastEpisodeFeedUnit>
+      ))}
     </ForYouFeedJSONComponent>
   );
 }

@@ -1,13 +1,16 @@
 "use client";
 
-import { ExternalLink } from "lucide-react";
-import Button from "ui/components/Button";
+import { moderat, spaceGrotesk, visuelt } from "app/layout";
+import Image from "next/image";
+import Link from "next/link";
+import type { TailwindClassname } from "types/tailwind";
 import {
   HoverCard,
   HoverCardContent,
   HoverCardPortal,
   HoverCardTrigger,
 } from "ui/components/Hover";
+import mergeClasses from "utils/mergeClasses/mergeClasses";
 
 /**
  * Props for the HoverCardWrapper component.
@@ -18,43 +21,63 @@ export interface HoverCardWrapperProps {
    */
   className?: string;
   onLike?: () => void;
+  onShare?: () => void;
+  onComment?: () => void;
+  onBookmark?: () => void;
+  children?: JSX.Element | JSX.Element[];
+  hoverCardContentClassName?: TailwindClassname;
+  hoverCardTriggerButtonClassName?: TailwindClassname;
+  hoverCardTriggerButtonImageSRC?: string;
+  slug?: string;
 }
 
 /**
  * HoverCardWrapper Component
  */
-export default function HoverCardWrapper(): JSX.Element {
+export default function HoverCardWrapper({
+  children,
+  hoverCardContentClassName,
+
+  slug,
+}: HoverCardWrapperProps): JSX.Element {
   return (
     <HoverCard key="spotify">
       <HoverCardTrigger asChild>
-        <Button
+        <Link href={`/podcast/${slug}`}>
+          <Image
+            src={`/pods/${slug}.png`}
+            className="h-[64px] w-[64px] rounded-[5px] border border-[#88888820] shadow-3xl"
+            alt="Podcast cover"
+            width={200}
+            height={200}
+            quality={100}
+          ></Image>
+        </Link>
+        {/* <Button
           variant="subtle"
-          className="h-[42px] w-[42px] self-center rounded-[7px] border-[2px] border-[#88888820] p-0  align-middle shadow-3xl"
+          className={mergeClasses(
+            "h-[42px] w-[42px] self-center rounded-[7px] border-[2px] border-[#88888820] p-0  align-middle shadow-3xl",
+            hoverCardTriggerButtonClassName,
+          )}
         >
           <img
-            src={`/pods/spotify.webp`}
+            src={hoverCardTriggerButtonImageSRC}
             className="h-[42px] w-[42px] scale-[60%] object-scale-down "
           ></img>
-        </Button>
+        </Button> */}
       </HoverCardTrigger>
-      <HoverCardPortal>
-        <HoverCardContent className="w-[350px]">
-          <div className="grid grid-flow-row gap-2">
-            <div className="grid grid-flow-row gap-[1px]">
-              <h2 className="w-full text-left font-moderat text-[14px] font-medium text-fondy">
-                Joe Rogan Experience #1278 - Kevin Hart
-              </h2>
-              <h2 className="w-full text-left font-moderat text-[12px] font-normal text-black">
-                Joe Rogan Experience
-              </h2>
-            </div>
-            <div className="grid grid-flow-col justify-start gap-2">
-              <span className="cursor-pointer text-[14px] text-[#1D9BF0]">
-                https://open.spotify.com/episode/
-              </span>
-              <ExternalLink className="h-3 w-3  cursor-pointer text-[14px] text-[#1D9BF0]"></ExternalLink>
-            </div>
-          </div>
+      <HoverCardPortal
+        className={mergeClasses(visuelt.variable, moderat.variable)}
+      >
+        <HoverCardContent
+          className={mergeClasses(
+            "w-[250px]",
+            visuelt.variable,
+            moderat.variable,
+            hoverCardContentClassName,
+          )}
+        >
+          {children}
         </HoverCardContent>
       </HoverCardPortal>
     </HoverCard>

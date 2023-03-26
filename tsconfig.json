@@ -33,6 +33,20 @@
     "strictNullChecks": false,
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "prettier-plugin-split/prettier-plugin-split.prettierplugin.js", "src/components/home/Trending/Trending.jsx"],
-  "exclude": ["node_modules", ".next", "out", "next.config.js", "contentlayer/generated","scripts/**/*", "contentlayer/generated"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "prettier-plugin-split/prettier-plugin-split.prettierplugin.js",
+    "src/components/home/Trending/Trending.jsx"
+  ],
+  "exclude": [
+    "node_modules",
+    ".next",
+    "out",
+    "next.config.js",
+    "contentlayer/generated",
+    "contentlayer/generated"
+  ]
 }

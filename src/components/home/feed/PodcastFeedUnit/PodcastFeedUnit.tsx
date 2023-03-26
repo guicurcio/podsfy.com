@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { Podcasts } from "types/podcast";
 import mergeClasses from "utils/mergeClasses";
 
 /**
@@ -15,7 +16,7 @@ export interface PodcastFeedUnitProps {
    * Pass a custom description to the component.
    * @default ""
    */
-  podcast?: any;
+  podcast?: Podcasts.Podcast;
   /**
    * Pass a custom description to the component.
    * @default ""
@@ -38,11 +39,8 @@ export interface PodcastFeedUnitProps {
  */
 export default function PodcastFeedUnit({
   className = "",
-  podcast = "",
+  podcast,
   title = "Joe Rogan Experience #1278 - Kevin Hart",
-  defaultCoverImage = "",
-  podcastEpisodeDescription = `A lively and engaging conversation between two of the biggest names in
-  comedy.`,
 }: PodcastFeedUnitProps): JSX.Element {
   return (
     <div

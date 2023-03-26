@@ -26,7 +26,7 @@ export function absoluteUrl(path: string) {
 }
 
 // Font files can be colocated inside of `pages`
-const moderat = localFont({
+export const moderat = localFont({
   src: [
     {
       path: "../../public/fonts/podsfy-first-regular.woff",
@@ -45,12 +45,12 @@ const moderat = localFont({
   preload: true,
 });
 
-const spaceGrotesk = localFont({
+export const spaceGrotesk = localFont({
   src: "../../public/fonts/podsfy-second-bold.woff2",
   variable: "--font-space-grotesk",
 });
 
-const visuelt = localFont({
+export const visuelt = localFont({
   src: "../../public/fonts/podsfy-third-regular.woff2",
   weight: "400",
   adjustFontFallback: false,

@@ -3,6 +3,8 @@ import ContentInteraction from "components/home/ContentInteraction/ContentIntera
 import HoverCardWrapper from "components/home/client/HoverCardWrapper/HoverCardWrapper";
 import Image from "next/image";
 import Link from "next/link";
+import type { Podcasts } from "types/podcast";
+import generateGoodPodcastEpisodeTitles from "utils/generateGoodPodcastEpisodeTitles/generateGoodPodcastEpisodeTitles";
 import mergeClasses from "utils/mergeClasses";
 
 /**
@@ -14,11 +16,12 @@ export interface PodcastEpisodeFeedUnitProps {
    * @default ""
    */
   title?: string;
+  podcast?: Pick<Podcasts.Podcast, "slug" | "title" | "description">;
   /**
    * Pass a custom description to the component.
    * @default ""
    */
-  podcast?: any;
+  podcastEpisode?: Pick<Podcasts.Episode, "title" | "description">;
   /**
    * Pass a custom description to the component.
    * @default ""
@@ -32,8 +35,6 @@ export interface PodcastEpisodeFeedUnitProps {
    *
    */
   defaultCoverImage?: string;
-  podcastEpisodeDescription?: string;
-  podcastSlug?: string;
 }
 
 /**
@@ -41,48 +42,60 @@ export interface PodcastEpisodeFeedUnitProps {
  */
 export default function PodcastEpisodeFeedUnit({
   className = "",
-  podcast = "",
-  title = "Joe Rogan Experience #1278 - Kevin Hart",
-  defaultCoverImage = "",
-  podcastEpisodeDescription = `A lively and engaging conversation between two of the biggest names in
-  comedy.`,
+  podcast,
+  podcastEpisode,
 }: PodcastEpisodeFeedUnitProps): JSX.Element {
   return (
     <div
-      key={title}
+      key={podcastEpisode.title}
       className={mergeClasses(
-        "grid w-full grid-flow-row gap-3 border-0 py-[18px] px-[18px] hover:brightness-[105%]",
+        "grid w-full grid-flow-row gap-4 border-0 py-[18px] px-[18px] hover:brightness-[105%]",
         className,
       )}
     >
-      <div className="grid w-full grid-flow-row gap-4">
-        <div className="grid w-full grid-flow-col items-center justify-between self-center align-middle ">
-          <div className="grid grid-flow-col items-center gap-3">
-            <Link href={`/podcast/${podcast.slug}`}>
-              <Image
-                src={defaultCoverImage || `/pods/${podcast.slug}.png`}
-                className="h-[64px] w-[64px] rounded-[5px] border border-[#88888820] shadow-3xl"
-                alt="Podcast cover"
-                width={200}
-                height={200}
-                quality={100}
-              ></Image>
-            </Link>
-            <div className="grid w-[450px] grid-flow-row gap-[1px]">
-              <h2 className="w-full text-left font-moderat text-[15px] font-medium text-[#E7E9EA] ">
-                {title}
-              </h2>
-              <h2 className="w-full text-left font-moderat text-[15px] font-normal text-[#71767B]">
-                {podcast.title}
-              </h2>
+      <div className="grid w-full grid-flow-col items-center justify-between self-center align-middle ">
+        <div className="grid grid-flow-col items-center gap-3">
+          <HoverCardWrapper
+            slug={podcast.slug}
+            hoverCardContentClassName="w-full pl-3 py-3 pr-1 bg-black bg-opacity-50 backdrop-blur-[50px] backdrop-brightness-[50%] rounded-[5px] border border-white border-opacity-5  font-visuelt text-[14px] font-normal text-white/50 shadow-3xl"
+          >
+            <div className="grid grid-flow-col gap-3 ">
+              <Link href={`/podcast/${podcast.slug}`}>
+                <Image
+                  src={`/pods/${podcast.slug}.png`}
+                  className="h-[88px] w-[78px] rounded-[4px] border border-[#88888820] shadow-3xl brightness-[104%]"
+                  alt="Podcast cover"
+                  width={150}
+                  height={150}
+                  quality={100}
+                ></Image>
+              </Link>
+              <div className="grid h-fit w-[470px] grid-flow-row  gap-[2px]">
+                <h2 className="w-full text-left font-moderat text-[17px] font-medium text-[#E7E9EA] ">
+                  {podcast.title}
+                </h2>
+                <p className="ml-[2px] justify-start font-moderat text-[14px] font-normal leading-[18px] tracking-[-0.3px] text-[#9ab] text-opacity-80  ">
+                  {`${podcast.description.slice(0, 128)}`}
+                </p>
+              </div>
             </div>
-          </div>
-          <HoverCardWrapper></HoverCardWrapper>
+          </HoverCardWrapper>
+          <Link
+            href={`podcast/${podcast.slug}`}
+            className="grid w-full grid-flow-row gap-[1px]"
+          >
+            <h2 className="w-[500px] text-left font-moderat text-[15px] font-medium text-[#E7E9EA] ">
+              {generateGoodPodcastEpisodeTitles(podcastEpisode.title)}
+            </h2>
+            <h3 className="w-[450px] text-left font-moderat text-[15px] font-normal text-[#71767B]">
+              {podcast.title}
+            </h3>
+          </Link>
         </div>
       </div>
       <div className="grid grid-flow-row gap-[8px]">
         <p className="ml-[2px] font-visuelt text-[14px] font-normal  leading-[24px] tracking-[0.5px] text-[#9ab] text-opacity-80  ">
-          {`${podcastEpisodeDescription.slice(0, 210)}...`}
+          {`${podcastEpisode.description.slice(0, 210)}...`}
         </p>
       </div>
       <div className="mt-[-5px] grid grid-flow-row items-start justify-start gap-[8px]">

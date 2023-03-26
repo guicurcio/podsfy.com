@@ -14,6 +14,6 @@
  */
 export default function generateSlugFromTitle(title: string): string {
   let slug: string = title.toLowerCase().replace(/\s+/g, "-");
-  slug = slug.replace(/[^a-z0-9-]/g, "");
+  slug = slug.replace(/[^\da-z-]/g, "");
   return slug;
 }
