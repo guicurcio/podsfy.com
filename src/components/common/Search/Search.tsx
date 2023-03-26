@@ -1,40 +1,40 @@
-"use client"
+"use client";
 
-import type { PopoverProps } from "@radix-ui/react-popover"
-import { Check, ChevronsUpDown, Search as SearchIcon } from "lucide-react"
-import { useRouter } from "next/navigation"
-import { useState } from "react"
-import Button from "ui/components/Button"
+import type { PopoverProps } from "@radix-ui/react-popover";
+import { Check, ChevronsUpDown, Search as SearchIcon } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+import Button from "ui/components/Button";
 import {
   Command,
   CommandEmpty,
   CommandGroup,
   CommandInput,
-  CommandItem
-} from "ui/components/Command"
-import { Popover, PopoverContent, PopoverTrigger } from "ui/components/Popover"
-import mergeClasses from "utils/mergeClasses/mergeClasses"
+  CommandItem,
+} from "ui/components/Command";
+import { Popover, PopoverContent, PopoverTrigger } from "ui/components/Popover";
+import mergeClasses from "utils/mergeClasses/mergeClasses";
 
 export type Podcast = {
-  slug: string
-  name: string
-}
+  slug: string;
+  name: string;
+};
 
 export interface SearchBoxProps extends PopoverProps {
-  podcasts: Podcast[]
+  podcasts: Podcast[];
   /**
    * Custom class names passed to the button trigger of the search box.
    */
-  className?: string
+  className?: string;
   /**
    * Pass a custom title to the component.
    * @default ""
    */
-  title?: string
+  title?: string;
   /**
    * Custom class names passed to the PopOver component.
    */
-  popoverClassName?: string
+  popoverClassName?: string;
 }
 
 const Search = ({
@@ -44,9 +44,9 @@ const Search = ({
   popoverClassName,
   ...props
 }: SearchBoxProps) => {
-  const [open, setOpen] = useState(false)
-  const [selectedPodcast, setSelectedPodcast] = useState<Podcast>()
-  const router = useRouter()
+  const [open, setOpen] = useState(false);
+  const [selectedPodcast, setSelectedPodcast] = useState<Podcast>();
+  const router = useRouter();
 
   return (
     <Popover open={open} onOpenChange={setOpen} {...props}>
@@ -61,7 +61,7 @@ const Search = ({
           className={mergeClasses(
             "group h-[42px] self-center py-[12px] px-3 align-middle",
             " justify-between font-visuelt text-[14px] font-medium text-white/80",
-            className
+            className,
           )}
         >
           <div className="grid grid-flow-col items-center gap-2">
@@ -76,7 +76,7 @@ const Search = ({
       <PopoverContent
         className={mergeClasses(
           "mt-[-20px] w-full border-0 bg-transparent ",
-          popoverClassName
+          popoverClassName,
         )}
       >
         <Command className="n:rounded-b-[5px] rounded-[12px] rounded-t-[5px] rounded-r-[5px] rounded-l-[5px] border-x border-b border-gray-700 border-opacity-25 bg-[#1f1f23] font-visuelt text-[14px]  font-normal text-white/50 shadow-3xl drop-shadow-2xl backdrop:brightness-50">
@@ -93,9 +93,9 @@ const Search = ({
                 className="font-visuelt font-normal"
                 key={podcast.slug}
                 onSelect={() => {
-                  setSelectedPodcast(podcast)
-                  setOpen(false)
-                  router.push(`/podcast/${podcast.slug}`)
+                  setSelectedPodcast(podcast);
+                  setOpen(false);
+                  router.push(`/podcast/${podcast.slug}`);
                 }}
               >
                 <span className="h-4 self-center  align-middle">
@@ -108,7 +108,7 @@ const Search = ({
                     "ml-auto h-4 w-4",
                     selectedPodcast?.slug === podcast.slug
                       ? "opacity-100"
-                      : "opacity-0"
+                      : "opacity-0",
                   )}
                 />
               </CommandItem>
@@ -117,9 +117,9 @@ const Search = ({
         </Command>
       </PopoverContent>
     </Popover>
-  )
-}
+  );
+};
 
-Search.displayName = "Search"
+Search.displayName = "Search";
 
-export default Search
+export default Search;

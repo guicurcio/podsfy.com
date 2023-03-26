@@ -1,6 +1,6 @@
 import { db } from "lib/setupDBConfig";
 import mergeClasses from "utils/mergeClasses";
-import PodcastFeedUnit from "components/home/feed/PodcastFeedUnit/PodcastFeedUnit";
+import PodcastFeedUnit from "components/home/feed/PodcastEpisodeFeedUnit/PodcastEpisodeFeedUnit";
 
 /**
  * Props for the ForYouFeedNoCom component.
@@ -31,7 +31,9 @@ const getAllEpisodesInDB = async () =>
  * ForYouFeedNoCom Component
  */
 // eslint-disable-next-line @typescript-eslint/require-await
-export default async function ForYouFeedNoCom({ className }: ForYouFeedNoComProps) {
+export default async function ForYouFeedNoCom({
+  className,
+}: ForYouFeedNoComProps) {
   const forYouPodcastEpisodes = await getAllEpisodesInDB();
   return (
     <div

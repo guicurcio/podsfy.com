@@ -1,5 +1,5 @@
 import ForYouFeedJSONComponent from "components/home/feed/ForYouFeedJSON/ForYouFeedJSON";
-import PodcastFeedUnit from "components/home/feed/PodcastFeedUnit/PodcastFeedUnit";
+import PodcastFeedUnit from "components/home/feed/PodcastEpisodeFeedUnit/PodcastEpisodeFeedUnit";
 import episodes from "json/episodes.json";
 import podcast from "json/podcast.json";
 

@@ -1,4 +1,6 @@
+import fs from "fs";
 import Image from "next/image";
+
 import mergeClasses from "utils/mergeClasses";
 
 import TooltipContainer from "components/common/TooltipContainer/TooltipContainer";
@@ -7,59 +9,20 @@ import PodEpisodes from "components/pod/PodEpisodes";
 import PodReviews from "components/pod/PodReviews";
 import PodSimilar from "components/pod/PodSimilar";
 import PodStreaming from "components/pod/PodStreaming";
-import { db } from "lib/setupDBConfig/setupDBConfig";
 import { notFound } from "next/navigation";
-import { cache } from "react";
 import generateGoodTitleForReviews from "utils/generateGoodTitleForReviews";
 
-const getPodInfo = cache(async (podcastSlug: string) =>
-  db.podcast.findUnique({
-    where: {
-      slug: podcastSlug,
-    },
-    select: {
-      title: true,
-      description: true,
-      slug: true,
-      cover: true,
-      host: true,
-      backgroundCoverImage: true,
-      tags: true,
-      genre: true,
-      rating: true,
-      episodes: true,
-      reviews: {
-        select: {
-          review: true,
-        },
-      },
-      streamingAt: {
-        select: {
-          title: true,
-        },
-      },
-      similarPodcasts: {
-        select: {
-          title: true,
-          cover: true,
-          slug: true,
-        },
-      },
-      podcastHost: {
-        select: {
-          name: true,
-        },
-      },
-    },
-  }),
-);
+const getPodInfoJSON = async (podcastSlug: string) => {
+  const inputFilePath = `./src/json/podcastsJSONsliced/${podcastSlug}.json`;
+  const jsonData = JSON.parse(fs.readFileSync(inputFilePath, "utf-8"));
+  return jsonData;
+};
 
-const getPodcastsToStaticallyGenerate = async () =>
-  db.podcast.findMany({
-    select: {
-      slug: true,
-    },
-  });
+const getPodcastsToStaticallyGenerate = async () => {
+  const inputFilePath = `./src/json/podcasts/slugs.json`;
+  const jsonData = JSON.parse(fs.readFileSync(inputFilePath, "utf-8"));
+  return jsonData;
+};
 
 export async function generateStaticParams() {
   const podcasts = await getPodcastsToStaticallyGenerate();
@@ -72,7 +35,8 @@ export async function generateStaticParams() {
  * HomePodcast Component
  */
 export default async function HomePodcastPage({ params }) {
-  const staticPodcastData = await getPodInfo(params?.podcast);
+  // const staticPodcastData = await getPodInfo(params?.podcast);
+  const staticPodcastData = await getPodInfoJSON(params?.podcast);
 
   if (!staticPodcastData?.title) {
     notFound();
@@ -111,8 +75,7 @@ export default async function HomePodcastPage({ params }) {
               </span>
             </h2>
             <h1 className="mt-[2px] break-before-avoid-page text-left font-moderat text-[14px] font-normal text-[#71767B]">
-              The Found My Fitness podcast is hosted by Rhonda Patrick, a
-              biomedical scientist who focuses on nutrition, aging, and health.
+              {staticPodcastData?.description || ""}
             </h1>
             <div className=" mt-[5px] grid grid-flow-row items-start justify-start gap-[8px]">
               <TooltipContainer className="gap-[32px]">
@@ -169,13 +132,13 @@ export default async function HomePodcastPage({ params }) {
 
           <div className="grid grid-flow-row items-start justify-start gap-[100px]">
             {/* todo: put a button that says to leave a comment */}
-            {staticPodcastData.reviews.length > 0 && (
+            {staticPodcastData.reviews?.length > 0 && (
               <PodReviews
                 title={generateGoodTitleForReviews(staticPodcastData.title)}
                 reviews={staticPodcastData.reviews}
               />
             )}
-            {staticPodcastData.similarPodcasts.length > 0 && (
+            {staticPodcastData.similarPodcasts?.length > 0 && (
               <PodSimilar
                 title={staticPodcastData.title}
                 similarPodcasts={staticPodcastData.similarPodcasts}

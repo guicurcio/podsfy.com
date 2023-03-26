@@ -1,0 +1,90 @@
+[
+  {
+    "title": "The Huberman Lab Podcast",
+    "slug": "huberman-lab-podcast"
+  },
+  {
+    "title": "Call Her Daddy",
+    "slug": "call-her-daddy"
+  },
+  {
+    "title": "The All-In Podcast",
+    "slug": "all-in-podcast"
+  },
+  {
+    "title": "FoundMyFitness",
+    "slug": "found-my-fitness"
+  },
+  {
+    "title": "The Joe Rogan Experience",
+    "slug": "the-joe-rogan-experience"
+  },
+  {
+    "title": "making sense",
+    "slug": "making-sense"
+  },
+  {
+    "title": "The Lex Fridman Podcast",
+    "slug": "lex-fridman-podcast"
+  },
+  {
+    "title": "The Tim Ferriss Show",
+    "slug": "tim-ferriss-show"
+  },
+  {
+    "title": "Armchair Expert",
+    "slug": "armchair-expert"
+  },
+  {
+    "title": "This American Life",
+    "slug": "this-american-life"
+  },
+  {
+    "title": "Serial",
+    "slug": "serial"
+  },
+  {
+    "title": "Stuff You Should Know",
+    "slug": "stuff-you-should-know"
+  },
+  {
+    "title": "How I Built This",
+    "slug": "how-i-built-this"
+  },
+  {
+    "title": "The Daily",
+    "slug": "the-daily"
+  },
+  {
+    "title": "Freakonomics Radio",
+    "slug": "freakonomics-radio"
+  },
+  {
+    "title": "The Minimalists Podcast",
+    "slug": "the-minimalists-podcast"
+  },
+  {
+    "title": "The Tim Ferriss Show",
+    "slug": "the-tim-ferriss-show"
+  },
+  {
+    "title": "Radiolab",
+    "slug": "radiolab"
+  },
+  {
+    "title": "Beyond Good and Evil",
+    "slug": "beyond-good-and-evil"
+  },
+  {
+    "title": "On Purpose",
+    "slug": "on-purpose"
+  },
+  {
+    "title": "The Drive with Peter Attia",
+    "slug": "the-drive"
+  },
+  {
+    "title": "The Rich Roll Podcast",
+    "slug": "rich-roll"
+  }
+]

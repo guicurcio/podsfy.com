@@ -1,6 +1,3 @@
-import TooltipContainer from "components/common/TooltipContainer";
-import ContentInteraction from "components/home/ContentInteraction/ContentInteraction";
-import HoverCardWrapper from "components/home/client/HoverCardWrapper/HoverCardWrapper";
 import Image from "next/image";
 import Link from "next/link";
 import mergeClasses from "utils/mergeClasses";
@@ -60,30 +57,27 @@ export default function PodcastFeedUnit({
           <div className="grid grid-flow-col items-center gap-3">
             <Link href={`/podcast/${podcast.slug}`}>
               <Image
-                src={defaultCoverImage || `/pods/${podcast.slug}.png`}
-                className="h-[64px] w-[64px] rounded-[5px] border border-[#88888820] shadow-3xl"
+                src={`/pods/${podcast.slug}.png`}
+                className="h-[88px] w-[78px] rounded-[4px] border border-[#88888820] shadow-3xl brightness-[104%]"
                 alt="Podcast cover"
-                width={64}
-                height={64}
+                width={150}
+                height={150}
+                quality={100}
               ></Image>
             </Link>
-            <div className="grid w-[450px] grid-flow-row gap-[1px]">
-              <h2 className="w-full text-left font-moderat text-[15px] font-medium text-[#E7E9EA] ">
-                {title}
-              </h2>
-              <h2 className="w-full text-left font-moderat text-[15px] font-normal text-[#71767B]">
+            <div className="grid w-[500px] grid-flow-row gap-[1px]">
+              <h2 className="w-full text-left font-moderat text-[16px] font-medium text-[#E7E9EA] ">
                 {podcast.title}
               </h2>
+              <p className="ml-[2px] font-visuelt text-[14px] font-normal  leading-[24px] tracking-[0.5px] text-[#9ab] text-opacity-80  ">
+                {`${podcast.description.slice(0, 128)}`}
+              </p>
             </div>
           </div>
-          <HoverCardWrapper></HoverCardWrapper>
+          {/* <HoverCardWrapper></HoverCardWrapper> */}
         </div>
       </div>
-      <div className="grid grid-flow-row gap-[8px]">
-        <p className="ml-[2px] font-visuelt text-[14px] font-normal  leading-[24px] tracking-[0.5px] text-[#9ab] text-opacity-80  ">
-          {`${podcastEpisodeDescription.slice(0, 210)}...`}
-        </p>
-      </div>
+      {/*
       <div className="mt-[-5px] grid grid-flow-row items-start justify-start gap-[8px]">
         <TooltipContainer className="gap-[32px]">
           <ContentInteraction
@@ -104,7 +98,7 @@ export default function PodcastFeedUnit({
             iconSpecification="COMMENT"
           ></ContentInteraction>
         </TooltipContainer>
-      </div>
+      </div> */}
     </div>
   );
 }

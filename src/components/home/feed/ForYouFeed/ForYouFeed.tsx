@@ -1,6 +1,6 @@
 "use server";
 
-import PodcastFeedUnit from "components/home/feed/PodcastFeedUnit/PodcastFeedUnit";
+import PodcastFeedUnit from "components/home/feed/PodcastEpisodeFeedUnit/PodcastEpisodeFeedUnit";
 import { db } from "lib/setupDBConfig";
 import mergeClasses from "utils/mergeClasses";
 
