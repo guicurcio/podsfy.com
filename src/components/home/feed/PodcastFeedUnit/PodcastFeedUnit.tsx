@@ -16,7 +16,7 @@ export interface PodcastFeedUnitProps {
    * Pass a custom description to the component.
    * @default ""
    */
-  podcast?: Podcasts.Podcast;
+  podcast?: Pick<Podcasts.Podcast, "title" | "slug" | "description">;
   /**
    * Pass a custom description to the component.
    * @default ""

@@ -95,8 +95,8 @@ export default function HomeSidebar({
               {item.href ? (
                 <Link href={item.href} legacyBehavior passHref>
                   <NavigationMenuLink className={commonClassName}>
-                    <item.icon className="h-4 w-4 self-center align-middle text-white/60" />
-                    <span className="h-4 w-fit self-center align-middle font-visuelt text-[15px] font-normal text-white/60">
+                    <item.icon className="h-[15px] w-[15px] self-center align-middle text-white/40" />
+                    <span className="h-4 w-fit self-center pb-[21px] align-middle font-moderat text-[14px] font-normal text-white/60">
                       {item.label}
                     </span>
                   </NavigationMenuLink>

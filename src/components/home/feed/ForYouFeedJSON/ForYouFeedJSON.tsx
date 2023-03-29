@@ -26,7 +26,7 @@ export default function ForYouFeedJSON({
         className,
       )}
     >
-      <div className="grid grid-flow-row divide-y-[1px] divide-fondy/50  backdrop-brightness-[75%]">
+      <div className="grid grid-flow-row divide-y-[1px] divide-fondy/50 pb-[110px]  backdrop-brightness-[75%]">
         {children}
       </div>
     </div>

@@ -127,7 +127,7 @@ const NavigationMenuLink = ({
   <NavigationMenuPrimitive.Link
     className={mergeClasses(
       "font-visuelt text-white/60",
-      "grid grid-flow-row gap-2 rounded-t-[3px] rounded-r-[3px] rounded-l-[3px]  ",
+      "rounded- grid grid-flow-row gap-2",
       "transition-colors focus:outline-none focus:outline-0 focus:ring-0",
       "focus:ring-transparent focus:ring-offset-0 focus:ring-offset-transparent",
       "self-center bg-transparent disabled:pointer-events-none disabled:opacity-50",

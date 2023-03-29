@@ -5,7 +5,7 @@ import podcasts from "json/podcast.json";
 export default function HomeFollowingPage() {
   return (
     <FollowingFeedJSON>
-      {podcasts.slice(0, 20).map((podcast) => (
+      {podcasts.slice(0, 10).map((podcast) => (
         <PodcastFeedUnit key={podcast.id} podcast={podcast}></PodcastFeedUnit>
       ))}
     </FollowingFeedJSON>
