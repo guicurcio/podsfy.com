@@ -1,23 +1,21 @@
 import ForYouFeedJSONComponent from "components/home/feed/ForYouFeedJSON/ForYouFeedJSON";
 import PodcastEpisodeFeedUnit from "components/home/feed/PodcastEpisodeFeedUnit/PodcastEpisodeFeedUnit";
-import episodes from "json/episodes.json";
-import podcast from "json/podcast.json";
+import podcastEpisodes from "json/episodes.json";
+import podcasts from "json/podcast.json";
 
-export default async function HomePage() {
+export default function HomePage() {
   return (
     <ForYouFeedJSONComponent>
-      {episodes.map((episode) => {
-        return (
-          <PodcastEpisodeFeedUnit
-            key={episode.id}
-            title={episode.title}
-            podcastEpisodeDescription={episode.description}
-            podcast={podcast.find(
-              (podcast) => podcast.id === episode.podcastId,
-            )}
-          ></PodcastEpisodeFeedUnit>
-        );
-      })}
+      {podcastEpisodes.map((podcastEpisode) => (
+        <PodcastEpisodeFeedUnit
+          key={podcastEpisode.id}
+          podcastEpisode={podcastEpisode}
+          podcast={podcasts.find(
+            (individualPodcast) =>
+              individualPodcast.id === podcastEpisode.podcastId,
+          )}
+        ></PodcastEpisodeFeedUnit>
+      ))}
     </ForYouFeedJSONComponent>
   );
 }

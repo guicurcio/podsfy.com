@@ -85,7 +85,7 @@ export default function PodcastEpisodeFeedUnit({
             className="grid w-full grid-flow-row gap-[1px]"
           >
             <h2 className="w-[500px] text-left font-moderat text-[15px] font-medium text-[#E7E9EA] ">
-              {generateGoodPodcastEpisodeTitles(podcastEpisode.title)}
+              {generateGoodPodcastEpisodeTitles(podcastEpisode?.title || "")}
             </h2>
             <h3 className="w-[450px] text-left font-moderat text-[15px] font-normal text-[#71767B]">
               {podcast.title}
@@ -95,7 +95,11 @@ export default function PodcastEpisodeFeedUnit({
       </div>
       <div className="grid grid-flow-row gap-[8px]">
         <p className="ml-[2px] font-visuelt text-[14px] font-normal  leading-[24px] tracking-[0.5px] text-[#9ab] text-opacity-80  ">
-          {`${podcastEpisode.description.slice(0, 210)}...`}
+          {`${
+            podcastEpisode?.description
+              ? podcastEpisode?.description.slice(0, 210)
+              : ""
+          }...`}
         </p>
       </div>
       <div className="mt-[-5px] grid grid-flow-row items-start justify-start gap-[8px]">
