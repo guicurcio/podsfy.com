@@ -73,7 +73,7 @@
     "tailwind-merge": "^1.10.0",
     "tailwindcss-animate": "^1.0.5",
     "tailwindcss-radix": "^2.8.0",
-    "urql": "^3.0.4",
+    "urql": "^4.0.0",
     "use-long-press": "^2.0.3",
     "zod": "^3.21.4"
   },
