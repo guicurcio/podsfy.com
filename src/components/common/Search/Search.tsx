@@ -17,10 +17,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "ui/components/Popover";
 import mergeClasses from "utils/mergeClasses/mergeClasses";
 
 export interface SearchBoxProps extends PopoverProps {
-  podcasts: Pick<
-    Podcasts.Podcast,
-    "title" | "slug" | "createdAt" | "updatedAt"
-  >[];
+  podcasts: Pick<Podcasts.Podcast, "title" | "slug">[];
   /**
    * Custom class names passed to the button trigger of the search box.
    */
@@ -36,9 +33,6 @@ export interface SearchBoxProps extends PopoverProps {
   popoverClassName?: string;
 }
 
-const classButton =
-  "bg-[#050607f2] border border-[#171717] text-white/75 hover:brightness-[120%] dark:bg-slate-50 dark:text-slate-900";
-
 const Search = ({
   podcasts,
   className,
@@ -48,9 +42,7 @@ const Search = ({
 }: SearchBoxProps) => {
   const [open, setOpen] = useState(false);
   const [selectedPodcast, setSelectedPodcast] =
-    useState<
-      Pick<Podcasts.Podcast, "title" | "slug" | "createdAt" | "updatedAt">
-    >();
+    useState<Pick<Podcasts.Podcast, "title" | "slug">>();
   const router = useRouter();
 
   return (
@@ -66,33 +58,44 @@ const Search = ({
           className={mergeClasses(
             "group h-[42px] self-center px-3 py-[12px] align-middle",
             " justify-between font-visuelt text-[14px] font-medium text-white/80",
+            "col-span-7 w-full self-center align-middle",
+            "opacity-100 transition-opacity duration-300 ease-in",
             className,
+            open &&
+              "pointer-events-none opacity-0 transition-opacity duration-300 ease-out",
           )}
         >
           <div className="grid grid-flow-col items-center gap-2">
-            <SearchIcon className="-ml-1 h-3 w-4 shrink-0 opacity-50"></SearchIcon>
-            {selectedPodcast
-              ? selectedPodcast.title
-              : title || "Search podcasts, episodes, reviews, notes..."}
+            {!open && (
+              <SearchIcon className="-ml-1 h-3 w-4 shrink-0 opacity-50"></SearchIcon>
+            )}
+            {selectedPodcast ? selectedPodcast.title : undefined}
+            {!open && "Search for podcasts, episodes, guests, notes..."}
           </div>
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
       <PopoverContent
         className={mergeClasses(
-          "mt-[-20px] w-full border-0 bg-transparent ",
+          "relative mt-[-20px] h-full w-[715px] border-0 bg-transparent",
+          "pointer-events-auto opacity-100 transition-opacity duration-300",
           popoverClassName,
         )}
       >
-        <Command className="">
+        <Command
+          className={mergeClasses(
+            "absolute left-[13px] top-[-24px] h-[360px]",
+            "w-[690px] border border-[#171717] bg-[#050607f2] text-white text-white/75",
+          )}
+        >
           <CommandInput
-            className={classButton}
+            className={mergeClasses("text-white/75", "text-white")}
             placeholder="Search for podcasts, episodes, guests, notes..."
           />
 
           <CommandEmpty>No podcasts found.</CommandEmpty>
 
-          <CommandGroup className="grid grid-flow-row divide-y-2 divide-black">
+          <CommandGroup className="grid grid-flow-row">
             {podcasts.map((podcast) => (
               <CommandItem
                 className="font-visuelt font-normal"

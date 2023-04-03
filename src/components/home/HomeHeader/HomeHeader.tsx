@@ -43,10 +43,9 @@ export default function HomeHeader({
             podsfy
           </Link>
           <div className="col-span-7  w-full py-3">
-            {/* border-x border-sharper border-opacity-5 */}
             <Search
               podcasts={staticPodcastData()}
-              className="col-span-7 w-full self-center  align-middle"
+              className=""
               popoverClassName="w-[715px]"
             ></Search>
           </div>

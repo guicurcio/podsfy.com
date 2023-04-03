@@ -6,6 +6,7 @@ import { Search } from "lucide-react";
 import * as React from "react";
 import mergeClasses from "utils/mergeClasses/mergeClasses";
 import { Dialog, DialogContent } from "../Dialog";
+import { visuelt } from "app/layout";
 
 const Command = React.forwardRef<
   React.ElementRef<typeof CommandPrimitive>,
@@ -14,8 +15,9 @@ const Command = React.forwardRef<
   <CommandPrimitive
     ref={ref}
     className={mergeClasses(
-      "dark:bg-slate-800 flex h-full w-full flex-col overflow-hidden rounded-lg bg-white",
+      "dark:bg-slate-800 flex h-full w-full flex-col overflow-hidden rounded-md bg-white",
       className,
+      visuelt.variable,
     )}
     {...props}
   />
@@ -34,7 +36,6 @@ const CommandDialog = ({ children, ...props }: CommandDialogProps) => (
   </Dialog>
 );
 
-// Definimos el componente CommandInput usando forwardRef
 const CommandInput = React.forwardRef<
   React.ElementRef<typeof CommandPrimitive.Input>, // Tipo de la referencia que aceptará el componente
   React.ComponentPropsWithoutRef<typeof CommandPrimitive.Input> // Props que se pueden pasar al componente
@@ -50,9 +51,10 @@ const CommandInput = React.forwardRef<
         ref={ref} // Propiedad ref para acceder al input en el DOM
         className={mergeClasses(
           // Clases de estilo para el input
-          "flex h-[50px] w-full rounded-md bg-transparent pt-4 pb-5 font-moderat",
-          "text-[14px] text-white outline-none placeholder:text-black/50",
-          "disabled:cursor-not-allowed disabled:opacity-50",
+          "!w-[1200px] bg-transparent py-[10px] pl-2",
+          " text-white outline-none",
+          " self-center align-middle",
+          " justify-between font-visuelt text-[14px] font-medium ",
           className,
         )}
         {...props} // Pasamos el resto de los props al input
@@ -99,7 +101,7 @@ const CommandGroup = React.forwardRef<
   <CommandPrimitive.Group
     ref={ref}
     className={mergeClasses(
-      "dark:text-slate-400 [&_[cmdk-group-heading]]:text-slate-900 [&_[cmdk-group-heading]]:dark:text-slate-300 overflow-hidden py-3 px-2 text-black [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:pb-1.5 [&_[cmdk-group-heading]]:text-sm [&_[cmdk-group-heading]]:font-semibold",
+      "dark:text-slate-400 [&_[cmdk-group-heading]]:text-slate-900 [&_[cmdk-group-heading]]:dark:text-slate-300 overflow-hidden px-2 py-3 text-black [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:pb-1.5 [&_[cmdk-group-heading]]:text-sm [&_[cmdk-group-heading]]:font-semibold",
       className,
     )}
     {...props}
@@ -129,7 +131,7 @@ const CommandItem = React.forwardRef<
     className={mergeClasses(
       "flex cursor-pointer px-2 pb-[17px] pt-[8px] font-moderat text-[14px]  outline-none transition-colors",
       "duration-200 data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
-      "rounded-[4px] text-left align-middle font-normal hover:bg-fondy hover:text-white/60",
+      "text-left align-middle font-normal hover:bg-fondy hover:text-white/60",
       "self-center tracking-[-0.03em] text-white/50 antialiased",
       className,
     )}

@@ -1,40 +1,33 @@
-/**
- * staticPodcastData
- */
-export interface staticPodcastDataArgs {
-  /**
-   *
-   */
-}
+
 
 export const podcasts = [
   {
     slug: "the-joe-rogan-experience",
-    name: "The Joe Rogan Experience",
+    title: "The Joe Rogan Experience",
   },
   {
     slug: "on-purpose",
-    name: "On Purpose with Jay Shetty",
+    title: "On Purpose with Jay Shetty",
   },
   {
     slug: "call-her-daddy",
-    name: "Call Her Daddy",
+    title: "Call Her Daddy",
   },
   {
     slug: "found-my-fitness",
-    name: "Found My Fitness",
+    title: "Found My Fitness",
   },
   {
     slug: "all-in-podcast",
-    name: "All-In",
+    title: "All-In",
   },
   {
     slug: "huberman-lab-podcast",
-    name: "The Huberman Lab Podcast",
+    title: "The Huberman Lab Podcast",
   },
   {
     slug: "beyond-good-and-evil",
-    name: "Beyond Good and Evil",
+    title: "Beyond Good and Evil",
   },
 ]
 
