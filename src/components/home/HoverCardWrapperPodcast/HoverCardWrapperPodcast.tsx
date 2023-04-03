@@ -6,18 +6,11 @@ import mergeClasses from "utils/mergeClasses";
 interface HoverCardWrapperPodcastProps {
   className?: string;
   podcast: Pick<Podcasts.Podcast, "title" | "description" | "slug">;
-  elements?: {
-    /**
-     * Custom class names passed to the root element.
-     */
-    imageComponentClassName?: string;
-  };
 }
 
 export default function HoverCardWrapperPodcast({
   className,
   podcast,
-  elements,
 }: HoverCardWrapperPodcastProps): JSX.Element {
   return (
     <div className={mergeClasses("grid grid-flow-col gap-3 ", className)}>
@@ -25,10 +18,7 @@ export default function HoverCardWrapperPodcast({
         <Link href={`/podcast/${podcast.slug}`}>
           <Image
             src={`/pods/${podcast.slug}.png`}
-            className={mergeClasses(
-              "h-[88px] w-[78px] brightness-[104%]",
-              elements.imageComponentClassName,
-            )}
+            className={mergeClasses("h-[88px] w-[78px] brightness-[104%]")}
             alt="Podcast cover"
             width={150}
             height={150}

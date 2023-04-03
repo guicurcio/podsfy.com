@@ -23,14 +23,10 @@ export interface PodcastEpisodeFeedUnitProps {
    */
   podcastEpisode?: Pick<Podcasts.Episode, "title" | "description">;
   /**
-   * Pass a custom description to the component.
-   * @default ""
-   */
-  whereToWatchOrListenLink?: string;
-  /**
    * Custom class names passed to the root element.
    */
   className?: string;
+
   /**
    *
    */
@@ -57,7 +53,15 @@ export default function PodcastEpisodeFeedUnit({
         <div className="grid grid-flow-col items-center gap-3">
           <HoverCardWrapper
             slug={podcast.slug}
-            hoverCardContentClassName="w-full pl-3 py-3 pr-1 bg-black bg-opacity-50 backdrop-blur-[50px] backdrop-brightness-[50%] rounded-[5px] border border-white border-opacity-5  font-visuelt text-[14px] font-normal text-white/50 shadow-3xl"
+            childrenProps={{
+              HoverCardContent: {
+                className:
+                  "w-full pl-3 py-3 pr-1 bg-black bg-opacity-50 backdrop-blur-[50px] backdrop-brightness-[50%] rounded-[5px] border border-white border-opacity-5  font-visuelt text-[14px] font-normal text-white/50 shadow-3xl",
+              },
+              Image: {
+                className: "w-[50px] h-[50px] rounded-[5px]",
+              },
+            }}
           >
             <HoverCardWrapperPodcast podcast={podcast} />
           </HoverCardWrapper>
