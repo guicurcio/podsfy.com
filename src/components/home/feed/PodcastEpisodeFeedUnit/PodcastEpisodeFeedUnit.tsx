@@ -1,7 +1,7 @@
 import TooltipContainer from "components/common/TooltipContainer";
 import ContentInteraction from "components/home/ContentInteraction/ContentInteraction";
+import HoverCardWrapperPodcast from "components/home/HoverCardWrapperPodcast/HoverCardWrapperPodcast";
 import HoverCardWrapper from "components/home/client/HoverCardWrapper/HoverCardWrapper";
-import Image from "next/image";
 import Link from "next/link";
 import type { Podcasts } from "types/podcast";
 import generateGoodPodcastEpisodeTitles from "utils/generateGoodPodcastEpisodeTitles/generateGoodPodcastEpisodeTitles";
@@ -49,7 +49,7 @@ export default function PodcastEpisodeFeedUnit({
     <div
       key={podcastEpisode.title}
       className={mergeClasses(
-        "grid w-full grid-flow-row gap-4 border-0 py-[18px] px-[18px] hover:brightness-[105%]",
+        "grid w-full grid-flow-row gap-4 border-0 px-[18px] py-[18px] hover:brightness-[105%]",
         className,
       )}
     >
@@ -59,26 +59,7 @@ export default function PodcastEpisodeFeedUnit({
             slug={podcast.slug}
             hoverCardContentClassName="w-full pl-3 py-3 pr-1 bg-black bg-opacity-50 backdrop-blur-[50px] backdrop-brightness-[50%] rounded-[5px] border border-white border-opacity-5  font-visuelt text-[14px] font-normal text-white/50 shadow-3xl"
           >
-            <div className="grid grid-flow-col gap-3 ">
-              <Link href={`/podcast/${podcast.slug}`}>
-                <Image
-                  src={`/pods/${podcast.slug}.png`}
-                  className="h-[88px] w-[78px] rounded-[4px] border border-[#88888820] shadow-3xl brightness-[104%]"
-                  alt="Podcast cover"
-                  width={150}
-                  height={150}
-                  quality={100}
-                ></Image>
-              </Link>
-              <div className="grid h-fit w-[470px] grid-flow-row  gap-[2px]">
-                <h2 className="w-full text-left font-moderat text-[17px] font-medium text-[#E7E9EA] ">
-                  {podcast.title}
-                </h2>
-                <p className="ml-[2px] justify-start font-moderat text-[14px] font-normal leading-[18px] tracking-[-0.3px] text-[#9ab] text-opacity-80  ">
-                  {`${podcast.description.slice(0, 128)}`}
-                </p>
-              </div>
-            </div>
+            <HoverCardWrapperPodcast podcast={podcast} />
           </HoverCardWrapper>
           <Link
             href={`podcast/${podcast.slug}`}

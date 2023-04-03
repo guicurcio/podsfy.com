@@ -1,5 +1,5 @@
-import Image from "next/image";
-import Link from "next/link";
+import HoverCardWrapperPodcast from "components/home/HoverCardWrapperPodcast/HoverCardWrapperPodcast";
+import HoverCardWrapper from "components/home/client/HoverCardWrapper/HoverCardWrapper";
 import type { Podcasts } from "types/podcast";
 import mergeClasses from "utils/mergeClasses";
 
@@ -35,6 +35,7 @@ export interface PodcastFeedUnitProps {
 }
 
 /**
+ *
  * PodcastFeedUnit Component
  */
 export default function PodcastFeedUnit({
@@ -46,23 +47,19 @@ export default function PodcastFeedUnit({
     <div
       key={title}
       className={mergeClasses(
-        "grid w-full grid-flow-row gap-3 border-0 py-[18px] px-[18px] hover:brightness-[105%]",
+        "grid w-full grid-flow-row gap-3 border-0 px-[18px] py-[18px] hover:brightness-[105%]",
         className,
       )}
     >
       <div className="grid w-full grid-flow-row gap-4">
         <div className="grid w-full grid-flow-col items-center justify-between self-center align-middle ">
           <div className="grid grid-flow-col items-center gap-3">
-            <Link href={`/podcast/${podcast.slug}`}>
-              <Image
-                src={`/pods/${podcast.slug}.png`}
-                className="h-[88px] w-[78px] rounded-[4px] border border-[#88888820] shadow-3xl brightness-[104%]"
-                alt="Podcast cover"
-                width={150}
-                height={150}
-                quality={100}
-              ></Image>
-            </Link>
+            <HoverCardWrapper
+              slug={podcast.slug}
+              hoverCardContentClassName="w-full pl-3 py-3 pr-1 bg-black bg-opacity-50 backdrop-blur-[50px] backdrop-brightness-[50%] rounded-[5px] border border-white border-opacity-5  font-visuelt text-[14px] font-normal text-white/50 shadow-3xl"
+            >
+              <HoverCardWrapperPodcast podcast={podcast} />
+            </HoverCardWrapper>
             <div className="grid w-[500px] grid-flow-row gap-[1px]">
               <h2 className="w-full text-left font-moderat text-[16px] font-medium text-[#E7E9EA] ">
                 {podcast.title}

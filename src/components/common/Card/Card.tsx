@@ -1,5 +1,5 @@
-import SectionIntro from "components/SectionIntro"
-import mergeClasses from "utils/mergeClasses"
+import SectionIntro from "components/SectionIntro";
+import mergeClasses from "utils/mergeClasses";
 
 /**
  * BlogComponent Props description
@@ -8,24 +8,23 @@ export interface BlogComponentProps {
   /**
    * Custom class names passed to the root element.
    */
-  className?: string
+  className?: string;
   /**
    * Pass a custom title to the component.
    * @default ""
    */
-  title?: string
+  title?: string;
   /**
    * Pass a custom description to the component.
    * @default ""
    */
-  description?: string
-
+  description?: string;
   /**
    *
    * @todo: change.. too muich flow to pass down state.
    */
-  descriptionClassname?: string
-  children?: React.ReactNode
+  descriptionClassname?: string;
+  children?: React.ReactNode;
 }
 
 /**
@@ -46,7 +45,7 @@ export default function Card({
         " overflow-hidden rounded-[5px]",
         "bg-[#0D0E12] py-[25px]",
         "border border-sharper border-opacity-10",
-        "px-[20px] font-visuelt shadow-3xl backdrop-blur-[10px]"
+        "px-[20px] font-visuelt shadow-3xl backdrop-blur-[10px]",
       )}
     >
       {children}
@@ -59,5 +58,5 @@ export default function Card({
         <BlogPostPreview title={'asd'}></BlogPostPreview>
       </div> */}
     </div>
-  )
+  );
 }

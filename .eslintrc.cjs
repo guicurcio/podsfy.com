@@ -62,21 +62,6 @@ module.exports = {
     "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": "error",
     "@typescript-eslint/prefer-optional-chain": "error",
-    "@typescript-eslint/naming-convention": [
-      "error",
-      {
-        selector: "typeLike",
-        format: ["PascalCase"],
-      },
-      {
-        selector: "interface",
-        format: ["PascalCase"],
-        custom: {
-          regex: "^I[A-Z]",
-          match: false,
-        },
-      },
-    ],
     "@typescript-eslint/consistent-type-imports": [
       "error",
       { prefer: "type-imports" },

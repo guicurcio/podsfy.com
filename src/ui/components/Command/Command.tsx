@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
-import type { DialogProps } from "@radix-ui/react-dialog"
-import { Command as CommandPrimitive } from "cmdk"
-import { Search } from "lucide-react"
-import * as React from "react"
-import mergeClasses from "utils/mergeClasses/mergeClasses"
-import { Dialog, DialogContent } from "../Dialog"
+import type { DialogProps } from "@radix-ui/react-dialog";
+import { Command as CommandPrimitive } from "cmdk";
+import { Search } from "lucide-react";
+import * as React from "react";
+import mergeClasses from "utils/mergeClasses/mergeClasses";
+import { Dialog, DialogContent } from "../Dialog";
 
 const Command = React.forwardRef<
   React.ElementRef<typeof CommandPrimitive>,
@@ -15,14 +15,14 @@ const Command = React.forwardRef<
     ref={ref}
     className={mergeClasses(
       "dark:bg-slate-800 flex h-full w-full flex-col overflow-hidden rounded-lg bg-white",
-      className
+      className,
     )}
     {...props}
   />
-))
-Command.displayName = CommandPrimitive.displayName
+));
+Command.displayName = CommandPrimitive.displayName;
 
-export type CommandDialogProps = DialogProps
+export type CommandDialogProps = DialogProps;
 
 const CommandDialog = ({ children, ...props }: CommandDialogProps) => (
   <Dialog {...props}>
@@ -32,26 +32,36 @@ const CommandDialog = ({ children, ...props }: CommandDialogProps) => (
       </Command>
     </DialogContent>
   </Dialog>
-)
+);
 
+// Definimos el componente CommandInput usando forwardRef
 const CommandInput = React.forwardRef<
-  React.ElementRef<typeof CommandPrimitive.Input>,
-  React.ComponentPropsWithoutRef<typeof CommandPrimitive.Input>
->(({ className, ...props }, ref) => (
-  <div className="flex items-center px-4" cmdk-input-wrapper="">
-    <Search className="h-3 w-3 shrink-0 opacity-50" />
-    <CommandPrimitive.Input
-      ref={ref}
-      className={mergeClasses(
-        " flex h-[50px] w-full rounded-md bg-transparent pt-4 pb-5 font-moderat text-[14px] text-white outline-none placeholder:text-black/50 disabled:cursor-not-allowed disabled:opacity-50",
-        className
-      )}
-      {...props}
-    />
-  </div>
-))
+  React.ElementRef<typeof CommandPrimitive.Input>, // Tipo de la referencia que aceptará el componente
+  React.ComponentPropsWithoutRef<typeof CommandPrimitive.Input> // Props que se pueden pasar al componente
+>(
+  // La función de renderizado
+  ({ className, ...props }, ref) => (
+    // Un div que envuelve al componente de entrada de texto
+    <div className="flex items-center px-4" cmdk-input-wrapper="">
+      {/* Ícono de lupa para la búsqueda */}
+      <Search className="h-3 w-3 shrink-0 opacity-50" />
+      {/* Usamos CommandPrimitive.Input para renderizar el input, pasando los props y la referencia */}
+      <CommandPrimitive.Input
+        ref={ref} // Propiedad ref para acceder al input en el DOM
+        className={mergeClasses(
+          // Clases de estilo para el input
+          "flex h-[50px] w-full rounded-md bg-transparent pt-4 pb-5 font-moderat",
+          "text-[14px] text-white outline-none placeholder:text-black/50",
+          "disabled:cursor-not-allowed disabled:opacity-50",
+          className,
+        )}
+        {...props} // Pasamos el resto de los props al input
+      />
+    </div>
+  ),
+);
 
-CommandInput.displayName = CommandPrimitive.Input.displayName
+CommandInput.displayName = CommandPrimitive.Input.displayName;
 
 const CommandList = React.forwardRef<
   React.ElementRef<typeof CommandPrimitive.List>,
@@ -61,13 +71,13 @@ const CommandList = React.forwardRef<
     ref={ref}
     className={mergeClasses(
       "max-h-[300px] overflow-y-auto overflow-x-hidden",
-      className
+      className,
     )}
     {...props}
   />
-))
+));
 
-CommandList.displayName = CommandPrimitive.List.displayName
+CommandList.displayName = CommandPrimitive.List.displayName;
 
 const CommandEmpty = React.forwardRef<
   React.ElementRef<typeof CommandPrimitive.Empty>,
@@ -78,9 +88,9 @@ const CommandEmpty = React.forwardRef<
     className="py-6 text-center text-sm"
     {...props}
   />
-))
+));
 
-CommandEmpty.displayName = CommandPrimitive.Empty.displayName
+CommandEmpty.displayName = CommandPrimitive.Empty.displayName;
 
 const CommandGroup = React.forwardRef<
   React.ElementRef<typeof CommandPrimitive.Group>,
@@ -90,13 +100,13 @@ const CommandGroup = React.forwardRef<
     ref={ref}
     className={mergeClasses(
       "dark:text-slate-400 [&_[cmdk-group-heading]]:text-slate-900 [&_[cmdk-group-heading]]:dark:text-slate-300 overflow-hidden py-3 px-2 text-black [&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:pb-1.5 [&_[cmdk-group-heading]]:text-sm [&_[cmdk-group-heading]]:font-semibold",
-      className
+      className,
     )}
     {...props}
   />
-))
+));
 
-CommandGroup.displayName = CommandPrimitive.Group.displayName
+CommandGroup.displayName = CommandPrimitive.Group.displayName;
 
 const CommandSeparator = React.forwardRef<
   React.ElementRef<typeof CommandPrimitive.Separator>,
@@ -107,8 +117,8 @@ const CommandSeparator = React.forwardRef<
     className={mergeClasses("dark:bg-slate-700 -mx-1 h-px bg-fondy", className)}
     {...props}
   />
-))
-CommandSeparator.displayName = CommandPrimitive.Separator.displayName
+));
+CommandSeparator.displayName = CommandPrimitive.Separator.displayName;
 
 const CommandItem = React.forwardRef<
   React.ElementRef<typeof CommandPrimitive.Item>,
@@ -117,17 +127,17 @@ const CommandItem = React.forwardRef<
   <CommandPrimitive.Item
     ref={ref}
     className={mergeClasses(
-      "flex cursor-pointer select-none items-center rounded-[3px]",
-      "px-2 pb-[10px] pt-[8px] font-lausanne text-[14px]  outline-none transition-colors",
-      "duration-200 data-[disabled]:pointer-events-none data-[disabled]:opacity-50 hover:bg-fondy",
-      "self-center text-left align-middle  font-normal tracking-[-0.03em] text-[#a5a5a5]/90  antialiased",
-      className
+      "flex cursor-pointer px-2 pb-[17px] pt-[8px] font-moderat text-[14px]  outline-none transition-colors",
+      "duration-200 data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+      "rounded-[4px] text-left align-middle font-normal hover:bg-fondy hover:text-white/60",
+      "self-center tracking-[-0.03em] text-white/50 antialiased",
+      className,
     )}
     {...props}
   />
-))
+));
 
-CommandItem.displayName = CommandPrimitive.Item.displayName
+CommandItem.displayName = CommandPrimitive.Item.displayName;
 
 const CommandShortcut = ({
   className,
@@ -136,21 +146,21 @@ const CommandShortcut = ({
   <span
     className={mergeClasses(
       "text-slate-500 ml-auto text-xs tracking-widest",
-      className
+      className,
     )}
     {...props}
   />
-)
-CommandShortcut.displayName = "CommandShortcut"
+);
+CommandShortcut.displayName = "CommandShortcut";
 
 export {
   Command,
   CommandDialog,
-  CommandInput,
-  CommandList,
   CommandEmpty,
   CommandGroup,
+  CommandInput,
   CommandItem,
-  CommandShortcut,
+  CommandList,
   CommandSeparator,
-}
+  CommandShortcut,
+};

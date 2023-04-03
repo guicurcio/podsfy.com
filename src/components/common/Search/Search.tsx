@@ -4,6 +4,7 @@ import type { PopoverProps } from "@radix-ui/react-popover";
 import { Check, ChevronsUpDown, Search as SearchIcon } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import type { Podcasts } from "types/podcast";
 import Button from "ui/components/Button";
 import {
   Command,
@@ -15,13 +16,11 @@ import {
 import { Popover, PopoverContent, PopoverTrigger } from "ui/components/Popover";
 import mergeClasses from "utils/mergeClasses/mergeClasses";
 
-export type Podcast = {
-  slug: string;
-  name: string;
-};
-
 export interface SearchBoxProps extends PopoverProps {
-  podcasts: Podcast[];
+  podcasts: Pick<
+    Podcasts.Podcast,
+    "title" | "slug" | "createdAt" | "updatedAt"
+  >[];
   /**
    * Custom class names passed to the button trigger of the search box.
    */
@@ -37,6 +36,9 @@ export interface SearchBoxProps extends PopoverProps {
   popoverClassName?: string;
 }
 
+const classButton =
+  "bg-[#050607f2] border border-[#171717] text-white/75 hover:brightness-[120%] dark:bg-slate-50 dark:text-slate-900";
+
 const Search = ({
   podcasts,
   className,
@@ -45,7 +47,10 @@ const Search = ({
   ...props
 }: SearchBoxProps) => {
   const [open, setOpen] = useState(false);
-  const [selectedPodcast, setSelectedPodcast] = useState<Podcast>();
+  const [selectedPodcast, setSelectedPodcast] =
+    useState<
+      Pick<Podcasts.Podcast, "title" | "slug" | "createdAt" | "updatedAt">
+    >();
   const router = useRouter();
 
   return (
@@ -59,7 +64,7 @@ const Search = ({
           aria-label="Search podcasts, episodes, guests, notes..."
           aria-expanded={open}
           className={mergeClasses(
-            "group h-[42px] self-center py-[12px] px-3 align-middle",
+            "group h-[42px] self-center px-3 py-[12px] align-middle",
             " justify-between font-visuelt text-[14px] font-medium text-white/80",
             className,
           )}
@@ -67,7 +72,7 @@ const Search = ({
           <div className="grid grid-flow-col items-center gap-2">
             <SearchIcon className="-ml-1 h-3 w-4 shrink-0 opacity-50"></SearchIcon>
             {selectedPodcast
-              ? selectedPodcast.name
+              ? selectedPodcast.title
               : title || "Search podcasts, episodes, reviews, notes..."}
           </div>
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
@@ -79,9 +84,9 @@ const Search = ({
           popoverClassName,
         )}
       >
-        <Command className="n:rounded-b-[5px] rounded-[12px] rounded-t-[5px] rounded-r-[5px] rounded-l-[5px] border-x border-b border-gray-700 border-opacity-25 bg-[#1f1f23] font-visuelt text-[14px]  font-normal text-white/50 shadow-3xl drop-shadow-2xl backdrop:brightness-50">
+        <Command className="">
           <CommandInput
-            className="font-normal text-white/50 placeholder:text-white/70"
+            className={classButton}
             placeholder="Search for podcasts, episodes, guests, notes..."
           />
 
@@ -98,9 +103,8 @@ const Search = ({
                   router.push(`/podcast/${podcast.slug}`);
                 }}
               >
-                <span className="h-4 self-center  align-middle">
-                  {" "}
-                  {podcast.name}
+                <span className="h-4 self-center align-middle">
+                  {podcast.title}
                 </span>
 
                 <Check

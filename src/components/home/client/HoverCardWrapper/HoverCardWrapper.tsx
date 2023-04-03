@@ -1,6 +1,6 @@
 "use client";
 
-import { moderat, spaceGrotesk, visuelt } from "app/layout";
+import { moderat, visuelt } from "app/layout";
 import Image from "next/image";
 import Link from "next/link";
 import type { TailwindClassname } from "types/tailwind";
@@ -42,11 +42,14 @@ export default function HoverCardWrapper({
 }: HoverCardWrapperProps): JSX.Element {
   return (
     <HoverCard key="spotify">
-      <HoverCardTrigger asChild>
+      <HoverCardTrigger
+        className="border-opacity rounded-[3px] border-[2px] border-[#88888815] backdrop-blur-[50px] backdrop-filter"
+        asChild
+      >
         <Link href={`/podcast/${slug}`}>
           <Image
             src={`/pods/${slug}.png`}
-            className="h-[64px] w-[64px] rounded-[5px] border border-[#88888820] shadow-3xl"
+            className="h-[64px] w-[64px] rounded-[3px]"
             alt="Podcast cover"
             width={200}
             height={200}
