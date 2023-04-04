@@ -1,6 +1,5 @@
 "use client";
 
-import { moderat, visuelt } from "app/layout";
 import Image from "next/image";
 import Link from "next/link";
 import type { Children, CustomComponent, Slug } from "types/project";
@@ -45,14 +44,12 @@ export default function HoverCardWrapper({
           ></Image>
         </Link>
       </HoverCardTrigger>
-      <HoverCardPortal
-        className={mergeClasses(visuelt.variable, moderat.variable)}
-      >
+      <HoverCardPortal>
         <HoverCardContent
           className={mergeClasses(
             "w-[250px]",
-            visuelt.variable,
-            moderat.variable,
+            "--font-moderat",
+            "--font-visuelt",
             childrenProps?.HoverCardContent?.className,
           )}
         >
