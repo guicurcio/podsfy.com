@@ -61,7 +61,7 @@ const Search = ({
             "opacity-100 transition-opacity duration-300 ease-in",
             className,
             open &&
-              "pointer-events-none opacity-0 transition-opacity duration-300 ease-out",
+            "pointer-events-none opacity-0 transition-opacity duration-300 ease-out",
           )}
         >
           <div className="grid grid-flow-col items-center gap-2">
