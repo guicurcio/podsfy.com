@@ -80,11 +80,10 @@ export default function PodcastEpisodeFeedUnit({
       </div>
       <div className="grid grid-flow-row gap-[8px]">
         <p className="ml-[2px] font-visuelt text-[14px] font-normal  leading-[24px] tracking-[0.5px] text-[#9ab] text-opacity-80  ">
-          {`${
-            podcastEpisode?.description
-              ? podcastEpisode?.description.slice(0, 210)
-              : ""
-          }...`}
+          {`${podcastEpisode?.description
+            ? podcastEpisode?.description.slice(0, 210)
+            : ""
+            }...`}
         </p>
       </div>
       <div className="mt-[-5px] grid grid-flow-row items-start justify-start gap-[8px]">

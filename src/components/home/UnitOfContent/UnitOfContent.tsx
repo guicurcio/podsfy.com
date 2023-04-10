@@ -3,8 +3,6 @@
 import NhostContainer from "components/common/NhostContainer";
 import TooltipContainer from "components/common/TooltipContainer";
 import ContentInteraction from "components/home/ContentInteraction/ContentInteraction";
-import HoverCardWrapper from "components/home/client/HoverCardWrapper/HoverCardWrapper";
-import { cookies } from "next/headers";
 import Image from "next/image";
 import Link from "next/link";
 import mergeClasses from "utils/mergeClasses";
@@ -81,7 +79,6 @@ export default async function UnitOfContent({
               </h2>
             </div>
           </div>
-          <HoverCardWrapper></HoverCardWrapper>
         </div>
       </div>
       <div className="grid grid-flow-row gap-[8px]">

@@ -44,14 +44,11 @@ export default async function ForYouFeedNoCom({
       )}
     >
       <div className="grid grid-flow-row divide-y-[1px] divide-fondy/50  backdrop-brightness-[75%]">
-        {/* <FeedUpdater feedUpdaterText="Show 11 new updates"></FeedUpdater> */}
         {forYouPodcastEpisodes.map((episode) => (
           <PodcastFeedUnit
             key={episode.id}
             title={episode.title}
-            podcastEpisodeDescription={episode.description}
             podcast={episode.podcast.title}
-            podcastSlug={episode.podcast.slug}
           ></PodcastFeedUnit>
         ))}
       </div>

@@ -54,9 +54,7 @@ export async function ForYouFeedComponent({
           <PodcastFeedUnit
             key={episode.id}
             title={episode.title}
-            podcastEpisodeDescription={episode.description}
             podcast={episode.podcast.title}
-            podcastSlug={episode.podcast.slug}
           ></PodcastFeedUnit>
         ))}
       </div>

@@ -20,36 +20,6 @@ import {
 } from 'ui/components/NavigationMenu/NavigationMenu';
 import mergeClasses from 'utils/mergeClasses';
 
-export const podcasts = [
-  {
-    slug: 'the-joe-rogan-experience',
-    name: 'The Joe Rogan Experience',
-  },
-  {
-    slug: 'on-purpose-with-jay-shetty',
-    name: 'On Purpose with Jay Shetty',
-  },
-  {
-    slug: 'call-her-daddy',
-    name: 'Call Her Daddy',
-  },
-  {
-    slug: 'found-my-fitness',
-    name: 'Found My Fitness',
-  },
-  {
-    slug: 'all-in-podcast',
-    name: 'All-In',
-  },
-  {
-    slug: 'the-huberman-lab-podcast',
-    name: 'The Huberman Lab Podcast',
-  },
-  {
-    slug: 'between-good-and-evil',
-    name: 'Between Good and Evil',
-  },
-];
 
 /**
  * CompanySidebar Props description
@@ -90,12 +60,12 @@ export default function CompanySidebar({
 }: CompanySidebarProps) {
   return (
     <div className={mergeClasses(className)}>
-      <Search
+      {/* <Search
         podcasts={podcasts}
         title="Search for posts, bugfixes..."
         className="w-[275px]"
         popoverClassName="w-[275px]"
-      ></Search>
+      ></Search> */}
       <NavigationMenu className="w-[275px] py-4">
         <NavigationMenuList className="grid grid-flow-row gap-2">
           <NavigationMenuItem>
