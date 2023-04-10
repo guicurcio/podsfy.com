@@ -36,7 +36,6 @@ export interface SearchBoxProps extends PopoverProps {
 const Search = ({
   podcasts,
   className,
-  title,
   popoverClassName,
   ...props
 }: SearchBoxProps) => {

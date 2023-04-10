@@ -1,25 +1,6 @@
 module.exports = {
-  plugins: [
-    "@typescript-eslint",
-    "eslint-comments",
-    "jest",
-    "promise",
-    "unicorn",
-  ],
-  extends: [
-    "next",
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "airbnb-base",
-    "airbnb-typescript/base",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:@typescript-eslint/recommended-requiring-type-checking",
-    "plugin:eslint-comments/recommended",
-    "plugin:jest/recommended",
-    "plugin:promise/recommended",
-    "plugin:unicorn/recommended",
-    "prettier",
-  ],
+  plugins: ["@typescript-eslint", "eslint-comments", "jest"],
+  extends: ["next", "eslint:recommended"],
   parser: "@typescript-eslint/parser",
   parserOptions: {
     project: "./tsconfig.json",
@@ -69,7 +50,6 @@ module.exports = {
     "unicorn/prevent-abbreviations": "off",
     "unicorn/filename-case": "off",
     "no-lone-blocks": "off",
-    "@typescript-eslint/no-unsafe-member-access": "off",
     "no-restricted-imports": [
       "warn",
       {

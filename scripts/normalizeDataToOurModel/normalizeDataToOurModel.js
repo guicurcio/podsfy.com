@@ -1,3 +1,5 @@
+// @ts-ignore
+
 import { Database } from "sqlite3";
 
 const originalDb = new Database("./scripts/1.db");
@@ -9,7 +11,7 @@ originalDb.get("SELECT COUNT(*) as count FROM podcasts", (err, row) => {
     return;
   }
 
-  const totalRows = row.count;
+  const totalRows = row?.count;
   const chunkSize = Math.ceil(totalRows / 4);
 
   // Insert data into each new database
@@ -33,7 +35,7 @@ originalDb.get("SELECT COUNT(*) as count FROM podcasts", (err, row) => {
         );
 
         // Insert each row into the new database
-        rows.forEach((row) => {
+        for (const row of rows) {
           insertStmt.run(
             row.title,
             row.description,
@@ -41,7 +43,7 @@ originalDb.get("SELECT COUNT(*) as count FROM podcasts", (err, row) => {
             row.slug,
             row.column4,
           );
-        });
+        }
 
         // Finalize the statement and close the database connection
         insertStmt.finalize(() => {

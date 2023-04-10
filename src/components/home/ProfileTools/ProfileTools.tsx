@@ -19,25 +19,25 @@ export interface ProfileToolsProps {
 /**
  * ProfileTools Component
  */
-export default function ProfileTools({
+const ProfileTools = ({
   className,
-}: ProfileToolsProps): JSX.Element {
-  return (
-    <div
-      className={mergeClasses(
-        "col-span-3 grid w-full grid-flow-col place-items-end items-end justify-end justify-items-end gap-[10px]",
-        className,
-      )}
-    >
-      <TooltipContainer>
-        <ProfileNotifications></ProfileNotifications>
-        <ProfileMessages></ProfileMessages>
-      </TooltipContainer>
-      <Suspense fallback={<div className="h-10 w-10 rounded-full"></div>}>
-        <User></User>
-      </Suspense>
-    </div>
-  );
-}
+}: ProfileToolsProps) => (
+  <div
+    className={mergeClasses(
+      "col-span-3 grid w-full grid-flow-col place-items-end items-end justify-end justify-items-end gap-[10px]",
+      className,
+    )}
+  >
+    <TooltipContainer>
+      <ProfileNotifications></ProfileNotifications>
+      <ProfileMessages></ProfileMessages>
+    </TooltipContainer>
+    {/* <Suspense fallback={<div className="h-10 w-10 rounded-full"></div>}>
+      <User></User>
+    </Suspense> */}
+  </div>
+);
 
 ProfileTools.displayName = "ProfileTools";
+
+export default ProfileTools;
