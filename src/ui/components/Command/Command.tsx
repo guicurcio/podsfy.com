@@ -6,7 +6,6 @@ import { Search } from "lucide-react";
 import * as React from "react";
 import mergeClasses from "utils/mergeClasses/mergeClasses";
 import { Dialog, DialogContent } from "../Dialog";
-import { visuelt } from "app/layout";
 
 const Command = React.forwardRef<
   React.ElementRef<typeof CommandPrimitive>,
@@ -17,7 +16,7 @@ const Command = React.forwardRef<
     className={mergeClasses(
       "dark:bg-slate-800 flex h-full w-full flex-col overflow-hidden rounded-md bg-white",
       className,
-      visuelt.variable,
+      "--font-visuelt",
     )}
     {...props}
   />
@@ -52,9 +51,9 @@ const CommandInput = React.forwardRef<
         className={mergeClasses(
           // Clases de estilo para el input
           "!w-[1200px] bg-transparent py-[10px] pl-2",
-          " text-white outline-none",
-          " self-center align-middle",
-          " justify-between font-visuelt text-[14px] font-medium ",
+          "text-white outline-none",
+          "self-center align-middle",
+          "justify-between font-visuelt text-[14px] font-medium ",
           className,
         )}
         {...props} // Pasamos el resto de los props al input
