@@ -2,7 +2,7 @@
 
 import type { PopoverProps } from "@radix-ui/react-popover";
 import { Check, ChevronsUpDown, Search as SearchIcon } from "lucide-react";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter, useSelectedLayoutSegment } from "next/navigation";
 import { useState } from "react";
 import type { Podcasts } from "types/podcast";
 import Button from "ui/components/Button";
@@ -14,6 +14,7 @@ import {
   CommandItem,
 } from "ui/components/Command";
 import { Popover, PopoverContent, PopoverTrigger } from "ui/components/Popover";
+import { getPodcastTitleFromUrl, getSearchMessage } from "utils/generalUtils";
 import mergeClasses from "utils/mergeClasses/mergeClasses";
 
 export interface SearchBoxProps extends PopoverProps {
@@ -33,6 +34,9 @@ export interface SearchBoxProps extends PopoverProps {
   popoverClassName?: string;
 }
 
+
+
+
 const Search = ({
   podcasts,
   className,
@@ -43,6 +47,9 @@ const Search = ({
   const [selectedPodcast, setSelectedPodcast] =
     useState<Pick<Podcasts.Podcast, "title" | "slug">>();
   const router = useRouter();
+  const selectedLayoutSegment = useSelectedLayoutSegment();
+  const pathname = usePathname()
+
 
   return (
     <Popover open={open} onOpenChange={setOpen} {...props}>
@@ -68,8 +75,7 @@ const Search = ({
             {!open && (
               <SearchIcon className="-ml-1 h-3 w-4 shrink-0 opacity-50"></SearchIcon>
             )}
-            {selectedPodcast ? selectedPodcast.title : undefined}
-            {!open && "Search for podcasts, episodes, guests, notes..."}
+            {getSearchMessage(selectedLayoutSegment, selectedPodcast?.title, getPodcastTitleFromUrl(pathname))}
           </div>
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
@@ -109,14 +115,14 @@ const Search = ({
                   {podcast.title}
                 </span>
 
-                <Check
+                {selectedLayoutSegment !== 'home' && selectedLayoutSegment !== 'for-you' && <Check
                   className={mergeClasses(
                     "ml-auto h-4 w-4",
                     selectedPodcast?.slug === podcast.slug
                       ? "opacity-100"
                       : "opacity-0",
                   )}
-                />
+                />}
               </CommandItem>
             ))}
           </CommandGroup>
