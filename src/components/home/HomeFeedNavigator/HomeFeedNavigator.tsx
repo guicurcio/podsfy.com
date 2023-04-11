@@ -1,7 +1,10 @@
+'use client';
+
 import TooltipContainer from "components/common/TooltipContainer";
 // import TooltipIconButton from "components/home/TooltipIconButton";
 import TooltipWrapper from "components/home/TooltipWrapper";
 import Link from "next/link";
+import { useSelectedLayoutSegment } from "next/navigation";
 // import { Cog, RefreshCcw } from "lucide-react";
 // import { TabsList, TabsTrigger } from "ui/components/Tabs";
 import mergeClasses from "utils/mergeClasses";
@@ -22,6 +25,11 @@ export interface HomeFeedNavigatorProps {
 export default function HomeFeedNavigator({
   className,
 }: HomeFeedNavigatorProps): JSX.Element {
+
+  const ssel = useSelectedLayoutSegment()
+
+  console.log(ssel, "segment");
+
   return (
     <div
       className={mergeClasses(
@@ -36,19 +44,17 @@ export default function HomeFeedNavigator({
             <button
               value="for-you"
               className={mergeClasses(
-                "data-[state=active]:font-medium data-[state=active]:text-white/70",
                 "font-normal text-white/40",
-                "font-visuelt text-[14px] tracking-[-0.01em]",
-                "inline-flex min-w-[100px] items-center justify-center rounded-[0.185rem] py-[12px] transition-all",
-                "disabled:pointer-events-none disabled:opacity-50  data-[state=active]:shadow-sm",
-                "bg-[#0D0E12] shadow-2xl  backdrop-brightness-[75%]",
-                "duration-300",
-                // "border border-white border-opacity-5",
-                // data-[state=active]:bg-fondy
+                "font-visuelt text-[14px] tracking-[-0.01em] ",
+                "inline-flex min-w-[100px] items-center justify-center py-[12px]",
+                "disabled:pointer-events-none disabled:opacity-50",
+                "bg-[#0D0E12] ",
+                ssel === 'home' && "border-b-2 border-white border-opacity-10",
+                ssel === 'for-you' && "border-b-2 border-white border-opacity-10",
                 className,
               )}
             >
-              <p>For You</p>
+              For You
             </button>
           </Link>
         </TooltipWrapper>
@@ -57,15 +63,12 @@ export default function HomeFeedNavigator({
             <button
               value="for-you"
               className={mergeClasses(
-                "data-[state=active]:font-medium data-[state=active]:text-white/70",
                 "font-normal text-white/40",
-                "font-visuelt text-[14px] tracking-[-0.01em]",
-                "inline-flex min-w-[100px] items-center justify-center rounded-[0.185rem] py-[12px] transition-all",
-                "disabled:pointer-events-none disabled:opacity-50  data-[state=active]:shadow-sm",
-                "bg-[#0D0E12] shadow-2xl  backdrop-brightness-[75%]",
-                "duration-300",
-                // "border border-white border-opacity-5",
-                // data-[state=active]:bg-fondy
+                "font-visuelt text-[14px] tracking-[-0.01em] ",
+                "inline-flex min-w-[100px] items-center justify-center py-[12px]",
+                "disabled:pointer-events-none disabled:opacity-50",
+                "bg-[#0D0E12] ",
+                ssel === 'following' && "border-b-2 border-white border-opacity-10",
                 className,
               )}
             >
@@ -78,15 +81,12 @@ export default function HomeFeedNavigator({
             <button
               value="latest"
               className={mergeClasses(
-                "data-[state=active]:font-medium data-[state=active]:text-white/70",
                 "font-normal text-white/40",
-                "font-visuelt text-[14px] tracking-[-0.01em]",
-                "inline-flex min-w-[100px] items-center justify-center rounded-[0.185rem] py-[12px] transition-all",
-                "disabled:pointer-events-none disabled:opacity-50  data-[state=active]:shadow-sm",
-                "bg-[#0D0E12] shadow-2xl  backdrop-brightness-[75%]",
-                "duration-300",
-                // "border border-white border-opacity-5",
-                // data-[state=active]:bg-fondy
+                "font-visuelt text-[14px] tracking-[-0.01em] ",
+                "inline-flex min-w-[100px] items-center justify-center py-[12px]",
+                "disabled:pointer-events-none disabled:opacity-50",
+                "bg-[#0D0E12] ",
+                ssel === 'latest' && "border-b-2 border-white border-opacity-10",
                 className,
               )}
             >

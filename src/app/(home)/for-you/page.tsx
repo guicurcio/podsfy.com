@@ -1,17 +1,45 @@
 import ForYouFeedJSONComponent from "components/home/feed/ForYouFeedJSON/ForYouFeedJSON";
 import PodcastEpisodeFeedUnit from "components/home/feed/PodcastEpisodeFeedUnit/PodcastEpisodeFeedUnit";
-import episodes from "json/episodes.json";
-import podcast from "json/podcast.json";
+import PodcastFeedUnit from "components/home/feed/PodcastFeedUnit/PodcastFeedUnit";
+import podcastEpisodes from "json/episodes.json";
+import podcasts from "json/podcast.json";
 
-export default function FollowingPage() {
+export default function ForYouPage() {
   return (
     <ForYouFeedJSONComponent>
-      {episodes.map((episode) => (
+      {podcastEpisodes.slice(0, 2).map((podcastEpisode) => (
         <PodcastEpisodeFeedUnit
-          key={episode.id}
-          podcastEpisode={episode}
-          podcast={podcast.find(
-            (individualPodcast) => individualPodcast.id === episode.podcastId,
+          key={podcastEpisode.id}
+          podcastEpisode={podcastEpisode}
+          podcast={podcasts.find(
+            (individualPodcast) =>
+              individualPodcast.id === podcastEpisode.podcastId,
+          )}
+        ></PodcastEpisodeFeedUnit>
+      ))}
+      {podcasts.slice(0, 2).map((podcast) => (
+        <PodcastFeedUnit key={podcast.id} podcast={podcast}></PodcastFeedUnit>
+      ))}
+      {podcastEpisodes.slice(2, 5).map((podcastEpisode) => (
+        <PodcastEpisodeFeedUnit
+          key={podcastEpisode.id}
+          podcastEpisode={podcastEpisode}
+          podcast={podcasts.find(
+            (individualPodcast) =>
+              individualPodcast.id === podcastEpisode.podcastId,
+          )}
+        ></PodcastEpisodeFeedUnit>
+      ))}
+      {podcasts.slice(2, 5).map((podcast) => (
+        <PodcastFeedUnit key={podcast.id} podcast={podcast}></PodcastFeedUnit>
+      ))}
+      {podcastEpisodes.slice(5, 15).map((podcastEpisode) => (
+        <PodcastEpisodeFeedUnit
+          key={podcastEpisode.id}
+          podcastEpisode={podcastEpisode}
+          podcast={podcasts.find(
+            (individualPodcast) =>
+              individualPodcast.id === podcastEpisode.podcastId,
           )}
         ></PodcastEpisodeFeedUnit>
       ))}

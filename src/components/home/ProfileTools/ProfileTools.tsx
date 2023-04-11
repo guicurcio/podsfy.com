@@ -32,9 +32,9 @@ const ProfileTools = ({
       <ProfileNotifications></ProfileNotifications>
       <ProfileMessages></ProfileMessages>
     </TooltipContainer>
-    {/* <Suspense fallback={<div className="h-10 w-10 rounded-full"></div>}>
+    <Suspense fallback={<div className="h-10 w-10 rounded-full"></div>}>
       <User></User>
-    </Suspense> */}
+    </Suspense>
   </div>
 );
 
