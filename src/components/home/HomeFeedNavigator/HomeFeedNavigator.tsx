@@ -58,7 +58,7 @@ export default function HomeFeedNavigator({
             </button>
           </Link>
         </TooltipWrapper>
-        <TooltipWrapper tooltipContent="Our Suggestions">
+        <TooltipWrapper tooltipContent="Podcasts you follow">
           <Link href={"/following"} passHref>
             <button
               value="for-you"
@@ -76,7 +76,7 @@ export default function HomeFeedNavigator({
             </button>
           </Link>
         </TooltipWrapper>
-        <TooltipWrapper tooltipContent="Our Suggestions">
+        <TooltipWrapper tooltipContent="Latests podcasts news">
           <Link href={"/latest"} passHref>
             <button
               value="latest"
