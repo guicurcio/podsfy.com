@@ -19,8 +19,8 @@
     "prisma:push:users": "prisma db push --schema C:/Users/ito/Documents/ally/holder/podsfy/src/lib/userAuthenticationModel/schema2.prisma",
     "graphql:codegen": "graphql-code-generator --config ./codegen/codegen.ts",
     "prisma:studio:instance": "prisma studio",
-    "turbo:dev": "turbo dev",
-    "turbo:dev:p": "turbo run dev --parallel"
+    "td": "turbo dev",
+    "tp": "turbo run dev --parallel"
   },
   "dependencies": {
     "@apollo/client": "^3.7.11",

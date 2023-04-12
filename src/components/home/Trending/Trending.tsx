@@ -1,10 +1,6 @@
-"use client";
-
-import SignUpModal from "components/SignUpModal/SignUpModal";
 import CLASSNAMES_BUTTON from "lib/constants/constants";
-// @ts-ignore
 import { User } from "lucide-react";
-import { useState } from "react";
+import Link from "next/link";
 import Button from "ui/components/Button/Button";
 import GoogleIcon from "ui/components/icons/GoogleIcon/GoogleIcon";
 import TwitterIcon from "ui/components/icons/TwitterIcon/TwitterIcon";
@@ -20,29 +16,10 @@ export interface TrendingProps {
   className?: string;
 }
 
-type USER_AUTH_FLOW = false | true | "RENDERING";
-
 /**
  * Trending Component
  */
 export default function Trending({ className }: TrendingProps): JSX.Element {
-  const [isUserOpeningModal, setIsUserOpeningTheModal] = useState(false);
-  // const isAuthenticated = nhost.auth.isAuthenticated();
-  // const [isUserAuthenticated, setIsUserAuthenticated] =
-  //   useState<USER_AUTH_FLOW>(false);
-
-  // const isInStorage = useReadLocalStorage<string>("nhostRefreshToken");
-  // console.log(isInStorage, "isInStorage");
-
-  // useEffect(() => {
-  //   if (isInStorage) {
-  //     setIsUserAuthenticated(true);
-  //   }
-  //   return () => {
-  //     setIsUserAuthenticated(false);
-  //   };
-  // }, [isInStorage]);
-
   return (
     <div
       className={mergeClasses(
@@ -54,13 +31,6 @@ export default function Trending({ className }: TrendingProps): JSX.Element {
         className,
       )}
     >
-      <SignUpModal
-        openModalState={isUserOpeningModal}
-        baseState="REGISTERING"
-        onClickOutside={() => {
-          setIsUserOpeningTheModal(false);
-        }}
-      ></SignUpModal>
       <div
         className={mergeClasses(
           "grid w-full grid-flow-row gap-[20px] p-3",
@@ -92,19 +62,18 @@ export default function Trending({ className }: TrendingProps): JSX.Element {
               Sign up with Google
             </span>
           </Button>
-          <Button
-            variant="none"
-            className={mergeClasses(CLASSNAMES_BUTTON, "")}
-            onClick={() => {
-              setIsUserOpeningTheModal(true);
-            }}
-          >
-            {/* <Twitter></Twitter> */}
-            <User className="h-[17px] w-[17px] self-center align-middle text-black/80"></User>
-            <span className="w-[120px] self-center align-middle">
-              Sign up with Email
-            </span>
-          </Button>
+          <Link key="login" href="/login">
+            <Button
+              variant="none"
+              className={mergeClasses(CLASSNAMES_BUTTON, "")}
+            >
+              {/* <Twitter></Twitter> */}
+              <User className="h-[17px] w-[17px] self-center align-middle text-black/80"></User>
+              <span className="w-[120px] self-center align-middle">
+                Sign up with Email
+              </span>
+            </Button>
+          </Link>
         </div>
       </div>
     </div>
