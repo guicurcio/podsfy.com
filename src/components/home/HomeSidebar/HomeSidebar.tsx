@@ -32,32 +32,32 @@ const menuItems = [
   },
   {
     label: "Explore",
-    href: "/home",
+    href: "/explore",
     icon: Globe,
   },
   {
     label: "Lists",
-    href: "/home",
+    href: "/lists",
     icon: File,
   },
   {
     label: "Search",
-    href: "/home",
+    href: "/search",
     icon: Search,
   },
   {
     label: "Notifications",
-    href: "/home",
+    href: "/notifications",
     icon: Inbox,
   },
   {
     label: "Messages",
-    href: "/home",
+    href: "/messages",
     icon: MessageSquare,
   },
   {
     label: "Profile",
-    href: "/home",
+    href: "/profile",
     icon: User,
   },
 ];
