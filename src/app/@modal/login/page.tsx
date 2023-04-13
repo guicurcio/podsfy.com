@@ -1,3 +1,8 @@
+"use client";
+
+import { useCallback, useRef, useEffect } from "react";
+import { useRouter } from "next/navigation";
+
 import Modal from "components/modal/Modal";
 import CLASSNAMES_BUTTON from "lib/constants/constants";
 import { X } from "lucide-react";
@@ -21,6 +26,12 @@ function OrDivider() {
 }
 
 export default function LoginModal() {
+  const router = useRouter();
+
+  const handleDismiss = useCallback(() => {
+    router.back();
+  }, [router]);
+
   return (
     <Modal>
       <div
