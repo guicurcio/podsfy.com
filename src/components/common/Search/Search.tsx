@@ -2,7 +2,11 @@
 
 import type { PopoverProps } from "@radix-ui/react-popover";
 import { Check, ChevronsUpDown, Search as SearchIcon } from "lucide-react";
-import { usePathname, useRouter, useSelectedLayoutSegment } from "next/navigation";
+import {
+  usePathname,
+  useRouter,
+  useSelectedLayoutSegment,
+} from "next/navigation";
 import { useState } from "react";
 import type { Podcasts } from "types/podcast";
 import Button from "ui/components/Button";
@@ -34,9 +38,6 @@ export interface SearchBoxProps extends PopoverProps {
   popoverClassName?: string;
 }
 
-
-
-
 const Search = ({
   podcasts,
   className,
@@ -48,8 +49,7 @@ const Search = ({
     useState<Pick<Podcasts.Podcast, "title" | "slug">>();
   const router = useRouter();
   const selectedLayoutSegment = useSelectedLayoutSegment();
-  const pathname = usePathname()
-
+  const pathname = usePathname();
 
   return (
     <Popover open={open} onOpenChange={setOpen} {...props}>
@@ -68,29 +68,33 @@ const Search = ({
             "opacity-100 transition-opacity duration-300 ease-in",
             className,
             open &&
-            "pointer-events-none opacity-0 transition-opacity duration-300 ease-out",
+              "pointer-events-none opacity-0 transition-opacity duration-300 ease-out",
           )}
         >
           <div className="grid grid-flow-col items-center gap-2">
             {!open && (
               <SearchIcon className="-ml-1 h-3 w-4 shrink-0 opacity-50"></SearchIcon>
             )}
-            {getSearchMessage(selectedLayoutSegment, selectedPodcast?.title, getPodcastTitleFromUrl(pathname))}
+            {getSearchMessage(
+              selectedLayoutSegment,
+              selectedPodcast?.title,
+              getPodcastTitleFromUrl(pathname),
+            )}
           </div>
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
       </PopoverTrigger>
       <PopoverContent
         className={mergeClasses(
-          "relative mt-[-20px] h-full w-[715px] border-0 bg-transparent",
-          "pointer-events-auto opacity-100 transition-opacity duration-300",
+          "relative mt-[-20px] h-full w-[715px] border-0",
           popoverClassName,
         )}
       >
         <Command
           className={mergeClasses(
             "absolute left-[13px] top-[-24px] h-[360px]",
-            "w-[690px] border border-[#171717] bg-[#050607f2] text-white text-white/75",
+            "w-[690px] border border-[#171717] text-white text-white/75 ",
+            "bg-black bg-opacity-25 backdrop-blur-[25px]  backdrop-brightness-[25%]",
           )}
         >
           <CommandInput
@@ -115,14 +119,16 @@ const Search = ({
                   {podcast.title}
                 </span>
 
-                {selectedLayoutSegment !== 'home' && selectedLayoutSegment !== 'for-you' && <Check
-                  className={mergeClasses(
-                    "ml-auto h-4 w-4",
-                    selectedPodcast?.slug === podcast.slug
-                      ? "opacity-100"
-                      : "opacity-0",
-                  )}
-                />}
+                {selectedLayoutSegment === "podcast" && (
+                  <Check
+                    className={mergeClasses(
+                      "ml-auto h-4 w-4",
+                      selectedPodcast?.slug === podcast.slug
+                        ? "opacity-100"
+                        : "opacity-0",
+                    )}
+                  />
+                )}
               </CommandItem>
             ))}
           </CommandGroup>

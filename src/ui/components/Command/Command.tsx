@@ -14,7 +14,7 @@ const Command = React.forwardRef<
   <CommandPrimitive
     ref={ref}
     className={mergeClasses(
-      "dark:bg-slate-800 flex h-full w-full flex-col overflow-hidden rounded-md bg-white",
+      "flex h-full w-full flex-col overflow-hidden rounded-md",
       className,
       "--font-visuelt",
     )}
@@ -128,10 +128,11 @@ const CommandItem = React.forwardRef<
   <CommandPrimitive.Item
     ref={ref}
     className={mergeClasses(
-      "flex cursor-pointer px-2 pb-[17px] pt-[8px] font-moderat text-[14px]  outline-none transition-colors",
-      "duration-200 data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
-      "text-left align-middle font-normal hover:bg-fondy hover:text-white/60",
+      "flex cursor-pointer px-2 pb-[17px] pt-[8px] font-moderat text-[14px] outline-none transition-all",
+      "duration-75 data-[disabled]:pointer-events-none data-[disabled]:opacity-50",
+      "rounded-md text-left align-middle font-normal hover:text-white/75 hover:backdrop-brightness-[25%]",
       "self-center tracking-[-0.03em] text-white/50 antialiased",
+      "hover:bg-fondy",
       className,
     )}
     {...props}
