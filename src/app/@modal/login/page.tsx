@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useRef, useEffect } from "react";
+import { useCallback } from "react";
 import { useRouter } from "next/navigation";
 
 import Modal from "components/modal/Modal";
@@ -58,13 +58,14 @@ export default function LoginModal() {
             Create Account
           </h1>
         </div>
-        <div
+        <button
           tabIndex={-1}
           className="focus:ring-slate-400 data-[state=open]:bg-slate-100 dark:focus:ring-slate-400 dark:focus:ring-offset-slate-900 dark:data-[state=open]:bg-slate-800 absolute right-4 top-4 rounded-sm opacity-70 transition-opacity focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:pointer-events-none hover:opacity-100"
+          onClick={() => handleDismiss()}
         >
           <X className="h-4 w-4" />
           <span className="sr-only">Close</span>
-        </div>
+        </button>
 
         <div className="grid h-full w-full grid-flow-row gap-y-[24px]">
           <div className="z-50 grid grid-flow-row gap-y-[24px]">
