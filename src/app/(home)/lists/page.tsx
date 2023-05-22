@@ -1,9 +1,13 @@
-import ForYouFeedJSONComponent from "components/home/feed/ForYouFeedJSON/ForYouFeedJSON";
+import FollowingFeedJSON from "components/home/feed/FollowingFeedJSON/FollowingFeedJSON";
+import ListFeedUnit from "components/home/feed/ListFeedUnit/ListFeedUnit";
+import lists from "json/lists.json";
 
-export default function Lists() {
+export default function ListsPage() {
   return (
-    <ForYouFeedJSONComponent>
-      <div className="h-screen"></div>
-    </ForYouFeedJSONComponent>
+    <FollowingFeedJSON>
+      {lists.slice(0, 10).map((item) => (
+        <ListFeedUnit key={item.id} item={item}></ListFeedUnit>
+      ))}
+    </FollowingFeedJSON>
   );
 }
