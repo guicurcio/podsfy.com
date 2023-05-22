@@ -36,7 +36,7 @@ export default function Header({ className, navItems }: HeaderProps) {
               <Link
                 href="/"
                 className={mergeClasses(
-                  "mx-auto cursor-pointer pt-[-2px] pl-[50px] font-SpaceGrotesk text-[26px] font-bold tracking-[-0.08em] text-[#CDCDCD] md:mx-0",
+                  "mx-auto cursor-pointer pl-[50px] pt-[-2px] font-SpaceGrotesk text-[26px] font-bold tracking-[-0.08em] text-[#CDCDCD] md:mx-0",
                 )}
               >
                 podsfy
@@ -53,9 +53,7 @@ export default function Header({ className, navItems }: HeaderProps) {
                     </div>
                   }
                 >
-                  <div className="pr-[10px]">
-                    <User></User>
-                  </div>
+                  <User></User>
                 </Suspense>
               </div>
             </div>

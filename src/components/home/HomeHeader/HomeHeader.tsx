@@ -37,7 +37,7 @@ export default function HomeHeader({
           <Link
             href="/"
             className={mergeClasses(
-              " cursor-pointer pl-[35px] pt-[8px] text-left font-SpaceGrotesk text-[32px] font-bold tracking-[-0.08em] text-[#CDCDCD]",
+              "cursor-pointer pl-[35px] pt-[8px] text-left font-SpaceGrotesk text-[32px] font-bold tracking-[-0.08em] text-[#CDCDCD]",
             )}
           >
             podsfy

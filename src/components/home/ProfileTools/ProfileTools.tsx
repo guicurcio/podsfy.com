@@ -28,7 +28,7 @@ const ProfileTools = ({ className }: ProfileToolsProps) => (
   >
     <TooltipContainer>
       <ProfileNotifications></ProfileNotifications>
-      <ProfileMessages></ProfileMessages>
+      {/* <ProfileMessages></ProfileMessages> */}
     </TooltipContainer>
     <Suspense fallback={<div className="h-10 w-10 rounded-full"></div>}>
       <User></User>
