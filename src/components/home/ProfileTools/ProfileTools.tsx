@@ -19,12 +19,10 @@ export interface ProfileToolsProps {
 /**
  * ProfileTools Component
  */
-const ProfileTools = ({
-  className,
-}: ProfileToolsProps) => (
+const ProfileTools = ({ className }: ProfileToolsProps) => (
   <div
     className={mergeClasses(
-      "col-span-3 grid w-full grid-flow-col place-items-end items-end justify-end justify-items-end gap-[10px]",
+      "grid w-full grid-flow-col place-items-end items-end justify-end justify-items-end gap-[10px]",
       className,
     )}
   >

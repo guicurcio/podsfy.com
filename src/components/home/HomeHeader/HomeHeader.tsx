@@ -22,14 +22,14 @@ export default function HomeHeader({
   return (
     <div
       className={mergeClasses(
-        "sticky top-0 z-50 w-screen min-w-full border-b border-gray-700 border-opacity-25 bg-[#0D0E12] bg-opacity-100",
+        "sticky top-0 z-50 min-w-full border-b border-gray-700 border-opacity-25 bg-[#0D0E12] bg-opacity-100",
         className,
       )}
     >
       <div className="mx-auto w-full max-w-[1200px]">
         <div
           className={mergeClasses(
-            "mx-auto grid w-[1200px] min-w-[1200px] max-w-[1200px] grid-flow-col grid-cols-12",
+            "mx-auto grid w-[1200px] min-w-[1200px] max-w-[1200px] grid-flow-col",
             "self-center",
             "w-full self-center pl-[2px] pr-[13px] align-middle",
           )}
@@ -37,16 +37,16 @@ export default function HomeHeader({
           <Link
             href="/"
             className={mergeClasses(
-              "col-span-2 cursor-pointer pl-[35px] pt-[8px] text-left font-SpaceGrotesk text-[32px] font-bold tracking-[-0.08em] text-[#CDCDCD]",
+              " cursor-pointer pl-[35px] pt-[8px] text-left font-SpaceGrotesk text-[32px] font-bold tracking-[-0.08em] text-[#CDCDCD]",
             )}
           >
             podsfy
           </Link>
-          <div className="col-span-7  w-full py-3">
+          <div className="w-full py-3">
             <Search
               podcasts={staticPodcastData()}
-              className=""
-              popoverClassName="w-[715px]"
+              className="mx-auto w-[650px]"
+              popoverClassName="w-[650px]"
             ></Search>
           </div>
           <ProfileTools></ProfileTools>

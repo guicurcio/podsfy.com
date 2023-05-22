@@ -33,13 +33,13 @@ export default function HomeLayout({ children }) {
             "shadow-3xl backdrop-blur-[10px] backdrop-brightness-[60%]",
           )}
         >
-          <div className="max-h-screen w-full overflow-hidden">
+          <div className="mx-auto max-h-screen w-full  overflow-hidden">
             <HomeHeader></HomeHeader>
             <div className="mx-auto max-w-[1200px]">
-              <div className="mx-auto grid h-full  max-w-[1200px] grid-flow-col grid-cols-12">
-                <HomeSidebar className="col-span-2"></HomeSidebar>
-                <Scroller className="col-span-7">{children}</Scroller>
-                <Trending></Trending>
+              <div className="mx-auto grid h-full  max-w-[1200px] grid-flow-col  lg:w-[1200px]">
+                <HomeSidebar className=" lg:w-[200px]"></HomeSidebar>
+                <Scroller className=" lg:w-[780px] ">{children}</Scroller>
+                <Trending className=" lg:w-[250px]"></Trending>
               </div>
             </div>
           </div>
