@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import {
   File,
@@ -50,11 +50,11 @@ const menuItems = [
     href: "/notifications",
     icon: Inbox,
   },
-  {
-    label: "Messages",
-    href: "/messages",
-    icon: MessageSquare,
-  },
+  // {
+  //   label: "Messages",
+  //   href: "/messages",
+  //   icon: MessageSquare,
+  // },
   {
     label: "Profile",
     href: "/profile",
