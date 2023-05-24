@@ -45,11 +45,11 @@ export default function PodcastEpisodeFeedUnit({
     <div
       key={podcastEpisode.title}
       className={mergeClasses(
-        "grid w-full grid-flow-row gap-4 border-0 px-[18px] py-[18px] hover:backdrop-contrast-125",
+        "grid w-full cursor-pointer grid-flow-row gap-4 border-0 px-[18px] py-[18px] hover:bg-fondy hover:backdrop-contrast-[500%]",
         className,
       )}
     >
-      <div className="grid w-full grid-flow-col items-center justify-between self-center align-middle ">
+      <div className="grid w-full grid-flow-col items-center justify-between self-center align-middle">
         <div className="grid grid-flow-col items-center gap-3">
           <HoverCardWrapper
             slug={podcast.slug}
@@ -67,7 +67,7 @@ export default function PodcastEpisodeFeedUnit({
           </HoverCardWrapper>
           <Link
             href={`podcast/${podcast.slug}`}
-            className="grid w-full grid-flow-row gap-[1px]"
+            className="grid w-full grid-flow-row gap-[1px] hover:cursor-pointer "
           >
             <h2 className="w-[500px] text-left font-moderat text-[15px] font-medium text-[#E7E9EA] ">
               {generateGoodPodcastEpisodeTitles(podcastEpisode?.title || "")}

@@ -26,6 +26,7 @@ module.exports = {
     },
     colors: {
       fondy: "#020416d4",
+      fondy2: "#020416d4",
       modalInput: "#4b4b5228",
       codeTitles: "#161619",
       read: "#252525",
