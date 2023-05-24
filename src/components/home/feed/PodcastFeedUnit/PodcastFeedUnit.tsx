@@ -49,7 +49,7 @@ export default function PodcastFeedUnit({
     <div
       key={title}
       className={mergeClasses(
-        "grid w-full grid-flow-row gap-3 border-0 px-[18px] py-[18px] hover:bg-fondy hover:brightness-[105%]",
+        "grid w-full cursor-pointer grid-flow-row gap-3 border-0 px-[18px] py-[18px] hover:bg-fondy hover:brightness-[105%]",
         className,
       )}
     >
