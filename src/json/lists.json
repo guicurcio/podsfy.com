@@ -1,7 +1,7 @@
 [
  {
   "id": "1",
-  "name": "Top whatever",
+  "name": "Emerging Podcast Stars of 2023: A Comprehensive List",
   "description": "A list of useful resources for AI and machine learning",
   "creator": {
    "id": "987654321",
@@ -17,7 +17,7 @@
  },
  {
   "id": "2",
-  "name": "AAsdasd Top whatever",
+  "name": "The Most Riveting True Crime Podcast Episodes of 2023",
   "description": "A list of useful resources for AI and machine learning",
   "creator": {
    "id": "987654321",
@@ -33,7 +33,103 @@
  },
  {
   "id": "3",
-  "name": "AAsdasd Top whatever",
+  "name": "The Ultimate Guide to Comedy Podcasts in 2023",
+  "description": "A list of useful resources for AI and machine learning",
+  "creator": {
+   "id": "987654321",
+   "name": "John Doe",
+   "handle": "@johnDoe",
+   "verified": true
+  },
+  "visibility": "public",
+  "created_at": "2023-05-22T14:30:00Z",
+  "updated_at": "2023-05-22T16:00:00Z",
+  "subscriber_count": 20,
+  "member_count": 2
+ },
+ {
+  "id": "3",
+  "name": "Top 10 Inspiring Podcasts for Personal Growth in 2023",
+  "description": "A list of useful resources for AI and machine learning",
+  "creator": {
+   "id": "987654321",
+   "name": "John Doe",
+   "handle": "@johnDoe",
+   "verified": true
+  },
+  "visibility": "public",
+  "created_at": "2023-05-22T14:30:00Z",
+  "updated_at": "2023-05-22T16:00:00Z",
+  "subscriber_count": 20,
+  "member_count": 2
+ },
+ {
+  "id": "3",
+  "name": "Science and Technology: Best Podcast Episodes in 2023",
+  "description": "A list of useful resources for AI and machine learning",
+  "creator": {
+   "id": "987654321",
+   "name": "John Doe",
+   "handle": "@johnDoe",
+   "verified": true
+  },
+  "visibility": "public",
+  "created_at": "2023-05-22T14:30:00Z",
+  "updated_at": "2023-05-22T16:00:00Z",
+  "subscriber_count": 20,
+  "member_count": 2
+ },
+ {
+  "id": "3",
+  "name": "Exploring History Through Podcasts: The 2023 Edition",
+  "description": "A list of useful resources for AI and machine learning",
+  "creator": {
+   "id": "987654321",
+   "name": "John Doe",
+   "handle": "@johnDoe",
+   "verified": true
+  },
+  "visibility": "public",
+  "created_at": "2023-05-22T14:30:00Z",
+  "updated_at": "2023-05-22T16:00:00Z",
+  "subscriber_count": 20,
+  "member_count": 2
+ },
+ {
+  "id": "3",
+  "name": "The Top 10 Fiction Podcasts You Shouldn't Miss in 2023",
+  "description": "A list of useful resources for AI and machine learning",
+  "creator": {
+   "id": "987654321",
+   "name": "John Doe",
+   "handle": "@johnDoe",
+   "verified": true
+  },
+  "visibility": "public",
+  "created_at": "2023-05-22T14:30:00Z",
+  "updated_at": "2023-05-22T16:00:00Z",
+  "subscriber_count": 20,
+  "member_count": 2
+ },
+ {
+  "id": "3",
+  "name": "2023's Trending Podcasts on Health and Wellness",
+  "description": "A list of useful resources for AI and machine learning",
+  "creator": {
+   "id": "987654321",
+   "name": "John Doe",
+   "handle": "@johnDoe",
+   "verified": true
+  },
+  "visibility": "public",
+  "created_at": "2023-05-22T14:30:00Z",
+  "updated_at": "2023-05-22T16:00:00Z",
+  "subscriber_count": 20,
+  "member_count": 2
+ },
+ {
+  "id": "3",
+  "name": "Podcasts at the Intersection of Culture and Society: 2023 Highlights",
   "description": "A list of useful resources for AI and machine learning",
   "creator": {
    "id": "987654321",

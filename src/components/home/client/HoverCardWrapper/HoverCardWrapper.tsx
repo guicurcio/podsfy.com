@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -14,7 +14,11 @@ import mergeClasses from "utils/mergeClasses/mergeClasses";
 /**
  * HoverCardWrapperProps
  */
-export type HoverCardWrapperProps = CustomComponent & Children & Slug;
+export type HoverCardWrapperProps = CustomComponent &
+  Children &
+  Slug & {
+    customImage?: any;
+  };
 
 /**
  * HoverCardWrapper Component
@@ -32,7 +36,7 @@ export default function HoverCardWrapper({
       >
         <Link href={`/podcast/${slug}`}>
           <Image
-            src={`/pods/${slug}.png`}
+            src={"/public/bg.png"}
             className={mergeClasses(
               "h-[64px] w-[64px] rounded-[3px]",
               childrenProps.NextImage?.className,
