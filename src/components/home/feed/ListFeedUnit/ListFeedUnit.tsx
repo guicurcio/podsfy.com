@@ -56,6 +56,8 @@ export default function ListFeedUnit({
           <div className="grid grid-flow-col items-center gap-3">
             <HoverCardWrapper
               slug={item.slug}
+              customImage={`/bg.png`}
+              imageClassName="object-cover w-[100px] h-[100px] rounded-[5px]"
               childrenProps={{
                 HoverCardContent: {
                   className:

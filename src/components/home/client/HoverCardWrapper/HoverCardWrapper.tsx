@@ -18,6 +18,7 @@ export type HoverCardWrapperProps = CustomComponent &
   Children &
   Slug & {
     customImage?: any;
+    imageClassName?: string;
   };
 
 /**
@@ -26,7 +27,9 @@ export type HoverCardWrapperProps = CustomComponent &
 export default function HoverCardWrapper({
   children,
   slug,
+  customImage,
   childrenProps,
+  imageClassName,
 }: HoverCardWrapperProps): JSX.Element {
   return (
     <HoverCard key="spotify">
@@ -36,10 +39,11 @@ export default function HoverCardWrapper({
       >
         <Link href={`/podcast/${slug}`}>
           <Image
-            src={`/pods/${slug}.png`}
+            src={customImage || `/pods/${slug}.png`}
             className={mergeClasses(
               "h-[64px] w-[64px] rounded-[3px]",
               childrenProps.NextImage?.className,
+              imageClassName,
             )}
             alt="Podcast cover"
             width={200}
