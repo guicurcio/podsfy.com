@@ -36,7 +36,7 @@ export default function HoverCardWrapper({
       >
         <Link href={`/podcast/${slug}`}>
           <Image
-            src={"/public/bg.png"}
+            src={`/pods/${slug}.png`}
             className={mergeClasses(
               "h-[64px] w-[64px] rounded-[3px]",
               childrenProps.NextImage?.className,
