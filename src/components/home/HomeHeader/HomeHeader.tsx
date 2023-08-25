@@ -26,10 +26,10 @@ export default function HomeHeader({
         className,
       )}
     >
-      <div className="mx-auto w-full max-w-[1200px]">
+      <div className="mx-auto w-full max-w-[1200px] place-content-start place-items-start items-start ">
         <div
           className={mergeClasses(
-            "mx-auto grid w-[1200px] min-w-[1200px] max-w-[1200px] grid-flow-col",
+            "grid w-[1000px]  max-w-[1060px] grid-flow-col ",
             "self-center",
             "w-full self-center pl-[2px] pr-[13px] align-middle",
           )}

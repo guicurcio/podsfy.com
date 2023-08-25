@@ -88,7 +88,7 @@ export function ProfileForm() {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="space-y-8 text-white"
+        className="grid grid-flow-row gap-16 text-white"
       >
         <FormField
           control={form.control}
@@ -114,7 +114,7 @@ export function ProfileForm() {
           name="email"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Email</FormLabel>
+              <FormLabel className="font-visuelt text-[20px]">Email</FormLabel>
               <Select onValueChange={field.onChange} defaultValue={field.value}>
                 <FormControl>
                   <SelectTrigger>
@@ -140,7 +140,7 @@ export function ProfileForm() {
           name="bio"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Bio</FormLabel>
+              <FormLabel className="font-visuelt text-[20px]">Bio</FormLabel>
               <FormControl>
                 <Textarea
                   placeholder="Tell us a little bit about yourself"
@@ -180,17 +180,10 @@ export function ProfileForm() {
               )}
             />
           ))}
-          <Button
-            type="button"
-            variant="outline"
-            size="sm"
-            className="mt-2"
-            onClick={() => append({ value: "" })}
-          >
-            Add URL
-          </Button>
         </div>
-        <Button type="submit">Update profile</Button>
+        <Button variant="none" type="submit">
+          Update profile
+        </Button>
       </form>
     </Form>
   );

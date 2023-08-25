@@ -35,11 +35,11 @@ export default function HomeLayout({ children }) {
         >
           <div className="mx-auto max-h-screen w-full  overflow-hidden">
             <HomeHeader></HomeHeader>
-            <div className="mx-auto max-w-[1200px]">
-              <div className="mx-auto grid h-full  max-w-[1200px] grid-flow-col  lg:w-[1200px]">
-                <HomeSidebar className=" lg:w-[200px]"></HomeSidebar>
-                <Scroller className=" lg:w-[780px] ">{children}</Scroller>
-                <Trending className=" lg:w-[250px]"></Trending>
+            <div className="mx-auto max-w-[1400px]">
+              <div className="mx-auto grid h-full max-w-[1400px] grid-flow-col  place-content-start items-start  lg:w-[1200px]">
+                <HomeSidebar className=" lg:w-[210px]"></HomeSidebar>
+                <Scroller className=" lg:w-[1000px] ">{children}</Scroller>
+                {/* <Trending className=" lg:w-[250px]"></Trending> */}
               </div>
             </div>
           </div>

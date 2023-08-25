@@ -96,7 +96,10 @@ const FormLabel = React.forwardRef<
   return (
     <Label
       ref={ref}
-      className={mergeClasses(error && "text-destructive", className)}
+      className={mergeClasses(
+        error && "text-destructive font-moderat text-[26px]",
+        className,
+      )}
       htmlFor={formItemId}
       {...props}
     />
