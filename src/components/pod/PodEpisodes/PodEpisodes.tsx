@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import { Accordion } from "ui/components/Accordion"
-import mergeClasses from "utils/mergeClasses"
-import PodEpisode from "../PodEpisode/PodEpisode"
+import { Accordion } from "ui/components/Accordion";
+import mergeClasses from "utils/mergeClasses";
+import PodEpisode from "../PodEpisode/PodEpisode";
 
 /**
  * PodEpisodes Props description
@@ -11,14 +11,14 @@ export interface PodEpisodesProps {
   /**
    * Custom class names passed to the root element.
    */
-  className?: string
+  className?: string;
   /**
    * Pass a custom title to the component.
    * @default ""
    */
-  title?: string
-  episodes?: PodcastEpisode[]
-  defaultCoverImage?: string
+  title?: string;
+  episodes?: PodcastEpisode[];
+  defaultCoverImage?: string;
 }
 
 type PodcastEpisode = {
@@ -26,22 +26,22 @@ type PodcastEpisode = {
    * Pass a custom title to the component.
    * @default ""
    */
-  title?: string
+  title?: string;
   /**
    * Pass a custom description to the component.
    * @default ""
    */
-  description?: string
+  description?: string;
   /**
    * Pass a custom description to the component.
    * @default ""
    */
-  whereToWatchOrListenLink?: string
+  whereToWatchOrListenLink?: string;
   /**
    *
    */
-  defaultCoverImage?: string
-}
+  defaultCoverImage?: string;
+};
 
 /**
  * PodEpisodes Component
@@ -55,11 +55,11 @@ export default function PodEpisodes({
   return (
     <div
       className={mergeClasses(
-        "grid w-full grid-flow-row ]  rounded-[4px] border-0 bg-[#1f1f23] font-visuelt text-[14px] font-normal text-white/50 shadow-3xl backdrop-brightness-[30%]",
-        className
+        "grid w-full grid-flow-row rounded-[4px] border-0 bg-[#1f1f23] font-visuelt text-[14px] font-normal text-white/50 shadow-3xl backdrop-brightness-[30%]",
+        className,
       )}
     >
-      <div className="grid w-full grid-flow-col items-center justify-start gap-2  py-4  px-3  backdrop-brightness-[50%]">
+      <div className="grid w-full grid-flow-col items-center justify-start gap-2  px-3  py-4  backdrop-brightness-[50%]">
         <svg
           width={16}
           height={16}
@@ -106,5 +106,5 @@ export default function PodEpisodes({
         </Accordion>
       </div>
     </div>
-  )
+  );
 }
