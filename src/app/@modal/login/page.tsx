@@ -12,6 +12,7 @@ import FacebookIcon from "ui/components/icons/FacebookIcon/FacebookIcon";
 import GoogleIcon from "ui/components/icons/GoogleIcon/GoogleIcon";
 import TwitterIcon from "ui/components/icons/TwitterIcon/TwitterIcon";
 import mergeClasses from "utils/mergeClasses/mergeClasses";
+import { nhost } from "lib/setupBackendConfig";
 
 function OrDivider() {
   return (
@@ -60,7 +61,7 @@ export default function LoginModal() {
         </div>
         <button
           tabIndex={-1}
-          className="focus:ring-slate-400 data-[state=open]:bg-slate-100 dark:focus:ring-slate-400 dark:focus:ring-offset-slate-900 dark:data-[state=open]:bg-slate-800 absolute right-4 top-4 rounded-sm opacity-70 transition-opacity focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:pointer-events-none hover:opacity-100"
+          className="focus:ring-slate-400 data-[state=open]:bg-slate-100 dark:focus:ring-slate-400 dark:focus:ring-offset-slate-900 dark:data-[state=open]:bg-slate-800 absolute right-4 top-4 rounded-sm opacity-70 transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:pointer-events-none"
           onClick={() => handleDismiss()}
         >
           <X className="h-4 w-4" />
@@ -75,7 +76,14 @@ export default function LoginModal() {
                 name="email"
                 aria-label="email"
                 tabIndex={1}
-                placeholder="Phone, email, or username"
+                placeholder="Email"
+              />
+              <Input
+                id="password"
+                name="password"
+                aria-label="password"
+                tabIndex={1}
+                placeholder="Password"
               />
             </div>
             {/* <div className="grid grid-flow-row items-center gap-2">
@@ -113,13 +121,12 @@ export default function LoginModal() {
               type="submit"
               variant="none"
               className={mergeClasses(CLASSNAMES_BUTTON, "w-full py-1")}
-              // loading={loading}
-              // onClick={() => {
-              //   nhost.auth.signUp({
-              //     email: "joe@example.com",
-              //     password: "secret-password",
-              //   })
-              // }}
+              onClick={() => {
+                nhost.auth.signUp({
+                  email: "joe@example.com",
+                  password: "secret-password",
+                });
+              }}
             >
               Sign In
             </Button>

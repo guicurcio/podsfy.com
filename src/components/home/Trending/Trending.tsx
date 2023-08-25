@@ -1,3 +1,4 @@
+import Logs from "components/Logs";
 import CLASSNAMES_BUTTON from "lib/constants/constants";
 import { User } from "lucide-react";
 import Link from "next/link";
@@ -49,14 +50,12 @@ export default function Trending({ className }: TrendingProps): JSX.Element {
         </div>
         <div className="grid w-full grid-flow-row gap-[18px] pr-8">
           <Button variant="none" className={mergeClasses(CLASSNAMES_BUTTON)}>
-            {/* <Twitter></Twitter> */}
             <TwitterIcon className=""></TwitterIcon>
             <span className="mx-auto w-[120px] self-center align-middle">
               Sign up with Twitter
             </span>
           </Button>
           <Button variant="none" className={mergeClasses(CLASSNAMES_BUTTON)}>
-            {/* <Twitter></Twitter> */}
             <GoogleIcon className=""></GoogleIcon>
             <span className="w-[120px] self-center align-middle">
               Sign up with Google
@@ -74,6 +73,7 @@ export default function Trending({ className }: TrendingProps): JSX.Element {
               </span>
             </Button>
           </Link>
+          <Logs></Logs>
         </div>
       </div>
     </div>
