@@ -48,7 +48,7 @@ export default function Trending({ className }: TrendingProps): JSX.Element {
             and more.
           </h2>
         </div>
-        <div className="grid w-full grid-flow-row gap-[18px] pr-8">
+        <div className="grid w-full grid-flow-row gap-[18px] pr-8 font-moderat">
           <Button variant="none" className={mergeClasses(CLASSNAMES_BUTTON)}>
             <TwitterIcon className=""></TwitterIcon>
             <span className="mx-auto w-[120px] self-center align-middle">

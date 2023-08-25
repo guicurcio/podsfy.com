@@ -14,7 +14,7 @@ import TwitterIcon from "ui/components/icons/TwitterIcon/TwitterIcon";
 import mergeClasses from "utils/mergeClasses/mergeClasses";
 import { nhost } from "lib/setupBackendConfig";
 
-function OrDivider() {
+export function OrDivider() {
   return (
     <div className="mx-auto grid w-fit  grid-flow-col items-center justify-items-center gap-x-2">
       <div className="h-[1px] w-[110px] bg-white/20 " />
@@ -91,7 +91,7 @@ export default function LoginModal() {
                   Username
                 </Label>
                 <Input id="username" className="col-span-4" />
-              </div>
+              </d iv>
               <div className="grid grid-flow-row items-center gap-2">
                 <Label className="text-left">Name</Label>
                 <Input id="name" className="col-span-4" />
