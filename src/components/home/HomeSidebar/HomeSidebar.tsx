@@ -1,14 +1,6 @@
 "use client";
 
-import {
-  File,
-  Globe,
-  Home,
-  Inbox,
-  MessageSquare,
-  Search,
-  User,
-} from "lucide-react";
+import { File, Globe, Home, Inbox, Search, User } from "lucide-react";
 import Link from "next/link";
 import {
   NavigationMenu,

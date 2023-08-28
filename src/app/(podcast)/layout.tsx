@@ -8,6 +8,8 @@ import mergeClasses from "utils/mergeClasses/mergeClasses";
 /* eslint-disable-next-line import/no-absolute-path, import/extensions */
 import backgroundImage from "/public/bg.png";
 
+const Trending = lazy(() => import("components/home/Trending"));
+
 export default function HomeLayout({ children }) {
   return (
     <>
@@ -37,6 +39,7 @@ export default function HomeLayout({ children }) {
               <div className="mx-auto grid h-full max-w-[1400px] grid-flow-col  place-content-start items-start  lg:w-[1200px]">
                 <HomeSidebar className=" lg:w-[210px]"></HomeSidebar>
                 <Scroller className=" lg:w-[1000px] ">{children}</Scroller>
+                {/* <Trending className=" lg:w-[250px]"></Trending> */}
               </div>
             </div>
           </div>
