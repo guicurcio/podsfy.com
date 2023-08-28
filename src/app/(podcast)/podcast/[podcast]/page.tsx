@@ -52,17 +52,17 @@ export default async function HomePodcastPage({ params }) {
     >
       <div
         className={mergeClasses(
-          "grid min-w-full grid-flow-row items-start justify-start   gap-3   px-[58px] py-[18px] shadow-3xl  backdrop-brightness-[75%] backdrop-contrast-[101%] hover:brightness-[105%]",
+          "grid min-w-full grid-flow-row items-start justify-start   gap-3 px-[58px] py-[38px] shadow-3xl  backdrop-brightness-[75%] backdrop-contrast-[101%] hover:brightness-[105%]",
         )}
       >
         <div className="grid grid-flow-col place-items-start items-start justify-items-start gap-[22px]">
-          <div className="h-[256px] w-[250px] self-center   rounded-[4px] border-[2px] border-[#88888820] p-0  align-middle shadow-3xl">
+          <div className="h-[356px] w-[276px] self-center   rounded-[4px] border-[2px] border-[#88888820] p-0  align-middle shadow-3xl">
             <Image
               src={`/${staticPodcastData.cover}`}
-              className="h-[256px] w-[250px] self-center   rounded-[4px] border-[2px] border-[#88888820] p-0  align-middle shadow-3xl"
+              className="h-[356px] w-[276px] self-center   rounded-[4px] border-[2px] border-[#88888820] p-0  align-middle shadow-3xl"
               alt="Podcast cover"
-              width={156}
-              height={156}
+              width={276}
+              height={356}
             ></Image>
           </div>
 
@@ -76,8 +76,15 @@ export default async function HomePodcastPage({ params }) {
                 {staticPodcastData?.podcastHost?.name || ""}
               </span>
             </h2>
-            <h1 className="mt-[2px]  w-[550px] break-before-avoid-page text-left font-moderat text-[14px] font-normal text-[#71767B]">
-              {staticPodcastData?.description || ""}
+            <h1
+              className={mergeClasses(
+                "mt-[2px] w-[550px] break-before-avoid-page text-left",
+                "font-moderat text-[18px] font-normal tracking-[-1.1px] text-[#71767B]",
+              )}
+            >
+              {(staticPodcastData?.description || "")
+                .replace(/\\n/g, " ")
+                .slice(0, 300)}
             </h1>
             <div className=" mt-[5px] grid grid-flow-row items-start justify-start gap-[8px]">
               <TooltipContainer className="gap-[32px]">
