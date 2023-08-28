@@ -52,20 +52,22 @@ export default async function HomePodcastPage({ params }) {
     >
       <div
         className={mergeClasses(
-          "grid w-full  grid-flow-row items-start   justify-start gap-3 border-0 py-[18px] px-[18px] shadow-3xl  backdrop-brightness-[75%] backdrop-contrast-[101%] hover:brightness-[105%]",
+          "grid min-w-full grid-flow-row items-start justify-start   gap-3   px-[58px] py-[18px] shadow-3xl  backdrop-brightness-[75%] backdrop-contrast-[101%] hover:brightness-[105%]",
         )}
       >
-        <div className="grid w-fit grid-flow-col place-items-start items-start justify-items-start gap-3 ">
-          <Image
-            src={`/${staticPodcastData.cover}`}
-            className="h-[156px] w-[156px] self-center   rounded-[4px] border-[2px] border-[#88888820] p-0  align-middle shadow-3xl"
-            alt="Podcast cover"
-            width={156}
-            height={156}
-          ></Image>
+        <div className="grid grid-flow-col place-items-start items-start justify-items-start gap-[22px]">
+          <div className="h-[256px] w-[250px] self-center   rounded-[4px] border-[2px] border-[#88888820] p-0  align-middle shadow-3xl">
+            <Image
+              src={`/${staticPodcastData.cover}`}
+              className="h-[256px] w-[250px] self-center   rounded-[4px] border-[2px] border-[#88888820] p-0  align-middle shadow-3xl"
+              alt="Podcast cover"
+              width={156}
+              height={156}
+            ></Image>
+          </div>
 
-          <div className="grid grid-flow-row gap-[8px]">
-            <h2 className="text-left font-moderat text-[26px] font-medium text-[#E7E9EA] ">
+          <div className="grid min-w-full grid-flow-row  gap-[8px]">
+            <h2 className="text-left font-moderat text-[36px] font-medium text-[#E7E9EA] ">
               {generateGoodTitleForReviews(staticPodcastData.title)}
             </h2>
             <h2 className="mt-[-4px]  font-moderat text-[13px] text-[#fff] text-opacity-[50%]">
@@ -74,7 +76,7 @@ export default async function HomePodcastPage({ params }) {
                 {staticPodcastData?.podcastHost?.name || ""}
               </span>
             </h2>
-            <h1 className="mt-[2px] break-before-avoid-page text-left font-moderat text-[14px] font-normal text-[#71767B]">
+            <h1 className="mt-[2px]  w-[550px] break-before-avoid-page text-left font-moderat text-[14px] font-normal text-[#71767B]">
               {staticPodcastData?.description || ""}
             </h1>
             <div className=" mt-[5px] grid grid-flow-row items-start justify-start gap-[8px]">
