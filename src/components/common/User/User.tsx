@@ -7,7 +7,6 @@ import { nhost } from "lib/setupBackendConfig";
 import asyncTuple from "lib/try/try";
 import {
   Home,
-  LogOut,
   Mail,
   Settings,
   UserCheck,
@@ -26,6 +25,7 @@ import {
   DropdownMenuTrigger,
 } from "ui/components/Dropdown";
 import useToggle from "ui/hooks/useToggle/useToggle";
+import Link from "next/link";
 
 /**
  * Props for the User component.
@@ -110,29 +110,45 @@ export default function User(): JSX.Element {
           </div> */}
           {/* <DropdownMenuSeparator className="mx-[4px]" /> */}
           <DropdownMenuGroup className="font-normal text-white/50">
+            <Link href="/profile">
+              <DropdownMenuItem className="font-normal text-white/50">
+                <UserCheck className="mr-3 h-4 w-4 self-center align-middle" />
+                <span className="h-4 self-center  align-middle ">Profile</span>
+                <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+              </DropdownMenuItem>
+            </Link>
+            <Link href="/home">
+              <DropdownMenuItem>
+                <Home className="mr-3 h-4 w-4 self-center align-middle" />
+                <span className="h-4 self-center align-middle">Home</span>
+                <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
+              </DropdownMenuItem>
+            </Link>
+            <Link href="/profile">
+              <DropdownMenuItem>
+                <Settings className="mr-3 h-4 w-4 self-center align-middle" />
+                <span className="h-4 self-center align-middle">Settings</span>
+                <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
+              </DropdownMenuItem>
+            </Link>
+
+            <Link href="/company">
+              <DropdownMenuItem>
+                <Mail className="mr-3 h-4 w-4 self-center align-middle" />
+                <span className="h-4 self-center align-middle">Contact Us</span>
+                <DropdownMenuShortcut>⌘K</DropdownMenuShortcut>
+              </DropdownMenuItem>
+            </Link>
+          </DropdownMenuGroup>
+          <DropdownMenuSeparator className="mx-[4px]" />
+          <Link href="/profile">
             <DropdownMenuItem className="font-normal text-white/50">
               <UserCheck className="mr-3 h-4 w-4 self-center align-middle" />
               <span className="h-4 self-center  align-middle ">Profile</span>
               <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
             </DropdownMenuItem>
-            <DropdownMenuItem>
-              <Home className="mr-3 h-4 w-4 self-center align-middle" />
-              <span className="h-4 self-center align-middle">Home</span>
-              <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <Settings className="mr-3 h-4 w-4 self-center align-middle" />
-              <span className="h-4 self-center align-middle">Settings</span>
-              <DropdownMenuShortcut>⌘S</DropdownMenuShortcut>
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <Mail className="mr-3 h-4 w-4 self-center align-middle" />
-              <span className="h-4 self-center align-middle">Contact Us</span>
-              <DropdownMenuShortcut>⌘K</DropdownMenuShortcut>
-            </DropdownMenuItem>
-          </DropdownMenuGroup>
-          <DropdownMenuSeparator className="mx-[4px]" />
-          <DropdownMenuItem
+          </Link>
+          {/* <DropdownMenuItem
             onClick={async () => {
               await handleUserSignOut();
             }}
@@ -140,7 +156,16 @@ export default function User(): JSX.Element {
             <LogOut className="mr-3 h-4 w-4 self-center align-middle" />
             <span className="h-4 self-center align-middle">Log out</span>
             <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
-          </DropdownMenuItem>
+          </DropdownMenuItem> */}
+          {/* <DropdownMenuItem
+            onClick={async () => {
+              await handleUserSignOut();
+            }}
+          >
+            <LogOut className="mr-3 h-4 w-4 self-center align-middle" />
+            <span className="h-4 self-center align-middle">Log out</span>
+            <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
+          </DropdownMenuItem> */}
         </DropdownMenuContent>
       </DropdownMenu>
     </div>

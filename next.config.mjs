@@ -4,6 +4,7 @@ const nextConfig = {
   staticPageGenerationTimeout: 1000,
   experimental: {
     appDir: true,
+    serverActions: true,
   },
 };
 

@@ -1,5 +1,4 @@
 import TooltipContainer from "components/common/TooltipContainer";
-import ProfileMessages from "components/header/ProfileMessages";
 import ProfileNotifications from "components/header/ProfileNotifications";
 import { Suspense, lazy } from "react";
 import mergeClasses from "utils/mergeClasses";

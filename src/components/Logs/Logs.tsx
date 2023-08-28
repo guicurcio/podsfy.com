@@ -1,8 +1,6 @@
-import { CardFooter } from "components/new-york/ui/card";
 import {
   Dialog,
   DialogContent,
-  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
@@ -33,7 +31,7 @@ export default function Logs({ className, ...props }: LogsProps): JSX.Element {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button>Sign Up with Email</Button>
+        <span className="h-4 self-center align-middle">Log In</span>
       </DialogTrigger>
       <DialogContent
         className={mergeClasses(
