@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import TooltipContainer from "components/common/TooltipContainer";
 // import TooltipIconButton from "components/home/TooltipIconButton";
@@ -25,77 +25,79 @@ export interface HomeFeedNavigatorProps {
 export default function HomeFeedNavigator({
   className,
 }: HomeFeedNavigatorProps): JSX.Element {
-
-  const ssel = useSelectedLayoutSegment()
-
-  console.log(ssel, "segment");
+  const ssel = useSelectedLayoutSegment();
 
   return (
     <div
       className={mergeClasses(
-        "grid grid-flow-col justify-between",
+        "grid grid-flow-col ",
         "border-b border-sharper border-opacity-5",
         className,
       )}
     >
-      <TooltipContainer>
-        <TooltipWrapper tooltipContent="Our Suggestions">
-          <Link href={"/for-you"} passHref>
-            <button
-              value="for-you"
-              className={mergeClasses(
-                "font-normal text-white/40",
-                "font-visuelt text-[14px] tracking-[-0.01em] ",
-                "inline-flex min-w-[100px] items-center justify-center py-[12px]",
-                "disabled:pointer-events-none disabled:opacity-50",
-                "bg-[#0D0E12] ",
-                ssel === 'home' && "border-b-2 border-white border-opacity-10",
-                ssel === 'for-you' && "border-b-2 border-white border-opacity-10",
-                className,
-              )}
-            >
-              For You
-            </button>
-          </Link>
-        </TooltipWrapper>
-        <TooltipWrapper tooltipContent="Podcasts you follow">
-          <Link href={"/following"} passHref>
-            <button
-              value="for-you"
-              className={mergeClasses(
-                "font-normal text-white/40",
-                "font-visuelt text-[14px] tracking-[-0.01em] ",
-                "inline-flex min-w-[100px] items-center justify-center py-[12px]",
-                "disabled:pointer-events-none disabled:opacity-50",
-                "bg-[#0D0E12] ",
-                ssel === 'following' && "border-b-2 border-white border-opacity-10",
-                className,
-              )}
-            >
-              Following
-            </button>
-          </Link>
-        </TooltipWrapper>
-        <TooltipWrapper tooltipContent="Latests podcasts news">
-          <Link href={"/latest"} passHref>
-            <button
-              value="latest"
-              className={mergeClasses(
-                "font-normal text-white/40",
-                "font-visuelt text-[14px] tracking-[-0.01em] ",
-                "inline-flex min-w-[100px] items-center justify-center py-[12px]",
-                "disabled:pointer-events-none disabled:opacity-50",
-                "bg-[#0D0E12] ",
-                ssel === 'latest' && "border-b-2 border-white border-opacity-10",
-                className,
-              )}
-            >
-              Latest
-            </button>
-          </Link>
-        </TooltipWrapper>
-      </TooltipContainer>
-      {/* <TooltipContainer className="mr-[20px] grid h-full w-full grid-flow-col gap-[5px]  self-center  align-middle">
+      <div className={mergeClasses("mx-auto w-[1150px]")}>
+        <TooltipContainer className="place-content-start content-start">
+          <TooltipWrapper tooltipContent="Our Suggestions">
+            <Link href={"/for-you"} passHref>
+              <button
+                value="for-you"
+                className={mergeClasses(
+                  "font-normal text-white/40",
+                  "font-visuelt text-[14px] tracking-[-0.01em] ",
+                  "inline-flex min-w-[100px] items-center justify-center py-[12px]",
+                  "disabled:pointer-events-none disabled:opacity-50",
+                  "bg-[#0D0E12] ",
+                  ssel === "home" &&
+                    "border-b-2 border-white border-opacity-10",
+                  ssel === "for-you" &&
+                    "border-b-2 border-white border-opacity-10",
+                  className,
+                )}
+              >
+                For You
+              </button>
+            </Link>
+          </TooltipWrapper>
+          <TooltipWrapper tooltipContent="Podcasts you follow">
+            <Link href={"/following"} passHref>
+              <button
+                value="for-you"
+                className={mergeClasses(
+                  "font-normal text-white/40",
+                  "font-visuelt text-[14px] tracking-[-0.01em] ",
+                  "inline-flex min-w-[100px] items-center justify-center py-[12px]",
+                  "disabled:pointer-events-none disabled:opacity-50",
+                  "bg-[#0D0E12] ",
+                  ssel === "following" &&
+                    "border-b-2 border-white border-opacity-10",
+                  className,
+                )}
+              >
+                Following
+              </button>
+            </Link>
+          </TooltipWrapper>
+          <TooltipWrapper tooltipContent="Latests podcasts news">
+            <Link href={"/latest"} passHref>
+              <button
+                value="latest"
+                className={mergeClasses(
+                  "font-normal text-white/40",
+                  "font-visuelt text-[14px] tracking-[-0.01em] ",
+                  "inline-flex min-w-[100px] items-center justify-center py-[12px]",
+                  "disabled:pointer-events-none disabled:opacity-50",
+                  "bg-[#0D0E12] ",
+                  ssel === "latest" &&
+                    "border-b-2 border-white border-opacity-10",
+                  className,
+                )}
+              >
+                Latest
+              </button>
+            </Link>
+          </TooltipWrapper>
+        </TooltipContainer>
+        {/* <TooltipContainer className="mr-[20px] grid h-full w-full grid-flow-col gap-[5px]  self-center  align-middle">
       <TooltipIconButton
         className="h-[28px] self-center rounded-md px-2 align-middle text-[13px]"
         Icon={RefreshCcw}
@@ -105,6 +107,7 @@ export default function HomeFeedNavigator({
         Icon={Cog}
       ></TooltipIconButton>
     </TooltipContainer> */}
+      </div>
     </div>
   );
 }
