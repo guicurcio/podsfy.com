@@ -29,7 +29,7 @@ export default function HomeHeader({
       <div className="mx-auto w-full max-w-[1200px] place-content-start place-items-start items-start ">
         <div
           className={mergeClasses(
-            "grid w-[1000px]  max-w-[1060px] grid-flow-col ",
+            "grid w-[1000px]  max-w-[1060px] grid-flow-col",
             "self-center",
             "w-full self-center pl-[2px] pr-[13px] align-middle",
           )}
@@ -37,7 +37,7 @@ export default function HomeHeader({
           <Link
             href="/"
             className={mergeClasses(
-              "cursor-pointer pl-[35px] pt-[8px] text-left font-SpaceGrotesk text-[32px] font-bold tracking-[-0.08em] text-[#CDCDCD]",
+              "cursor-pointer px-[35px] pt-[8px] text-left font-SpaceGrotesk text-[32px] font-bold tracking-[-0.08em] text-[#CDCDCD]",
             )}
           >
             podsfy
