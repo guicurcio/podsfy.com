@@ -29,10 +29,7 @@ export default function Scroller({
         className,
       )}
     >
-      <div className="z-50 w-full border-0">
-        <HomeFeedNavigator></HomeFeedNavigator>
-        {children}
-      </div>
+      <div className="z-50 w-full border-0">{children}</div>
     </div>
   );
 }
