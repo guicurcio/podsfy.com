@@ -66,19 +66,20 @@ export default async function HomePodcastPage({ params }) {
           </div>
 
           <div className="grid min-w-full grid-flow-row  gap-[8px]">
-            <h2 className="text-left font-moderat text-[36px] font-medium text-[#E7E9EA] ">
+            <h2 className="w-full text-left font-moderat text-[28px] font-medium tracking-[-0.5px] text-[#E7E9EA] ">
               {generateGoodTitleForReviews(staticPodcastData.title)}
             </h2>
-            <h2 className="mt-[-4px]  font-moderat text-[13px] text-[#fff] text-opacity-[50%]">
+            <h2 className="mt-[-4px]  font-moderat text-[17px] text-[#fff] text-opacity-[50%]">
               By{" "}
               <span className="underline">
-                {staticPodcastData?.podcastHost?.name || ""}
+                {staticPodcastData?.podcastHost?.name ||
+                  generateGoodTitleForReviews(staticPodcastData.title)}
               </span>
             </h2>
             <h1
               className={mergeClasses(
-                "mt-[2px] w-[550px] break-before-avoid-page text-left",
-                "font-moderat text-[18px] font-normal tracking-[-1.1px] text-[#71767B]",
+                "ml-[2px] w-[750px] font-lausanne text-[18px] font-normal  leading-[25px] tracking-[0.2px]",
+                "text-[#9ab] text-opacity-80",
               )}
             >
               {(staticPodcastData?.description || "")
