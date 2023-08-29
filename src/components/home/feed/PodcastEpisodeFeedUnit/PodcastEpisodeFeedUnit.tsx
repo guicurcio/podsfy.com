@@ -49,8 +49,8 @@ export default function PodcastEpisodeFeedUnit({
         className,
       )}
     >
-      <div className="grid w-full grid-flow-col items-center justify-between self-center align-middle">
-        <div className="grid grid-flow-col items-center gap-3">
+      <div className="grid w-full grid-flow-col  justify-between  ">
+        <div className="grid grid-flow-col gap-3">
           <HoverCardWrapper
             slug={podcast.slug}
             childrenProps={{
@@ -59,57 +59,62 @@ export default function PodcastEpisodeFeedUnit({
                   "w-full pl-3 py-3 pr-1 bg-black bg-opacity-50 backdrop-blur-[50px] backdrop-brightness-[50%] rounded-[5px] border border-white border-opacity-5  font-visuelt text-[14px] font-normal text-white/50 shadow-3xl",
               },
               HoverCardTrigger: {
-                className: "rounded-[18px]",
+                className:
+                  "rounded-[55px] w-[75px] h-[75px] border-[2px] border-gray-800 object-cover",
               },
               NextImage: {
-                className: "w-[60px] h-[60px] rounded-[18px]",
+                className: "w-[75px] h-[75px] rounded-[55px] object-cover",
+                width: 75,
+                height: 75,
               },
             }}
           >
             <HoverCardWrapperPodcast podcast={podcast} />
           </HoverCardWrapper>
-          <Link
-            href={`podcast/${podcast.slug}`}
-            className="grid w-full grid-flow-row gap-[1px] hover:cursor-pointer "
-          >
-            <h2 className="w-[500px] text-left font-moderat text-[17px] font-medium text-[#E7E9EA] ">
-              {generateGoodPodcastEpisodeTitles(podcastEpisode?.title || "")}
-            </h2>
-            <h3 className="w-[450px] text-left font-moderat text-[15px] font-normal text-[#71767B]">
-              {podcast.title}
-            </h3>
-          </Link>
+          <div className="grid w-full grid-flow-row content-start items-start align-top hover:cursor-pointer ">
+            <Link
+              href={`podcast/${podcast.slug}`}
+              className="grid w-full grid-flow-row content-start items-start align-top hover:cursor-pointer "
+            >
+              <h2 className="w-[500px] text-left font-moderat text-[17px] font-medium text-[#E7E9EA] ">
+                {generateGoodPodcastEpisodeTitles(podcastEpisode?.title || "")}
+              </h2>
+              <h3 className="w-[450px] text-left font-moderat text-[15px] font-normal text-[#71767B]">
+                {podcast.title}
+              </h3>
+            </Link>
+            <div className="mt-[5px] grid grid-flow-row items-start justify-start gap-[8px]">
+              <TooltipContainer className="gap-[32px]">
+                <ContentInteraction
+                  likeCount={150}
+                  tooltipContent="Hold to Like"
+                  iconSpecification="LIKE"
+                ></ContentInteraction>
+                <ContentInteraction
+                  likeCount={322}
+                  tooltipContent="Hold to Follow"
+                  likeCountClassName="right-[-20px]"
+                  iconSpecification="NOTIFY"
+                ></ContentInteraction>
+                <ContentInteraction
+                  likeCount={322}
+                  tooltipContent="Hold to Comment"
+                  likeCountClassName="right-[-19px]"
+                  iconSpecification="COMMENT"
+                ></ContentInteraction>
+              </TooltipContainer>
+            </div>
+          </div>
         </div>
       </div>
       <div className="grid grid-flow-row gap-[8px]">
-        <p className="ml-[2px] font-visuelt text-[14px] font-normal  leading-[24px] tracking-[0.5px] text-[#9ab] text-opacity-80  ">
+        <p className="ml-[2px] w-[650px] font-visuelt text-[14px] font-normal  leading-[24px] tracking-[0.5px] text-[#9ab] text-opacity-80  ">
           {`${
             podcastEpisode?.description
               ? podcastEpisode?.description.slice(0, 210)
               : ""
           }...`}
         </p>
-      </div>
-      <div className="mt-[-5px] grid grid-flow-row items-start justify-start gap-[8px]">
-        <TooltipContainer className="gap-[32px]">
-          <ContentInteraction
-            likeCount={150}
-            tooltipContent="Hold to Like"
-            iconSpecification="LIKE"
-          ></ContentInteraction>
-          <ContentInteraction
-            likeCount={322}
-            tooltipContent="Hold to Follow"
-            likeCountClassName="right-[-20px]"
-            iconSpecification="NOTIFY"
-          ></ContentInteraction>
-          <ContentInteraction
-            likeCount={322}
-            tooltipContent="Hold to Comment"
-            likeCountClassName="right-[-19px]"
-            iconSpecification="COMMENT"
-          ></ContentInteraction>
-        </TooltipContainer>
       </div>
     </div>
   );

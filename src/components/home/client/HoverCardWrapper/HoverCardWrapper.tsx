@@ -35,7 +35,7 @@ export default function HoverCardWrapper({
     <HoverCard key="spotify">
       <HoverCardTrigger
         className={mergeClasses(
-          "border-opacity border-[2px] border-[#88888815] backdrop-blur-[50px] backdrop-filter",
+          "overflow-hidden border-[2px] border-shine",
           childrenProps?.HoverCardTrigger?.className,
         )}
         asChild
@@ -45,8 +45,8 @@ export default function HoverCardWrapper({
             src={customImage || `/pods/${slug}.png`}
             className={mergeClasses(childrenProps.NextImage?.className)}
             alt="Podcast cover"
-            width={childrenProps.NextImage?.width || 200}
-            height={childrenProps.NextImage?.height || 200}
+            width={childrenProps.NextImage?.width || 100}
+            height={childrenProps.NextImage?.height || 100}
             quality={100}
           ></Image>
         </Link>

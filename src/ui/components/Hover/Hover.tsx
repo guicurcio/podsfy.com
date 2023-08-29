@@ -18,7 +18,8 @@ const HoverCardContent = React.forwardRef<
     align={align}
     sideOffset={sideOffset}
     className={mergeClasses(
-      "border-slate-100 dark:border-slate-800 dark:bg-slate-800 z-50 w-64 border bg-white p-4 shadow-md outline-none animate-in zoom-in-90",
+      "border-slate-100 dark:border-slate-800 dark:bg-slate-800 z-50",
+      "border bg-white p-4 shadow-md outline-none animate-in zoom-in-90",
       className,
     )}
     {...props}

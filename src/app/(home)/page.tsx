@@ -20,9 +20,9 @@ export default function HomePage() {
             )}
           ></PodcastEpisodeFeedUnit>
         ))}
-        {podcasts.slice(0, 2).map((podcast) => (
+        {/* {podcasts.slice(0, 2).map((podcast) => (
           <PodcastFeedUnit key={podcast.id} podcast={podcast}></PodcastFeedUnit>
-        ))}
+        ))} */}
         {podcastEpisodes.slice(2, 5).map((podcastEpisode) => (
           <PodcastEpisodeFeedUnit
             key={podcastEpisode.id}
