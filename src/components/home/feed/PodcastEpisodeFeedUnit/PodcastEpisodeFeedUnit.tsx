@@ -45,12 +45,12 @@ export default function PodcastEpisodeFeedUnit({
     <div
       key={podcastEpisode.title}
       className={mergeClasses(
-        "grid w-full cursor-pointer grid-flow-row gap-4 border-0 px-[18px] py-[18px] hover:bg-fondy hover:backdrop-contrast-[500%]",
+        "grid w-full cursor-pointer grid-flow-row gap-4 border-0 px-[18px] pb-[12px] pt-[18px] hover:bg-fondy hover:backdrop-contrast-[500%]",
         className,
       )}
     >
       <div className="grid w-full grid-flow-col  justify-between  ">
-        <div className="grid grid-flow-col gap-3">
+        <div className="grid grid-flow-col gap-4">
           <HoverCardWrapper
             slug={podcast.slug}
             childrenProps={{
@@ -60,10 +60,10 @@ export default function PodcastEpisodeFeedUnit({
               },
               HoverCardTrigger: {
                 className:
-                  "rounded-[55px] w-[75px] h-[75px] border-[2px] border-gray-800 object-cover",
+                  "rounded-[25px] w-[75px] h-[75px] border-[2px] border-gray-900 object-cover",
               },
               NextImage: {
-                className: "w-[75px] h-[75px] rounded-[55px] object-cover",
+                className: "w-[75px] h-[75px] rounded-[25px] object-cover",
                 width: 75,
                 height: 75,
               },
@@ -108,7 +108,7 @@ export default function PodcastEpisodeFeedUnit({
         </div>
       </div>
       <div className="grid grid-flow-row gap-[8px]">
-        <p className="ml-[2px] w-[650px] font-visuelt text-[14px] font-normal  leading-[24px] tracking-[0.5px] text-[#9ab] text-opacity-80  ">
+        <p className="ml-[2px] w-[650px] font-visuelt text-[14px] font-normal  leading-[24px] tracking-[0.1px] text-[#9ab] text-opacity-80  ">
           {`${
             podcastEpisode?.description
               ? podcastEpisode?.description.slice(0, 210)

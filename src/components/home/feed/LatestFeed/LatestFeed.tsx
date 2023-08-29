@@ -25,7 +25,6 @@ export default function LatestFeed({
       )}
     >
       <div className="grid grid-flow-row divide-y-[1px] divide-fondy/50  backdrop-brightness-[75%]">
-        {/* @ts-expect-error Async Server Component */}
         <UnitOfContent
           key="asd"
           defaultCoverImage="/joe-rogan-experience.jpeg"
