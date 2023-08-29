@@ -22,32 +22,34 @@ export default function HomeHeader({
   return (
     <div
       className={mergeClasses(
-        "sticky top-0 z-50  border-b border-gray-700 border-opacity-25 bg-[#0D0E12] bg-opacity-100",
+        "sticky top-0 z-50  border-b border-gray-700 border-opacity-25 bg-[#0D0E12] bg-opacity-100 ",
         className,
       )}
     >
-      <div
-        className={mergeClasses(
-          "mx-auto grid max-w-[1200px] grid-flow-col",
-          "py-[10px]",
-        )}
-      >
-        <Link
-          href="/"
+      <div className="backdrop-brightness-[110%]">
+        <div
           className={mergeClasses(
-            "w-[150px] cursor-pointer pl-[15px] text-left font-SpaceGrotesk text-[32px] font-bold tracking-[-0.08em] text-[#CDCDCD]",
+            "mx-auto grid max-w-[1200px] grid-flow-col",
+            "py-[10px]",
           )}
         >
-          podsfy
-        </Link>
-        <div className="mx-auto max-w-[690px] pt-1">
-          <Search
-            podcasts={staticPodcastData()}
-            className="w-[550px]"
-            popoverClassName="w-[500px]"
-          ></Search>
+          <Link
+            href="/"
+            className={mergeClasses(
+              "w-[150px] cursor-pointer pl-[15px] text-left font-SpaceGrotesk text-[32px] font-bold tracking-[-0.08em] text-[#CDCDCD]",
+            )}
+          >
+            podsfy
+          </Link>
+          <div className="mx-auto max-w-[690px] pt-1">
+            <Search
+              podcasts={staticPodcastData()}
+              className="w-[550px]"
+              popoverClassName="w-[500px]"
+            ></Search>
+          </div>
+          <ProfileTools className="w-[260px]"></ProfileTools>
         </div>
-        <ProfileTools className="w-[260px]"></ProfileTools>
       </div>
     </div>
   );

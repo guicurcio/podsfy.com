@@ -14,7 +14,7 @@ export default function HomeLayout({ children }) {
       <div className="bg-[#0D0E12] 2xl:w-[1920px]">
         <Image
           className={mergeClasses(
-            "absolute h-[850px]  w-screen overflow-hidden  bg-[#0D0E12] object-fill brightness-[60%] md:top-[50px]",
+            "absolute h-[850px]  w-screen overflow-hidden   object-fill brightness-[80%] md:top-[50px]",
             " md:rotate-[9deg] md:scale-[130%] xl:top-[-90px] xl:translate-x-[25px] xl:scale-x-[115%] xl:scale-y-[95%]",
           )}
           src={backgroundImage}
@@ -28,12 +28,12 @@ export default function HomeLayout({ children }) {
           className={mergeClasses(
             "mx-auto",
             "bg-opacity-[95%] font-visuelt",
-            "shadow-3xl backdrop-blur-[10px] backdrop-brightness-[60%]",
+            "shadow-3xl backdrop-blur-[10px] backdrop-brightness-[70%]",
           )}
         >
           <div className="mx-auto max-h-screen w-full overflow-hidden">
             <HomeHeader></HomeHeader>
-            <div className="mx-auto max-w-[1250px]">
+            <div className="mx-auto max-w-[1250px] ">
               <div className="mx-auto grid h-full max-w-[1250px] grid-flow-col  place-content-start items-start">
                 <HomeSidebar className="w-[210px]"></HomeSidebar>
                 <Scroller className="w-full max-w-[710px]">{children}</Scroller>
