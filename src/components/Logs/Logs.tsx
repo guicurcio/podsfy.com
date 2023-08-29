@@ -8,6 +8,7 @@ import {
 import { Input } from "components/new-york/ui/input";
 import { Label } from "components/new-york/ui/label";
 import CLASSNAMES_BUTTON from "lib/constants/constants";
+import { User } from "lucide-react";
 import Button from "ui/components/Button";
 import FacebookIcon from "ui/components/icons/FacebookIcon";
 import GoogleIcon from "ui/components/icons/GoogleIcon";
@@ -31,7 +32,12 @@ export default function Logs({ className, ...props }: LogsProps): JSX.Element {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <span className="h-4 self-center align-middle">Log In</span>
+        <Button variant="none" className={mergeClasses(CLASSNAMES_BUTTON, "")}>
+          <User className="h-[17px] w-[17px] self-center align-middle text-black/80"></User>
+          <span className="w-[120px] self-center align-middle">
+            Sign up with Email
+          </span>
+        </Button>
       </DialogTrigger>
       <DialogContent
         className={mergeClasses(

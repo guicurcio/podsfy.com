@@ -1,10 +1,4 @@
 import Logs from "components/Logs";
-import CLASSNAMES_BUTTON from "lib/constants/constants";
-import { User } from "lucide-react";
-import Link from "next/link";
-import Button from "ui/components/Button/Button";
-import GoogleIcon from "ui/components/icons/GoogleIcon/GoogleIcon";
-import TwitterIcon from "ui/components/icons/TwitterIcon/TwitterIcon";
 import mergeClasses from "utils/mergeClasses";
 
 /**
@@ -49,30 +43,6 @@ export default function Trending({ className }: TrendingProps): JSX.Element {
           </h2>
         </div>
         <div className="grid w-full grid-flow-row gap-[18px] pr-8 font-moderat">
-          <Button variant="none" className={mergeClasses(CLASSNAMES_BUTTON)}>
-            <TwitterIcon className=""></TwitterIcon>
-            <span className="mx-auto w-[120px] self-center align-middle">
-              Sign up with Twitter
-            </span>
-          </Button>
-          <Button variant="none" className={mergeClasses(CLASSNAMES_BUTTON)}>
-            <GoogleIcon className=""></GoogleIcon>
-            <span className="w-[120px] self-center align-middle">
-              Sign up with Google
-            </span>
-          </Button>
-          <Link key="login" href="/login">
-            <Button
-              variant="none"
-              className={mergeClasses(CLASSNAMES_BUTTON, "")}
-            >
-              {/* <Twitter></Twitter> */}
-              <User className="h-[17px] w-[17px] self-center align-middle text-black/80"></User>
-              <span className="w-[120px] self-center align-middle">
-                Sign up with Email
-              </span>
-            </Button>
-          </Link>
           <Logs></Logs>
         </div>
       </div>

@@ -22,35 +22,32 @@ export default function HomeHeader({
   return (
     <div
       className={mergeClasses(
-        "sticky top-0 z-50 min-w-full border-b border-gray-700 border-opacity-25 bg-[#0D0E12] bg-opacity-100",
+        "sticky top-0 z-50  border-b border-gray-700 border-opacity-25 bg-[#0D0E12] bg-opacity-100",
         className,
       )}
     >
-      <div className="mx-auto w-full max-w-[1200px] place-content-start place-items-start items-start ">
-        <div
+      <div
+        className={mergeClasses(
+          "mx-auto grid max-w-[1250px] grid-flow-col",
+          "py-[12px]",
+        )}
+      >
+        <Link
+          href="/"
           className={mergeClasses(
-            "grid w-[1000px]  max-w-[1060px] grid-flow-col",
-            "self-center",
-            "w-full self-center pl-[2px] pr-[13px] align-middle",
+            "w-[210px] cursor-pointer pl-[30px] text-left font-SpaceGrotesk text-[32px] font-bold tracking-[-0.08em] text-[#CDCDCD]",
           )}
         >
-          <Link
-            href="/"
-            className={mergeClasses(
-              "cursor-pointer px-[35px] pt-[8px] text-left font-SpaceGrotesk text-[32px] font-bold tracking-[-0.08em] text-[#CDCDCD]",
-            )}
-          >
-            podsfy
-          </Link>
-          <div className="w-full py-3">
-            <Search
-              podcasts={staticPodcastData()}
-              className="mx-auto w-[650px]"
-              popoverClassName="w-[650px]"
-            ></Search>
-          </div>
-          <ProfileTools></ProfileTools>
+          podsfy
+        </Link>
+        <div className="mx-auto max-w-[750px] pt-1">
+          <Search
+            podcasts={staticPodcastData()}
+            className="w-[650px]"
+            popoverClassName="w-[650px]"
+          ></Search>
         </div>
+        <ProfileTools className="w-[260px]"></ProfileTools>
       </div>
     </div>
   );

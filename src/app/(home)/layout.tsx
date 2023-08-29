@@ -2,11 +2,11 @@ import HomeHeader from "components/home/HomeHeader/HomeHeader";
 import HomeSidebar from "components/home/HomeSidebar/HomeSidebar";
 import Scroller from "components/home/Scroller/Scroller";
 import Image from "next/image";
-import { lazy } from "react";
 import mergeClasses from "utils/mergeClasses/mergeClasses";
 
 /* eslint-disable-next-line import/no-absolute-path, import/extensions */
 import backgroundImage from "/public/bg.png";
+import Trending from "components/home/Trending";
 
 export default function HomeLayout({ children }) {
   return (
@@ -31,12 +31,13 @@ export default function HomeLayout({ children }) {
             "shadow-3xl backdrop-blur-[10px] backdrop-brightness-[60%]",
           )}
         >
-          <div className="mx-auto max-h-screen w-full  overflow-hidden">
+          <div className="mx-auto max-h-screen w-full overflow-hidden">
             <HomeHeader></HomeHeader>
-            <div className="mx-auto max-w-[1400px]">
-              <div className="mx-auto grid h-full max-w-[1400px] grid-flow-col  place-content-start items-start  lg:w-[1200px]">
-                <HomeSidebar className="lg:w-[210px]"></HomeSidebar>
-                <Scroller className="w-full max-w-[850px]">{children}</Scroller>
+            <div className="mx-auto max-w-[1250px]">
+              <div className="mx-auto grid h-full max-w-[1250px] grid-flow-col  place-content-start items-start">
+                <HomeSidebar className="w-[210px]"></HomeSidebar>
+                <Scroller className="w-full max-w-[750px]">{children}</Scroller>
+                <Trending className="max-w-[260px]"></Trending>
               </div>
             </div>
           </div>

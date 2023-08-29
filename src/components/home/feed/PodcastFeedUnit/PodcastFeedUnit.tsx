@@ -1,3 +1,5 @@
+import TooltipContainer from "components/common/TooltipContainer";
+import ContentInteraction from "components/home/ContentInteraction";
 import HoverCardWrapperPodcast from "components/home/HoverCardWrapperPodcast/HoverCardWrapperPodcast";
 import HoverCardWrapper from "components/home/client/HoverCardWrapper/HoverCardWrapper";
 import type { Podcasts } from "types/podcast";
@@ -82,6 +84,27 @@ export default function PodcastFeedUnit({
               <p className="ml-[2px] w-[550px] font-visuelt text-[15px] font-normal  leading-[24px] tracking-[0.5px] text-[#9ab] text-opacity-80  ">
                 {`${podcast.description.slice(0, 128)}`}
               </p>
+              <div className="mt-[5px] grid grid-flow-row items-start justify-start gap-[8px]">
+                <TooltipContainer className="gap-[32px]">
+                  <ContentInteraction
+                    likeCount={150}
+                    tooltipContent="Hold to Like"
+                    iconSpecification="LIKE"
+                  ></ContentInteraction>
+                  <ContentInteraction
+                    likeCount={322}
+                    tooltipContent="Hold to Follow"
+                    likeCountClassName="right-[-20px]"
+                    iconSpecification="NOTIFY"
+                  ></ContentInteraction>
+                  <ContentInteraction
+                    likeCount={322}
+                    tooltipContent="Hold to Comment"
+                    likeCountClassName="right-[-19px]"
+                    iconSpecification="COMMENT"
+                  ></ContentInteraction>
+                </TooltipContainer>
+              </div>
             </div>
           </div>
         </div>
