@@ -60,12 +60,12 @@ export default function PodcastEpisodeFeedUnit({
               },
               HoverCardTrigger: {
                 className:
-                  "rounded-[25px] w-[55px] h-[65px] border-[2px] border-gray-900",
+                  "rounded-[35px] w-[55px] h-[55px] border-[2px] border-gray-900 self-center",
               },
               NextImage: {
-                className: "w-[55px] h-[65px] rounded-[25px]",
+                className: "w-[55px] h-[55px] rounded-[25px]",
                 width: 55,
-                height: 65,
+                height: 55,
               },
             }}
           >
@@ -83,7 +83,7 @@ export default function PodcastEpisodeFeedUnit({
                 {podcast.title}
               </h3>
             </Link>
-            <div className="mt-[5px] grid grid-flow-row items-start justify-start gap-[8px]">
+            <div className="mt-[3px] grid grid-flow-row items-start justify-start gap-[8px]">
               <TooltipContainer className="gap-[32px]">
                 <ContentInteraction
                   likeCount={150}
@@ -92,15 +92,14 @@ export default function PodcastEpisodeFeedUnit({
                 ></ContentInteraction>
                 <ContentInteraction
                   likeCount={322}
-                  tooltipContent="Hold to Follow"
-                  likeCountClassName="right-[-20px]"
-                  iconSpecification="NOTIFY"
-                ></ContentInteraction>
-                <ContentInteraction
-                  likeCount={322}
                   tooltipContent="Hold to Comment"
                   likeCountClassName="right-[-19px]"
                   iconSpecification="COMMENT"
+                ></ContentInteraction>
+                <ContentInteraction
+                  tooltipContent="Hold to Follow"
+                  likeCountClassName="right-[-20px]"
+                  iconSpecification="NOTIFY"
                 ></ContentInteraction>
               </TooltipContainer>
             </div>

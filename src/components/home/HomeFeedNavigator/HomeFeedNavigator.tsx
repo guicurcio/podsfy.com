@@ -17,6 +17,10 @@ export interface HomeFeedNavigatorProps {
    * Custom class names passed to the root element.
    */
   className?: string;
+  /**
+   * Custom class names passed to the root element.
+   */
+  tabsClassName?: string;
 }
 
 /**
@@ -24,18 +28,19 @@ export interface HomeFeedNavigatorProps {
  */
 export default function HomeFeedNavigator({
   className,
+  tabsClassName,
 }: HomeFeedNavigatorProps): JSX.Element {
   const ssel = useSelectedLayoutSegment();
 
   return (
     <div
       className={mergeClasses(
-        "grid grid-flow-col ",
+        "grid w-full grid-flow-col",
         "border-b border-sharper border-opacity-5",
         className,
       )}
     >
-      <div className={mergeClasses("mx-auto w-[1150px]")}>
+      <div className={mergeClasses("mx-auto w-[1150px]", tabsClassName)}>
         <TooltipContainer className="place-content-start content-start">
           <TooltipWrapper tooltipContent="Our Suggestions">
             <Link href={"/for-you"} passHref>

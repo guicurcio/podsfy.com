@@ -14,7 +14,7 @@ export default function HomeLayout({ children }) {
       <div className="bg-[#0D0E12] 2xl:w-[1920px]">
         <Image
           className={mergeClasses(
-            "absolute h-[850px] w-[1900px] overflow-hidden  bg-[#0D0E12] object-fill brightness-[60%] md:top-[50px]",
+            "absolute h-[850px]  w-screen overflow-hidden  bg-[#0D0E12] object-fill brightness-[60%] md:top-[50px]",
             " md:rotate-[9deg] md:scale-[130%] xl:top-[-90px] xl:translate-x-[25px] xl:scale-x-[115%] xl:scale-y-[95%]",
           )}
           src={backgroundImage}
