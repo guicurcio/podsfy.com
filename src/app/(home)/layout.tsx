@@ -35,8 +35,8 @@ export default function HomeLayout({ children }) {
             <HomeHeader></HomeHeader>
             <div className="mx-auto max-w-[1400px]">
               <div className="mx-auto grid h-full max-w-[1400px] grid-flow-col  place-content-start items-start  lg:w-[1200px]">
-                <HomeSidebar className=" lg:w-[210px]"></HomeSidebar>
-                <Scroller className="w-full max-w-[900px]">{children}</Scroller>
+                <HomeSidebar className="lg:w-[210px]"></HomeSidebar>
+                <Scroller className="w-full max-w-[850px]">{children}</Scroller>
               </div>
             </div>
           </div>

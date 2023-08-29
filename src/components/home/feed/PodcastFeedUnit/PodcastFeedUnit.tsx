@@ -52,24 +52,34 @@ export default function PodcastFeedUnit({
       )}
     >
       <div className="grid w-full grid-flow-row gap-4">
-        <div className="grid w-full grid-flow-col items-center justify-between self-center align-middle">
-          <div className="grid grid-flow-col items-center gap-3">
+        <div className="grid w-full grid-flow-col ">
+          <div className="grid grid-flow-col gap-3">
             <HoverCardWrapper
               slug={podcast.slug}
               childrenProps={{
                 HoverCardContent: {
-                  className:
-                    "w-full pl-3 py-3 pr-1 bg-black bg-opacity-50 backdrop-blur-[50px] backdrop-brightness-[50%] rounded-[5px] border border-white border-opacity-5  font-visuelt text-[14px] font-normal text-white/50 shadow-3xl",
+                  className: mergeClasses(
+                    "w-full pl-3 py-3 pr-1 bg-black",
+                    "bg-opacity-50 backdrop-blur-[50px] backdrop-brightness-[50%] border border-white border-opacity-5  font-visuelt text-[14px] font-normal text-white/50 shadow-3xl",
+                  ),
+                },
+                NextImage: {
+                  className: "w-[100px] h-[110px] rounded-[0px] object-contain",
+                  width: 110,
+                  height: 110,
+                },
+                HoverCardTrigger: {
+                  className: "w-[100px] h-[110px] rounded-[0px]",
                 },
               }}
             >
               <HoverCardWrapperPodcast podcast={podcast} />
             </HoverCardWrapper>
-            <div className="grid grid-flow-row gap-[1px]">
-              <h2 className="w-6full text-left font-moderat text-[16px] font-medium text-[#E7E9EA] ">
+            <div className="grid grid-flow-row content-start gap-[1px] align-top">
+              <h2 className="w-full text-left font-moderat text-[19px] font-medium text-[#E7E9EA] ">
                 {podcast.title}
               </h2>
-              <p className="ml-[2px] font-visuelt text-[14px] font-normal  leading-[24px] tracking-[0.5px] text-[#9ab] text-opacity-80  ">
+              <p className="ml-[2px] font-visuelt text-[15px] font-normal  leading-[24px] tracking-[0.5px] text-[#9ab] text-opacity-80  ">
                 {`${podcast.description.slice(0, 128)}`}
               </p>
             </div>

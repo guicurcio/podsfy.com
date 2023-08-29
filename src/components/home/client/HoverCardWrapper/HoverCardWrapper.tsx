@@ -43,14 +43,10 @@ export default function HoverCardWrapper({
         <Link href={`/podcast/${slug}`}>
           <Image
             src={customImage || `/pods/${slug}.png`}
-            className={mergeClasses(
-              "h-[84px] w-[84px] rounded-[3px]",
-              childrenProps.NextImage?.className,
-              imageClassName,
-            )}
+            className={mergeClasses(childrenProps.NextImage?.className)}
             alt="Podcast cover"
-            width={200}
-            height={200}
+            width={childrenProps.NextImage?.width || 200}
+            height={childrenProps.NextImage?.height || 200}
             quality={100}
           ></Image>
         </Link>

@@ -59,10 +59,10 @@ export default function PodcastEpisodeFeedUnit({
                   "w-full pl-3 py-3 pr-1 bg-black bg-opacity-50 backdrop-blur-[50px] backdrop-brightness-[50%] rounded-[5px] border border-white border-opacity-5  font-visuelt text-[14px] font-normal text-white/50 shadow-3xl",
               },
               HoverCardTrigger: {
-                className: "rounded-[15px]",
+                className: "rounded-[18px]",
               },
               NextImage: {
-                className: "w-[60px] h-[60px] rounded-[15px]",
+                className: "w-[60px] h-[60px] rounded-[18px]",
               },
             }}
           >
@@ -72,7 +72,7 @@ export default function PodcastEpisodeFeedUnit({
             href={`podcast/${podcast.slug}`}
             className="grid w-full grid-flow-row gap-[1px] hover:cursor-pointer "
           >
-            <h2 className="w-[500px] text-left font-moderat text-[15px] font-medium text-[#E7E9EA] ">
+            <h2 className="w-[500px] text-left font-moderat text-[17px] font-medium text-[#E7E9EA] ">
               {generateGoodPodcastEpisodeTitles(podcastEpisode?.title || "")}
             </h2>
             <h3 className="w-[450px] text-left font-moderat text-[15px] font-normal text-[#71767B]">

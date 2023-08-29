@@ -7,7 +7,7 @@ import podcasts from "json/podcast.json";
 
 export default function HomePage() {
   return (
-    <>
+    <div className="max-w-[850px]">
       <HomeFeedNavigator></HomeFeedNavigator>
       <ForYouFeedJSONComponent>
         {podcastEpisodes.slice(0, 2).map((podcastEpisode) => (
@@ -47,6 +47,6 @@ export default function HomePage() {
           ></PodcastEpisodeFeedUnit>
         ))}
       </ForYouFeedJSONComponent>
-    </>
+    </div>
   );
 }

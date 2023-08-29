@@ -22,7 +22,7 @@ export default function ForYouFeedJSON({
     <div
       className={mergeClasses(
         "h-screen overflow-scroll overflow-y-scroll scrollbar-none scrollbar-track-[#0D0E12]",
-        "max-w-[900px] scrollbar-thumb-[#0D0E12]",
+        "max-w-[850px] scrollbar-thumb-[#0D0E12]",
         className,
       )}
     >
