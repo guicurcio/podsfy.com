@@ -21,6 +21,7 @@ export interface HomeFeedNavigatorProps {
    * Custom class names passed to the root element.
    */
   tabsClassName?: string;
+  podcastName?: string;
 }
 
 /**
@@ -29,9 +30,9 @@ export interface HomeFeedNavigatorProps {
 export default function HomeFeedNavigator({
   className,
   tabsClassName,
+  podcastName,
 }: HomeFeedNavigatorProps): JSX.Element {
   const ssel = usePathname();
-  console.log(ssel);
   return (
     <div
       className={mergeClasses(
@@ -40,8 +41,27 @@ export default function HomeFeedNavigator({
         className,
       )}
     >
-      <div className={mergeClasses("mx-auto w-[1150px]", tabsClassName)}>
+      <div className={mergeClasses("mx-auto w-[1000px]", tabsClassName)}>
         <TooltipContainer className="place-content-start content-start">
+          {ssel.includes("podcast") ? (
+            <TooltipWrapper tooltipContent="Our Suggestions">
+              <Link href={ssel} passHref>
+                <button
+                  value={ssel}
+                  className={mergeClasses(
+                    "font-normal text-white/40",
+                    "font-visuelt text-[14px] tracking-[-0.01em] ",
+                    "inline-flex min-w-[100px] items-center justify-center py-[12px]",
+                    "disabled:pointer-events-none disabled:opacity-50",
+                    "bg-[#0D0E12] ",
+                    "border-b-2 border-white border-opacity-10 capitalize",
+                  )}
+                >
+                  {ssel.split("/")[2].replaceAll("-", " ")}
+                </button>
+              </Link>
+            </TooltipWrapper>
+          ) : null}
           <TooltipWrapper tooltipContent="Our Suggestions">
             <Link href={"/for-you"} passHref>
               <button
@@ -57,7 +77,6 @@ export default function HomeFeedNavigator({
                   ssel === "/for-you" &&
                     "border-b-2 border-white border-opacity-10",
                   ssel === "/" && "border-b-2 border-white border-opacity-10",
-                  className,
                 )}
               >
                 For You

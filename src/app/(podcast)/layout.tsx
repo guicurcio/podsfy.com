@@ -7,6 +7,7 @@ import mergeClasses from "utils/mergeClasses/mergeClasses";
 /* eslint-disable-next-line import/no-absolute-path, import/extensions */
 import backgroundImage from "/public/bg.png";
 import HomeFeedNavigator from "components/home/HomeFeedNavigator";
+import Footer from "components/common/Footer";
 
 const Trending = lazy(() => import("components/home/Trending"));
 
@@ -36,7 +37,7 @@ export default function HomeLayout({ children }) {
             <HomeHeader></HomeHeader>
             <HomeFeedNavigator
               className="mx-0 w-full bg-[#0D0E12] px-0"
-              tabsClassName="w-[1240px]"
+              tabsClassName="w-[1200px]"
             ></HomeFeedNavigator>
             <div className="mx-auto max-w-[1200px] ">
               <Scroller className="w-full  bg-transparent">
@@ -45,6 +46,7 @@ export default function HomeLayout({ children }) {
             </div>
           </div>
         </div>
+        <Footer className="border-0 bg-transparent pt-[60px] backdrop-blur-[8px] backdrop-brightness-[60%]"></Footer>
       </div>
     </>
   );
