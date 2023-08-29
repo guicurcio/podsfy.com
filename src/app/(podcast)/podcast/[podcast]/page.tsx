@@ -49,9 +49,9 @@ export default async function HomePodcastPage({ params }) {
     >
       <div
         className={mergeClasses(
-          "grid min-w-full grid-flow-row items-start justify-start",
-          "gap-3 px-[58px] py-[38px] shadow-3xl  backdrop-brightness-[75%]",
-          "backdrop-contrast-[101%] hover:brightness-[105%]",
+          "mx-auto grid w-[1050px] grid-flow-row items-start justify-start",
+          "gap-3 px-[58px] py-[38px] ",
+          "backdrop-contrast-[101%] ",
         )}
       >
         <div className="grid grid-flow-col place-items-start items-start justify-items-start gap-[22px]">

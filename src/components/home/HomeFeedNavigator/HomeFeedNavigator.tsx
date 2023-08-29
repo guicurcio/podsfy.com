@@ -4,10 +4,10 @@ import TooltipContainer from "components/common/TooltipContainer";
 // import TooltipIconButton from "components/home/TooltipIconButton";
 import TooltipWrapper from "components/home/TooltipWrapper";
 import Link from "next/link";
-import { useSelectedLayoutSegment } from "next/navigation";
 // import { Cog, RefreshCcw } from "lucide-react";
 // import { TabsList, TabsTrigger } from "ui/components/Tabs";
 import mergeClasses from "utils/mergeClasses";
+import { usePathname } from "next/navigation";
 
 /**
  * Props for the HomeFeedNavigator component.
@@ -30,8 +30,8 @@ export default function HomeFeedNavigator({
   className,
   tabsClassName,
 }: HomeFeedNavigatorProps): JSX.Element {
-  const ssel = useSelectedLayoutSegment();
-
+  const ssel = usePathname();
+  console.log(ssel);
   return (
     <div
       className={mergeClasses(
@@ -52,10 +52,11 @@ export default function HomeFeedNavigator({
                   "inline-flex min-w-[100px] items-center justify-center py-[12px]",
                   "disabled:pointer-events-none disabled:opacity-50",
                   "bg-[#0D0E12] ",
-                  ssel === "home" &&
+                  ssel === "/home" &&
                     "border-b-2 border-white border-opacity-10",
-                  ssel === "for-you" &&
+                  ssel === "/for-you" &&
                     "border-b-2 border-white border-opacity-10",
+                  ssel === "/" && "border-b-2 border-white border-opacity-10",
                   className,
                 )}
               >
@@ -66,14 +67,14 @@ export default function HomeFeedNavigator({
           <TooltipWrapper tooltipContent="Podcasts you follow">
             <Link href={"/following"} passHref>
               <button
-                value="for-you"
+                value="following"
                 className={mergeClasses(
                   "font-normal text-white/40",
                   "font-visuelt text-[14px] tracking-[-0.01em] ",
                   "inline-flex min-w-[100px] items-center justify-center py-[12px]",
                   "disabled:pointer-events-none disabled:opacity-50",
                   "bg-[#0D0E12] ",
-                  ssel === "following" &&
+                  ssel === "/following" &&
                     "border-b-2 border-white border-opacity-10",
                   className,
                 )}
@@ -92,7 +93,7 @@ export default function HomeFeedNavigator({
                   "inline-flex min-w-[100px] items-center justify-center py-[12px]",
                   "disabled:pointer-events-none disabled:opacity-50",
                   "bg-[#0D0E12] ",
-                  ssel === "latest" &&
+                  ssel === "/latest" &&
                     "border-b-2 border-white border-opacity-10",
                   className,
                 )}
