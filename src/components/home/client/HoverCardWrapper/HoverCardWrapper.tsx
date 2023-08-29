@@ -34,14 +34,17 @@ export default function HoverCardWrapper({
   return (
     <HoverCard key="spotify">
       <HoverCardTrigger
-        className="border-opacity rounded-[3px] border-[2px] border-[#88888815] backdrop-blur-[50px] backdrop-filter"
+        className={mergeClasses(
+          "border-opacity border-[2px] border-[#88888815] backdrop-blur-[50px] backdrop-filter",
+          childrenProps?.HoverCardTrigger?.className,
+        )}
         asChild
       >
         <Link href={`/podcast/${slug}`}>
           <Image
             src={customImage || `/pods/${slug}.png`}
             className={mergeClasses(
-              "h-[64px] w-[64px] rounded-[3px]",
+              "h-[84px] w-[84px] rounded-[3px]",
               childrenProps.NextImage?.className,
               imageClassName,
             )}

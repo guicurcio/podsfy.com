@@ -7,8 +7,8 @@ export default function ExplorePage() {
   return (
     <>
       <HomeFeedNavigator></HomeFeedNavigator>
-      <FollowingFeedJSON>
-        {podcasts.slice(0, 10).map((podcast) => (
+      <FollowingFeedJSON className="max-w-[900px]">
+        {podcasts.slice(0, 15).map((podcast) => (
           <PodcastFeedUnit key={podcast.id} podcast={podcast}></PodcastFeedUnit>
         ))}
       </FollowingFeedJSON>

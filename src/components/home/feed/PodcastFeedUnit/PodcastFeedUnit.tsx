@@ -1,5 +1,3 @@
-import TooltipContainer from "components/common/TooltipContainer/TooltipContainer";
-import ContentInteraction from "components/home/ContentInteraction/ContentInteraction";
 import HoverCardWrapperPodcast from "components/home/HoverCardWrapperPodcast/HoverCardWrapperPodcast";
 import HoverCardWrapper from "components/home/client/HoverCardWrapper/HoverCardWrapper";
 import type { Podcasts } from "types/podcast";
@@ -68,7 +66,7 @@ export default function PodcastFeedUnit({
               <HoverCardWrapperPodcast podcast={podcast} />
             </HoverCardWrapper>
             <div className="grid grid-flow-row gap-[1px]">
-              <h2 className="w-full text-left font-moderat text-[16px] font-medium text-[#E7E9EA] ">
+              <h2 className="w-6full text-left font-moderat text-[16px] font-medium text-[#E7E9EA] ">
                 {podcast.title}
               </h2>
               <p className="ml-[2px] font-visuelt text-[14px] font-normal  leading-[24px] tracking-[0.5px] text-[#9ab] text-opacity-80  ">
@@ -76,50 +74,8 @@ export default function PodcastFeedUnit({
               </p>
             </div>
           </div>
-          {/* <HoverCardWrapper></HoverCardWrapper> */}
         </div>
       </div>
-      <TooltipContainer className="w-[100px] gap-[32px] pl-[2px]">
-        <ContentInteraction
-          likeCount={150}
-          tooltipContent="Hold to Like"
-          iconSpecification="LIKE"
-        ></ContentInteraction>
-        <ContentInteraction
-          likeCount={322}
-          tooltipContent="Hold to Follow"
-          likeCountClassName="right-[-20px]"
-          iconSpecification="NOTIFY"
-        ></ContentInteraction>
-        <ContentInteraction
-          likeCount={322}
-          tooltipContent="Hold to Comment"
-          likeCountClassName="right-[-19px]"
-          iconSpecification="COMMENT"
-        ></ContentInteraction>
-      </TooltipContainer>
-      {/*
-      <div className="mt-[-5px] grid grid-flow-row items-start justify-start gap-[8px]">
-        <TooltipContainer className="gap-[32px]">
-          <ContentInteraction
-            likeCount={150}
-            tooltipContent="Hold to Like"
-            iconSpecification="LIKE"
-          ></ContentInteraction>
-          <ContentInteraction
-            likeCount={322}
-            tooltipContent="Hold to Follow"
-            likeCountClassName="right-[-20px]"
-            iconSpecification="NOTIFY"
-          ></ContentInteraction>
-          <ContentInteraction
-            likeCount={322}
-            tooltipContent="Hold to Comment"
-            likeCountClassName="right-[-19px]"
-            iconSpecification="COMMENT"
-          ></ContentInteraction>
-        </TooltipContainer>
-      </div> */}
     </div>
   );
 }

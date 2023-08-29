@@ -1,8 +1,8 @@
 import type { ButtonProps } from "ui/components/Button";
-import type React from 'react';
+import type React from "react";
 import type { ImageProps as NextImageComponentProps } from "next/image";
 import type { DivProps } from "./react";
-import type { HoverCardContent } from "ui/components/Hover";
+import type { HoverCardContent, HoverCardTrigger } from "ui/components/Hover";
 import type { TailwindClassname } from "./tailwind";
 
 /**
@@ -17,8 +17,10 @@ export type MatchElementProps<T> = {
 /**
  * Props for an <img> element that uses the Next.js Image component.
  */
-export type NextImageProps = Pick<NextImageComponentProps, "width" | "height" | "className">;
-
+export type NextImageProps = Pick<
+  NextImageComponentProps,
+  "width" | "height" | "className"
+>;
 
 /**
  *
@@ -29,8 +31,7 @@ export type NextImageProps = Pick<NextImageComponentProps, "width" | "height" | 
  */
 export type Slug = {
   slug: string;
-}
-
+};
 
 /**
  *
@@ -40,8 +41,7 @@ export type Slug = {
  */
 export type ClassName = {
   className?: TailwindClassname;
-}
-
+};
 
 /**
  * Props for the nested elements.
@@ -49,8 +49,7 @@ export type ClassName = {
  */
 export type ChildrenComponentProps = {
   childrenProps?: NestedComponentProps;
-}
-
+};
 
 /**
  * Props for the nested elements.
@@ -78,18 +77,18 @@ export type NestedComponentProps = MatchElementProps<{
    * Props for a HoverCard component.
    */
   HoverCardContent: React.ComponentProps<typeof HoverCardContent>;
+  /**
+   * Props for a HoverCard component.
+   */
+  HoverCardTrigger: React.ComponentProps<typeof HoverCardTrigger>;
 }>;
-
 
 /**
  * Defines the type of the `children` prop in a React component.
  * `children` can be a single JSX element or an array of JSX elements.
  * If `children` is not provided, it defaults to `undefined`.
  */
-type ChildrenProps =
-  | JSX.Element
-  | JSX.Element[]
-  | undefined;
+type ChildrenProps = JSX.Element | JSX.Element[] | undefined;
 
 /**
  * Defines the props for a React component that accepts children.
@@ -97,26 +96,25 @@ type ChildrenProps =
  */
 export type Children = {
   children?: ChildrenProps;
-}
+};
 
 /**
  *
  */
-export type CustomComponent =
-  ClassName &
-  ChildrenComponentProps
-
+export type CustomComponent = ClassName & ChildrenComponentProps;
 
 /**
  * Creates a new object of the `HoverCardWrapperProps` type with the specified values.
  * @param props The properties to include in the object.
  * @returns A new object of the `HoverCardWrapperProps` type with the specified values.
  */
-export function createCustomComponentProps(props?: CustomComponent): CustomComponent {
+export function createCustomComponentProps(
+  props?: CustomComponent,
+): CustomComponent {
   return {
-    className: props?.className || '',
+    className: props?.className || "",
     childrenProps: props?.childrenProps || {},
   };
 }
 
-export const customComponentProps = { ...createCustomComponentProps() }
+export const customComponentProps = { ...createCustomComponentProps() };

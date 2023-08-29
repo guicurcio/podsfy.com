@@ -58,8 +58,11 @@ export default function PodcastEpisodeFeedUnit({
                 className:
                   "w-full pl-3 py-3 pr-1 bg-black bg-opacity-50 backdrop-blur-[50px] backdrop-brightness-[50%] rounded-[5px] border border-white border-opacity-5  font-visuelt text-[14px] font-normal text-white/50 shadow-3xl",
               },
+              HoverCardTrigger: {
+                className: "rounded-[15px]",
+              },
               NextImage: {
-                className: "w-[50px] h-[50px] rounded-[5px]",
+                className: "w-[60px] h-[60px] rounded-[15px]",
               },
             }}
           >
