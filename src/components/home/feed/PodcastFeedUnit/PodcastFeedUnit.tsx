@@ -66,12 +66,12 @@ export default function PodcastFeedUnit({
                   ),
                 },
                 NextImage: {
-                  className: "w-[100px] h-[125px] rounded-none",
-                  width: 100,
-                  height: 125,
+                  className: "w-[79px] h-[92px] rounded-none",
+                  width: 79,
+                  height: 92,
                 },
                 HoverCardTrigger: {
-                  className: "w-[100px] h-[126px] rounded-none rounded-0 ",
+                  className: "w-[79px] h-[92px] rounded-none rounded-0 ",
                 },
               }}
             >
@@ -84,7 +84,7 @@ export default function PodcastFeedUnit({
               <p className="ml-[2px] w-[550px] font-visuelt text-[14px] font-normal  leading-[24px] tracking-[0.1px] text-[#9ab] text-opacity-80  ">
                 {`${podcast.description.slice(0, 128)}...`}
               </p>
-              <div className="mt-[8px] grid grid-flow-row items-start justify-start gap-[8px] pl-[5px]">
+              <div className="mt-[5px] grid grid-flow-row items-start justify-start gap-[8px] pl-[5px]">
                 <TooltipContainer className="gap-[32px]">
                   <ContentInteraction
                     likeCount={150}
@@ -92,7 +92,6 @@ export default function PodcastFeedUnit({
                     iconSpecification="LIKE"
                   ></ContentInteraction>
                   <ContentInteraction
-                    likeCount={322}
                     tooltipContent="Hold to Follow"
                     likeCountClassName="right-[-20px]"
                     iconSpecification="NOTIFY"

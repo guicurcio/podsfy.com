@@ -60,12 +60,12 @@ export default function PodcastEpisodeFeedUnit({
               },
               HoverCardTrigger: {
                 className:
-                  "rounded-[25px] w-[75px] h-[75px] border-[2px] border-gray-900 object-cover",
+                  "rounded-[25px] w-[55px] h-[65px] border-[2px] border-gray-900",
               },
               NextImage: {
-                className: "w-[75px] h-[75px] rounded-[25px] object-cover",
-                width: 75,
-                height: 75,
+                className: "w-[55px] h-[65px] rounded-[25px]",
+                width: 55,
+                height: 65,
               },
             }}
           >

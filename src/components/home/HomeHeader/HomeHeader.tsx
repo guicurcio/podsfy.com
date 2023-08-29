@@ -44,7 +44,7 @@ export default function HomeHeader({
           <Search
             podcasts={staticPodcastData()}
             className="w-[650px]"
-            popoverClassName="w-[650px]"
+            popoverClassName="w-[600px]"
           ></Search>
         </div>
         <ProfileTools className="w-[260px]"></ProfileTools>

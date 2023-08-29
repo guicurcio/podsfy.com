@@ -86,15 +86,15 @@ const Search = ({
       </PopoverTrigger>
       <PopoverContent
         className={mergeClasses(
-          "relative mt-[-20px] h-full w-[715px] border-0",
+          "relative mt-[-20px] h-full w-[650px] border-0",
           popoverClassName,
         )}
       >
         <Command
           className={mergeClasses(
-            "absolute left-[13px] top-[-24px] h-[360px]",
-            "w-[690px] border border-[#171717] text-white text-white/75 ",
-            "bg-black bg-opacity-25 backdrop-blur-[25px]  backdrop-brightness-[25%]",
+            "absolute left-[-25px] top-[-24px] h-[400px]",
+            "border border-[#171717] text-white text-white/75 ",
+            "w-[650px] bg-black bg-opacity-25  backdrop-blur-[25px] backdrop-brightness-[25%]",
           )}
         >
           <CommandInput
