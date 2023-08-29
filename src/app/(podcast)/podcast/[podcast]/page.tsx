@@ -27,6 +27,15 @@ export async function generateStaticParams() {
   }));
 }
 
+export async function generateMetadata({ params }) {
+  const staticPodcastData = await getPodInfoJSON(params?.podcast);
+
+  return {
+    title: staticPodcastData.title,
+    template: "%s | podsfy.com",
+  };
+}
+
 /**
  * HomePodcast Component
  */
