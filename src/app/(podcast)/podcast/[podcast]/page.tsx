@@ -41,7 +41,7 @@ export default async function HomePodcastPage({ params }) {
   return (
     <div
       className={mergeClasses(
-        "h-screen w-[1250px] overflow-scroll overflow-y-scroll scrollbar-none",
+        "h-screen w-[1150px] overflow-scroll overflow-y-scroll scrollbar-none",
         "scrollbar-track-[#0D0E12] scrollbar-thumb-[#0D0E12]",
         "border-x border-sharper border-opacity-5 bg-[#0D0E12]",
         "grid grid-flow-row items-start gap-[25px] font-visuelt shadow-3xl backdrop-blur-[10px]",
@@ -49,7 +49,7 @@ export default async function HomePodcastPage({ params }) {
     >
       <div
         className={mergeClasses(
-          "mx-auto grid w-[1050px] grid-flow-row items-start justify-start",
+          "mx-auto grid w-[1150px] grid-flow-row items-start justify-start",
           "gap-3 px-[58px] py-[38px] ",
           "backdrop-contrast-[101%] ",
         )}

@@ -38,9 +38,9 @@ export default function HomeLayout({ children }) {
               className="mx-0 w-full bg-[#0D0E12] px-0"
               tabsClassName="w-[1240px]"
             ></HomeFeedNavigator>
-            <div className="mx-auto max-w-[1250px] ">
+            <div className="mx-auto max-w-[1200px] ">
               <Scroller className="w-full  bg-transparent">
-                <div className="mx-auto w-full  bg-transparent">{children}</div>
+                <div className="mx-auto w-full ">{children}</div>
               </Scroller>
             </div>
           </div>
