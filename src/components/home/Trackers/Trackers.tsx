@@ -16,9 +16,9 @@ import { useLongPress } from "use-long-press";
 import mergeClasses from "utils/mergeClasses";
 
 /**
- * Props for the ContentInteraction component.
+ * Props for the Trackers component.
  */
-export interface ContentInteractionProps {
+export interface TrackersProps {
   /**
    * Custom class names passed to the root element.
    */
@@ -33,9 +33,9 @@ export interface ContentInteractionProps {
 }
 
 /**
- * ContentInteraction Component
+ * Trackers Component
  */
-export default function ContentInteraction({
+export default function Trackers({
   className,
   onLike,
   likeCount,
@@ -43,7 +43,7 @@ export default function ContentInteraction({
   tooltipContent = "Hold to like",
   likeCountClassName,
   iconSpecification,
-}: ContentInteractionProps) {
+}: TrackersProps) {
   // const [addPodcastToFavoritesMutation, status] =
   //   useAddPodcastToFavoritesMutation()
   // const getProfileBio = useGetProfileBioLazyQuery()
@@ -134,4 +134,4 @@ export default function ContentInteraction({
   );
 }
 
-ContentInteraction.displayName = "ContentInteraction";
+Trackers.displayName = "Trackers";

@@ -3,10 +3,11 @@ import Image from "next/image";
 
 import mergeClasses from "utils/mergeClasses";
 
-import TooltipContainer from "components/common/TooltipContainer/TooltipContainer";
-import TooltipIconButton from "components/home/TooltipIconButton/TooltipIconButton";
 import { notFound } from "next/navigation";
 import generateGoodTitleForReviews from "utils/generateGoodTitleForReviews";
+import Rating from "components/home/Rating";
+import TooltipContainer from "components/common/TooltipContainer";
+import ContentInteraction from "components/home/ContentInteraction";
 
 const getPodInfoJSON = async (podcastSlug: string) => {
   const inputFilePath = `./src/json/podcastsJSONsliced/${podcastSlug}.json`;
@@ -59,22 +60,39 @@ export default async function HomePodcastPage({ params }) {
       <div
         className={mergeClasses(
           "mx-auto grid w-[1150px] grid-flow-row items-start justify-start",
-          "gap-3 px-[58px] py-[38px] ",
+          "gap-3 px-[38px] py-[38px] ",
           "backdrop-contrast-[101%] ",
         )}
       >
         <div className="grid grid-flow-col place-items-start items-start justify-items-start gap-[22px]">
+          <div>
           <div className="self-center   rounded-[4px] border-[2px] border-[#88888820] p-0  align-middle shadow-3xl">
             <Image
               src={`/${staticPodcastData.cover}`}
-              className="h-[226px] w-[222px] self-center   rounded-[4px] border-[2px] border-[#88888820] p-0  align-middle shadow-3xl"
+              className="h-[305px] w-[275px] self-center   rounded-[4px] border-[2px] border-[#88888820] p-0  align-middle shadow-3xl"
               alt="Podcast cover"
-              width={222}
-              height={186}
+              width={230}
+              height={345}
             ></Image>
           </div>
+<div className=" mt-[5px] grid grid-flow-row items-start justify-start gap-[8px]">
+<TooltipContainer className="gap-[32px]">
+                  <ContentInteraction
+                    likeCount={150}
+                    tooltipContent="Hold to Like"
+                    iconSpecification="LIKE"
+                  ></ContentInteraction>
+                  <ContentInteraction
+                    tooltipContent="Hold to Follow"
+                    likeCountClassName="right-[-20px]"
+                    iconSpecification="NOTIFY"
+                  ></ContentInteraction>
+                </TooltipContainer>
+            </div>
+          </div>
 
-          <div className="grid min-w-full grid-flow-row  gap-[8px]">
+          <div className="grid min-w-full grid-flow-col  gap-[18px]">
+            <div className="gap-[12px] grid grid-flow-row ">
             <h2 className="w-full text-left font-moderat text-[28px] font-medium tracking-[-0.5px] text-[#E7E9EA] ">
               {generateGoodTitleForReviews(staticPodcastData.title)}
             </h2>
@@ -85,34 +103,19 @@ export default async function HomePodcastPage({ params }) {
                   generateGoodTitleForReviews(staticPodcastData.title)}
               </span>
             </h2>
-            <h1
+            <p
               className={mergeClasses(
-                "ml-[2px] w-[750px] font-lausanne text-[18px] font-normal  leading-[25px] tracking-[0.2px]",
+                "ml-[2px] w-[450px] font-lausanne text-[18px] font-normal  leading-[25px] tracking-[0.2px]",
                 "text-[#9ab] text-opacity-80",
               )}
             >
               {(staticPodcastData?.description || "")
                 .replace(/\\n/g, " ")
                 .slice(0, 300)}
-            </h1>
-            <div className=" mt-[5px] grid grid-flow-row items-start justify-start gap-[8px]">
-              <TooltipContainer className="gap-[32px]">
-                <TooltipIconButton
-                  likeCount={150}
-                  tooltipContent="Hold to Like"
-                ></TooltipIconButton>
-                <TooltipIconButton
-                  likeCount={322}
-                  tooltipContent="Hold to Follow"
-                  likeCountClassName="right-[-20px]"
-                ></TooltipIconButton>
-                <TooltipIconButton
-                  likeCount={322}
-                  tooltipContent="Hold to Comment"
-                  likeCountClassName="right-[-19px]"
-                ></TooltipIconButton>
-              </TooltipContainer>
+            </p>
             </div>
+            <Rating></Rating>
+            
           </div>
         </div>
       </div>

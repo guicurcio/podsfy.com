@@ -84,7 +84,7 @@ export default function PodcastFeedUnit({
               <p className="ml-[2px] w-[550px] font-visuelt text-[14px] font-normal  leading-[24px] tracking-[0.1px] text-[#9ab] text-opacity-80  ">
                 {`${podcast.description.slice(0, 128)}...`}
               </p>
-              <div className="mt-[5px] grid grid-flow-row items-start justify-start gap-[8px] pl-[5px]">
+              <div className="mt-[10px] grid grid-flow-row items-start justify-start gap-[8px] pl-[15px]">
                 <TooltipContainer className="gap-[32px]">
                   <ContentInteraction
                     likeCount={150}
