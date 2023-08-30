@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import { twMerge } from "tailwind-merge"
-import Button from "ui/components/Button"
-import { Toaster } from "ui/components/Toaster"
-import { toast } from "ui/hooks/use-toast"
+import { twMerge } from "tailwind-merge";
+import Button from "ui/components/Button";
+import { Toaster } from "ui/components/Toaster";
+import { toast } from "ui/hooks/use-toast";
 
 /**
  * PodBehind Props description
@@ -12,28 +12,28 @@ export interface PodBehindProps {
   /**
    * Custom class names passed to the root element.
    */
-  className?: string
+  className?: string;
   /**
    * image url
    */
-  image?: string
+  image?: string;
   /**
    * image url
    */
-  genre?: string | null
+  genre?: string | null;
   /**
    * image url
    */
-  rating?: number
-  tags?: string
-  podcastTitle?: string
+  rating?: number;
+  tags?: string;
+  podcastTitle?: string;
 }
 
 function triggerInteraction(podcastTitle: string, interactionType: string) {
   toast({
     title: `${podcastTitle} added to ${interactionType}`,
     description: `Now you can find it in your ${interactionType}`,
-  })
+  });
 }
 
 /**
@@ -61,11 +61,11 @@ export default function PodBehind({
     <div
       className={twMerge(
         "hidden w-full  grid-flow-row gap-2  py-1  md:grid",
-        className
+        className,
       )}
     >
       <div className="grid grid-flow-col items-center justify-items-center  gap-2 py-2 ">
-        <Button
+        {/* <Button
           variant="subtle"
           onClick={() => {
             triggerInteraction(podcastTitle, "Favorite Podcasts List")
@@ -132,7 +132,7 @@ export default function PodBehind({
             />
           </svg>
           <p className="text-center text-[13px] text-[#d9e8ed]">Like</p>
-        </Button>
+        </Button> */}
         {/* <div className="grid grid-flow-row h-[55px] rounded-md w-[70px] gap-1 p-2 hover:backdrop-brightness-[75%] cursor-pointer hover:bg-fondy hover:bg-opacity-[90%]">
      <svg
       width="15"
@@ -158,24 +158,24 @@ export default function PodBehind({
       <div className="grid grid-flow-row gap-3 border-y border-[#10161d]/60 py-4">
         {rating && (
           <div className="grid grid-flow-col items-start justify-start gap-x-4 ">
-            <p className=" text-left font-visuelt text-[16px] font-medium uppercase text-white text-opacity-60">
+            <p className=" text-left font-inter text-[16px] font-medium uppercase text-white text-opacity-60">
               Rating:
             </p>
-            <p className="space-x-1 self-center  truncate align-middle font-visuelt text-[14px] font-normal text-white/70 text-opacity-60">
+            <p className="space-x-1 self-center  truncate align-middle font-inter text-[14px] font-normal text-white/70 text-opacity-60">
               {rating}/10
             </p>
           </div>
         )}
         {genre && (
           <div className="grid grid-flow-col items-start justify-start gap-x-4">
-            <p className=" text-left font-visuelt text-[16px] font-medium uppercase text-white text-opacity-60">
+            <p className=" text-left font-inter text-[16px] font-medium uppercase text-white text-opacity-60">
               Genre:
             </p>
-            <p className="space-x-1 self-center  truncate align-middle font-visuelt text-[14px] font-normal text-white/70 text-opacity-60">
+            <p className="space-x-1 self-center  truncate align-middle font-inter text-[14px] font-normal text-white/70 text-opacity-60">
               {genre.split(",").map((str, i) => (
                 <span key={str} className="capitalize">
                   {str}
-                  {i === genre.split(",").length - 1 ? "." : ","}
+                  {i === genre.split(",").length - 1 ? " " : ","}
                 </span>
               ))}
             </p>
@@ -188,5 +188,5 @@ export default function PodBehind({
         </div>
       </div>
     </div>
-  )
+  );
 }

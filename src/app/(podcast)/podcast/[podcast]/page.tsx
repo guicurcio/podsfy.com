@@ -7,6 +7,14 @@ import { notFound } from "next/navigation";
 import generateGoodTitleForReviews from "utils/generateGoodTitleForReviews";
 import Rating from "components/home/Rating";
 import Trackers from "components/home/Trackers";
+import PodEpisodes from "components/pod/PodEpisodes";
+import PodReviews from "components/pod/PodReviews";
+import PodBehind from "components/pod/PodBehind";
+import PodStreaming from "components/pod/PodStreaming";
+import PodSimilar from "components/pod/PodSimilar copy/PodSimilar";
+import PodDetails from "components/pod/PodDetails";
+import PodcastCover from "components/pod/PodcastCover";
+import PodGuests from "components/pod/PodGuests";
 
 const getPodInfoJSON = async (podcastSlug: string) => {
   const inputFilePath = `./src/json/podcastsJSONsliced/${podcastSlug}.json`;
@@ -74,7 +82,7 @@ export default async function HomePodcastPage({ params }) {
                 height={380}
               ></Image>
             </div>
-            <div className="absolute bottom-[-2px] grid h-[70px] w-[305px] grid-flow-col gap-x-0 rounded-bl-md rounded-br-md    bg-black bg-opacity-60 pt-[8px] backdrop-blur-[150px] backdrop-brightness-[30%] backdrop-contrast-[150%]">
+            <div className="absolute bottom-[-2px] grid h-[70px] w-[305px] grid-flow-col gap-x-0 rounded-bl-md rounded-br-md    bg-black bg-opacity-60 pt-[0px] backdrop-blur-[150px] backdrop-brightness-[30%] backdrop-contrast-[150%]">
               <Trackers
                 tooltipContent="Track"
                 iconSpecification="NOTIFY"
@@ -88,32 +96,83 @@ export default async function HomePodcastPage({ params }) {
                 iconSpecification="SHARE"
               ></Trackers>
             </div>
-          </div>
-
-          <div className="grid min-w-full grid-flow-col  gap-[18px]">
-            <div className="grid grid-flow-row gap-[12px] ">
-              <h2 className="w-full text-left font-moderat text-[28px] font-medium tracking-[-0.5px] text-[#E7E9EA] ">
-                {generateGoodTitleForReviews(staticPodcastData.title)}
-              </h2>
-              <h2 className="mt-[-4px]  font-moderat text-[17px] text-[#fff] text-opacity-[50%]">
-                By{" "}
-                <span className="underline">
-                  {staticPodcastData?.podcastHost?.name ||
-                    generateGoodTitleForReviews(staticPodcastData.title)}
-                </span>
-              </h2>
-              <p
-                className={mergeClasses(
-                  "ml-[2px] w-[450px] font-lausanne text-[18px] font-normal  leading-[25px] tracking-[0.2px]",
-                  "text-[#9ab] text-opacity-80",
-                )}
-              >
-                {(staticPodcastData?.description || "")
-                  .replace(/\\n/g, " ")
-                  .slice(0, 300)}
-              </p>
+            <div>
+              <PodBehind
+                rating={5}
+                tags="family,sports,finance"
+                genre="Sports"
+                podcastTitle={staticPodcastData.title}
+              ></PodBehind>
             </div>
-            <Rating></Rating>
+          </div>
+          <div className="grid grid-flow-row gap-y-[22px]">
+            <div className="grid min-w-full grid-flow-col  gap-[18px]">
+              <div className="grid grid-flow-row gap-[12px] ">
+                <h2 className="w-full text-left font-moderat text-[28px] font-medium tracking-[-0.5px] text-[#E7E9EA] ">
+                  {generateGoodTitleForReviews(staticPodcastData.title)}
+                </h2>
+                <h2 className="mt-[-4px]  font-moderat text-[17px] text-[#fff] text-opacity-[50%]">
+                  By{" "}
+                  <span className="underline">
+                    {staticPodcastData?.podcastHost?.name ||
+                      generateGoodTitleForReviews(staticPodcastData.title)}
+                  </span>
+                </h2>
+                <p
+                  className={mergeClasses(
+                    "ml-[2px] w-[450px] font-lausanne text-[18px] font-normal  leading-[25px] tracking-[0.2px]",
+                    "text-[#9ab] text-opacity-80",
+                  )}
+                >
+                  {(staticPodcastData?.description || "")
+                    .replace(/\\n/g, " ")
+                    .slice(0, 300)}
+                </p>
+              </div>
+              <Rating></Rating>
+            </div>
+            <div className="grid w-full min-w-full grid-flow-row gap-[60px]">
+              <PodEpisodes
+                episodes={[
+                  {
+                    title: "asd",
+                    description: "asdsad",
+                    whereToWatchOrListenLink: "asd",
+                  },
+                  {
+                    title: "asd",
+                    description: "asdsad",
+                    whereToWatchOrListenLink: "asd",
+                  },
+                  {
+                    title: "asd",
+                    description: "asdsad",
+                    whereToWatchOrListenLink: "asd",
+                  },
+                  {
+                    title: "asd",
+                    description: "asdsad",
+                    whereToWatchOrListenLink: "asd",
+                  },
+                ]}
+              ></PodEpisodes>
+              <PodReviews
+                reviews={[
+                  { review: "asd" },
+                  { review: "asd" },
+                  { review: "asd" },
+                ]}
+              ></PodReviews>
+              <PodStreaming
+                streamingSites={[
+                  { streamingSite: "asd" },
+                  { streamingSite: "asd" },
+                  { streamingSite: "asd" },
+                ]}
+              ></PodStreaming>
+              <PodSimilar></PodSimilar>
+              <PodGuests></PodGuests>
+            </div>
           </div>
         </div>
       </div>

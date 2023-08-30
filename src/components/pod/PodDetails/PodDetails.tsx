@@ -26,8 +26,8 @@ export interface PodDetailsProps {
 export default function PodDetails({
   className,
   title = "",
-  description,
-  podcastHostName,
+  description = "qweqwe",
+  podcastHostName = "qwewqe",
 }: PodDetailsProps) {
   return (
     <div
