@@ -8,6 +8,7 @@ import Button from "ui/components/Button";
 import useToggle from "ui/hooks/useToggle";
 import { useLongPress } from "use-long-press";
 import mergeClasses from "utils/mergeClasses";
+import triggerInteraction from "../../../../utils/triggerInteraction";
 
 /**
  * Props for the Trackers component.
@@ -57,7 +58,9 @@ export default function Trackers({
       variant="subtle"
       size="none"
       {...bind}
-      onClick={onLike}
+      onClick={() => {
+        triggerInteraction("The Joe Rogan Podcast", "tracklist");
+      }}
     >
       {Icon && (
         <Icon

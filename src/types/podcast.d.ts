@@ -1,9 +1,9 @@
 export namespace Podcasts {
   export type Podcast = {
-    id: number;
-    title: string;
-    createdAt: Date;
-    updatedAt: Date;
+    id?: number;
+    title?: string;
+    createdAt?: Date;
+    updatedAt?: Date;
     uid?: string;
     description?: string;
     url?: string;

@@ -1,20 +1,17 @@
 import fs from "fs";
-import Image from "next/image";
 
 import mergeClasses from "utils/mergeClasses";
 
 import { notFound } from "next/navigation";
 import generateGoodTitleForReviews from "utils/generateGoodTitleForReviews";
 import Rating from "components/home/Rating";
-import Trackers from "components/home/Trackers";
 import PodEpisodes from "components/pod/PodEpisodes";
 import PodReviews from "components/pod/PodReviews";
-import PodBehind from "components/pod/PodBehind";
 import PodStreaming from "components/pod/PodStreaming";
 import PodSimilar from "components/pod/PodSimilar copy/PodSimilar";
-import PodDetails from "components/pod/PodDetails";
-import PodcastCover from "components/pod/PodcastCover";
 import PodGuests from "components/pod/PodGuests";
+import PodcastSidebar from "components/pod/PodcastSidebar";
+import { Toaster } from "ui/components/Toaster";
 
 const getPodInfoJSON = async (podcastSlug: string) => {
   const inputFilePath = `./src/json/podcastsJSONsliced/${podcastSlug}.json`;
@@ -69,44 +66,11 @@ export default async function HomePodcastPage({ params }) {
           "mx-auto grid w-[1150px] grid-flow-row items-start justify-start",
           "gap-3 px-[38px] py-[38px] ",
           "backdrop-contrast-[101%] ",
+          "relative",
         )}
       >
         <div className="grid grid-flow-col place-items-start items-start justify-items-start gap-[22px]">
-          <div className="shadow-3xl relative h-[391px]  rounded-[4px] border-b-[4px] border-l-[4px] border-r-[4px] border-t-[4px] border-[#88888820]">
-            <div className=" h-[383px] w-[305px]  self-center p-0 align-middle">
-              <Image
-                src={`/${staticPodcastData.cover}`}
-                className="h-[380px]  w-[305px]"
-                alt="Podcast cover"
-                width={305}
-                height={380}
-              ></Image>
-            </div>
-            <div className="absolute bottom-[-2px] grid h-[70px] w-[305px] grid-flow-col gap-x-0 rounded-bl-md rounded-br-md    bg-black bg-opacity-60 pt-[0px] backdrop-blur-[150px] backdrop-brightness-[30%] backdrop-contrast-[150%]">
-              <Trackers
-                tooltipContent="Track"
-                iconSpecification="NOTIFY"
-              ></Trackers>
-              <Trackers
-                tooltipContent="Like"
-                iconSpecification="LIKE"
-              ></Trackers>
-              <Trackers
-                tooltipContent="Share"
-                iconSpecification="SHARE"
-              ></Trackers>
-            </div>
-            <div>
-              <PodBehind
-                rating={5}
-                tags="family,sports,finance"
-                genre="Sports"
-                podcastTitle={staticPodcastData.title}
-                duration={60}
-                language="English"
-              ></PodBehind>
-            </div>
-          </div>
+          <PodcastSidebar podcast={staticPodcastData}></PodcastSidebar>
           <div className="grid grid-flow-row gap-y-[22px]">
             <div className="grid min-w-full grid-flow-col  gap-[18px]">
               <div className="grid grid-flow-row gap-[12px] ">
@@ -176,6 +140,9 @@ export default async function HomePodcastPage({ params }) {
               <PodGuests></PodGuests>
             </div>
           </div>
+        </div>
+        <div className="absolute right-0 top-[8%] ">
+          <Toaster></Toaster>
         </div>
       </div>
     </div>
