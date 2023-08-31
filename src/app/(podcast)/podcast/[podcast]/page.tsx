@@ -102,6 +102,8 @@ export default async function HomePodcastPage({ params }) {
                 tags="family,sports,finance"
                 genre="Sports"
                 podcastTitle={staticPodcastData.title}
+                duration={60}
+                language="English"
               ></PodBehind>
             </div>
           </div>
