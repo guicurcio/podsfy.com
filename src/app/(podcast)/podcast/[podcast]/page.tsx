@@ -99,28 +99,7 @@ export default async function HomePodcastPage({ params }) {
             </div>
             <div className="grid w-full min-w-full grid-flow-row gap-[60px]">
               <PodEpisodes
-                episodes={[
-                  {
-                    title: "asd",
-                    description: "asdsad",
-                    whereToWatchOrListenLink: "asd",
-                  },
-                  {
-                    title: "asd",
-                    description: "asdsad",
-                    whereToWatchOrListenLink: "asd",
-                  },
-                  {
-                    title: "asd",
-                    description: "asdsad",
-                    whereToWatchOrListenLink: "asd",
-                  },
-                  {
-                    title: "asd",
-                    description: "asdsad",
-                    whereToWatchOrListenLink: "asd",
-                  },
-                ]}
+                episodes={[{ title: "asd", description: ".." }]}
               ></PodEpisodes>
               <PodReviews
                 reviews={[
