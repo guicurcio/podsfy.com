@@ -95,11 +95,15 @@ export function ProfileForm() {
           name="username"
           render={({ field }) => (
             <FormItem className="">
-              <FormLabel className="font-visuelt text-[20px] w-full">
+              <FormLabel className="w-full font-visuelt text-[20px]">
                 Username
               </FormLabel>
               <FormControl>
-                <Input placeholder="username" className="w-[350px]" {...field} />
+                <Input
+                  placeholder="username"
+                  className="w-[350px]"
+                  {...field}
+                />
               </FormControl>
               <FormDescription className="text-white/80">
                 This is your public display name. It can be your real name or a
@@ -122,7 +126,9 @@ export function ProfileForm() {
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent className="w-[350px]">
-                  <SelectItem value="m@example.com" className="bg-black">m@example.com</SelectItem>
+                  <SelectItem value="m@example.com" className="bg-black">
+                    m@example.com
+                  </SelectItem>
                   <SelectItem value="m@google.com">m@google.com</SelectItem>
                   <SelectItem value="m@support.com">m@support.com</SelectItem>
                 </SelectContent>

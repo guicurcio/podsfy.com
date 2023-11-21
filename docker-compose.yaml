@@ -23,6 +23,7 @@ services:
       HASURA_GRAPHQL_DATABASE_URL: postgres://myuser:mypassword@postgres:5432/mydatabase
       HASURA_GRAPHQL_ADMIN_SECRET: myadminsecretkey
       HASURA_GRAPHQL_ENABLE_CONSOLE: "true"
+      HASURA_GRAPHQL_JWT_SECRET: '{ "type": "HS256", "key": "f3fa4aa71f13d4e231955622f4851d53" }'
     networks:
       - backend
 

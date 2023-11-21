@@ -26,6 +26,8 @@ import {
   TooltipTrigger,
 } from "ui/components/Tooltip";
 import * as z from "zod";
+import {useFormState, useFormStatus} from 'react-dom'
+import { authenticate } from "app/lib/actions";
 
 const schema = z.object({
   email: z.string().email().min(4).max(18),
@@ -53,6 +55,7 @@ export interface SignInModalFormValues {
 export default function SignInModal({ className }: SignInModalProps) {
   // const { signInEmailPassword, isLoading, isSuccess, isError, error } =
   //   useSignInEmailPassword();
+  const [state, dispatch] = useFormState(authenticate, undefined);
   const router = useRouter();
 
   const form = useForm<SignInModalFormValues>({
@@ -88,7 +91,7 @@ export default function SignInModal({ className }: SignInModalProps) {
 
   return (
     <FormProvider {...form}>
-      <Form onSubmit={handleSignInFormSubmit}>
+      <Form action={dispatch}>
         <div className={twMerge("mx-auto mt-3 w-fit", className)}>
           <Dialog>
             <DialogTrigger asChild>

@@ -263,7 +263,7 @@ export default function SignUpModal({
             onClick={() => {
               onClickOutside();
             }}
-            className="focus:ring-slate-400 data-[state=open]:bg-slate-100 dark:focus:ring-slate-400 dark:focus:ring-offset-slate-900 dark:data-[state=open]:bg-slate-800 absolute top-4 right-4 rounded-sm opacity-70 transition-opacity focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:pointer-events-none hover:opacity-100"
+            className="focus:ring-slate-400 data-[state=open]:bg-slate-100 dark:focus:ring-slate-400 dark:focus:ring-offset-slate-900 dark:data-[state=open]:bg-slate-800 absolute right-4 top-4 rounded-sm opacity-70 transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:pointer-events-none"
           >
             <X className="h-4 w-4" />
             <span className="sr-only">Close</span>
@@ -393,6 +393,17 @@ export default function SignUpModal({
                 <span className="w-[150px] text-left">
                   Sign up with Facebook
                 </span>
+              </Button>
+              <Button
+                variant="none"
+                className={mergeClasses(
+                  CLASSNAMES_BUTTON,
+                  "mx-0 w-full grid-flow-col justify-items-start gap-x-2",
+                )}
+              >
+                {/* <Twitter></Twitter> */}
+                <span className="grid w-[50px] grid-cols-1 justify-items-end"></span>
+                <span className="w-[150px] text-left">Sign up with GitHub</span>
               </Button>
             </div>
             <DialogFooter className="grid w-full grid-flow-row">
