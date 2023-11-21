@@ -30,7 +30,7 @@ export interface HomeFeedNavigatorProps {
 export default function HomeFeedNavigator({
   className,
   tabsClassName,
-  podcastName,
+  // podcastName,
 }: HomeFeedNavigatorProps): JSX.Element {
   const ssel = usePathname();
   return (

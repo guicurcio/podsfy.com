@@ -1,17 +1,16 @@
 import HomeFeedNavigator from "components/home/HomeFeedNavigator";
-import FollowingFeedJSON from "components/home/feed/FollowingFeedJSON/FollowingFeedJSON";
-import PodcastFeedUnit from "components/home/feed/PodcastFeedUnit/PodcastFeedUnit";
-import podcasts from "json/podcast.json";
+import JSONBlank from "components/home/feed/JSONBlank";
 
 export default function HomeFollowingPage() {
   return (
     <>
       <HomeFeedNavigator></HomeFeedNavigator>
-      <FollowingFeedJSON>
+      <JSONBlank></JSONBlank>
+      {/* <FollowingFeedJSON>
         {podcasts.slice(0, 10).map((podcast) => (
           <PodcastFeedUnit key={podcast.id} podcast={podcast}></PodcastFeedUnit>
         ))}
-      </FollowingFeedJSON>
+      </FollowingFeedJSON> */}
     </>
   );
 }

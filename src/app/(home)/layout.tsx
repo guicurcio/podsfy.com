@@ -6,7 +6,7 @@ import mergeClasses from "utils/mergeClasses/mergeClasses";
 
 /* eslint-disable-next-line import/no-absolute-path, import/extensions */
 import backgroundImage from "/public/bg.png";
-import Trending from "components/home/Trending";
+import Trending from "../../components/home/Trending/Trending";
 
 export default function HomeLayout({ children }) {
   return (

@@ -1,4 +1,5 @@
 import mergeClasses from "utils/mergeClasses";
+import JSONBlank from '../JSONBlank/JSONBlank';
 
 /**
  * Props for the FollowingFeedJSON component.

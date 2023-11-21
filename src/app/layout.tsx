@@ -102,7 +102,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head />
-      <body className="h-full w-full overflow-x-hidden bg-[#030303] bg-opacity-[100%] backdrop-blur-[8px] backdrop-brightness-[80%]">
+      <body className="h-full w-full overflow-x-hidden bg-[#121212] bg-opacity-[100%] backdrop-blur-[8px] backdrop-brightness-[80%]">
         <main
           className={mergeClasses(
             visuelt.variable,

@@ -88,20 +88,20 @@ export function ProfileForm() {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="grid grid-flow-row gap-16 text-white"
+        className="grid grid-flow-row gap-16 text-white "
       >
         <FormField
           control={form.control}
           name="username"
           render={({ field }) => (
-            <FormItem>
-              <FormLabel className="font-visuelt text-[20px]">
+            <FormItem className="">
+              <FormLabel className="font-visuelt text-[20px] w-full">
                 Username
               </FormLabel>
               <FormControl>
-                <Input placeholder="username" {...field} />
+                <Input placeholder="username" className="w-[350px]" {...field} />
               </FormControl>
-              <FormDescription>
+              <FormDescription className="text-white/80">
                 This is your public display name. It can be your real name or a
                 pseudonym. You can only change this once every 30 days.
               </FormDescription>
@@ -121,8 +121,8 @@ export function ProfileForm() {
                     <SelectValue placeholder="Select a verified email to display" />
                   </SelectTrigger>
                 </FormControl>
-                <SelectContent>
-                  <SelectItem value="m@example.com">m@example.com</SelectItem>
+                <SelectContent className="w-[350px]">
+                  <SelectItem value="m@example.com" className="bg-black">m@example.com</SelectItem>
                   <SelectItem value="m@google.com">m@google.com</SelectItem>
                   <SelectItem value="m@support.com">m@support.com</SelectItem>
                 </SelectContent>
