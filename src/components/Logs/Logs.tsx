@@ -7,8 +7,6 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "components/new-york/ui/dialog";
-import { Input } from "components/new-york/ui/input";
-import { Label } from "components/new-york/ui/label";
 import CLASSNAMES_BUTTON from "lib/constants/constants";
 import { User } from "lucide-react";
 import Button from "ui/components/Button";
@@ -16,8 +14,8 @@ import FacebookIcon from "ui/components/icons/FacebookIcon";
 import GoogleIcon from "ui/components/icons/GoogleIcon";
 import TwitterIcon from "ui/components/icons/TwitterIcon";
 import mergeClasses from "utils/mergeClasses";
-import { signIn } from "next-auth/react"
-
+import Label from "ui/components/Label";
+import { Input } from "ui/components/Input";
 /**
  * Props for the Logs component.
  */
@@ -55,22 +53,30 @@ export default function Logs({ className, ...props }: LogsProps): JSX.Element {
             Create an account
           </DialogTitle>
         </DialogHeader>
-
-        <div className="grid gap-2">
-          <Label htmlFor="email">Email</Label>
-          <Input id="email" type="email" placeholder="m@example.com" />
-        </div>
-        <div className="grid gap-2">
-          <Label htmlFor="password">Password</Label>
-          <Input id="password" type="password" />
-        </div>
-        <div className="mx-auto grid w-fit  grid-flow-col items-center justify-items-center gap-x-2">
-          <div className="h-[1px] w-[110px] bg-white/20 " />
-          <h1 className="self-center font-moderat text-sm uppercase text-white/80">
-            or
-          </h1>
-          <div className="h-[1px] w-[110px] bg-white/20 " />
-        </div>
+        <form>
+          <div className="grid gap-4">
+            <div>
+              <Label htmlFor="email">Email</Label>
+              <Input id="email" type="email" placeholder="m@example.com" />
+            </div>
+            <div>
+              <div className="grid gap-2">
+                <Label htmlFor="password">Password</Label>
+                <Input id="password" type="password" />
+              </div>
+            </div>
+          </div>
+          <Button
+            variant="none"
+            className={mergeClasses(
+              CLASSNAMES_BUTTON,
+              "mx-0 mt-[20px] w-full grid-flow-col justify-items-start gap-x-2",
+            )}
+            type="submit"
+          >
+            <span className="text-center">Sign up</span>
+          </Button>
+        </form>
         <div className="grid w-full grid-flow-row gap-y-[16px]">
           <Button
             variant="none"
@@ -110,22 +116,6 @@ export default function Logs({ className, ...props }: LogsProps): JSX.Element {
             </span>
             <span className="w-[150px] text-left">Sign up with Facebook</span>
           </Button>
-          <button
-            type="button"
-            className={mergeClasses(
-              CLASSNAMES_BUTTON,
-              "mx-0 w-full grid-flow-col justify-items-start gap-x-2",
-            )}
-            onClick={() => {
-              signIn("github");
-            }}
-          >
-            {/* <Twitter></Twitter> */}
-            <span className="grid w-[50px] grid-cols-1 justify-items-end">
-              <FacebookIcon className="scale-[95%]"></FacebookIcon>
-            </span>
-            <span className="w-[150px] text-left">Sign up with GitHub</span>
-          </button>
         </div>
       </DialogContent>
     </Dialog>

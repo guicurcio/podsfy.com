@@ -22,6 +22,7 @@ import {
   DropdownMenuTrigger,
 } from "ui/components/Dropdown";
 import Link from "next/link";
+import { nhost } from "lib/setupBackendConfig";
 
 /**
  * Props for the User component.
@@ -37,6 +38,8 @@ export interface UserProps {
  * User Component
  */
 export default function User() {
+  const user = nhost.auth.getUser();
+
   // const supabase = createServerComponentClient<Database>({ cookies });
   // const {
   //   data: { session },
@@ -66,13 +69,6 @@ export default function User() {
           forceMount
         >
           <DropdownMenuGroup className="font-normal text-white/50">
-            <Link href="/profile">
-              <DropdownMenuItem className="font-normal text-white/50">
-                <UserCheck className="mr-3 h-4 w-4 self-center align-middle" />
-                <span className="h-4 self-center  align-middle ">Profile</span>
-                <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
-              </DropdownMenuItem>
-            </Link>
             <Link href="/home">
               <DropdownMenuItem>
                 <Home className="mr-3 h-4 w-4 self-center align-middle" />
@@ -80,6 +76,14 @@ export default function User() {
                 <DropdownMenuShortcut>⌘B</DropdownMenuShortcut>
               </DropdownMenuItem>
             </Link>
+            <Link href="/profile">
+              <DropdownMenuItem className="font-normal text-white/50">
+                <UserCheck className="mr-3 h-4 w-4 self-center align-middle" />
+                <span className="h-4 self-center  align-middle ">Profile</span>
+                <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+              </DropdownMenuItem>
+            </Link>
+
             <Link href="/profile">
               <DropdownMenuItem>
                 <Settings className="mr-3 h-4 w-4 self-center align-middle" />
@@ -97,11 +101,15 @@ export default function User() {
             </Link>
           </DropdownMenuGroup>
           <DropdownMenuSeparator className="mx-[4px]" />
-          <DropdownMenuItem
-            className="font-normal text-white/50"
-          >
+          <DropdownMenuItem className="font-normal text-white/50">
             <UserCheck className="mr-3 h-4 w-4 self-center align-middle" />
-            <span className="h-4 self-center  align-middle ">Log out</span>
+            {user?.displayName ? (
+              <span className="h-4 self-center align-middle">Log out</span>
+            ) : (
+              <Link href="/signup">
+                <span className="h-4 self-center align-middle">Sign Up</span>
+              </Link>
+            )}
             <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
           </DropdownMenuItem>
         </DropdownMenuContent>

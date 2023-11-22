@@ -1,11 +1,10 @@
-import TooltipContainer from "components/common/TooltipContainer";
-import ContentInteraction from "components/home/ContentInteraction/ContentInteraction";
 import HoverCardWrapperPodcast from "components/home/HoverCardWrapperPodcast/HoverCardWrapperPodcast";
 import HoverCardWrapper from "components/home/client/HoverCardWrapper/HoverCardWrapper";
 import Link from "next/link";
 import type { Podcasts } from "types/podcast";
 import generateGoodPodcastEpisodeTitles from "utils/generateGoodPodcastEpisodeTitles/generateGoodPodcastEpisodeTitles";
 import mergeClasses from "utils/mergeClasses";
+import EntryInteraction from "../EntryInteraction/EntryInteraction";
 
 /**
  * Props for the PodcastEpisodeFeedUnit component.
@@ -83,26 +82,7 @@ export default function PodcastEpisodeFeedUnit({
                 {podcast.title}
               </h3>
             </Link>
-            <div className="mt-[3px] grid grid-flow-row items-start justify-start gap-[8px]">
-              <TooltipContainer className="gap-[32px]">
-                <ContentInteraction
-                  likeCount={150}
-                  tooltipContent="Hold to Like"
-                  iconSpecification="LIKE"
-                ></ContentInteraction>
-                <ContentInteraction
-                  likeCount={322}
-                  tooltipContent="Hold to Comment"
-                  likeCountClassName="right-[-19px]"
-                  iconSpecification="COMMENT"
-                ></ContentInteraction>
-                <ContentInteraction
-                  tooltipContent="Hold to Follow"
-                  likeCountClassName="right-[-20px]"
-                  iconSpecification="NOTIFY"
-                ></ContentInteraction>
-              </TooltipContainer>
-            </div>
+            <EntryInteraction></EntryInteraction>
           </div>
         </div>
       </div>

@@ -9,37 +9,19 @@ import FacebookIcon from "ui/components/icons/FacebookIcon";
 import GoogleIcon from "ui/components/icons/GoogleIcon";
 import TwitterIcon from "ui/components/icons/TwitterIcon";
 import mergeClasses from "utils/mergeClasses";
-import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 import { useRouter } from "next/navigation";
-import { env } from "process";
+import { nhost } from "lib/setupBackendConfig";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const router = useRouter();
-  const supabase = createClientComponentClient();
 
   const handleSignUp = async () => {
-    await supabase.auth.signUp({
-      email,
-      password,
-      options: {
-        emailRedirectTo: `${env.endpoint}/home`,
-      },
-    });
-    router.refresh();
-  };
-
-  const handleSignIn = async () => {
-    await supabase.auth.signInWithPassword({
+    await nhost.auth.signUp({
       email,
       password,
     });
-    router.refresh();
-  };
-
-  const handleSignOut = async () => {
-    await supabase.auth.signOut();
     router.refresh();
   };
 
@@ -51,7 +33,7 @@ export default function LoginPage() {
         "mx-auto grid h-fit grid-flow-row gap-y-[14px] rounded-md text-white  sm:max-w-[500px]",
       )}
     >
-      <form action={handleSignIn}>
+      <form action={handleSignUp}>
         <div className="grid gap-4">
           <div>
             <Label htmlFor="email">Email</Label>
