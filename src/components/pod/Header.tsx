@@ -6,6 +6,7 @@ import staticPodcastData from "data/staticPodcastData";
 import Link from "next/link";
 import { Suspense } from "react";
 import mergeClasses from "utils/mergeClasses/mergeClasses";
+import { SessionProvider } from "next-auth/react";
 
 /**
  * Header Props description
@@ -23,7 +24,7 @@ export interface HeaderProps {
  */
 export default function Header({ className, navItems }: HeaderProps) {
   return (
-    <div>
+    <SessionProvider>
       <div
         className={mergeClasses(
           "relative z-50 h-full w-full max-w-full border-b border-gray-700 border-opacity-25 bg-[#0D0E12] bg-opacity-100",
@@ -45,17 +46,7 @@ export default function Header({ className, navItems }: HeaderProps) {
                 podcasts={staticPodcastData()}
                 className="lg:w-[630px]"
               ></Search>
-              <div className="hidden md:block">
-                <Suspense
-                  fallback={
-                    <div>
-                      <div></div>
-                    </div>
-                  }
-                >
-                  <User></User>
-                </Suspense>
-              </div>
+              <User></User>
             </div>
             <Suspense>
               <Navigator navItems={navItems}></Navigator>
@@ -63,7 +54,7 @@ export default function Header({ className, navItems }: HeaderProps) {
           </div>
         </div>
       </div>
-    </div>
+    </SessionProvider>
   );
 }
 

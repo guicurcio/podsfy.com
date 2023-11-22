@@ -1,10 +1,6 @@
 // eslint-disable-next-line eslint-comments/disable-enable-pair
 /* eslint-disable @typescript-eslint/no-misused-promises */
 
-"use client";
-
-import { nhost } from "lib/setupBackendConfig";
-import asyncTuple from "lib/try/try";
 import {
   Home,
   Mail,
@@ -12,7 +8,6 @@ import {
   UserCheck,
   User as UserIcon,
 } from "lucide-react";
-import { useRouter } from "next/navigation";
 import { Avatar, AvatarFallback, AvatarImage } from "ui/components/Avatar";
 import Button from "ui/components/Button";
 import {
@@ -24,7 +19,6 @@ import {
   DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from "ui/components/Dropdown";
-import useToggle from "ui/hooks/useToggle/useToggle";
 import Link from "next/link";
 
 /**
@@ -41,34 +35,9 @@ export interface UserProps {
  * User Component
  */
 export default function User(): JSX.Element {
-  const router = useRouter();
-
-  const [dropdownToggle, toggleDropdown] = useToggle(false);
-
-  /**
-   *
-   * User
-   *
-   * @param
-   * @returns
-   */
-  async function handleUserSignOut() {
-    console.log("signing out");
-    await asyncTuple(nhost.auth.signOut(), (e: Error) =>
-      console.log(e, "error"),
-    );
-    router.refresh();
-  }
-
   return (
     <div className="self-center align-middle">
-      <DropdownMenu
-        defaultOpen={false}
-        open={dropdownToggle}
-        onOpenChange={() => {
-          toggleDropdown();
-        }}
-      >
+      <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Button className=" h-[32px] w-[32px] self-center rounded-full align-middle">
             <Avatar className="h-[32px] w-[32px]">
@@ -85,7 +54,7 @@ export default function User(): JSX.Element {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent
-          className="w-[200px] overflow-x-auto rounded-[4px] border-0 bg-[#1f1f23] py-1 font-visuelt text-[14px] font-normal text-white/50 shadow-3xl"
+          className="shadow-3xl w-[200px] overflow-x-auto rounded-[4px] border-0 bg-[#1f1f23] py-1 font-visuelt text-[14px] font-normal text-white/50"
           align="end"
           forceMount
         >

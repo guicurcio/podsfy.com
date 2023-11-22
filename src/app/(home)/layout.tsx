@@ -8,6 +8,10 @@ import mergeClasses from "utils/mergeClasses/mergeClasses";
 import backgroundImage from "/public/bg.png";
 import Trending from "../../components/home/Trending/Trending";
 
+export interface DashboardLayoutProps {
+  children: React.ReactNode;
+}
+
 export default function HomeLayout({ children }) {
   return (
     <>
