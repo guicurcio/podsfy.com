@@ -1,9 +1,7 @@
 import TooltipContainer from "components/common/TooltipContainer";
+import User from "components/common/User";
 import ProfileNotifications from "components/header/ProfileNotifications";
-import { Suspense, lazy } from "react";
 import mergeClasses from "utils/mergeClasses";
-
-const User = lazy(() => import("components/common/User"));
 
 /**
  * Props for the ProfileTools component.
@@ -27,11 +25,8 @@ const ProfileTools = ({ className }: ProfileToolsProps) => (
   >
     <TooltipContainer>
       <ProfileNotifications></ProfileNotifications>
-      {/* <ProfileMessages></ProfileMessages> */}
     </TooltipContainer>
-    <Suspense fallback={<div className="h-10 w-10 rounded-full"></div>}>
-      <User></User>
-    </Suspense>
+    <User></User>
   </div>
 );
 

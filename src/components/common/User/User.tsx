@@ -1,3 +1,5 @@
+"use client";
+
 // eslint-disable-next-line eslint-comments/disable-enable-pair
 /* eslint-disable @typescript-eslint/no-misused-promises */
 
@@ -34,7 +36,12 @@ export interface UserProps {
 /**
  * User Component
  */
-export default async function User(): JSX.Element {
+export default function User() {
+  // const supabase = createServerComponentClient<Database>({ cookies });
+  // const {
+  //   data: { session },
+  // } = await supabase.auth.getSession();
+
   return (
     <div className="self-center align-middle">
       <DropdownMenu>
@@ -58,26 +65,6 @@ export default async function User(): JSX.Element {
           align="end"
           forceMount
         >
-          {/* <div className="grid grid-flow-col justify-center justify-items-center gap-[10px] py-2 px-2">
-            <div className="self-center align-middle">
-              <Avatar className="justify-center">
-                <AvatarImage
-                  // src="/avatars/mike.jpg"
-                  alt="Avatar image"
-                  className="opacity-75 shadow-md brightness-[100%]"
-                />
-                <AvatarFallback className="border border-white border-opacity-5 bg-fondy shadow-2xl">
-                  <span className="self-center align-middle font-moderat text-[12px] text-white/60">
-                    US
-                  </span>
-                </AvatarFallback>
-              </Avatar>
-            </div>
-            <div className="self-center align-middle">
-              <h1 className="font-normal text-white/50">{user?.email}</h1>
-            </div>
-          </div> */}
-          {/* <DropdownMenuSeparator className="mx-[4px]" /> */}
           <DropdownMenuGroup className="font-normal text-white/50">
             <Link href="/profile">
               <DropdownMenuItem className="font-normal text-white/50">
@@ -110,31 +97,13 @@ export default async function User(): JSX.Element {
             </Link>
           </DropdownMenuGroup>
           <DropdownMenuSeparator className="mx-[4px]" />
-          <Link href="/profile">
-            <DropdownMenuItem className="font-normal text-white/50">
-              <UserCheck className="mr-3 h-4 w-4 self-center align-middle" />
-              <span className="h-4 self-center  align-middle ">Profile</span>
-              <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
-            </DropdownMenuItem>
-          </Link>
-          {/* <DropdownMenuItem
-            onClick={async () => {
-              await handleUserSignOut();
-            }}
+          <DropdownMenuItem
+            className="font-normal text-white/50"
           >
-            <LogOut className="mr-3 h-4 w-4 self-center align-middle" />
-            <span className="h-4 self-center align-middle">Log out</span>
-            <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
-          </DropdownMenuItem> */}
-          {/* <DropdownMenuItem
-            onClick={async () => {
-              await handleUserSignOut();
-            }}
-          >
-            <LogOut className="mr-3 h-4 w-4 self-center align-middle" />
-            <span className="h-4 self-center align-middle">Log out</span>
-            <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
-          </DropdownMenuItem> */}
+            <UserCheck className="mr-3 h-4 w-4 self-center align-middle" />
+            <span className="h-4 self-center  align-middle ">Log out</span>
+            <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+          </DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
     </div>
