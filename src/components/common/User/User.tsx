@@ -34,7 +34,7 @@ export interface UserProps {
 /**
  * User Component
  */
-export default function User(): JSX.Element {
+export default async function User(): JSX.Element {
   return (
     <div className="self-center align-middle">
       <DropdownMenu>

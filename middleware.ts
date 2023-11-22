@@ -1,9 +1,12 @@
-import NextAuth from 'next-auth';
-import { authConfig } from './auth.config';
- 
-export default NextAuth(authConfig).auth;
- 
-export const config = {
-  // https://nextjs.org/docs/app/building-your-application/routing/middleware#matcher
-  matcher: ['/((?!api|_next/static|_next/image|.*\\.png$).*)'],
-};
+import { createMiddlewareClient } from "@supabase/auth-helpers-nextjs";
+import type { Database } from "lib/database.types";
+import { NextResponse } from "next/server";
+
+import type { NextRequest } from "next/server";
+
+export async function middleware(req: NextRequest) {
+  const res = NextResponse.next();
+  const supabase = createMiddlewareClient<Database>({ req, res });
+  await supabase.auth.getSession();
+  return res;
+}
