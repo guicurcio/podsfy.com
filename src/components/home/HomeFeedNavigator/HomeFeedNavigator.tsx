@@ -37,11 +37,11 @@ export default function HomeFeedNavigator({
     <div
       className={mergeClasses(
         "grid w-full grid-flow-col",
-        "border-b border-sharper border-opacity-5",
+        "border-b border-sharper border-opacity-5 max-w-[830px]",
         className,
       )}
     >
-      <div className={mergeClasses("mx-auto w-[1000px]", tabsClassName)}>
+      <div className={mergeClasses("mx-auto w-[830px]", tabsClassName)}>
         <TooltipContainer className="place-content-start content-start">
           {ssel.includes("podcast") ? (
             <TooltipWrapper tooltipContent="Our Suggestions">

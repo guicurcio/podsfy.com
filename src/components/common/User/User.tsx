@@ -45,6 +45,9 @@ export default function User() {
   const handleLogOut = async () => {
     await nhost.auth.signOut();
     router.push("/");
+    // only refresh if we are not in the root page
+    router.refresh();
+    
   };
 
   return (
@@ -123,22 +126,22 @@ export default function User() {
             </>
           ) : (
             <>
-              <DropdownMenuItem className="font-normal text-white/50">
-                <UserCheck className="mr-3 h-4 w-4 self-center align-middle" />
+              <Link href="/login">
+                <DropdownMenuItem className="font-normal text-white/50">
+                  <UserCheck className="mr-3 h-4 w-4 self-center align-middle" />
 
-                <Link href="/login">
                   <span className="h-4 self-center align-middle">Log In</span>
-                </Link>
-                <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
-              </DropdownMenuItem>
-              <DropdownMenuItem className="font-normal text-white/50">
-                <UserCheck className="mr-3 h-4 w-4 self-center align-middle" />
+                  <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+                </DropdownMenuItem>
+              </Link>
+              <Link href="/signup">
+                <DropdownMenuItem className="font-normal text-white/50">
+                  <UserCheck className="mr-3 h-4 w-4 self-center align-middle" />
 
-                <Link href="/signup">
                   <span className="h-4 self-center align-middle">Sign Up</span>
-                </Link>
-                <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
-              </DropdownMenuItem>
+                  <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+                </DropdownMenuItem>
+              </Link>
             </>
           )}
         </DropdownMenuContent>

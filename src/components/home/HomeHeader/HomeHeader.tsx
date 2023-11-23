@@ -36,7 +36,7 @@ export default function HomeHeader({
           <Link
             href="/"
             className={mergeClasses(
-              "w-[150px] cursor-pointer pl-[15px] text-left font-SpaceGrotesk text-[32px] font-bold tracking-[-0.08em] text-[#CDCDCD]",
+              "w-[50px] cursor-pointer pl-[15px] text-left font-SpaceGrotesk text-[32px] font-bold tracking-[-0.08em] text-[#CDCDCD]",
             )}
           >
             podsfy
@@ -44,11 +44,11 @@ export default function HomeHeader({
           <div className="mx-auto max-w-[690px] pt-1">
             <Search
               podcasts={staticPodcastData()}
-              className="w-[550px]"
+              className="w-[500px]"
               popoverClassName="w-[500px]"
             ></Search>
           </div>
-          <ProfileTools className="w-[260px]"></ProfileTools>
+          <ProfileTools className="w-[80px]"></ProfileTools>
         </div>
       </div>
     </div>
