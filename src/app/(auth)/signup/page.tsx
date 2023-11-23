@@ -29,7 +29,7 @@ export default function LoginPage() {
     <div
       className={mergeClasses(
         "z-50 mx-auto grid h-full w-[400px] scale-100 text-white",
-        "py-[48px] opacity-100 animate-in fade-in-90 slide-in-from-bottom-10",
+        "py-[48px] opacity-100",
         "mx-auto grid h-fit grid-flow-row gap-y-[14px] rounded-md text-white  sm:max-w-[500px]",
       )}
     >

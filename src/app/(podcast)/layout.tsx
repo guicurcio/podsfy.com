@@ -9,7 +9,7 @@ import backgroundImage from "/public/bg.png";
 import HomeFeedNavigator from "components/home/HomeFeedNavigator";
 import Footer from "components/common/Footer";
 
-const Trending = lazy(() => import("components/home/Trending"));
+// const Trending = lazy(() => import("components/home/Trending"));
 
 export default function HomeLayout({ children }) {
   return (
@@ -36,8 +36,8 @@ export default function HomeLayout({ children }) {
           <div className="w-full">
             <HomeHeader></HomeHeader>
             <HomeFeedNavigator
-              className="mx-0 w-full bg-[#0D0E12] px-0"
-              tabsClassName="w-[1200px]"
+              className="mx-0 w-full bg-[#0D0E12] px-0 max-w-full"
+              tabsClassName="w-[1200px] mx-auto"
             ></HomeFeedNavigator>
             <div className="mx-auto max-w-[1200px] ">
               <Scroller className="w-full  bg-transparent">

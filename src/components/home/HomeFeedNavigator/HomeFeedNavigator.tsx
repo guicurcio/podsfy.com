@@ -41,7 +41,7 @@ export default function HomeFeedNavigator({
         className,
       )}
     >
-      <div className={mergeClasses("mx-auto w-[830px]", tabsClassName)}>
+      <div className={mergeClasses("mx-auto w-full", tabsClassName)}>
         <TooltipContainer className="place-content-start content-start">
           {ssel.includes("podcast") ? (
             <TooltipWrapper tooltipContent="Our Suggestions">

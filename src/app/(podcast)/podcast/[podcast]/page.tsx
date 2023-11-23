@@ -4,7 +4,7 @@ import mergeClasses from "utils/mergeClasses";
 
 import { notFound } from "next/navigation";
 import generateGoodTitleForReviews from "utils/generateGoodTitleForReviews";
-import Rating from "components/home/Rating";
+// import Rating from "components/home/Rating";
 import PodEpisodes from "components/pod/PodEpisodes";
 import PodReviews from "components/pod/PodReviews";
 import PodStreaming from "components/pod/PodStreaming";
