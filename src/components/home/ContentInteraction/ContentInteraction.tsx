@@ -12,8 +12,8 @@ import {
   TooltipTrigger,
 } from "ui/components/Tooltip";
 import useToggle from "ui/hooks/useToggle";
-import { useLongPress } from "use-long-press";
 import mergeClasses from "utils/mergeClasses";
+import { nhost } from "lib/setupBackendConfig";
 
 /**
  * Props for the ContentInteraction component.
@@ -32,6 +32,38 @@ export interface ContentInteractionProps {
   iconSpecification?: "LIKE" | "NOTIFY" | "COMMENT" | "SHARE";
 }
 
+export async function fetcher(...args) {
+  console.log(...args);
+  const res = await fetch(...args);
+  return res.json();
+}
+
+export async function fetchWithToken(...args) {
+  const [url, token] = [...args];
+  const res = await fetch(url, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+  return res.json();
+}
+
+export async function fetchWithTokenMutation(...args) {
+  console.log("called");
+  const [url, token] = [...args];
+  try {
+    const res = await fetch(url, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      method: "POST",
+    });
+    return res.json();
+  } catch (err) {
+    console.log(err);
+  }
+}
+
 /**
  * ContentInteraction Component
  */
@@ -47,12 +79,11 @@ export default function ContentInteraction({
   // const [addPodcastToFavoritesMutation, status] =
   //   useAddPodcastToFavoritesMutation()
   // const getProfileBio = useGetProfileBioLazyQuery()
+  const accessToken = nhost.auth.getAccessToken();
+  const decodedAccessToken = nhost.auth.getDecodedAccessToken();
+  const user = nhost.auth.getUser()
 
   const [isToggled, setIsToggled] = useToggle(false);
-
-  const bind = useLongPress(() => {
-    setIsToggled();
-  });
 
   return (
     <div>
@@ -65,8 +96,29 @@ export default function ContentInteraction({
             )}
             variant="subtle"
             size="none"
-            {...bind}
-            onClick={onLike}
+            onClick={async () => {
+              try {
+                const res = await fetch(
+                  "http://localhost:8080/api/rest/insertlike/",
+                  {
+                    headers: {
+                      Authorization: `Bearer ${accessToken}`,
+                    },
+
+                    body: JSON.stringify({
+                      object: {
+                        podcast_id: 3,
+                        user_id: user.id
+                      },
+                    }),
+                    method: "POST",
+                  },
+                );
+                return res.json();
+              } catch (err) {
+                console.log(err);
+              }
+            }}
           >
             {Icon && (
               <Icon
