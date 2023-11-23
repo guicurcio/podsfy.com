@@ -23,6 +23,7 @@ import {
 } from "ui/components/Dropdown";
 import Link from "next/link";
 import { nhost } from "lib/setupBackendConfig";
+import { useRouter } from "next/navigation";
 
 /**
  * Props for the User component.
@@ -39,11 +40,12 @@ export interface UserProps {
  */
 export default function User() {
   const user = nhost.auth.getUser();
+  const router = useRouter();
 
-  // const supabase = createServerComponentClient<Database>({ cookies });
-  // const {
-  //   data: { session },
-  // } = await supabase.auth.getSession();
+  const handleLogOut = async () => {
+    await nhost.auth.signOut();
+    router.push("/");
+  };
 
   return (
     <div className="self-center align-middle">
@@ -64,7 +66,7 @@ export default function User() {
           </Button>
         </DropdownMenuTrigger>
         <DropdownMenuContent
-          className="shadow-3xl w-[200px] overflow-x-auto rounded-[4px] border-0 bg-[#1f1f23] py-1 font-visuelt text-[14px] font-normal text-white/50"
+          className="shadow-3xl w-[200px] overflow-x-auto rounded-[4px] border-0 bg-[#1f1f23] pb-2 pt-1 font-visuelt text-[14px] font-normal text-white/50"
           align="end"
           forceMount
         >
@@ -101,17 +103,44 @@ export default function User() {
             </Link>
           </DropdownMenuGroup>
           <DropdownMenuSeparator className="mx-[4px]" />
-          <DropdownMenuItem className="font-normal text-white/50">
-            <UserCheck className="mr-3 h-4 w-4 self-center align-middle" />
-            {user?.displayName ? (
-              <span className="h-4 self-center align-middle">Log out</span>
-            ) : (
-              <Link href="/signup">
-                <span className="h-4 self-center align-middle">Sign Up</span>
-              </Link>
-            )}
-            <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
-          </DropdownMenuItem>
+          {user?.displayName ? (
+            <>
+              <DropdownMenuItem className="font-normal text-white/50">
+                <UserCheck className="mr-3 h-4 w-4 self-center align-middle" />
+                <span className="h-4 self-center align-middle">
+                  {user.displayName}
+                </span>
+                <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+              </DropdownMenuItem>
+              <DropdownMenuItem
+                className="font-normal text-white/50"
+                onClick={handleLogOut}
+              >
+                <UserCheck className="mr-3 h-4 w-4 self-center align-middle" />
+                <span className="h-4 self-center align-middle">Log out</span>
+                <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+              </DropdownMenuItem>
+            </>
+          ) : (
+            <>
+              <DropdownMenuItem className="font-normal text-white/50">
+                <UserCheck className="mr-3 h-4 w-4 self-center align-middle" />
+
+                <Link href="/login">
+                  <span className="h-4 self-center align-middle">Log In</span>
+                </Link>
+                <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+              </DropdownMenuItem>
+              <DropdownMenuItem className="font-normal text-white/50">
+                <UserCheck className="mr-3 h-4 w-4 self-center align-middle" />
+
+                <Link href="/signup">
+                  <span className="h-4 self-center align-middle">Sign Up</span>
+                </Link>
+                <DropdownMenuShortcut>⇧⌘P</DropdownMenuShortcut>
+              </DropdownMenuItem>
+            </>
+          )}
         </DropdownMenuContent>
       </DropdownMenu>
     </div>

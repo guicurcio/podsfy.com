@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import TooltipContainer from "components/common/TooltipContainer";
 import ContentInteraction from "components/home/ContentInteraction/ContentInteraction";

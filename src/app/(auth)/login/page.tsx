@@ -18,11 +18,17 @@ export default function LoginPage() {
   const router = useRouter();
 
   const handleSignUp = async () => {
-    await nhost.auth.signUp({
+    const user = await nhost.auth.signIn({
       email,
       password,
     });
-    router.refresh();
+    if (user?.session?.user) {
+      console.log(user);
+      router.push("/");
+    } else {
+      // handle
+      return;
+    }
   };
 
   return (
@@ -69,7 +75,7 @@ export default function LoginPage() {
           )}
           type="submit"
         >
-          <span className="text-center">Sign up</span>
+          <span className="text-center">Log in</span>
         </Button>
       </form>
       <div className="mx-auto grid w-fit  grid-flow-col items-center justify-items-center gap-x-2">
@@ -90,7 +96,7 @@ export default function LoginPage() {
           <span className="grid w-[50px] grid-cols-1 justify-items-end ">
             <TwitterIcon className=""></TwitterIcon>
           </span>
-          <span className="w-[150px] text-left">Sign up with Twitter</span>
+          <span className="w-[150px] text-left">Log in with Twitter</span>
         </Button>
         <Button
           variant="none"
@@ -103,7 +109,7 @@ export default function LoginPage() {
           <span className="grid w-[50px] grid-cols-1 justify-items-end ">
             <GoogleIcon className=""></GoogleIcon>
           </span>
-          <span className="w-[150px] text-left">Sign up with Google</span>
+          <span className="w-[150px] text-left">Log in with Google</span>
         </Button>
         <Button
           variant="none"
@@ -116,7 +122,7 @@ export default function LoginPage() {
           <span className="grid w-[50px] grid-cols-1 justify-items-end">
             <FacebookIcon className="scale-[95%]"></FacebookIcon>
           </span>
-          <span className="w-[150px] text-left">Sign up with Facebook</span>
+          <span className="w-[150px] text-left">Log in with Facebook</span>
         </Button>
       </div>
     </div>

@@ -16,6 +16,9 @@ import TwitterIcon from "ui/components/icons/TwitterIcon";
 import mergeClasses from "utils/mergeClasses";
 import Label from "ui/components/Label";
 import { Input } from "ui/components/Input";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { nhost } from "lib/setupBackendConfig";
 /**
  * Props for the Logs component.
  */
@@ -30,6 +33,18 @@ export interface LogsProps {
  * Logs Component
  */
 export default function Logs({ className, ...props }: LogsProps): JSX.Element {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const router = useRouter();
+
+  const handleSignUp = async () => {
+    await nhost.auth.signUp({
+      email,
+      password,
+    });
+    router.refresh();
+
+  };
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -53,16 +68,31 @@ export default function Logs({ className, ...props }: LogsProps): JSX.Element {
             Create an account
           </DialogTitle>
         </DialogHeader>
-        <form>
+        <form action={handleSignUp}>
           <div className="grid gap-4">
             <div>
               <Label htmlFor="email">Email</Label>
-              <Input id="email" type="email" placeholder="m@example.com" />
+              <Input
+                id="email"
+                type="email"
+                value={email}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                }}
+                placeholder="m@example.com"
+              />
             </div>
             <div>
               <div className="grid gap-2">
                 <Label htmlFor="password">Password</Label>
-                <Input id="password" type="password" />
+                <Input
+                  id="password"
+                  type="password"
+                  value={password}
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                  }}
+                />
               </div>
             </div>
           </div>
@@ -77,6 +107,13 @@ export default function Logs({ className, ...props }: LogsProps): JSX.Element {
             <span className="text-center">Sign up</span>
           </Button>
         </form>
+        <div className="mx-auto grid w-fit  grid-flow-col items-center justify-items-center gap-x-2">
+          <div className="h-[1px] w-[110px] bg-white/20 " />
+          <h1 className="self-center font-moderat text-sm uppercase text-white/80">
+            or
+          </h1>
+          <div className="h-[1px] w-[110px] bg-white/20 " />
+        </div>
         <div className="grid w-full grid-flow-row gap-y-[16px]">
           <Button
             variant="none"
