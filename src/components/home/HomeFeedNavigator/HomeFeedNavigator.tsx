@@ -53,7 +53,6 @@ export default function HomeFeedNavigator({
                     "font-visuelt text-[14px] tracking-[-0.01em] ",
                     "inline-flex min-w-[100px] items-center justify-center py-[12px]",
                     "disabled:pointer-events-none disabled:opacity-50",
-                    "bg-[#0D0E12] ",
                     "border-b-2 border-white border-opacity-10 capitalize",
                   )}
                 >
@@ -71,7 +70,6 @@ export default function HomeFeedNavigator({
                   "font-visuelt text-[14px] tracking-[-0.01em] ",
                   "inline-flex min-w-[100px] items-center justify-center py-[12px]",
                   "disabled:pointer-events-none disabled:opacity-50",
-                  "bg-[#0D0E12] ",
                   ssel === "/home" &&
                     "border-b-2 border-white border-opacity-10",
                   ssel === "/for-you" &&
@@ -92,7 +90,6 @@ export default function HomeFeedNavigator({
                   "font-visuelt text-[14px] tracking-[-0.01em] ",
                   "inline-flex min-w-[100px] items-center justify-center py-[12px]",
                   "disabled:pointer-events-none disabled:opacity-50",
-                  "bg-[#0D0E12] ",
                   ssel === "/following" &&
                     "border-b-2 border-white border-opacity-10",
                   className,
@@ -111,7 +108,6 @@ export default function HomeFeedNavigator({
                   "font-visuelt text-[14px] tracking-[-0.01em] ",
                   "inline-flex min-w-[100px] items-center justify-center py-[12px]",
                   "disabled:pointer-events-none disabled:opacity-50",
-                  "bg-[#0D0E12] ",
                   ssel === "/latest" &&
                     "border-b-2 border-white border-opacity-10",
                   className,

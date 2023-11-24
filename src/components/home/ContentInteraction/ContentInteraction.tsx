@@ -14,6 +14,7 @@ import {
 import useToggle from "ui/hooks/useToggle";
 import mergeClasses from "utils/mergeClasses";
 import { nhost } from "lib/setupBackendConfig";
+import useSWR from "swr";
 
 /**
  * Props for the ContentInteraction component.
@@ -79,9 +80,13 @@ export default function ContentInteraction({
   // const [addPodcastToFavoritesMutation, status] =
   //   useAddPodcastToFavoritesMutation()
   // const getProfileBio = useGetProfileBioLazyQuery()
+
   const accessToken = nhost.auth.getAccessToken();
-  const decodedAccessToken = nhost.auth.getDecodedAccessToken();
-  const user = nhost.auth.getUser()
+  const followingPodcasts = useSWR(
+    "http://localhost:8080/api/rest/UserPodcastFollows",
+    (url) => fetchWithToken(url, accessToken),
+  );
+  const user = nhost.auth.getUser();
 
   const [isToggled, setIsToggled] = useToggle(false);
 
@@ -108,7 +113,7 @@ export default function ContentInteraction({
                     body: JSON.stringify({
                       object: {
                         podcast_id: 3,
-                        user_id: user.id
+                        user_id: user.id,
                       },
                     }),
                     method: "POST",

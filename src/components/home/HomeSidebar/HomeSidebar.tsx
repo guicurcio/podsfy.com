@@ -73,7 +73,7 @@ export default function HomeSidebar({
   return (
     <div
       className={mergeClasses(
-        "bg-[#0D0E12]",
+        "bg-[#1c1c1c]",
         "border-l border-sharper border-opacity-10",
         "grid grid-flow-col shadow-3xl backdrop-blur-[10px]",
         "h-screen max-h-screen min-h-screen overflow-hidden",

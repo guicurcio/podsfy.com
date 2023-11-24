@@ -44,7 +44,7 @@ export default function PodcastEpisodeFeedUnit({
     <div
       key={podcastEpisode.title}
       className={mergeClasses(
-        "grid w-full cursor-pointer max-w-[830px] grid-flow-row gap-4 border-0 px-[18px] pb-[12px] pt-[18px] hover:bg-fondy hover:backdrop-contrast-[500%]",
+        "grid w-full cursor-pointer max-w-[830px] grid-flow-row gap-4 border-0 px-[18px] pb-[12px] pt-[18px] hover:backdrop:brightness-75 hover:backdrop-contrast-[500%]",
         className,
       )}
     >

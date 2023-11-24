@@ -22,7 +22,7 @@ export default function HomeHeader({
   return (
     <div
       className={mergeClasses(
-        "sticky top-0 z-50  border-b border-gray-700 border-opacity-25 bg-[#0D0E12] bg-opacity-100 ",
+        "sticky top-0 z-50  border-b border-gray-700 border-opacity-25 bg-[#1c1c1c] bg-opacity-100 ",
         className,
       )}
     >
