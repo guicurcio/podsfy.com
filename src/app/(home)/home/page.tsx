@@ -20,8 +20,8 @@ export default function HomePage() {
             )}
           ></PodcastEpisodeFeedUnit>
         ))}
-        {podcasts.slice(0, 2).map((podcast) => (
-          <PodcastFeedUnit key={podcast.id} podcast={podcast}></PodcastFeedUnit>
+        {podcasts.slice(0, 3).map((podcast) => (
+          <PodcastFeedUnit key={podcast.id} podcast={podcast} podcastID={podcast.id}></PodcastFeedUnit>
         ))}
         {podcastEpisodes.slice(2, 5).map((podcastEpisode) => (
           <PodcastEpisodeFeedUnit
@@ -33,8 +33,8 @@ export default function HomePage() {
             )}
           ></PodcastEpisodeFeedUnit>
         ))}
-        {podcasts.slice(2, 5).map((podcast) => (
-          <PodcastFeedUnit key={podcast.id} podcast={podcast}></PodcastFeedUnit>
+        {podcasts.slice(3, 6).map((podcast) => (
+          <PodcastFeedUnit key={podcast.id} podcast={podcast} podcastID={podcast.id}></PodcastFeedUnit>
         ))}
         {podcastEpisodes.slice(5, 15).map((podcastEpisode) => (
           <PodcastEpisodeFeedUnit

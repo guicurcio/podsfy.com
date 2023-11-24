@@ -15,7 +15,7 @@ export interface DashboardLayoutProps {
 export default function HomeLayout({ children }) {
   return (
     <>
-      <div className="bg-[#0e0e0e] 2xl:w-[1920px]">
+      <div className=" bg-[#0e0e0e] 2xl:w-[1920px]">
         <Image
           className={mergeClasses(
             "absolute h-[850px]  w-screen overflow-hidden   object-fill brightness-[80%] md:top-[50px]",

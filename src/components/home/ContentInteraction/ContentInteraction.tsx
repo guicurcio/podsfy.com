@@ -15,7 +15,8 @@ import useToggle from "ui/hooks/useToggle";
 import mergeClasses from "utils/mergeClasses";
 import { nhost } from "lib/setupBackendConfig";
 import useSWR from "swr";
-
+import triggerInteraction from "../../../../utils/triggerInteraction";
+import { isArray } from "@apollo/client/utilities";
 /**
  * Props for the ContentInteraction component.
  */
@@ -25,7 +26,7 @@ export interface ContentInteractionProps {
    */
   className?: string;
   onLike?: () => void;
-  podcastID?: string;
+  podcastID?: string | number;
   likeCount?: number;
   Icon?: LucideIcon | React.FC;
   tooltipContent?: string;
@@ -76,6 +77,7 @@ export default function ContentInteraction({
   tooltipContent = "Hold to like",
   likeCountClassName,
   iconSpecification,
+  podcastID,
 }: ContentInteractionProps) {
   // const [addPodcastToFavoritesMutation, status] =
   //   useAddPodcastToFavoritesMutation()
@@ -112,13 +114,14 @@ export default function ContentInteraction({
 
                     body: JSON.stringify({
                       object: {
-                        podcast_id: 3,
+                        podcast_id: podcastID,
                         user_id: user.id,
                       },
                     }),
                     method: "POST",
                   },
                 );
+                triggerInteraction("The Joe Rogan Podcast", "tracklist");
                 return res.json();
               } catch (err) {
                 console.log(err);
@@ -139,7 +142,11 @@ export default function ContentInteraction({
                 className={mergeClasses(
                   iconClasses,
                   "h-4 w-4 text-white/40 transition-colors duration-1000 ease-in-out hover:text-white/70",
-                  isToggled && "fill-white/60 brightness-[100%]",
+                  isArray(followingPodcasts?.data) &&
+                    followingPodcasts?.data
+                      .map((follow) => follow.id)
+                      .includes(podcastID) &&
+                    "scale-150 fill-white brightness-[140%]",
                 )}
               ></Heart>
             )}

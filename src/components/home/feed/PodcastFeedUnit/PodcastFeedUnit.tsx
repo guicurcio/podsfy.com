@@ -18,7 +18,7 @@ export interface PodcastFeedUnitProps {
    * Pass a custom description to the component.
    * @default ""
    */
-  podcast?: Pick<Podcasts.Podcast, "title" | "slug" | "description">;
+  podcast?: Pick<Podcasts.Podcast, "title" | "slug" | "description" | "id">;
   /**
    * Pass a custom description to the component.
    * @default ""
@@ -34,6 +34,7 @@ export interface PodcastFeedUnitProps {
   defaultCoverImage?: string;
   podcastEpisodeDescription?: string;
   podcastSlug?: string;
+  podcastID: string | number;
 }
 
 /**
@@ -43,6 +44,7 @@ export interface PodcastFeedUnitProps {
 export default function PodcastFeedUnit({
   className = "",
   podcast,
+  podcastID,
   title = "Joe Rogan Experience #1278 - Kevin Hart",
 }: PodcastFeedUnitProps): JSX.Element {
   return (
@@ -79,7 +81,7 @@ export default function PodcastFeedUnit({
             </HoverCardWrapper>
             <div className="grid grid-flow-row place-content-start content-start items-start gap-[2px] align-baseline">
               <h3 className="w-[500px] text-left font-moderat text-[12px] font-medium text-[#E7E9EA] text-opacity-60 ">
-                Podcast
+                Podcast 
               </h3>
               <h2 className="w-full text-left font-moderat text-[18px] font-medium text-[#E7E9EA] ">
                 {podcast.title}
@@ -93,11 +95,13 @@ export default function PodcastFeedUnit({
                     likeCount={150}
                     tooltipContent="Hold to Like"
                     iconSpecification="LIKE"
+                    podcastID={podcast.id}
                   ></ContentInteraction>
                   <ContentInteraction
                     tooltipContent="Hold to Follow"
                     likeCountClassName="right-[-20px]"
                     iconSpecification="NOTIFY"
+                    podcastID={podcast.id}
                   ></ContentInteraction>
                 </TooltipContainer>
               </div>
