@@ -15,18 +15,25 @@ import { nhost } from "lib/setupBackendConfig";
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const router = useRouter();
 
   const handleLogin = async () => {
-    const user = await nhost.auth.signIn({
+    const res = await nhost.auth.signIn({
       email,
       password,
     });
-    if (user?.session) {
-      console.log(user);
+    if (res?.session) {
+      console.log(res);
       router.push("/");
     } else {
-      // handle
+      console.log(res);
+      if (res.error.message.includes("Network Error")) {
+        setError("Please try again later");
+      }
+      if (res.error.message.includes("Incorrect email or password")) {
+        setError("Incorrect email or password");
+      }
       return;
     }
   };
@@ -48,6 +55,9 @@ export default function LoginPage() {
               type="email"
               value={email}
               onChange={(e) => {
+                if (error) {
+                  setError("");
+                }
                 setEmail(e.target.value);
               }}
               placeholder="m@example.com"
@@ -61,11 +71,15 @@ export default function LoginPage() {
                 type="password"
                 value={password}
                 onChange={(e) => {
+                  if (error) {
+                    setError("");
+                  }
                   setPassword(e.target.value);
                 }}
               />
             </div>
           </div>
+          {error && <div className="text-red-500">{error}</div>}
         </div>
         <Button
           variant="none"

@@ -11,18 +11,65 @@ import TwitterIcon from "ui/components/icons/TwitterIcon";
 import mergeClasses from "utils/mergeClasses";
 import { useRouter } from "next/navigation";
 import { nhost } from "lib/setupBackendConfig";
+import { ZodError, z } from "zod";
+
+const Credentials = z.object({
+  email: z
+    .string()
+    .email()
+    .min(5, { message: "Must be 5 or more characters long" }),
+  password: z
+    .string()
+    .min(8, { message: "Must be 8 or more characters long" })
+    .max(32, { message: "Must be 32 or fewere characters long" }),
+});
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState([]);
   const router = useRouter();
 
   const handleSignUp = async () => {
-    await nhost.auth.signUp({
+    try {
+      Credentials.parse({ email, password });
+    } catch (er) {
+      if (er instanceof ZodError) {
+        // Replace `ZodError` with the correct type if different
+        const messages = er.errors.map(
+          (e) => `${e.path.join(".")} ${e.message}`,
+        ); // Assuming `errors` is the array
+        console.log(messages);
+        setErrorMessage(messages);
+        return;
+      }
+    }
+    const res = await nhost.auth.signUp({
       email,
       password,
     });
+    console.log(res);
+    if (res?.session) {
+      router.push("/");
+    } else {
+      if (res.error.message.includes("Network Error")) {
+        setErrorMessage(["Please try again later"]);
+      }
+      if (res.error.message.includes("Incorrect email or password")) {
+        setErrorMessage(["Incorrect email or password"]);
+      }
+      if (res.error.message.includes("User is already signed in")) {
+        router.push("/");
+      }
+      if (res.error.message.includes("Email already in use")) {
+        setErrorMessage(["Email already in use"]);
+
+      }
+
+      
+    }
     router.refresh();
+    return;
   };
 
   return (
@@ -42,6 +89,7 @@ export default function LoginPage() {
               type="email"
               value={email}
               onChange={(e) => {
+                setErrorMessage([]);
                 setEmail(e.target.value);
               }}
               placeholder="m@example.com"
@@ -55,11 +103,21 @@ export default function LoginPage() {
                 type="password"
                 value={password}
                 onChange={(e) => {
+                  setErrorMessage([]);
                   setPassword(e.target.value);
                 }}
               />
             </div>
           </div>
+          {errorMessage && (
+            <div className="text-red-500">
+              {errorMessage?.map((err) => (
+                <span key={err} className="block lowercase">
+                  {err}
+                </span>
+              ))}
+            </div>
+          )}
         </div>
         <Button
           variant="none"
