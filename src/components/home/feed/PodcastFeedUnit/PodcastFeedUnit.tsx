@@ -49,7 +49,7 @@ export default function PodcastFeedUnit({
     <div
       key={title}
       className={mergeClasses(
-        "grid w-full cursor-pointer max-w-[830px] grid-flow-row gap-3 border-0 px-[18px] pb-[12px] pt-[18px] hover:bg-fondy hover:brightness-[105%]",
+        "grid w-full max-w-[830px] cursor-pointer grid-flow-row gap-3 border-0 px-[18px] pb-[12px] pt-[18px] hover:bg-fondy hover:brightness-[105%]",
         className,
       )}
     >
@@ -78,6 +78,9 @@ export default function PodcastFeedUnit({
               <HoverCardWrapperPodcast podcast={podcast} />
             </HoverCardWrapper>
             <div className="grid grid-flow-row place-content-start content-start items-start gap-[2px] align-baseline">
+              <h3 className="w-[500px] text-left font-moderat text-[12px] font-medium text-[#E7E9EA] text-opacity-60 ">
+                Podcast
+              </h3>
               <h2 className="w-full text-left font-moderat text-[18px] font-medium text-[#E7E9EA] ">
                 {podcast.title}
               </h2>

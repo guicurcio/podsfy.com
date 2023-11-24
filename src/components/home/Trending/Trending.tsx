@@ -24,7 +24,6 @@ export default function Trending({ className }: TrendingProps): JSX.Element {
     <div
       className={mergeClasses(
         "col-span-3  w-full overflow-hidden",
-        "bg-[#0D0E12]",
         "border-r border-sharper border-opacity-10",
         "shadow-3xl grid grid-flow-row items-start  justify-items-start font-visuelt backdrop-blur-[10px] ",
         "h-full gap-[20px] pl-[5px] pr-[20px] pt-[38px]",

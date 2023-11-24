@@ -22,7 +22,6 @@ export default function Scroller({
   return (
     <div
       className={mergeClasses(
-        "bg-[#1c1c1c]",
         "border-x border-sharper border-opacity-5",
         "grid grid-flow-row gap-[25px] font-visuelt shadow-3xl backdrop-blur-[10px]",
         className,

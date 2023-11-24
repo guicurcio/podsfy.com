@@ -6,6 +6,7 @@ import mergeClasses from "utils/mergeClasses/mergeClasses";
 
 /* eslint-disable-next-line import/no-absolute-path, import/extensions */
 import backgroundImage from "/public/bg.png";
+import Trending from "components/home/Trending";
 
 export interface DashboardLayoutProps {
   children: React.ReactNode;
@@ -14,7 +15,7 @@ export interface DashboardLayoutProps {
 export default function HomeLayout({ children }) {
   return (
     <>
-      <div className="bg-[#1c1c1c] 2xl:w-[1920px]">
+      <div className="bg-[#0e0e0e] 2xl:w-[1920px]">
         <Image
           className={mergeClasses(
             "absolute h-[850px]  w-screen overflow-hidden   object-fill brightness-[80%] md:top-[50px]",
@@ -34,13 +35,13 @@ export default function HomeLayout({ children }) {
             "shadow-3xl backdrop-blur-[10px] backdrop-brightness-[70%]",
           )}
         >
-          <div className="mx-auto max-h-screen w-full overflow-hidden">
+          <div className="mx-auto max-h-screen w-full overflow-hidden ">
             <HomeHeader></HomeHeader>
-            <div className="mx-auto max-w-[1250px] ">
-              <div className="mx-auto grid h-full max-w-[1250px] grid-flow-col  place-content-start items-start">
-                <HomeSidebar className="w-[210px]"></HomeSidebar>
-                <Scroller className="w-full max-w-[830px]">{children}</Scroller>
-                {/* <Trending className="max-w-[260px]"></Trending> */}
+            <div className="mx-auto max-w-[1280px] ">
+              <div className="mx-auto grid h-full max-w-[1280px] grid-flow-col grid-cols-12  place-content-start items-start bg-[#0e0e0e]">
+                <HomeSidebar className="col-span-2"></HomeSidebar>
+                <Scroller className="col-span-7">{children}</Scroller>
+                <Trending className="col-span-3"></Trending>
               </div>
             </div>
           </div>

@@ -17,12 +17,12 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const router = useRouter();
 
-  const handleSignUp = async () => {
+  const handleLogin = async () => {
     const user = await nhost.auth.signIn({
       email,
       password,
     });
-    if (user?.session?.user) {
+    if (user?.session) {
       console.log(user);
       router.push("/");
     } else {
@@ -39,7 +39,7 @@ export default function LoginPage() {
         "mx-auto grid h-fit grid-flow-row gap-y-[14px] rounded-md text-white  sm:max-w-[500px]",
       )}
     >
-      <form action={handleSignUp}>
+      <form action={handleLogin}>
         <div className="grid gap-4">
           <div>
             <Label htmlFor="email">Email</Label>

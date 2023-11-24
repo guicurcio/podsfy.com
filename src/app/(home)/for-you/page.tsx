@@ -3,7 +3,6 @@ import ForYouFeedJSONComponent from "components/home/feed/ForYouFeedJSON/ForYouF
 import PodcastEpisodeFeedUnit from "components/home/feed/PodcastEpisodeFeedUnit/PodcastEpisodeFeedUnit";
 import podcastEpisodes from "json/episodes.json";
 import podcasts from "json/podcast.json";
-import PodcastFeedUnit from '../../../components/home/feed/PodcastFeedUnit/PodcastFeedUnit';
 
 export default function ForYouPage() {
   return (
