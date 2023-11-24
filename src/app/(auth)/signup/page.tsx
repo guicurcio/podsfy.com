@@ -63,10 +63,7 @@ export default function LoginPage() {
       }
       if (res.error.message.includes("Email already in use")) {
         setErrorMessage(["Email already in use"]);
-
       }
-
-      
     }
     router.refresh();
     return;
