@@ -36,6 +36,7 @@ export interface ContentInteractionProps {
 
 export async function fetcher(...args) {
   console.log(...args);
+  // @ts-ignore
   const res = await fetch(...args);
   return res.json();
 }
@@ -71,7 +72,6 @@ export async function fetchWithTokenMutation(...args) {
  */
 export default function ContentInteraction({
   className,
-  onLike,
   likeCount,
   Icon,
   tooltipContent = "Hold to like",

@@ -34,7 +34,7 @@ export interface PodcastFeedUnitProps {
   defaultCoverImage?: string;
   podcastEpisodeDescription?: string;
   podcastSlug?: string;
-  podcastID: string | number;
+  podcastID?: string | number;
 }
 
 /**
