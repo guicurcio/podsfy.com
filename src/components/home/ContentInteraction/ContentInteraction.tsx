@@ -15,6 +15,7 @@ import useToggle from "ui/hooks/useToggle";
 import mergeClasses from "utils/mergeClasses";
 import { nhost } from "lib/setupBackendConfig";
 import useSWR from "swr";
+// eslint-disable-next-line no-restricted-imports
 import triggerInteraction from "../../../../utils/triggerInteraction";
 import { isArray } from "@apollo/client/utilities";
 /**
@@ -90,7 +91,7 @@ export default function ContentInteraction({
   );
   const user = nhost.auth.getUser();
 
-  const [isToggled, setIsToggled] = useToggle(false);
+  const [isToggled] = useToggle(false);
 
   return (
     <div>
