@@ -16,8 +16,8 @@ import mergeClasses from "utils/mergeClasses";
 import { nhost } from "lib/setupBackendConfig";
 import useSWR from "swr";
 // eslint-disable-next-line no-restricted-imports
-import triggerInteraction from "../../../../utils/triggerInteraction";
-import { isArray } from "@apollo/client/utilities";
+import { useLongPress } from "@uidotdev/usehooks";
+import { useState } from "react";
 /**
  * Props for the ContentInteraction component.
  */
@@ -92,7 +92,18 @@ export default function ContentInteraction({
   const user = nhost.auth.getUser();
 
   const [isToggled] = useToggle(false);
-
+  const [isOpen, setIsOpen] = useState(false);
+  const attrs = useLongPress(
+    () => {
+      setIsOpen(true);
+    },
+    {
+      onStart: (event) => console.log("Press started"),
+      onFinish: (event) => console.log("Press Finished"),
+      onCancel: (event) => console.log("Press cancelled"),
+      threshold: 500,
+    },
+  );
   return (
     <div>
       <Tooltip>
@@ -104,30 +115,31 @@ export default function ContentInteraction({
             )}
             variant="subtle"
             size="none"
-            onClick={async () => {
-              try {
-                const res = await fetch(
-                  "http://localhost:8080/api/rest/insertlike/",
-                  {
-                    headers: {
-                      Authorization: `Bearer ${accessToken}`,
-                    },
+            {...attrs}
+            // onClick={async () => {
+            //   try {
+            //     const res = await fetch(
+            //       "http://localhost:8080/api/rest/insertlike/",
+            //       {
+            //         headers: {
+            //           Authorization: `Bearer ${accessToken}`,
+            //         },
 
-                    body: JSON.stringify({
-                      object: {
-                        podcast_id: podcastID,
-                        user_id: user.id,
-                      },
-                    }),
-                    method: "POST",
-                  },
-                );
-                triggerInteraction("The Joe Rogan Podcast", "tracklist");
-                return res.json();
-              } catch (err) {
-                console.log(err);
-              }
-            }}
+            //         body: JSON.stringify({
+            //           object: {
+            //             podcast_id: podcastID,
+            //             user_id: user.id,
+            //           },
+            //         }),
+            //         method: "POST",
+            //       },
+            //     );
+            //     triggerInteraction("The Joe Rogan Podcast", "tracklist");
+            //     return res.json();
+            //   } catch (err) {
+            //     console.log(err);
+            //   }
+            // }}
           >
             {Icon && (
               <Icon
@@ -143,11 +155,11 @@ export default function ContentInteraction({
                 className={mergeClasses(
                   iconClasses,
                   "h-4 w-4 text-white/40 transition-colors duration-1000 ease-in-out hover:text-white/70",
-                  isArray(followingPodcasts?.data) &&
-                    followingPodcasts?.data
-                      .map((follow) => follow.id)
-                      .includes(podcastID) &&
-                    "scale-150 fill-white brightness-[140%]",
+                  // isArray(followingPodcasts?.data) &&
+                  //   followingPodcasts?.data
+                  //     .map((follow) => follow.id)
+                  //     .includes(podcastID) &&
+                  isOpen && "fill-white/70 brightness-[120%]",
                 )}
               ></Heart>
             )}
@@ -156,7 +168,7 @@ export default function ContentInteraction({
                 className={mergeClasses(
                   iconClasses,
                   "h-4 w-4 text-white/40 transition-colors duration-1000 ease-in-out hover:text-white/70",
-                  isToggled && "fill-white/60 brightness-[100%]",
+                  isOpen && "fill-white/70 brightness-[120%]",
                 )}
               ></BellPlus>
             )}
@@ -165,7 +177,7 @@ export default function ContentInteraction({
                 className={mergeClasses(
                   iconClasses,
                   "h-4 w-4 text-white/40 transition-colors duration-1000 ease-in-out hover:text-white/70",
-                  isToggled && "fill-white/60 brightness-[100%]",
+                  isOpen && "fill-white/70 brightness-[120%]",
                 )}
               ></MessageCircle>
             )}
