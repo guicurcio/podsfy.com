@@ -267,8 +267,8 @@ dependencies:
     specifier: ^0.32.1
     version: 0.32.1
   sonner:
-    specifier: ^0.3.5
-    version: 0.3.5(react-dom@18.2.0)(react@18.2.0)
+    specifier: ^0.7.0
+    version: 0.7.4(react-dom@18.2.0)(react@18.2.0)
   sqlite3:
     specifier: ^5.1.6
     version: 5.1.6(encoding@0.1.13)
@@ -15718,8 +15718,8 @@ packages:
     dev: false
     optional: true
 
-  /sonner@0.3.5(react-dom@18.2.0)(react@18.2.0):
-    resolution: {integrity: sha512-yIwaQ4dftMvFApuruto2t7wGyyaPRpj5qYBWYJIz4Z7uGcVn0IfqI/hWN0JyJN4izNbZFuCYZISf3fOGnvSlNQ==}
+  /sonner@0.7.4(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-xRVYOCTAxJge7hRGSwu7q+gIS9B2csuOZw8yNEaXe/qlncft5a7UmkttGNb4LOGu79rAB/GJ6JQbUMpJNf51Nw==}
     peerDependencies:
       react: ^18.0.0
       react-dom: ^18.0.0
