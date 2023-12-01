@@ -110,7 +110,7 @@
     "recharts": "^2.6.2",
     "server-only": "^0.0.1",
     "sharp": "^0.32.1",
-    "sonner": "^0.3.5",
+    "sonner": "^0.7.0",
     "sqlite3": "^5.1.6",
     "supabase": "^1.115.2",
     "swr": "^2.1.5",
