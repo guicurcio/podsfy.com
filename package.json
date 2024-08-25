@@ -91,7 +91,7 @@
     "jotai": "^2.1.0",
     "jsonwebtoken": "^9.0.2",
     "lodash.template": "^4.5.0",
-    "lucide-react": "^0.220.0",
+    "lucide-react": "^0.436.0",
     "lzma-native": "^8.0.6",
     "markdown-wasm": "^1.2.0",
     "next": "^14.0.3",
