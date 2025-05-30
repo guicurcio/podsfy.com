@@ -202,7 +202,7 @@
     "ts-node": "^10.9.1",
     "tsconfig-paths-webpack-plugin": "^4.0.1",
     "turbo": "^1.10.5",
-    "typescript": "5.0.4",
+    "typescript": "5.8.3",
     "unist-builder": "3.0.0",
     "unist-util-visit": "^4.1.2"
   },
