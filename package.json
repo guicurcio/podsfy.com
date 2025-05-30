@@ -142,7 +142,7 @@
     "@graphql-codegen/typescript-graphql-request": "^5.0.0",
     "@graphql-codegen/typescript-nhost": "^0.0.1",
     "@graphql-codegen/typescript-operations": "^3.0.4",
-    "@ianvs/prettier-plugin-sort-imports": "^3.7.2",
+    "@ianvs/prettier-plugin-sort-imports": "^4.0.0",
     "@next/bundle-analyzer": "^13.4.7",
     "@types/debug": "4.1.7",
     "@types/jest": "29.5.1",
