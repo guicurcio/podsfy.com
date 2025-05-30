@@ -120,7 +120,8 @@
     "urql": "^4.0.4",
     "use-long-press": "^3.1.5",
     "vaul": "^0.2.0",
-    "zod": "^3.21.4"
+    "zod": "^3.21.4",
+    "xml2js": "^0.5.0"
   },
   "devDependencies": {
     "@babel/core": "^7.22.5",
